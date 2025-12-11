@@ -1,5 +1,8 @@
-CODEX IUS - Visualizador de la Revista Jurídica Argentina
-[![LICENSE](https://img.shields.io/badge/license-MIT-blueCODEX IUS es un repositorio dedicado a la visualización y consulta interactiva de la Revista Jurídica Argentina CODEX IUS, una publicación de reciente creación que reúne análisis, jurisprudencia y doctrina contemporánea del derecho argentino.
+# CODEX IUS - Visualizador de la Revista Jurídica Argentina
+
+[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+**CODEX IUS** es un repositorio dedicado a la visualización y consulta interactiva de la **Revista Jurídica Argentina CODEX IUS**, una publicación de reciente creación que reúne análisis, jurisprudencia y doctrina contemporánea del derecho argentino.
 
 ✨ ¿Qué es CODEX IUS?
 CODEX IUS nace en 2025 como un espacio digital innovador para juristas, abogados, estudiantes y académicos. Ofrece:
