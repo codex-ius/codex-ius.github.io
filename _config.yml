@@ -1,18 +1,18 @@
 remote_theme: just-the-docs/just-the-docs
 title: Codex_Ius
 description: Portal de Educación Jurídica Argentina
-search: true
 
-# Sidebar links (SIN corchetes)
+# ORDEN FIJO (Home primero)
+nav:
+  - Home: index.md
+  - Legislación: legislacion/_index.md
+
+search: true
 aux_links:
   LinkedIn: https://www.linkedin.com/in/rodrigoquiroga-codexius
   GitHub: https://github.com/codex-ius/codex-ius.github.io
 
-# Carpetas legislacion (SIN duplicados)
 collections:
   legislacion:
     output: true
     permalink: /legislacion/:name/
-
-# Orden automático
-nav_sort: case_sensitive
