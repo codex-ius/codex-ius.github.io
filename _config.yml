@@ -6,3 +6,10 @@ search: true
 aux_links:
   LinkedIn: www.linkedin.com/in/rodrigoquiroga-codexius
   GitHub: https://github.com/codex-ius/codex-ius.github.io
+
+collections:
+  legislacion:
+    output: true
+    permalink: /:collection/:name/
+
+nav_sort: case_sensitive
