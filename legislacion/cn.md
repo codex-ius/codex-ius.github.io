@@ -3,7 +3,6 @@ layout: default
 title: Constitución Nacional Argentina
 nav_order: 1
 parent: Legislación
-permalink: /legislacion/cn/
 ---
 
 # Constitución Nacional Argentina
