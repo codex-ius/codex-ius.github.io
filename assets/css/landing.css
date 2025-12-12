@@ -1,0 +1,209 @@
+/* Solo para landing page - respeta Just the Docs */
+.landing-page {
+  /* Importa tus fonts */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Tus variables CSS exactas */
+.landing-page {
+  --color-fondo-principal: #121212;
+  --color-fondo-secundario: #1f1f1f;
+  --color-header-footer-bg: #121212;
+  --color-texto-principal: #eaeaea;
+  --color-footer-texto: #aaaaaa;
+  --color-titulo: #ffffff;
+  --color-enlace: #999999;
+  --color-enlace-hover: #ffffff;
+  --color-borde: #555555;
+  --color-fondo-hover: #292929;
+  --color-nav-fondo: #121212;
+  --color-shadow: rgba(0, 0, 0, 0.4);
+  --color-shadow-hover: rgba(0, 0, 0, 0.6);
+  --spacing-s: 0.5em;
+  --spacing-m: 1em;
+  --spacing-l: 1.5em;
+  --border-radius: 1em;
+}
+
+.landing-page.light-theme {
+  --color-fondo-principal: #ffffff;
+  --color-fondo-secundario: #f2f2f2;
+  --color-header-footer-bg: #fafafa;
+  --color-texto-principal: #111111;
+  --color-footer-texto: #444444;
+  --color-titulo: #000000;
+  --color-enlace: #333333;
+  --color-enlace-hover: #000000;
+  --color-borde: #d9d9d9;
+  --color-fondo-hover: #e6e6e6;
+  --color-nav-fondo: #fafafa;
+  --color-shadow: rgba(0, 0, 0, 0.15);
+  --color-shadow-hover: rgba(0, 0, 0, 0.3);
+}
+
+/* Reset específico para landing */
+.landing-page *,
+.landing-page *::before,
+.landing-page *::after {
+  box-sizing: border-box;
+}
+
+.landing-page {
+  margin: 0;
+  background: var(--color-fondo-principal);
+  color: var(--color-texto-principal);
+  font-family: 'Roboto', sans-serif;
+  text-shadow: none;
+  transition: color 0.2s, background 0.2s;
+}
+
+/* Tus estilos exactos con prefijo .landing-page */
+.landing-page header.site-header,
+.landing-page h1,
+.landing-page h2,
+.landing-page h3 {
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+}
+
+.landing-page a,
+.landing-page button {
+  padding: var(--spacing-s) 1.5rem;
+  background: none;
+  border: 1px solid var(--color-borde);
+  border-radius: 0.5em;
+  color: var(--color-enlace);
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-block;
+  margin: var(--spacing-s);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
+  box-shadow: 0 2px 6px var(--color-shadow);
+  transition: all 0.25s ease;
+}
+
+.landing-page a:hover,
+.landing-page button:hover {
+  background: var(--color-fondo-hover);
+  color: var(--color-enlace-hover);
+  border-color: var(--color-enlace-hover);
+  box-shadow: 0 4px 10px var(--color-shadow-hover);
+}
+
+.landing-page .landing-nav {
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-borde);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.landing-page .landing-nav a {
+  position: relative;
+}
+
+.landing-page .landing-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: var(--color-enlace);
+  transition: width 0.3s ease;
+}
+
+.landing-page .landing-nav a:hover::after {
+  width: 100%;
+}
+
+.landing-page header.site-header {
+  background: var(--color-header-footer-bg);
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.landing-page main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.landing-page .landing-section {
+  background: var(--color-fondo-principal);
+  padding: var(--spacing-l) var(--spacing-m);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+}
+
+.landing-page .cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.landing-page .card_docs {
+  background: var(--color-fondo-secundario);
+  border: 1px solid var(--color-borde);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 5px var(--color-shadow);
+  transition: all 0.3s ease;
+}
+
+.landing-page .card_docs:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px var(--color-shadow-hover);
+}
+
+.landing-page #animated-text {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--color-titulo);
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
+  transition: opacity 0.5s;
+}
+
+.landing-page footer.site-footer {
+  background: var(--color-header-footer-bg);
+  padding: 2rem 1rem;
+  text-align: center;
+  border-top: 1px solid var(--color-borde);
+}
+
+.landing-page input#search-input {
+  display: block;
+  width: min(50vw, 500px);
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--color-borde);
+  background: var(--color-fondo-secundario);
+  color: var(--color-texto-principal);
+  font-size: 1rem;
+}
+
+/* Theme toggle */
+.landing-page #theme-toggle-container {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1000;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .landing-page .landing-nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .landing-page #search-input {
+    width: 90vw;
+  }
+}
