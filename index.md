@@ -1,10 +1,6 @@
 ---
 layout: home
 title: Codex_Ius - Portal de Educación Jurídica
----
----
-layout: home
-title: Codex_Ius - Portal de Educación Jurídica
 permalink: /
 nav_exclude: true
 ---
