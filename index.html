@@ -7,6 +7,75 @@
     <title>Portal de Educación Jurídica</title>
     <link rel="stylesheet" href="./sources/css/reset.css">
     <link rel="shortcut icon" href="./sources/icons/fav.png" type="image/x-icon">
+
+    <style>
+        .simple-badge:hover {
+            border: solid 1px var(--color-fondo-hover);
+        }
+
+        .simple-badge {
+            width: 260px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            font-family: -apple-system, sans-serif;
+            margin: auto;
+            padding: 1rem;
+            border: solid 1px var(--color-borde);
+        }
+
+        .simple-header {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .simple-logo {
+            color: #0a66c2;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .simple-content {
+            padding: 20px 20px 16px;
+            text-align: center;
+        }
+
+        .simple-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 12px;
+        }
+
+        .simple-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 4px;
+        }
+
+        .simple-title {
+            font-size: 14px;
+            color: #838383;
+            margin: 0 0 8px;
+            line-height: 1.4;
+        }
+
+    
+        .simple-btn {
+            color: #0a66c2;
+            border: 2px solid #0a66c2;
+            background-color: #ebebeb;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+      
+    </style>
 </head>
 
 <body id="top">
@@ -16,13 +85,13 @@
 
         <h2>Portal de Educación Jurídica</h2>
     </header>
-    <nav>        
+    <nav>
         <a href="/sources/res_lex/leyes.html">Legislación</a>
         <a href="#teoriaJuridica">Teoría Jurídica</a>
         <a href="#appsJuridicas">Apps Jurídicas</a>
     </nav>
     <main>
-          
+
         <section id="teoriaJuridica">
             <div id="cards-container"></div>
         </section>
@@ -51,26 +120,40 @@
     </main>
 
     <footer>
-        <div id="contacto" class="footer-container">
-            <h3>Contacto</h3>
-            <p><strong>Autor:</strong> Quiroga Rodrigo Alberto</p>
-            <p>
-                <strong>LinkedIn:</strong>
-                <a href="https://www.linkedin.com/in/rodrigo-quiroga/" target="_blank" rel="noopener noreferrer"
-                    aria-label="LinkedIn de Rodrigo Quiroga">
-                    <span class="icon-linkedin" aria-hidden="true"></span> Mi Perfil
+        <div class="simple-badge">
+            <div class="simple-header">
+                <div class="simple-logo">Contacto</div>
+            </div>
+
+            <div class="simple-content">
+                <img class="simple-photo" alt="Rodrigo Quiroga"
+                    src="https://media.licdn.com/dms/image/v2/D5603AQGjuny-yY3HxQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1680820109137?e=1767225600&v=beta&t=ADJI4ONGZA0Yq0wdsnS1EkEqG2P1E3zbxbNIRMiYzKU">
+
+                <h3 class="simple-name">
+                    Rodrigo Quiroga
+
+                </h3>
+
+                <p class="simple-title">
+                    Investigador y abogado enfocado en el desarrollo de software jurídico
+                </p>
+
+                <p class="simple-school">
+                    <a href="https://github.com/codex-ius/codex-ius.github.io" target="_blank">
+                        GitHub
+                    </a>
+                </p>
+
+                <a class="simple-btn" href="https://ar.linkedin.com/in/rodrigoquiroga-codexius" target="_blank">
+                    Linkedin
                 </a>
-            </p>
-            <p>
-                <strong>GitHub:</strong>
-                <a href="https://github.com/RodrigoAQuiroga" target="_blank" rel="noopener noreferrer"
-                    aria-label="GitHub de Rodrigo Quiroga">
-                    <span class="icon-github" aria-hidden="true"></span> Mi Repositorio
-                </a>
-            </p>
-            <p class="footer-note">Iconos extraidos desde: <a href="https://icons8.com" target="_blank"
-                    rel="noopener noreferrer">icons8.com</a>.</p>
+            </div>
         </div>
+
+
+        <p class="footer-note">Iconos extraidos desde: <a href="https://icons8.com" target="_blank"
+                rel="noopener noreferrer">icons8.com</a>.</p>
+
     </footer>
 
 

@@ -122,6 +122,9 @@ a::after {
 nav {
   padding: 1rem;
   border-bottom: solid 1px var(--color-borde);
+  position: sticky;
+  background-color: inherit;
+  top: 0;
 }
 
 nav a {
@@ -227,7 +230,7 @@ section {
   background-color: var(--color-fondo-hover);
   border-color: var(--color-enlace-hover);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  transform: translateY(-4px);
+  
 }
 
 .card_docs h4 {
@@ -270,7 +273,7 @@ section {
   color: var(--color-fondo-principal);
   outline: none;
   box-shadow: 0 4px 12px var(--color-shadow-hover);
-  transform: translateY(-2px);
+  
 }
 
 /* Sección categorías */
@@ -464,11 +467,12 @@ footer {
   color: var(--color-footer-texto);
   border-top: 1px solid var(--color-borde);
   transition: background-color 0.3s;
+  margin-bottom: 5rem;
 }
 
-footer:hover {
+/*footer:hover {
   background-color: var(--color-fondo-hover);
-}
+}*/
 
 footer p,
 footer strong {
