@@ -1,61 +1,132 @@
 import { cardsData } from './data.js';
 
-const categoryNames = {
-  ensayos: 'Doctrina y Teoría Jurídica',
-  educacion: 'Educación Jurídica',
-  noticias: 'Noticias y Actualidad Jurídica'
-};
-
-export function createCard({ title, description, link, linkText = 'Abrir', type }) {
+export function createCard(data, category) {
   const card = document.createElement('article');
-  card.className = 'card_docs';
 
-  if (type) {
-    card.classList.add(`card_${type}`);
-  }
-
-  const h5 = document.createElement('h4');
-  h5.textContent = title;
-  card.appendChild(h5);
-
-  const p = document.createElement('p');
-  p.textContent = description;
-  card.appendChild(p);
-
-  const a = document.createElement('a');
-  a.href = link;
-  a.textContent = linkText;
-  a.target = '_blank';
-  a.rel = 'noopener noreferrer';
-  card.appendChild(a);
-
-  return card;
+  // 1. LÓGICA PARA NOTICIAS (BENTO)
+  if (category === 'noticias') {
+    card.className = `card-news ${data.branch || 'general'} ${data.isFeatured ? 'featured' : ''}`;
+    card.innerHTML = `
+        <div class="news-header">
+            <span class="news-tag">${data.branch ? data.branch.toUpperCase() : 'URGENTE'}</span>
+            <span class="news-date">${data.date || 'RECIENTE'}</span>
+        </div>
+        <div class="news-body">
+            <h4>${data.title}</h4>
+            <p>${data.description}</p>
+        </div>
+        <div class="news-footer">
+            <span class="news-id">CODE_ID: ${Math.random().toString(36).substr(2, 5).toUpperCase()}</span>
+            <a href="${data.link}" class="news-link">
+                LEER REPORTE <span class="material-icons">arrow_forward</span>
+            </a>
+        </div>
+    `;
+    return card;
 }
 
-export function getCardsByCategory(category) {
-  return cardsData[category] || [];
+  // 2. LÓGICA PARA EDUCACIÓN (ACADEMIA)
+  if (category === 'educacion') {
+    card.className = `card-study ${data.branch || 'general'}`;
+    card.innerHTML = `
+        <div class="study-marker"></div>
+        <div class="study-content">
+            <div class="study-header">
+                <span class="study-label">MÓDULO ACADÉMICO</span>
+                <span class="study-branch">${data.branch ? data.branch.toUpperCase() : 'LEGAL'}</span>
+            </div>
+            <h4>${data.title}</h4>
+            
+            <div class="study-meta">
+                <div class="meta-item">
+                    <span class="material-icons">bar_chart</span>
+                    <span>${data.level || 'Básico'}</span>
+                </div>
+                <div class="meta-item">
+                    <span class="material-icons">schedule</span>
+                    <span>${data.time || '10 min'}</span>
+                </div>
+            </div>
+
+            <p>${data.description}</p>
+            
+            <div class="study-footer">
+                <a href="${data.link}" class="btn-study">
+                    <span class="material-icons">menu_book</span>
+                    Acceder al Material
+                </a>
+            </div>
+        </div>
+    `;
+    return card;
+  }
+  // 3. LÓGICA PARA ENSAYOS (INVESTIGACIÓN)
+  // Dentro de createCard, en la sección de ensayos:
+  if (category === 'ensayos') {
+    card.className = `card-library ${data.branch || ''}`;
+    card.innerHTML = `
+        <div class="library-tab">${data.branch || 'Doctrina'}</div>
+        <div class="library-content">
+            <div class="library-meta">
+                <span class="file-number">REF-AR-${data.date || '2024'}</span>
+                
+            </div>
+            <h4>${data.title}</h4>
+            <p class="library-abstract">${data.description}</p>
+            <div class="library-footer">
+                <span class="library-author">${data.author || 'QUIROGA, R.'}</span>
+                <a href="${data.link}" class="library-btn">${data.linkText}</a>
+            </div>
+        </div>
+    `;
+    return card;
+  }
+  // Dentro de createCard, añade este bloque antes del fallback:
+  if (category === 'software') {
+    card.className = 'card-software';
+    card.innerHTML = `
+        <div class="software-ui-header">
+            <span class="material-icons software-icon">${data.icon || 'terminal'}</span>
+            <span class="software-version">${data.version || 'v1.0.0'}</span>
+        </div>
+        <div class="software-body">
+            <h4>${data.title}</h4>
+            <p>${data.description}</p>
+        </div>
+        <div class="software-footer">
+            <a href="${data.link}" class="btn-execute">
+                <span class="material-icons">play_arrow</span>
+                ${data.linkText}
+            </a>
+        </div>
+    `;
+    return card;
+  }
+  // Fallback por si hay otra categoría (estilo original)
+  card.className = 'card_docs';
+  card.innerHTML = `<h4>${data.title}</h4><p>${data.description}</p><a href="${data.link}">${data.linkText}</a>`;
+  return card;
 }
 
 export function renderCards(containerSelector, categories) {
   const container = document.querySelector(containerSelector);
+  if (!container) return;
   container.innerHTML = '';
 
   categories.forEach(category => {
     const section = document.createElement('section');
-    section.classList.add('category-section');
+    section.className = `category-section section-${category}`;
 
-    const heading = document.createElement('h3');
-    heading.textContent = categoryNames[category] || category;
-    section.appendChild(heading);
+    // Si es noticias, usamos el contenedor Bento
+    const gridClass = category === 'noticias' ? 'bento-grid' :
+      category === 'ensayos' ? 'research-grid' : 'cards-grid';
 
-    const cardsGrid = document.createElement('div');
-    cardsGrid.classList.add('cards-grid');
-    section.appendChild(cardsGrid);
+    section.innerHTML = `<h3>${category.toUpperCase()}</h3><div class="${gridClass}"></div>`;
+    const grid = section.querySelector(`.${gridClass}`);
 
-    const cards = getCardsByCategory(category);
-    cards.forEach(cardData => {
-      const cardElement = createCard(cardData);
-      cardsGrid.appendChild(cardElement);
+    const data = cardsData[category] || [];
+    data.forEach(item => {
+      grid.appendChild(createCard(item, category));
     });
 
     container.appendChild(section);

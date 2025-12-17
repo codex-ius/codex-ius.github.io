@@ -1,0 +1,39 @@
+/* --- 2. VARIABLES Y TEMAS --- */
+:root {
+  --color-fondo-principal: #121212;
+  --color-fondo-secundario: #1f1f1f;
+  --color-header-footer-bg: #121212;
+  --color-texto-principal: #eaeaea;
+  --color-texto-muted: #aaaaaa;
+  --color-titulo: #ffffff;
+  --color-enlace: #999999;
+  --color-enlace-hover: #ffffff;
+  --color-borde: #333333;
+  --color-fondo-hover: #292929;
+  --color-shadow: rgba(0, 0, 0, 0.4);
+
+  --legal-civil: #2196F3;
+  --legal-penal: #FF5252;
+  --legal-laboral: #00E676;
+  --legal-const: #E040FB;
+
+  /* Espaciados */
+  --spacing-s: 0.5em;
+  --spacing-m: 1em;
+  --spacing-l: 1.5em;
+  --border-radius: 1em;
+}
+
+
+.light-theme {
+  --color-fondo-principal: #ffffff;
+  --color-fondo-secundario: #f2f2f2;
+  --color-header-footer-bg: #fafafa;
+  --color-texto-principal: #111111;
+  --color-texto-muted: #444444;
+  --color-titulo: #000000;
+  --color-enlace: #333333;
+  --color-enlace-hover: #000000;
+  --color-borde: #d9d9d9;
+  --color-fondo-hover: #e6e6e6;
+}

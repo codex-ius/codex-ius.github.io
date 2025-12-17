@@ -3,7 +3,7 @@ import { setupThemeToggle } from './themeToggle.js';
 import { setupDetailsToggle } from './utils.js';
 
 // Renderizar cards
-renderCards('#cards-container', ['educacion', 'noticias', 'ensayos']);
+renderCards('#cards-container', ['educacion', 'noticias', 'ensayos', 'software']);
 
 // Configurar toggle de tema y botón volver arriba
 document.addEventListener('DOMContentLoaded', () => {

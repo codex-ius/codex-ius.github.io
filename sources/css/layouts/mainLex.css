@@ -1,0 +1,203 @@
+@import url('../main.css');
+
+/* HIGHLIGHT DE ARTÍCULOS - ULTRA ESPECÍFICO (AGREGADO) */
+main .article-highlight,
+main .article-highlight p,
+main p.article-highlight,
+#legislacion .article-highlight,
+#content .article-highlight,
+#content p.article-highlight {
+  padding: 20px !important;
+  margin: 15px 0 !important;
+  position: relative !important;
+  animation: articlePulse 0.8s ease-in-out !important;
+  transform: scale(1.02) !important;
+  background: linear-gradient(90deg, rgba(33, 150, 243, 0.15) 0%, transparent 100%) !important;
+  border-left: 4px solid var(--legal-civil) !important;
+  box-shadow: none !important;
+  color: black !important;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/*Cartelito*/
+main .article-highlight::before,
+main p.article-highlight::before,
+#content .article-highlight::before,
+#content p.article-highlight::before {
+
+  position: absolute !important;
+  top: -12px !important;
+  left: 20px !important;
+  color: white !important;
+  padding: 4px 12px !important;
+
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 2px 8px rgba(245, 124, 0, 0.4) !important;
+  content: "ID: SEARCH_RESULT" !important;
+  background: var(--legal-civil) !important;
+}
+
+@keyframes articlePulse {
+  0% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(255, 235, 59, 0.6);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 235, 59, 0.8);
+  }
+
+  100% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(255, 235, 59, 0.6);
+  }
+}
+
+main .article-highlight,
+main p.article-highlight,
+#content .article-highlight {
+  background: linear-gradient(135deg, #ffeb3b 0%, #fdd835 100%) !important;
+  color: #000;
+}
+
+:root main .article-highlight,
+:root main p.article-highlight,
+:root #content .article-highlight {
+  background: linear-gradient(135deg, #ffeb3b 0%, #ffc107 100%) !important;
+}
+
+
+/* Contenedor de Selección de Leyes */
+#leyes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+#leyes a {
+  background: var(--color-fondo-secundario);
+  border: 1px solid var(--color-borde);
+  padding: 12px 15px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--color-texto-muted);
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  line-height: 1.2;
+}
+
+#leyes a:hover,
+#leyes a.active {
+  border-color: var(--legal-civil);
+  color: var(--color-titulo);
+  background: var(--color-fondo-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+/* El Buscador (Nav generado por JS) */
+nav {
+  background: var(--color-fondo-secundario);
+  border: 1px solid var(--color-borde);
+  
+  padding: 1rem 1.5rem;
+  margin: 2rem auto;
+  /*max-width: 500px;*/
+  position: sticky;
+  top: 20px;
+  z-index: 1001;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  width: 90vw;
+
+}
+
+#search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+#search-input {
+  background: transparent;
+  border: none;
+  color: var(--color-titulo);
+  font-family: 'JetBrains Mono', monospace;
+  flex-grow: 1;
+  outline: none;
+  padding: 8px;
+  font-weight: bold;
+  width: 25vw;
+  text-align: center;
+}
+
+#search-form button {
+  background: var(--legal-civil);
+  color: white;
+  border: none;
+  padding: 6px 15px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin: auto;
+}
+
+/* --- PRESENTACIÓN DEL MARKDOWN (#content) --- */
+
+#content {
+  /* Esta es la propiedad clave */
+    scroll-margin-top: 100px;
+  background: var(--color-fondo-secundario);
+  padding: 3rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-borde);
+  font-family: 'Roboto', sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para los Artículos dentro del Markdown */
+#content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: var(--color-texto-principal);
+}
+
+/* Detectar títulos de secciones en el MD */
+#content h1,
+#content h2,
+#content h3 {
+  color: var(--legal-civil);
+  border-bottom: 1px solid var(--color-borde);
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
+  text-align: left;
+}
+
+/* Resaltado de Artículos (Mejorado para el tema oscuro) */
+.article-highlight {
+  background: rgba(33, 150, 243, 0.1) !important;
+  /* Azul sutil en vez de amarillo chillón */
+  border-left: 4px solid var(--legal-civil) !important;
+  padding: 2rem !important;
+  border-radius: 4px !important;
+  color: var(--color-titulo) !important;
+}
+
+/* Volver al inicio */
+#inicio {
+  font-family: 'JetBrains Mono', monospace;
+}

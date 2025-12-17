@@ -1,0 +1,91 @@
+
+
+/* --- SECCIÓN SOFTWARE (DASHBOARD) --- */
+
+.section-software .cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.card-software {
+  background: #0d0d0d;
+  /* Un negro más profundo para software */
+  border: 1px solid #333;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.software-ui-header {
+  background: #1a1a1a;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.software-icon {
+  color: var(--legal-laboral);
+  /* Color verde por defecto para apps */
+  font-size: 20px !important;
+}
+
+.software-version {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #555;
+}
+
+.software-body {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-software h4 {
+  margin: 0 0 10px 0 !important;
+  text-align: left !important;
+  color: #fff !important;
+  font-size: 1.1rem !important;
+}
+
+.card-software p {
+  font-size: 0.85rem !important;
+  line-height: 1.5;
+  color: #bbb;
+  padding: 0 !important;
+  text-indent: 0 !important;
+}
+
+.software-footer {
+  padding: 1rem 1.5rem;
+  background: linear-gradient(to top, #111, transparent);
+}
+
+.btn-execute {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--legal-civil) !important;
+  /* Azul para resaltar ejecución */
+  color: white !important;
+  border: none !important;
+  width: 100%;
+  padding: 12px !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px !important;
+}
+
+.card-software:hover {
+  border-color: var(--legal-civil);
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(33, 150, 243, 0.15);
+}

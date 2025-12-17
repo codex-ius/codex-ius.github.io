@@ -1,0 +1,248 @@
+/* --- 1. IMPORTACIONES --- */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap');
+@import url('./views/apps.css');
+@import url('./views/doctrina.css');
+@import url('./views/noticias.css');
+@import url('./reset.css');
+
+/* --- 8. ELEMENTOS DINÁMICOS --- */
+/* Texto animado */
+#animated-text {
+  transition: opacity 0.5s;
+  font-family: 'JetBrains Mono', 'Fira Mono', monospace;
+  color: var(--color-titulo);
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
+}
+
+
+/* Contenedor para botones de tema y scroll */
+#theme-toggle-container {
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  display: flex;
+  flex-direction: row;
+  gap: 0.1em;
+  z-index: 1000;
+  background: var(--color-header-footer-bg);
+  padding: 0.5em;
+  border-radius: 1em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-borde);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+#theme-toggle-container button {
+  background: var(--color-fondo-secundario);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.7em;
+  box-shadow: 0 1px 4px var(--color-shadow);
+  color: var(--color-texto-principal);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+#theme-toggle-container button:hover {
+  background: var(--color-fondo-hover);
+  color: var(--color-enlace-hover);
+  box-shadow: 0 2px 8px var(--color-shadow-hover);
+}
+
+
+/* --- 9. RESPONSIVIDAD --- */
+@media (max-width: 850px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .bento-item.featured {
+    grid-column: span 1;
+  }
+
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
+}
+
+/* --- 10. FOOTER (CERTIFICACIÓN FINAL) --- */
+
+footer {
+  background: var(--color-header-footer-bg);
+  border-top: 1px solid var(--color-borde);
+  padding: 4rem 2rem 1rem 2rem;
+  margin-top: 5rem;
+  width: 100%;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 4rem;
+  padding-bottom: 3rem;
+}
+
+#footer-logo {
+  text-align: left;
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: var(--color-titulo);
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  color: var(--color-texto-muted);
+  margin: 1rem 0;
+  max-width: 300px;
+}
+
+/* El Sello Notarial */
+.notary-seal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 2rem;
+  opacity: 0.7;
+}
+
+.notary-seal .material-icons {
+  font-size: 40px;
+  color: var(--legal-laboral);
+}
+
+.seal-text {
+  display: flex;
+  flex-direction: column;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1;
+}
+
+.seal-date {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.seal-auth {
+  font-size: 0.6rem;
+  color: var(--color-texto-muted);
+}
+
+/* Listas de Links */
+.footer-title {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-titulo);
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.footer-links a {
+  color: var(--color-texto-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--color-enlace-hover);
+}
+
+/* Contacto */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--color-texto-muted);
+  margin-bottom: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid var(--color-borde);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.social-btn:hover {
+  border-color: var(--color-titulo);
+  background: var(--color-fondo-hover);
+}
+
+/* Barra Inferior */
+.footer-bottom {
+  border-top: 1px solid var(--color-borde);
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.copyright-content {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.footer-divider {
+  color: #333;
+}
+
+/* Responsividad */
+@media (max-width: 850px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  #footer-logo,
+  .footer-tagline,
+  .notary-seal {
+    justify-content: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-links,
+  .footer-contact {
+    align-items: center;
+  }
+}

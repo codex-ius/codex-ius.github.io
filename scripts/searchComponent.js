@@ -9,7 +9,7 @@ export function setupSearchComponent() {
   const input = document.createElement('input');
   input.id = 'search-input';
   input.type = 'text';
-  input.placeholder = 'Ingrese número de artículo (ej: 25)';
+  input.placeholder = 'Nro Art. (ej: 25)';
 
   const button = document.createElement('button');
   button.type = 'submit';

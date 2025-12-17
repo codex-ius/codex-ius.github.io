@@ -5,77 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal de Educación Jurídica</title>
-    <link rel="stylesheet" href="./sources/css/reset.css">
+    <link rel="stylesheet" href="./sources/css/main.css">
     <link rel="shortcut icon" href="./sources/icons/fav.png" type="image/x-icon">
 
-    <style>
-        .simple-badge:hover {
-            border: solid 1px var(--color-fondo-hover);
-        }
 
-        .simple-badge {
-            width: 260px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            font-family: -apple-system, sans-serif;
-            margin: auto;
-            padding: 1rem;
-            border: solid 1px var(--color-borde);
-        }
-
-        .simple-header {
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .simple-logo {
-            color: #0a66c2;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .simple-content {
-            padding: 20px 20px 16px;
-            text-align: center;
-        }
-
-        .simple-photo {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 12px;
-        }
-
-        .simple-name {
-            font-size: 18px;
-            font-weight: 700;
-            margin: 0 0 4px;
-        }
-
-        .simple-title {
-            font-size: 14px;
-            color: #838383;
-            margin: 0 0 8px;
-            line-height: 1.4;
-        }
-
-    
-        .simple-btn {
-            color: #0a66c2;
-            border: 2px solid #0a66c2;
-            background-color: #ebebeb;
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.2s;
-        }
-
-      
-    </style>
 </head>
 
 <body id="top">
@@ -91,69 +24,57 @@
         <a href="#appsJuridicas">Apps Jurídicas</a>
     </nav>
     <main>
-
-        <section id="teoriaJuridica">
-            <div id="cards-container"></div>
-        </section>
-
-        <article id="appsJuridicas">
-            <h3>Apps Jurídicas</h3>
-            <section id="software">
-                <div class="card_docs">
-                    <h4>Calculadora: Liquidación Final</h4>
-                    <p>Calculadora básica de rubros indemnizatorios laborales según la legislación argentina. Me
-                        sirvió
-                        para practicar programación, por lo que si encuentras fallas o quieres sugerir mejoras
-                        puedes
-                        contactarme...</p>
-                    <a href="./sources/res_app/calculadora.html">Probar...</a>
-                </div>
-            </section>
-            <section id="software">
-                <div class="card_docs">
-                    <h4>Calculadora Previsional</h4>
-                    <p>Calculadora básica de años de servicio...</p>
-                    <a href="./sources/res_app/previsional.html">Probar...</a>
-                </div>
-            </section>
-        </article>
+        <div id="cards-container"></div>
     </main>
 
     <footer>
-        <div class="simple-badge">
-            <div class="simple-header">
-                <div class="simple-logo">Contacto</div>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 id="footer-logo">CODEX_IUS</h2>
+                <p class="footer-tagline">Intersección entre el Derecho Argentino y el desarrollo de Software.</p>
+                <div class="notary-seal">
+                    <span class="material-icons">verified_user</span>
+                    <div class="seal-text">
+                        <span class="seal-date">EST. 2024</span>
+                        <span class="seal-auth">CONTENIDO CERTIFICADO</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="simple-content">
-                <img class="simple-photo" alt="Rodrigo Quiroga"
-                    src="https://media.licdn.com/dms/image/v2/D5603AQGjuny-yY3HxQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1680820109137?e=1767225600&v=beta&t=ADJI4ONGZA0Yq0wdsnS1EkEqG2P1E3zbxbNIRMiYzKU">
+            <div class="footer-links">
+                <span class="footer-title">MAPA DEL SITIO</span>
+                <a href="#noticias">Noticias Jurídicas</a>
+                <a href="#educacion">Academia</a>
+                <a href="#ensayos">Biblioteca de Ensayos</a>
+                <a href="#software">Terminal de Software</a>
+            </div>
 
-                <h3 class="simple-name">
-                    Rodrigo Quiroga
-
-                </h3>
-
-                <p class="simple-title">
-                    Investigador y abogado enfocado en el desarrollo de software jurídico
-                </p>
-
-                <p class="simple-school">
-                    <a href="https://github.com/codex-ius/codex-ius.github.io" target="_blank">
-                        GitHub
+            <div class="footer-contact">
+                <span class="footer-title">CONTACTO PROFESIONAL</span>
+                <div class="contact-item">
+                    <span class="material-icons">mail</span>
+                    <span>tu-email@ejemplo.com</span>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-btn" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i> <span class="material-icons">terminal</span>
                     </a>
-                </p>
-
-                <a class="simple-btn" href="https://ar.linkedin.com/in/rodrigoquiroga-codexius" target="_blank">
-                    Linkedin
-                </a>
+                    <a href="#" class="social-btn" title="GitHub">
+                        <span class="material-icons">code</span>
+                    </a>
+                </div>
             </div>
         </div>
 
-
-        <p class="footer-note">Iconos extraidos desde: <a href="https://icons8.com" target="_blank"
-                rel="noopener noreferrer">icons8.com</a>.</p>
-
+        <div class="footer-bottom">
+            <div class="copyright-content">
+                <span class="mono">COPYRIGHT © 2024 CODEX_IUS - ALL RIGHTS RESERVED</span>
+                <span class="footer-divider">|</span>
+                <span class="mono">BUILD: v2.5.0-STABLE</span>
+                <span class="footer-divider">|</span>
+                <span class="mono">DESARROLLADO EN MENDOZA, ARGENTINA</span>
+            </div>
+        </div>
     </footer>
 
 
