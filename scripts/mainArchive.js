@@ -13,3 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+const markdownText = document.getElementById('content').textContent;
+document.getElementById('content').innerHTML = marked.parse(markdownText);
+
