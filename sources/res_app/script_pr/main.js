@@ -1,36 +1,70 @@
-import { procesarDatosAnt, procesarDatos, calculoMonotributoAportante } from './procesarDatos.js';
+import { 
+    procesarDatosAnt, 
+    procesarDatos, 
+    calculoMonotributoAportante 
+} from './procesarDatos.js';
 import { datosSujeto } from './datosSujeto.js';
 import { resumen } from './resumen.js';
 
-// Función para controlar tabs
+/**
+ * Control de navegación por pestañas
+ * @param {string} tabName - ID del contenedor a mostrar
+ * @param {HTMLElement} elmnt - Botón que disparó la acción
+ */
 function openTab(tabName, elmnt) {
+    // Ocultar todos los contenidos de pestañas
     const tabs = document.querySelectorAll('.tabcontent');
     tabs.forEach(tab => tab.style.display = 'none');
-    document.getElementById(tabName).style.display = 'block';
 
+    // Quitar la clase 'active' de todos los botones
     const buttons = document.querySelectorAll('.tablink');
     buttons.forEach(btn => btn.classList.remove('active'));
-    elmnt.classList.add('active');
+
+    // Mostrar la pestaña actual y marcar el botón como activo
+    const targetTab = document.getElementById(tabName);
+    if (targetTab) {
+        targetTab.style.display = 'block';
+    }
+    if (elmnt) {
+        elmnt.classList.add('active');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Activa la primera pestaña
-    const firstTab = document.querySelector('.tablink');
-    if (firstTab) firstTab.click();
-
-    // Asocia openTab a cada botón de pestaña usando data-attribute
-    document.querySelectorAll('.tablink').forEach(button => {
+    // --- Lógica de Pestañas ---
+    const tabButtons = document.querySelectorAll('.tablink');
+    
+    tabButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const tabName = button.getAttribute('data-tab');
-            openTab(tabName, button);
+            const tabId = button.getAttribute('data-tab');
+            openTab(tabId, button);
         });
     });
 
-    // Asociar funciones a botones (ya sin onclick en HTML)
-    document.getElementById('btnProcesarAnt').addEventListener('click', procesarDatosAnt);
-    document.getElementById('btnProcesarDesde').addEventListener('click', procesarDatos);
-    document.getElementById('btnProcesarMono').addEventListener('click', calculoMonotributoAportante);
-    document.getElementById('btnDatosSujeto').addEventListener('click', datosSujeto);
-    document.getElementById('btnResumen').addEventListener('click', resumen);
-});
+    // Activar la primera pestaña por defecto (Datos Personales)
+    if (tabButtons.length > 0) {
+        tabButtons[0].click();
+    }
 
+    // --- Vinculación de Botones de Acción ---
+
+    // 1. Datos Personales
+    const btnSujeto = document.getElementById('btnDatosSujeto');
+    if (btnSujeto) btnSujeto.addEventListener('click', datosSujeto);
+
+    // 2. Procesar Datos Históricos (Pre-94)
+    const btnAnt = document.getElementById('btnProcesarAnt');
+    if (btnAnt) btnAnt.addEventListener('click', procesarDatosAnt);
+
+    // 3. Procesar Datos SIJP (Post-94)
+    const btnDesde = document.getElementById('btnProcesarDesde');
+    if (btnDesde) btnDesde.addEventListener('click', procesarDatos);
+
+    // 4. Procesar Monotributo/Autónomos
+    const btnMono = document.getElementById('btnProcesarMono');
+    if (btnMono) btnMono.addEventListener('click', calculoMonotributoAportante);
+
+    // 5. Generar Resumen Final Unificado
+    const btnResumen = document.getElementById('btnResumen');
+    if (btnResumen) btnResumen.addEventListener('click', resumen);
+});

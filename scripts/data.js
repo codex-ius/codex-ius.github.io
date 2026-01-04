@@ -164,7 +164,7 @@ export const cardsData = {
     {
       title: 'Calculadora Previsional',
       description: 'Herramienta para el cómputo de años de servicio y determinación de edad jubilatoria según regímenes generales.',
-      link: './sources/res_app/previsional.html',
+      link: './sources/res_app/calcPrev.html',
       linkText: 'Ejecutar Terminal',
       icon: 'history_toggle_off',
       version: 'v1.0.4'
