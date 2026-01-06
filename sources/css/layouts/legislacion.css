@@ -158,7 +158,7 @@ nav {
 
 #content {
   /* Esta es la propiedad clave */
-    scroll-margin-top: 100px;
+    scroll-margin-top: 200px;
   background: var(--color-fondo-secundario);
   padding: 3rem;
   border-radius: 8px;

@@ -1,12 +1,12 @@
 import { cardsData } from './data.js';
 
 export function createCard(data, category) {
-  const card = document.createElement('article');
+    const card = document.createElement('article');
 
-  // 1. LÓGICA PARA NOTICIAS (BENTO)
-  if (category === 'noticias') {
-    card.className = `card-news ${data.branch || 'general'} ${data.isFeatured ? 'featured' : ''}`;
-    card.innerHTML = `
+    // 1. LÓGICA PARA NOTICIAS (BENTO)
+    if (category === 'noticias') {
+        card.className = `card-news ${data.branch || 'general'} ${data.isFeatured ? 'featured' : ''}`;
+        card.innerHTML = `
         <div class="news-header">
             <span class="news-tag">${data.branch ? data.branch.toUpperCase() : 'URGENTE'}</span>
             <span class="news-date">${data.date || 'RECIENTE'}</span>
@@ -22,13 +22,13 @@ export function createCard(data, category) {
             </a>
         </div>
     `;
-    return card;
-}
+        return card;
+    }
 
-  // 2. LÓGICA PARA EDUCACIÓN (ACADEMIA)
-  if (category === 'educacion') {
-    card.className = `card-study ${data.branch || 'general'}`;
-    card.innerHTML = `
+    // 2. LÓGICA PARA EDUCACIÓN (ACADEMIA)
+    if (category === 'educacion') {
+        card.className = `card-study ${data.branch || 'general'}`;
+        card.innerHTML = `
         <div class="study-marker"></div>
         <div class="study-content">
             <div class="study-header">
@@ -58,13 +58,13 @@ export function createCard(data, category) {
             </div>
         </div>
     `;
-    return card;
-  }
-  // 3. LÓGICA PARA ENSAYOS (INVESTIGACIÓN)
-  // Dentro de createCard, en la sección de ensayos:
-  if (category === 'ensayos') {
-    card.className = `card-library ${data.branch || ''}`;
-    card.innerHTML = `
+        return card;
+    }
+    // 3. LÓGICA PARA ENSAYOS (INVESTIGACIÓN)
+    // Dentro de createCard, en la sección de ensayos:
+    if (category === 'ensayos') {
+        card.className = `card-library ${data.branch || ''}`;
+        card.innerHTML = `
         <div class="library-tab">${data.branch || 'Doctrina'}</div>
         <div class="library-content">
             <div class="library-meta">
@@ -79,12 +79,12 @@ export function createCard(data, category) {
             </div>
         </div>
     `;
-    return card;
-  }
-  // Dentro de createCard, añade este bloque antes del fallback:
-  if (category === 'software') {
-    card.className = 'card-software';
-    card.innerHTML = `
+        return card;
+    }
+    // Dentro de createCard, añade este bloque antes del fallback:
+    if (category === 'software') {
+        card.className = 'card-software';
+        card.innerHTML = `
         <div class="software-ui-header">
             <span class="material-icons software-icon">${data.icon || 'terminal'}</span>
             <span class="software-version">${data.version || 'v1.0.0'}</span>
@@ -100,35 +100,36 @@ export function createCard(data, category) {
             </a>
         </div>
     `;
+        return card;
+    }
+    // Fallback por si hay otra categoría (estilo original)
+    card.className = 'card_docs';
+    card.innerHTML = `<h4>${data.title}</h4><p>${data.description}</p><a href="${data.link}">${data.linkText}</a>`;
     return card;
-  }
-  // Fallback por si hay otra categoría (estilo original)
-  card.className = 'card_docs';
-  card.innerHTML = `<h4>${data.title}</h4><p>${data.description}</p><a href="${data.link}">${data.linkText}</a>`;
-  return card;
 }
 
 export function renderCards(containerSelector, categories) {
-  const container = document.querySelector(containerSelector);
-  if (!container) return;
-  container.innerHTML = '';
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
+    container.innerHTML = '';
 
-  categories.forEach(category => {
-    const section = document.createElement('section');
-    section.className = `category-section section-${category}`;
+    categories.forEach(category => {
+        const section = document.createElement('section');
+        section.className = `category-section section-${category}`;
+        section.id = `section-${category}`;
 
-    // Si es noticias, usamos el contenedor Bento
-    const gridClass = category === 'noticias' ? 'bento-grid' :
-      category === 'ensayos' ? 'research-grid' : 'cards-grid';
+        // Si es noticias, usamos el contenedor Bento
+        const gridClass = category === 'noticias' ? 'bento-grid' :
+            category === 'ensayos' ? 'research-grid' : 'cards-grid';
 
-    section.innerHTML = `<h3>${category.toUpperCase()}</h3><div class="${gridClass}"></div>`;
-    const grid = section.querySelector(`.${gridClass}`);
+        section.innerHTML = `<h3>${category.toUpperCase()}</h3><div class="${gridClass}"></div>`;
+        const grid = section.querySelector(`.${gridClass}`);
 
-    const data = cardsData[category] || [];
-    data.forEach(item => {
-      grid.appendChild(createCard(item, category));
+        const data = cardsData[category] || [];
+        data.forEach(item => {
+            grid.appendChild(createCard(item, category));
+        });
+
+        container.appendChild(section);
     });
-
-    container.appendChild(section);
-  });
 }

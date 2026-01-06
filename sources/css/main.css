@@ -58,6 +58,9 @@
   box-shadow: 0 2px 8px var(--color-shadow-hover);
 }
 
+section {
+  scroll-margin-top: 100px;
+}
 
 /* --- 9. RESPONSIVIDAD --- */
 @media (max-width: 850px) {
