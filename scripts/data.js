@@ -156,18 +156,18 @@ export const cardsData = {
     {
       title: 'Calculadora: Liquidación Final',
       description: 'Calculadora de rubros indemnizatorios laborales (Ley 20.744). Ideal para cálculos rápidos de preaviso, SAC y vacaciones no gozadas.',
-      link: './sources/res_app/calculadora.html',
+      link: './sources/res_app/calculadora-laboral.html',
       linkText: 'Ejecutar Terminal',
       icon: 'calculate',
-      version: 'v2.1.0'
+      version: 'v1.0'
     },
     {
       title: 'Calculadora Previsional',
       description: 'Herramienta para el cómputo de años de servicio y determinación de edad jubilatoria según regímenes generales.',
-      link: './sources/res_app/calcPrev.html',
+      link: './sources/res_app/calculadora-previsional.html',
       linkText: 'Ejecutar Terminal',
       icon: 'history_toggle_off',
-      version: 'v1.0.4'
+      version: 'v1.0'
     }
   ]
 };

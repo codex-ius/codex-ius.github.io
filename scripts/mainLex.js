@@ -31,7 +31,7 @@ async function cargarLey(nombre, linkElement) {
   if (linkElement) linkElement.classList.add('active');
 
   try {
-    const response = await fetch('../../posts/' + nombre + '.md');
+    const response = await fetch('../../posts/legislacion/' + nombre + '.md');
     if (!response.ok) throw new Error();
     const md = await response.text();
 

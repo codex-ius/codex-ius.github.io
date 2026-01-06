@@ -10,7 +10,7 @@ Bs. As., 13/5/1976
 
 ## TITULO I - Disposiciones Generales
 
-**Artículo 1°.- Fuentes de regulación.**
+**Art. 1°.- Fuentes de regulación.**
 
 El contrato de trabajo y la relación de trabajo se rige:
 
@@ -76,11 +76,11 @@ En tal sentido se aplicará la regla general procesal, en virtud de la cual los 
 
 *(Artículo sustituido por art. 66 del [Decreto N° 70/2023](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=395521) B.O. 21/12/2023.)*
 
-**Artículo 10.- Conservación del contrato.**
+**Art. 10.- Conservación del contrato.**
 
 En caso de duda las situaciones deben resolverse en favor de la continuidad o subsistencia del contrato.
 
-**Artículo 11.- Principios de interpretación y aplicación de la ley.**
+**Art. 11.- Principios de interpretación y aplicación de la ley.**
 
 Cuando una cuestión no pueda resolverse por aplicación de las normas que rigen el contrato de trabajo o por las leyes análogas, se decidirá conforme a los principios de la justicia social, a los generales del derecho del trabajo, la equidad y la buena fe.
 
@@ -384,7 +384,7 @@ Las partes están obligadas a obrar de buena fe, ajustando su conducta a lo que 
 
 El empleador tiene facultades suficientes para organizar económica y técnicamente la empresa, explotación o establecimiento.
 
-**Artículo 65.- Facultad de dirección.**
+**Art. 65.- Facultad de dirección.**
 
 Las facultades de dirección que asisten al empleador deberán ejercitarse con carácter funcional, atendiendo a los fines de la empresa, a las exigencias de la producción, sin perjuicio de la preservación y mejora de los derechos personales y patrimoniales del trabajador.
 
@@ -672,7 +672,7 @@ Los presupuestos legales mínimos del contrato de teletrabajo se establecerán p
 
 ### CAPITULO I - Del sueldo o salario en general
 
-**Artículo 103.- Concepto.**
+**Art. 103.- Concepto.**
 
 A los fines de esta ley, se entiende por remuneración la contraprestación que debe percibir el trabajador como consecuencia del contrato de trabajo. Dicha remuneración no podrá ser inferior al salario mínimo vital. El empleador debe al trabajador la remuneración, aunque éste no preste servicios, por la mera circunstancia de haber puesto su fuerza de trabajo a disposición de aquél.
 

@@ -4,7 +4,7 @@
 
 ### COMPETENCIA POR MATERIA DE LAS CÁMARAS DEL TRABAJO
 
-**Artículo 1.-** Las Cámaras del Trabajo conocerán, en única instancia y en juicio público, oral y continuo:
+**Art. 1.-** Las Cámaras del Trabajo conocerán, en única instancia y en juicio público, oral y continuo:
 
 I.- En forma originaria:
 
@@ -60,7 +60,7 @@ a) Cuando a criterio del Tribunal, se tratare de causas complejas;
 
 b) Si el actor o el demandado al momento de interponer la demanda, o al contestarla en su caso, solicitaran que la causa se tramite por Tribunal pleno. En ambos casos, se deberá fundar la resolución y la petición."
 
-**Artículo 2.-** A los fines de la competencia territorial, la Provincia se divide en cuatro circunscripciones judiciales, formadas por los departamentos que a continuación se enumeran:
+**Art. 2.-** A los fines de la competencia territorial, la Provincia se divide en cuatro circunscripciones judiciales, formadas por los departamentos que a continuación se enumeran:
 
 Primera: Capital, Las Heras, Lavalle, Guaymallén, Godoy Cruz, Maipú, Luján.
 
@@ -72,7 +72,7 @@ Cuarta: Tupungato, Tunuyán y San Carlos."
 
 ### COMPETENCIA POR CONEXIDAD
 
-**Artículo 3.-** El Tribunal que entiende en el proceso principal será competente para conocer en:
+**Art. 3.-** El Tribunal que entiende en el proceso principal será competente para conocer en:
 
 a) En todos sus incidentes;
 
@@ -90,7 +90,7 @@ A tales demandas se les dará el trámite incidental que establece el artículo 
 
 ### DE LAS REGLAS DE COMPETENCIA
 
-**ART. 4.-** Para determinar la competencia del tribunal, se tendrán en cuenta las siguientes reglas:
+**Art. 4.-** Para determinar la competencia del tribunal, se tendrán en cuenta las siguientes reglas:
 
 1\) cuando el trabajador sea actor y a opción de este:
 
@@ -102,11 +102,11 @@ c) el domicilio del demandado.
 
 2\) cuando el empleador intervenga como actor: el domicilio del trabajador.
 
-**ART. 5.-** La competencia de los tribunales del trabajo es improrrogable e indelegable, salvo las excepciones de la presente ley. En caso necesario, podrá comisionarse a jueces de otros fueros y circunstancias, la realización de diligencias determinadas.
+**Art. 5.-** La competencia de los tribunales del trabajo es improrrogable e indelegable, salvo las excepciones de la presente ley. En caso necesario, podrá comisionarse a jueces de otros fueros y circunstancias, la realización de diligencias determinadas.
 
-**ART. 6.-** La camara del trabajo ante la cual se hubiera promovido una demanda deberá inhibirse de oficio si considerase no ser competente para conocer en el asunto por razón de la materia. Sin embargo, una vez contestada la demanda o tenida por contestada en rebeldía, sin objetarse la competencia, quedara esta fijada definitivamente para el tribunal y las partes.
+**Art. 6.-** La camara del trabajo ante la cual se hubiera promovido una demanda deberá inhibirse de oficio si considerase no ser competente para conocer en el asunto por razón de la materia. Sin embargo, una vez contestada la demanda o tenida por contestada en rebeldía, sin objetarse la competencia, quedara esta fijada definitivamente para el tribunal y las partes.
 
-**ART. 7.-** Las cuestiones de competencia solo podrán promoverse ante la camara del trabajo por vía de declinatoria, con excepción de las que se susciten entre jueces de la provincia y los de la nación o de otras provincias, en cuyo caso procederá también a la inhibitoria.
+**Art. 7.-** Las cuestiones de competencia solo podrán promoverse ante la camara del trabajo por vía de declinatoria, con excepción de las que se susciten entre jueces de la provincia y los de la nación o de otras provincias, en cuyo caso procederá también a la inhibitoria.
 
 Los conflictos de competencia se dirimirán de conformidad a las normas del código de procedimientos en materia civil y comercial.
 
@@ -114,13 +114,13 @@ La declaración de incompetencia territorial no producirá la nulidad de las med
 
 ### DE LA INMUTABILIDAD
 
-**ART. 8.-** En caso de muerte, de incapacidad, quiebra o concurso del demandado, los juicios que sean de competencia de la magistratura del trabajo se iniciaran y continuaran en esa jurisdicción, a cuyo efecto deberá notificarse a los respectivos representantes legales y al juez de la causa.
+**Art. 8.-** En caso de muerte, de incapacidad, quiebra o concurso del demandado, los juicios que sean de competencia de la magistratura del trabajo se iniciaran y continuaran en esa jurisdicción, a cuyo efecto deberá notificarse a los respectivos representantes legales y al juez de la causa.
 
 ### DE LA ACUMULACION DE JUICIOS
 
-**ART. 9.-** En el caso de ser presentadas ante la camara distintas demandas contra un mismo empleador, que tengan un mismo objeto, o una causa idéntica o común, la camara deberá ordenar la acumulacion de los juicios correspondientes y dictar una sola sentencia.
+**Art. 9.-** En el caso de ser presentadas ante la camara distintas demandas contra un mismo empleador, que tengan un mismo objeto, o una causa idéntica o común, la camara deberá ordenar la acumulacion de los juicios correspondientes y dictar una sola sentencia.
 
-**ART. 10.-** El tribunal podrá abstenerse de ordenar tal acumulacion o disponer la separación total o parcial de los juicios acumulados, cuando por efecto de aquella tenga que postergarse en forma notable la decisión sobre una o algunas de las demandas.
+**Art. 10.-** El tribunal podrá abstenerse de ordenar tal acumulacion o disponer la separación total o parcial de los juicios acumulados, cuando por efecto de aquella tenga que postergarse en forma notable la decisión sobre una o algunas de las demandas.
 
 ### DEL MINISTERIO PUBLICO
 
@@ -140,7 +140,7 @@ d) En los fallos plenarios."
 
 **Art. 12.-** "Los litigantes originarios, sus sucesores y los terceros citados a comparecer en forma coactiva, que no comparecieren durante el plazo señalado para hacerlo, serán declarados rebeldes, en la forma y con los efectos previstos en los artículos 75, 76 y 77 del Código Procesal Civil, Comercial y Tributario de la Provincia de Mendoza."
 
-**ART. 13.-** Solicitada la asistencia de los asesores del trabajo y si estos estimaren viable la acción, deberán promover la demanda dentro de un plazo no mayor de quince (15) días del requerimiento.
+**Art. 13.-** Solicitada la asistencia de los asesores del trabajo y si estos estimaren viable la acción, deberán promover la demanda dentro de un plazo no mayor de quince (15) días del requerimiento.
 
 En caso de que el asesor no la considere viable, así lo informara al asesor de gobierno, y si la opinión de este fuera coincidente con la del asesor, se negara al trabajador la asistencia jurídica gratuita solicitada.
 
@@ -156,7 +156,7 @@ Cuando la causa fuere sobreviniente o desconocida por la parte, podrá deducirse
 
 ### DE LOS TRAMITES
 
-**ART. 15.-** En la recusación se observaran las siguientes reglas:
+**Art. 15.-** En la recusación se observaran las siguientes reglas:
 
 1\) invocan, los nombres, la profesión y el domicilio de los testigos que hayan de declarar y cuyo numero no podrá exceder de tres, así como las demás pruebas; acompañando los documentos en que conste la causal aducida. La recusación será desechada, si no se llenaren los requisitos expresados o si se propusiere fuera de termino.
 
@@ -178,7 +178,7 @@ c) Los de la Cuarta Circunscripción serán sustituidos por el Juez en lo Civil 
 
 **Art. 17.-** Los Fiscales de Cámaras se reemplazarán entre sí por los Fiscales en lo Civil, Comercial y Criminal y en caso de impedimento por el Asesor de Menores o Defensor de Pobres y Ausentes. En las circunscripciones en que no existan Fiscales Civiles, Comerciales o Criminales se reemplazarán por el Defensor de Pobres y Ausentes."
 
-**ART. 18.-** Después que el tribunal haya empezado a conocer en un determinado proceso, las partes o sus representante no pueden sustituir se abogado o procurador por otro que motive la recusación o excusación de cualquiera de los jueces.
+**Art. 18.-** Después que el tribunal haya empezado a conocer en un determinado proceso, las partes o sus representante no pueden sustituir se abogado o procurador por otro que motive la recusación o excusación de cualquiera de los jueces.
 
 ### DEL IMPULSO PROCESAL
 
@@ -200,11 +200,11 @@ En los procesos en que el trabajador sea parte demandada y en los que tengan por
 
 ### DE LAS MEDIDAS COMPULSIVAS
 
-**ART. 20.-** El tribunal por la fuerza publica hará comparecer inmediatamente a testigos, peritos o funcionarios que citados en forma no hayan concurrido a cualquier audiencia sin motivo atendible alegado y probado, por lo menos dos días antes, salvo que fuere por causas sobrevinientes.
+**Art. 20.-** El tribunal por la fuerza publica hará comparecer inmediatamente a testigos, peritos o funcionarios que citados en forma no hayan concurrido a cualquier audiencia sin motivo atendible alegado y probado, por lo menos dos días antes, salvo que fuere por causas sobrevinientes.
 
 ### DEL BENEFICIO DE JUSTICIA GRATUITA
 
-**ART. 21.-** Los trabajadores o sus derecho-habientes, gozaran del beneficio de justicia gratuita, hallándose exceptuados de todo impuesto o tasa. Será también gratuita la expedición de testimonios o certificados de partidas de nacimiento, matrimonio o defunción, y sus legalizaciones.
+**Art. 21.-** Los trabajadores o sus derecho-habientes, gozaran del beneficio de justicia gratuita, hallándose exceptuados de todo impuesto o tasa. Será también gratuita la expedición de testimonios o certificados de partidas de nacimiento, matrimonio o defunción, y sus legalizaciones.
 
 Los documentos que presentare el trabajador deberán ser admitidos aun cuando no tuvieren el sellado de ley, sin que ello obste a la sustanciación de la causa y sin perjuicio de lo dispuesto en el código fiscal.
 
@@ -220,25 +220,25 @@ Los pactos de cuota litis no podrán estar insertos en el poder especial apud-ac
 
 ### DE LOS MENORES ADULTOS
 
-**ART. 24.-** Los menores adultos tendrán la misma capacidad de los mayores de edad para estar en juicio y podrán otorgar mandatos en la forma prescripta en el articulo 23, debiendo en tal caso firmarse el poder por ante el ministerio publico del trabajo.
+**Art. 24.-** Los menores adultos tendrán la misma capacidad de los mayores de edad para estar en juicio y podrán otorgar mandatos en la forma prescripta en el articulo 23, debiendo en tal caso firmarse el poder por ante el ministerio publico del trabajo.
 
 ### DE LA PROHIBICION DE PACTOS O CONVENIOS
 
-**ART. 25.-** Los convenios de cuota-litis, autorizadas por las leyes respectivas, podrán ser presentadas en el mismo proceso a que se refieren y previa ratificación personal, el tribunal resolverá por auto, otorgando o denegando la homologación.
+**Art. 25.-** Los convenios de cuota-litis, autorizadas por las leyes respectivas, podrán ser presentadas en el mismo proceso a que se refieren y previa ratificación personal, el tribunal resolverá por auto, otorgando o denegando la homologación.
 
 ### DEL CARACTER DE LOS PLAZOS
 
-**ART. 26.-** Todos los plazos señalados en esta ley son improrrogables y perentorios. Su vencimiento produce la perdida del derecho dejado de usar sin necesidad de petición de parte ni declaración alguna, y la camara haciendo efectivo el apercibimiento deberá proveer directamente lo que corresponda.
+**Art. 26.-** Todos los plazos señalados en esta ley son improrrogables y perentorios. Su vencimiento produce la perdida del derecho dejado de usar sin necesidad de petición de parte ni declaración alguna, y la camara haciendo efectivo el apercibimiento deberá proveer directamente lo que corresponda.
 
 ### DE LA INTERVENCION DE TERCEROS
 
-**ART. 27.-** La intervencion de terceros en juicio, para hacer valer, con relación a todas las partes o a algunas de ellas, un derecho referente al objeto de la litis o vinculada al titulo deducido en la misma, deberá efectuarse mediante escrito, llenando los recaudos exigidos en cuanto a la contestación de la demanda.
+**Art. 27.-** La intervencion de terceros en juicio, para hacer valer, con relación a todas las partes o a algunas de ellas, un derecho referente al objeto de la litis o vinculada al titulo deducido en la misma, deberá efectuarse mediante escrito, llenando los recaudos exigidos en cuanto a la contestación de la demanda.
 
 Si la intervencion tiene lugar después de la primera audiencia, todos los actos procesales realizados con anterioridad, serán validos respecto al interviniente, y este no podrá cumplir actos que no estén permitidos a las partes, salvo que la camara considere pertinente disponer en forma distinta.
 
 **Art. 28.-** Llamado a juicio. Cada una de las partes puede llamar al juicio a un tercero, si considera que la litis le es común o pretende ser por él relevado. Tal facultad deberá ser ejercida por el demandado al contestar la demanda, y, en este caso, se dará traslado de la misma al tercero en la forma prevista por el artículo 43 y 45 de este Código en cuanto a la demanda. Cuando es ejercida por el actor al contestar la demanda reconvencional o las excepciones, el Tribunal procederá de conformidad con lo dispuesto en el artículo 45 de este Código."
 
-**ART. 29.-** I. Si vencido en termino por el cual el citado en garantía no compareciere por cualquier causa, a tomar la defensa del demandado originario, el juicio principal deberá proseguir contra este, para quien seguirá corriendo automáticamente el plazo concedido por el art. 45\. En lo sucesivo el citado en garantía en cualquier tiempo, puede intervenir como coadyuvante, tomando el proceso en el estado en que se encuentre.
+**Art. 29.-** I. Si vencido en termino por el cual el citado en garantía no compareciere por cualquier causa, a tomar la defensa del demandado originario, el juicio principal deberá proseguir contra este, para quien seguirá corriendo automáticamente el plazo concedido por el art. 45\. En lo sucesivo el citado en garantía en cualquier tiempo, puede intervenir como coadyuvante, tomando el proceso en el estado en que se encuentre.
 
 II. Los citados que comparezcan tendrán las facultades y cargas procesales que correspondan, segun sustituyan al citante o coadyuven con el, pero aun en el primer caso, este continuara en el proceso, a los fines de la absolución de posiciones y reconocimiento de firmas.
 
@@ -246,11 +246,11 @@ III. Las incomparecencias de los citados no traerá aparejada sancion procesal, 
 
 ### DE LOS PERMISOS
 
-**ART. 30.-** Los empleadores deberán autorizar a sus dependientes a ausentarse del trabajo durante el tiempo necesario para comparecer ante los jueces que entienden en los juicios a que se refiere la presente ley, sin practicar ningún descuento sobre la remuneración.
+**Art. 30.-** Los empleadores deberán autorizar a sus dependientes a ausentarse del trabajo durante el tiempo necesario para comparecer ante los jueces que entienden en los juicios a que se refiere la presente ley, sin practicar ningún descuento sobre la remuneración.
 
 ### DE LOS HONORARIOS Y COSTAS
 
-**ART. 31.-** Toda sentencia deberá contener, decisión expresa sobre las costas y regular los honorarios devengados, hayan sido o no pedidos y en la forma establecida por la ley de aranceles vigentes en la provincia.
+**Art. 31.-** Toda sentencia deberá contener, decisión expresa sobre las costas y regular los honorarios devengados, hayan sido o no pedidos y en la forma establecida por la ley de aranceles vigentes en la provincia.
 
 Por excepción el tribunal podrá eximirlas, total o parcialmente, cuando el vencido por circunstancias especiales demuestre haber litigado con razón probable y buena fe.
 
@@ -258,7 +258,7 @@ No podrá exigirse al trabajador el pago de costas por incidentes perdidos, si n
 
 ### DE LOS EMBARGOS PREVENTIVOS Y ASISTENCIA MEDICA
 
-**ART. 32.-** Iniciada la causa o en el curso de ella, el tribunal, a petición de parte, segun el mérito que arrojen los autos, podrán decretar embargo preventivo u otras medidas cautelares en bienes del demandado, como también que este facilite gratuitamente la asistencia medica y farmacéutica autorizada por ley. En ningún caso se exigirá al trabajador constitución de fianza.
+**Art. 32.-** Iniciada la causa o en el curso de ella, el tribunal, a petición de parte, segun el mérito que arrojen los autos, podrán decretar embargo preventivo u otras medidas cautelares en bienes del demandado, como también que este facilite gratuitamente la asistencia medica y farmacéutica autorizada por ley. En ningún caso se exigirá al trabajador constitución de fianza.
 
 ### DE LOS ASEGURAMIENTOS DE PRUEBAS
 
@@ -334,19 +334,19 @@ c) La audiencia inicial y de vista de causa, a las partes. Los representantes se
 
 d) Las resoluciones que expresamente designe la Ley o que excepcionalmente disponga el Juez o Tribunal. Las cédulas, con los requisitos previstos por el Código Procesal Civil, Comercial y Tributario de Mendoza, serán diligenciadas por personal del Poder Judicial cuando la notificación deba practicarse dentro del radio fijado por la Suprema Corte, y por oficio, cuando la comunicación deba tener lugar fuera de ese radio y dentro de la Provincia. Cuando la diligencia deba realizarse fuera de la Provincia se realizará mediante cédula a través del procedimiento establecido en la Ley Nacional Nº 22.172 a la cual adhirió la Provincia por Decreto Ley Nº 4.455. La cédula podrá ser reemplazada, a pedido del interesado, por telegrama colacionado o carta documento. En todos los casos, la notificación por cédula se practicará por impulso del Tribunal o de las partes, dentro de los tres (3) días de dictada la providencia."
 
-**ART. 36.-** Cuando se desconociere el dominio del demandado la notificación se hará por edictos publicados en el Boletín Oficial durante (5) días. Si el actor es un trabajador, la publicacion será gratuita, pero abonada por el demandado, si fuere condenado en costas.
+**Art. 36.-** Cuando se desconociere el dominio del demandado la notificación se hará por edictos publicados en el Boletín Oficial durante (5) días. Si el actor es un trabajador, la publicacion será gratuita, pero abonada por el demandado, si fuere condenado en costas.
 
 En lo sucesivo las notificaciones se efectuaran en los estrados del juzgado.
 
-**ART. 37.-** Cuando el demandado, sea persona visible o de existencia ideal, tenga su domicilio real fuera de la provincia, la notificación se efectuara en el dominio del gerente, representante o apoderado existente en esta.
+**Art. 37.-** Cuando el demandado, sea persona visible o de existencia ideal, tenga su domicilio real fuera de la provincia, la notificación se efectuara en el dominio del gerente, representante o apoderado existente en esta.
 
 En estos casos se ampliara el plazo para contestar la demanda a razón de día por cada cien kilómetros, segun el domicilio real del demandado.
 
-**ART. 38.-** Si los demandados fueren varios, el termino de emplazamiento se reputara vencido cuando venza para el que goce de mayor termino.
+**Art. 38.-** Si los demandados fueren varios, el termino de emplazamiento se reputara vencido cuando venza para el que goce de mayor termino.
 
 ### DE LAS GESTIONES
 
-**ART. 39.-** Podrá gestionarse mediante simple anotación en el expediente, bajo la firma del solicitante o del actuario, la reiteración de oficios, exhortos, desglose del poder o documentos, y en general, todo pedido de providencia de trámite que no corresponda formularse en audiencia.
+**Art. 39.-** Podrá gestionarse mediante simple anotación en el expediente, bajo la firma del solicitante o del actuario, la reiteración de oficios, exhortos, desglose del poder o documentos, y en general, todo pedido de providencia de trámite que no corresponda formularse en audiencia.
 
 ### DE LA CONCILIACION
 
@@ -368,7 +368,7 @@ Los incidentes que se planteen en audiencia serán resueltos en el mismo acto, s
 
 ### DE LAS NULIDADES
 
-**ART. 42.-** Las nulidades de procedimiento se declararan a petición de parte y solo de oficio cuando el vicio afecte el derecho de defensa, restrinja la prueba o produzca un perjuicio irreparable.
+**Art. 42.-** Las nulidades de procedimiento se declararan a petición de parte y solo de oficio cuando el vicio afecte el derecho de defensa, restrinja la prueba o produzca un perjuicio irreparable.
 
 ### DE LA DEMANDA Y CONTESTACION
 
@@ -386,9 +386,9 @@ e) El ofrecimiento de los medios de prueba, acompañando los documentos que obra
 
 f) Certificado expedido por el conciliador interviniente de la Oficina de Conciliación Laboral, donde conste la inexistencia de acuerdo en la instancia conciliatoria."
 
-**ART. 44.-** Puede el demandante acumular todas las acciones que tenga contra una misma parte, siempre que sean de la competencia del mismo tribunal, no sean excluyentes entre si y puedan substanciarse por los mismos tramites.
+**Art. 44.-** Puede el demandante acumular todas las acciones que tenga contra una misma parte, siempre que sean de la competencia del mismo tribunal, no sean excluyentes entre si y puedan substanciarse por los mismos tramites.
 
-**ART. 45.-** Interpuesta la demanda, el presidente del tribunal correrá traslado de la misma, al demandado, emplazándolo para que la conteste dentro del termino de ocho (8) días, con mas la ampliación que hubiere lugar por la distancia, a razón de un día por cada cien (100) kilómetros y bajo apercibimiento detenerla por contestada en forma afirmativa si el actor prueba el hecho principal de la prestación de servicios.
+**Art. 45.-** Interpuesta la demanda, el presidente del tribunal correrá traslado de la misma, al demandado, emplazándolo para que la conteste dentro del termino de ocho (8) días, con mas la ampliación que hubiere lugar por la distancia, a razón de un día por cada cien (100) kilómetros y bajo apercibimiento detenerla por contestada en forma afirmativa si el actor prueba el hecho principal de la prestación de servicios.
 
 **Art. 46.-** Contestación. La contestación contendrá, en lo aplicable, los requisitos exigidos para la demanda debiendo en dicha oportunidad oponerse todas las defensas y excepciones que tuviere el demandado, pudiendo deducir reconvención, siempre que ésta sea conexa con la acción principal.
 
@@ -396,9 +396,9 @@ La negativa injustificada de la autenticidad de documentos atribuidos o de la re
 
 En las controversias relativas a accidentes de trabajo y a enfermedades profesionales, no procederá la reconvención."
 
-**ART. 47.-** Del escrito de contestacion de demanda se dará traslado al actor, quien dentro del tercer día podrá ampliar su prueba respecto a los hechos nuevos introducidos por el demandado. Si se reconviniere o opusiere excepciones de previo y especial pronunciamiento el termino que tiene para contestar el traslado y ofrecer prueba será de seis (6) días.
+**Art. 47.-** Del escrito de contestacion de demanda se dará traslado al actor, quien dentro del tercer día podrá ampliar su prueba respecto a los hechos nuevos introducidos por el demandado. Si se reconviniere o opusiere excepciones de previo y especial pronunciamiento el termino que tiene para contestar el traslado y ofrecer prueba será de seis (6) días.
 
-**ART. 48.-** Son admisibles únicamente como excepciones previas:
+**Art. 48.-** Son admisibles únicamente como excepciones previas:
 
 a) incompetencia;
 
@@ -416,7 +416,7 @@ Todas las excepciones previas serán resueltas en la audiencia inicial, dejándo
 
 ### DE LA AMPLIACION
 
-**ART. 50.-** En cualquier estado del juicio y antes de la audiencia para la vista de la causa, el accionaria la vista de la causa, el accionante por accidente de trabajo o enfermedad profesional podrá ampliar su petición por agravación de sus dolencias, acompañando los certificados pertinentes, de la que de dará vista al demandado por tres (3) días para que conteste y ofrezca pruebas en su caso.
+**Art. 50.-** En cualquier estado del juicio y antes de la audiencia para la vista de la causa, el accionaria la vista de la causa, el accionante por accidente de trabajo o enfermedad profesional podrá ampliar su petición por agravación de sus dolencias, acompañando los certificados pertinentes, de la que de dará vista al demandado por tres (3) días para que conteste y ofrezca pruebas en su caso.
 
 ### DE LA AUDIENCIA DE LA CAUSA
 
@@ -458,15 +458,15 @@ f) El Juez podrá ordenar prueba de oficio, para una mejor búsqueda de la verda
 
 g) Fijar el plazo dentro del cual deberá producirse toda la prueba que no deba rendirse en la vista de causa. Este plazo podrá ser ampliado prudencialmente por el juzgado a petición de parte, por segunda vez. Excepcionalmente, a criterio del Tribunal, y cuando la prueba faltante sea fundamental para la resolución del proceso, podrá volver a concederse un nuevo plazo; h) El Juez podrá fijar de común acuerdo con las partes, según las características del caso, la fecha de la vista de causa. El accionar del Tribunal en esta audiencia, de modo alguno puede ser tenido como adelanto de opinión por las partes, a los fines de una eventual sentencia."
 
-**ART. 52.-** Dentro de los dos (2) días de notificada la audiencia que se menciona en el articulo anterior, las partes pueden hacer las observaciones que juzguen pertinentes, debiendo el tribunal resolver de inmediato y sin lugar a recurso.
+**Art. 52.-** Dentro de los dos (2) días de notificada la audiencia que se menciona en el articulo anterior, las partes pueden hacer las observaciones que juzguen pertinentes, debiendo el tribunal resolver de inmediato y sin lugar a recurso.
 
 ### DE LA CUESTION DE PURO DERECHO
 
-**ART. 53.-** Ejecutoriada la resolución que declara la cuestion de puro derecho, cada parte dispondrá de cinco (5) días para informar por escrito y de acuerdo a las reglas del art. 208 Del c.P.Civil.
+**Art. 53.-** Ejecutoriada la resolución que declara la cuestion de puro derecho, cada parte dispondrá de cinco (5) días para informar por escrito y de acuerdo a las reglas del art. 208 Del c.P.Civil.
 
 ### DE LOS MEDIOS DE PRUEBAS EN GENERAL
 
-**ART. 54.-** Se aceptara como medios de prueba, los instrumentos, las informaciones, las declaraciones de testigos, los dictámenes de peritos, la inspección ocular, la confesión y las presunciones e indicios.
+**Art. 54.-** Se aceptara como medios de prueba, los instrumentos, las informaciones, las declaraciones de testigos, los dictámenes de peritos, la inspección ocular, la confesión y las presunciones e indicios.
 
 Las partes puede proponer además, cualquier otro medio de prueba que consideren pertinente a la demostración de sus pretensiones.
 
@@ -474,7 +474,7 @@ Las pruebas serán recibidas directamente por el tribunal que podrá excluirlas 
 
 ### DE LA INVERSION DE LA PRUEBA
 
-**ART. 55.-** Incumbirá al empleador la prueba contraria a las afirmaciones del trabajador:
+**Art. 55.-** Incumbirá al empleador la prueba contraria a las afirmaciones del trabajador:
 
 a) cuando el obrero reclame el cumplimiento de prestaciones impuestas por la ley;
 
@@ -490,25 +490,25 @@ Cumplido el emplazamiento sin acreditar el litigante los actos útiles para su p
 
 ### DE LA ABSOLUCION DE POSICIONES
 
-**ART. 56.-** La absolucion de posiciones deberá prestarse ante el tribunal si el absolvente reside en la provincia, bajo apercibimiento de tenerlo por confeso si no concurre sin justa causa.
+**Art. 56.-** La absolucion de posiciones deberá prestarse ante el tribunal si el absolvente reside en la provincia, bajo apercibimiento de tenerlo por confeso si no concurre sin justa causa.
 
 Cuando se trate de personas de existencia ideal, las posiciones lo serán en las personas de sus gerentes, directores o personal superior debidamente autorizado. Si no se solicita la absolucion personal podrá verificarse por medio de mandatarios.
 
 La citación se efectuara por lo menos con dos (2) días de anticipación, diligenciándose en el domicilio real, pero si el mismo no hubiere sido denunciado lo será en el legal o en su defecto se tendrá por realizada por ministerios de la ley.
 
-**ART. 57.-** Si el interrogado contestare en forma evasiva o se negare a hacerlo, podrá estimarse esa actitud como presunción en favor de los hechos alegados por la contraparte y en cuanto se relacione con el contenido de la pregunta.
+**Art. 57.-** Si el interrogado contestare en forma evasiva o se negare a hacerlo, podrá estimarse esa actitud como presunción en favor de los hechos alegados por la contraparte y en cuanto se relacione con el contenido de la pregunta.
 
 Se permitirá el uso de anotaciones cuando haya de referirse únicamente a nombre o cifras y siempre que así lo aconsejen circunstancias especiales.
 
 ### DE LA DECLARACION DE TESTIGOS
 
-**ART. 58.-** Puede ser propuesto como testigo toda persona mayor de catorce (14) años. Los que tengan menos de esa edad podrán ser oídos, sin prestar juramento y solo cuando su interrogante resulte necesario por circunstancias especiales.
+**Art. 58.-** Puede ser propuesto como testigo toda persona mayor de catorce (14) años. Los que tengan menos de esa edad podrán ser oídos, sin prestar juramento y solo cuando su interrogante resulte necesario por circunstancias especiales.
 
-**ART. 59.-** Cada parte solo podrá ofrecer hasta cinco (5) testigos, salvo que, por la naturaleza de la causa o por la cantidad de cuestiones de hecho sometidas a decisión del tribunal, este considere conveniente admitir un número mayor.
+**Art. 59.-** Cada parte solo podrá ofrecer hasta cinco (5) testigos, salvo que, por la naturaleza de la causa o por la cantidad de cuestiones de hecho sometidas a decisión del tribunal, este considere conveniente admitir un número mayor.
 
-**ART. 60.-** Podrá ordenarse el arresto del testigo, hasta la recepción de su declaracion, cuando no concurriera a la primera citación sin causa justificada.
+**Art. 60.-** Podrá ordenarse el arresto del testigo, hasta la recepción de su declaracion, cuando no concurriera a la primera citación sin causa justificada.
 
-**ART. 61.-** El tribunal examinara a los testigos previo juramento de decir verdad, haciéndoles saber las disposiciones contenidas en el código penal sobre falso testimonio, debiendo siempre dar razón de sus dichos.
+**Art. 61.-** El tribunal examinara a los testigos previo juramento de decir verdad, haciéndoles saber las disposiciones contenidas en el código penal sobre falso testimonio, debiendo siempre dar razón de sus dichos.
 
 El tribunal podrá a petición de parte o de oficio, proceder al careo de los testigos.
 
@@ -516,7 +516,7 @@ Los testigos podrán ser tachados y el tribunal al dictar sentencia apreciara su
 
 La prueba de tacha deberá deducirse dentro de los dos (2) días de ofrecida la prueba y será recibida durante la vista de la causa.
 
-**ART. 62.-** Si la declaracion del testigo ofreciere indicios graves de falso testimonio, el tribunal podrá decretar su inmediata detención.
+**Art. 62.-** Si la declaracion del testigo ofreciere indicios graves de falso testimonio, el tribunal podrá decretar su inmediata detención.
 
 ### DE LOS PERITOS
 
@@ -540,7 +540,7 @@ Créase el Cuerpo Interdisciplinario Oficial de Peritos del Fuero Laboral, confo
 
 Dicho Cuerpo, tendrá a su cargo la supervisión de la lista de Peritos y auditará a pedido del Tribunal, los dictámenes periciales, adoptando un criterio uniforme para salvaguardar los derechos del trabajador."
 
-**ART. 64.-** Los peritos deben aceptar el cargo bajo juramento dentro de los dos días siguientes de su nombramiento y si no lo hicieren se designara reemplazante sin mas trámite.
+**Art. 64.-** Los peritos deben aceptar el cargo bajo juramento dentro de los dos días siguientes de su nombramiento y si no lo hicieren se designara reemplazante sin mas trámite.
 
 Al designársele se le fijará un termino para que se expida que no podrá ser superior a diez (10) días.
 
@@ -548,7 +548,7 @@ En caso de no aceptar el cargo el perito o no presentar el informe en el termino
 
 ### DE LAS PRUEBAS DE DOCUMENTOS
 
-**ART. 65.-** Salvo disposiciones en contrario podrá ser presentado como prueba, toda clase de documentos públicos o privados, y cuya remisión en el caso de expedientes administrativos o judiciales serán solicitados aun de oficio por el tribunal.
+**Art. 65.-** Salvo disposiciones en contrario podrá ser presentado como prueba, toda clase de documentos públicos o privados, y cuya remisión en el caso de expedientes administrativos o judiciales serán solicitados aun de oficio por el tribunal.
 
 **Art. 66.-** Informativa - Requerimiento. Los profesionales recabarán directamente de las oficinas públicas y organismos oficiales, informes y antecedentes. Asimismo podrán suscribir los oficios referidos a la prueba informativa, cuando hubiesen sido ordenados en el expediente. Cuando se decrete la remisión de oficios, el Juez o Tribunal podrá recurrir a cualquier medio idóneo de comunicación o de transmisión de datos que permita la pronta práctica de las diligencias.
 
@@ -556,13 +556,13 @@ Los informes deberán ser evacuados en el término de diez (10) días hábiles, 
 
 ### DE LA INSPECCION OCULAR
 
-**ART. 67.-** Cuando el tribunal considere necesaria la inspeccion ocular, podrá trasladarse en pleno al lugar de que se trata, o encomendarlas diligencias a alguno de los magistrados del mismo.
+**Art. 67.-** Cuando el tribunal considere necesaria la inspeccion ocular, podrá trasladarse en pleno al lugar de que se trata, o encomendarlas diligencias a alguno de los magistrados del mismo.
 
 Si el lugar fuere distante del asiento del tribunal, la medida podrá ser solicitada o comisionada a la autoridad judicial de la localidad.
 
 ### DE LOS INFORMES ESPECIALES
 
-**ART. 68.-** En caso de infortunios, el presidente podrá requerir de oficio a la autoridad administrativa competente, informe acerca del cumplimiento por parte del empleador y de la victima, de los reglamentos vigentes preventivos de accidentes y de enfermedades profesionales.
+**Art. 68.-** En caso de infortunios, el presidente podrá requerir de oficio a la autoridad administrativa competente, informe acerca del cumplimiento por parte del empleador y de la victima, de los reglamentos vigentes preventivos de accidentes y de enfermedades profesionales.
 
 ### DE LA VISTA DE LA CAUSA-SENTENCIA
 
@@ -582,19 +582,19 @@ d) Formulados los alegatos el Tribunal declarará cerrado el debate, pasará a d
 
 e) La sentencia deberá contener una relación sucinta de los hechos controvertidos, fijando las cuestiones de derecho que considere pertinentes, valorándolos conforme a las reglas de la sana crítica racional, salvo cuando medie norma legal que contenga reglas especiales de valoración y será fundada en derecho. Los Jueces deberán votar en el orden que se establecerá por sorteo."
 
-**ART. 70.-** Las sentencias interlocutorias y definitivas serán pronunciadas por mayoría de votos de sus miembros.
+**Art. 70.-** Las sentencias interlocutorias y definitivas serán pronunciadas por mayoría de votos de sus miembros.
 
-**ART. 71.-** La audiencia no terminara hasta que no sean ventiladas las cuestiones propuestas y dictado el fallo.
+**Art. 71.-** La audiencia no terminara hasta que no sean ventiladas las cuestiones propuestas y dictado el fallo.
 
-**ART. 72.-** Únicamente podrá suspenderse la audiencia por un termino no superior a quince (15) días cuando deba resolverse alguna cuestion incidental que por su naturaleza no pueda decidirse en la misma audiencia o cuando integrarse el tribunal por razones debidamente justificadas o cuando no comparecieran los testigos, peritos o faltare agregar algún elemento cuya intervencion o agregación la camara lo considere indispensable.
+**Art. 72.-** Únicamente podrá suspenderse la audiencia por un termino no superior a quince (15) días cuando deba resolverse alguna cuestion incidental que por su naturaleza no pueda decidirse en la misma audiencia o cuando integrarse el tribunal por razones debidamente justificadas o cuando no comparecieran los testigos, peritos o faltare agregar algún elemento cuya intervencion o agregación la camara lo considere indispensable.
 
 En este caso, se anunciara el día y hora de la nueva audiencia y ello valdrá como notificación para los comparecientes.
 
-**ART. 73.-** El debate será oral y publico, pero por resolución motivada podrá disponerse se realice a puertas cerradas cuando la publicidad resulte inconveniente o afecte al orden publico.
+**Art. 73.-** El debate será oral y publico, pero por resolución motivada podrá disponerse se realice a puertas cerradas cuando la publicidad resulte inconveniente o afecte al orden publico.
 
 ### DE LAS OBLIGACIONES Y ATRIBUCIONES DEL PRESIDENTE
 
-**ART. 74.-** El juez que preside el tribunal debe:
+**Art. 74.-** El juez que preside el tribunal debe:
 
 a) dirigir el debate, ordenar las lecturas necesarias, formular las advertencias que corresponda, recibir los juramentos, moderar las discusiones llamando a la cuestion a los que salieran de ella, impidiendo derivaciones impertinentes, sin coartar el derecho de la defensa;
 
@@ -624,23 +624,23 @@ Por excepción, cuando la complejidad de su determinación requiera cálculos de
 
 ### DE LA CALIFICACION
 
-**ART. 77.-** Corresponde al tribunal calificar la relación substancial de la litis y determinar las normas que la rigen.
+**Art. 77.-** Corresponde al tribunal calificar la relación substancial de la litis y determinar las normas que la rigen.
 
 Al aplicar el derecho puede prescindir o estar en contra de la opinión jurídica expresada por las partes, teniendo facultad para resolver ultrapetita.
 
 ### DE LA ACLARATORIA
 
-**ART. 78.-** Dentro de los dos (2) días de dictada la sentencia, el tribunal puede, sin alterar lo substancial de su decisión, de oficio o a petición de parte y sin trámite alguno, corregir errores materiales, aclarar conceptos obscuros y suplir cualquier omisión en que se hubiere incurrido.
+**Art. 78.-** Dentro de los dos (2) días de dictada la sentencia, el tribunal puede, sin alterar lo substancial de su decisión, de oficio o a petición de parte y sin trámite alguno, corregir errores materiales, aclarar conceptos obscuros y suplir cualquier omisión en que se hubiere incurrido.
 
 ### DE LA EJECUCION DE SENTENCIA
 
-**ART. 79.-** Después que la sentencia haya pasado en autoridad de cosa juzgada, el secretario practicara la liquidación correspondiente y la camara intimará el pago al deudor.
+**Art. 79.-** Después que la sentencia haya pasado en autoridad de cosa juzgada, el secretario practicara la liquidación correspondiente y la camara intimará el pago al deudor.
 
 No efectuado el pago dentro de los cinco (5) días, la parte vencedora podrá pedir la ejecucion de la sentencia, en cuyo caso se trabara embargo en bienes del deudor y decretara su venta por el martillero que la camara designe por sorteo, precediéndose en lo demás de acuerdo con lo que establece el código de procedimientos en lo civil y comercial de la provincia.
 
 El requerimiento de pago y la citación de remate se realizara en el mismo acto.
 
-**ART. 80.-** La sentencia que condene el pago de una indemnización por accidente de trabajo o enfermedad derivada del mismo, podrá ser ampliada, previo dictamen de peritos, cuando la incapacidad del trabajador aumente con posterioridad a aquella y dentro del año de dictada.
+**Art. 80.-** La sentencia que condene el pago de una indemnización por accidente de trabajo o enfermedad derivada del mismo, podrá ser ampliada, previo dictamen de peritos, cuando la incapacidad del trabajador aumente con posterioridad a aquella y dentro del año de dictada.
 
 En el trámite se dará intervencion al deudor.
 
@@ -652,11 +652,11 @@ El Presidente girará la orden de pago a nombre del interesado aunque su represe
 
 ### DE LOS INTERESES
 
-**ART. 82.-** La sentencia condenatoria impondrá al empleador el pago de los intereses moratorios o legales aunque no hubieren sido solicitados.
+**Art. 82.-** La sentencia condenatoria impondrá al empleador el pago de los intereses moratorios o legales aunque no hubieren sido solicitados.
 
 ### RECURSOS DE LA REPOSICION
 
-**ART. 83.-** Las resoluciones de trámite dictadas por el presidente de la camara que afecten derechos a las partes, serán recurribles ante el tribunal.
+**Art. 83.-** Las resoluciones de trámite dictadas por el presidente de la camara que afecten derechos a las partes, serán recurribles ante el tribunal.
 
 El recurso de reposicion procederá también contra los autos del tribunal a fin de que el mismo lo revoque por contrario imperio.
 
@@ -672,7 +672,7 @@ En el caso de la apelación por existencia de vicios relativos del consentimient
 
 ### DE LOS EXTRAORDINARIOS
 
-**ART. 85.-** Las sentencias definitivas dictadas por los tribunales del trabajo serán inapelables, sin perjuicio de los recursos extraordinarios que puedan corresponder y que autorice la constitución o las leyes para ante la Suprema Corte de Justicia.
+**Art. 85.-** Las sentencias definitivas dictadas por los tribunales del trabajo serán inapelables, sin perjuicio de los recursos extraordinarios que puedan corresponder y que autorice la constitución o las leyes para ante la Suprema Corte de Justicia.
 
 ### DEL JUICIO EJECUTIVO
 
@@ -680,7 +680,7 @@ En el caso de la apelación por existencia de vicios relativos del consentimient
 
 **Art. 86.-** Trámite. Remisión. En los casos en que se promoviera por los empleadores juicios de desalojos de la vivienda o parcelas de tierra concedidas al trabajador en virtud o como accesorio de un contrato de trabajo, serán de aplicación en la tramitación de estos juicios las disposiciones referentes al desalojo contenidas en el Código Procesal Civil, Comercial y Tributario, en cuanto fuere compatible."
 
-**ART. 87.-** El lanzamiento no se decretara sin previo deposito o constitución de garantía suficiente por el empleador, a juicio del tribunal, para responder las obligaciones a su cargo emergente del contrato de trabajo.
+**Art. 87.-** El lanzamiento no se decretara sin previo deposito o constitución de garantía suficiente por el empleador, a juicio del tribunal, para responder las obligaciones a su cargo emergente del contrato de trabajo.
 
 ### DEL PROCEDIMIENTO MONITORIO
 
@@ -710,39 +710,39 @@ IV- Sanciones. La negativa injustificada de la autenticidad de documentos o del 
 
 ### DE LA MODIFICACION DE LAS CONDICIONES DEL TRABAJO
 
-**ART. 91.-** En los casos de rebajas de salarios o modificacion de las condiciones de trabajo por el empleador, de trabajador afectado podrá dentro del plazo de treinta (30) días, posteriores a la notificación o al acto de la modificacion del salario o de las condiciones del trabajo, solicitar la decisión del tribunal cumpliendo con las formalidades establecidas en el articulo 43\.
+**Art. 91.-** En los casos de rebajas de salarios o modificacion de las condiciones de trabajo por el empleador, de trabajador afectado podrá dentro del plazo de treinta (30) días, posteriores a la notificación o al acto de la modificacion del salario o de las condiciones del trabajo, solicitar la decisión del tribunal cumpliendo con las formalidades establecidas en el articulo 43\.
 
-**ART. 92.-** Cuando la rebaja de salario o modificacion de las condiciones del trabajo afecte a dos o mas trabajadores, podrán acumularse las acciones, formulando si lo estiman oportuno, la reclamación en conjunto.
+**Art. 92.-** Cuando la rebaja de salario o modificacion de las condiciones del trabajo afecte a dos o mas trabajadores, podrán acumularse las acciones, formulando si lo estiman oportuno, la reclamación en conjunto.
 
-**ART. 93.-** En el supuesto del art. 91, El trabajador deberá continuar en el desempeño de sus tareas, aceptando provisionalmente las modificaciones dispuestas por el empleador, salvo que esta sean manifestación inaceptables, en cuyo caso, podrá considerarse como suspendido.
+**Art. 93.-** En el supuesto del art. 91, El trabajador deberá continuar en el desempeño de sus tareas, aceptando provisionalmente las modificaciones dispuestas por el empleador, salvo que esta sean manifestación inaceptables, en cuyo caso, podrá considerarse como suspendido.
 
-**ART. 94.-** La camara ordenara la comparencia de las partes a una audiencia que fijara dentro de un plazo no mayor de diez (10) días, para oír y contestar demanda.
+**Art. 94.-** La camara ordenara la comparencia de las partes a una audiencia que fijara dentro de un plazo no mayor de diez (10) días, para oír y contestar demanda.
 
-**ART. 95.-** Para los caso de rebajas de remuneraciones la camara se constituirá en tribunal arbitrador y será integrada por un representante de los empleadores y otro de los trabajadores, ofrecidos y presentados por estos en la misma audiencia.
+**Art. 95.-** Para los caso de rebajas de remuneraciones la camara se constituirá en tribunal arbitrador y será integrada por un representante de los empleadores y otro de los trabajadores, ofrecidos y presentados por estos en la misma audiencia.
 
 La camara de oficio designara al representante de la parte que no concurra al acto.
 
-**ART. 96.-** Los representantes sindicados en el art. 95 Deberán ser mayores de edad, de notoria buena conducta, saber leer y escribir, ejercer actividades de la misma especialidad que la de las partes o afín a ellas, estar en el pleno ejercicio de sus derechos civiles y no tener interés directo en la cuestion.
+**Art. 96.-** Los representantes sindicados en el art. 95 Deberán ser mayores de edad, de notoria buena conducta, saber leer y escribir, ejercer actividades de la misma especialidad que la de las partes o afín a ellas, estar en el pleno ejercicio de sus derechos civiles y no tener interés directo en la cuestion.
 
 **Art. 97.-** En la audiencia, las partes producirán las pruebas pertinentes, y en el caso de no ser posible la conciliación, la Cámara pronunciará su decisión, determinando si la rebaja o modificación impugnada es o no justificada.
 
 Si la rebaja o modificación se declara injustificada, el empleador deberá dejar sin efecto la misma a partir de la notificación de la decisión, reintegrando al trabajador el importe de los salarios dejados de percibir, incluidos los correspondientes al período de suspensión establecido en el artículo 93\.
 
-**ART. 98.-** El mismo procedimiento se seguirá en el caso de suspensión dispuesta por el empleador y que el trabajador considere injustificada o excesiva.
+**Art. 98.-** El mismo procedimiento se seguirá en el caso de suspensión dispuesta por el empleador y que el trabajador considere injustificada o excesiva.
 
 En este caso, si se acepta la reclamación del trabajador, el empleador tendrá que abonar los sueldos correspondientes a la suspensión o la parte de suspensión que fuere declarada injustificada.
 
 Si se trata de medidas disciplinarias, esta deberá considerarse total o parcialmente anulada.
 
-**ART. 99.-** Los representantes percibirán los honorarios que determine el tribunal, que estarán a cargo de la parte vencida.
+**Art. 99.-** Los representantes percibirán los honorarios que determine el tribunal, que estarán a cargo de la parte vencida.
 
-**ART. 100.-** El tribunal podrá requerir opinión de expertos sobre hechos, practicas, usos y costumbres de observancia en la profesión de que se trate y vinculados a la controversia.
+**Art. 100.-** El tribunal podrá requerir opinión de expertos sobre hechos, practicas, usos y costumbres de observancia en la profesión de que se trate y vinculados a la controversia.
 
 ### DE LOS ACTOS DE JURISDICCION VOLUNTARIA
 
-**ART. 101.-** Los actos de jurisdiccion voluntaria relacionados con asuntos de trabajo se tramitarán ante las camaras de conformidad a lo prescripto en el articulo siguiente.
+**Art. 101.-** Los actos de jurisdiccion voluntaria relacionados con asuntos de trabajo se tramitarán ante las camaras de conformidad a lo prescripto en el articulo siguiente.
 
-**ART. 102.-** La petición deberá contener: nombre y apellido, domicilio, edad, estado civil y oficio del presentante, la designación de lo que se gestiona, el ofrecimiento de la prueba, nomina de los testigos y el interrogatorio que será presentado por escrito.
+**Art. 102.-** La petición deberá contener: nombre y apellido, domicilio, edad, estado civil y oficio del presentante, la designación de lo que se gestiona, el ofrecimiento de la prueba, nomina de los testigos y el interrogatorio que será presentado por escrito.
 
 recibida la prueba en un termino que no excederá de cuatro (4) días, el Ministerio Publico deberá expedirse sobre su mérito. Evacuada la vista, la camara dictara resolución dentro de los diez (10) días.
 
@@ -752,11 +752,11 @@ recibida la prueba en un termino que no excederá de cuatro (4) días, el Minist
 
 ### DE LAS APELACIONES DE LAS RESOLUCIONES ADMINISTRATIVAS
 
-**ART. 104.-** Contra las resoluciones administrativas de caracter definitivo que impongan pena pecuniaria o restrictiva de libertad, el infractor podrá apelar interponiendo por escrito y dentro de los tres (3) días de notificado, recurso de apelacion en la jurisdiccion administrativa y para ante la camara del trabajo con jurisdiccion territorial.
+**Art. 104.-** Contra las resoluciones administrativas de caracter definitivo que impongan pena pecuniaria o restrictiva de libertad, el infractor podrá apelar interponiendo por escrito y dentro de los tres (3) días de notificado, recurso de apelacion en la jurisdiccion administrativa y para ante la camara del trabajo con jurisdiccion territorial.
 
-**ART. 105.-** El recurrente podrá acudir directamente ante la camara si la autoridad administrativa no otorgara el recurso, dentro de los dos (2) días de notificada la denegación.
+**Art. 105.-** El recurrente podrá acudir directamente ante la camara si la autoridad administrativa no otorgara el recurso, dentro de los dos (2) días de notificada la denegación.
 
-**ART. 106.-** LLegado el expediente a la camara respectiva, el apelante deberá expresar agravios en la audiencia que a tal efecto fijara la misma, y dentro de los diez (10) días de recibido el expediente.
+**Art. 106.-** LLegado el expediente a la camara respectiva, el apelante deberá expresar agravios en la audiencia que a tal efecto fijara la misma, y dentro de los diez (10) días de recibido el expediente.
 
 el tribunal fallara en un plazo que no será superior a diez (10) días.
 
@@ -796,15 +796,15 @@ e) La doctrina sentada en Tribunal Plenario será obligatoria para cada Tribunal
 
 ### DISPOSICIONES TRANSITORIAS
 
-**ART. 109.-** Esta ley comenzara a regir del día uno de febrero de mil novecientos cincuenta y tres.
+**Art. 109.-** Esta ley comenzara a regir del día uno de febrero de mil novecientos cincuenta y tres.
 
-**ART. 110.-** Los juicios en trámite a la fecha de vigencia de esta ley continuaran radicados ante los tribunales en que fueron iniciados, hasta su terminación, y seguirán siendo tramitados por el procedimiento en vigor a la fecha de su iniciación.
+**Art. 110.-** Los juicios en trámite a la fecha de vigencia de esta ley continuaran radicados ante los tribunales en que fueron iniciados, hasta su terminación, y seguirán siendo tramitados por el procedimiento en vigor a la fecha de su iniciación.
 
 ### DISPOSICIONES DEROGADAS
 
-**ART. 111.-** Deróganse las leyes Nros. 2031, 2034 Y 988 quedando esta ultima vigente al solo efecto del articulo 3o, inciso b) de la presente y todas las disposiciones que se opongan a esta ley.
+**Art. 111.-** Deróganse las leyes Nros. 2031, 2034 Y 988 quedando esta ultima vigente al solo efecto del articulo 3o, inciso b) de la presente y todas las disposiciones que se opongan a esta ley.
 
-**ART. 112.-** Comuníquese al Poder Ejecutivo.
+**Art. 112.-** Comuníquese al Poder Ejecutivo.
 
 ### Firmantes
 

@@ -10,13 +10,13 @@ LEY DE DEFENSA DEL CONSUMIDOR
 
 ### CAPITULO I - DISPOSICIONES GENERALES
 
-**ARTICULO 1.-** Objeto. Consumidor. Equiparación. La presente ley tiene por objeto la defensa del consumidor o usuario. Se considera consumidor a la persona física o jurídica que adquiere o utiliza, en forma gratuita u onerosa, bienes o servicios como destinatario final, en beneficio propio o de su grupo familiar o social.
+**Art. 1.-** Objeto. Consumidor. Equiparación. La presente ley tiene por objeto la defensa del consumidor o usuario. Se considera consumidor a la persona física o jurídica que adquiere o utiliza, en forma gratuita u onerosa, bienes o servicios como destinatario final, en beneficio propio o de su grupo familiar o social.
 
 Queda equiparado al consumidor quien, sin ser parte de una relación de consumo como consecuencia o en ocasión de ella, adquiere o utiliza bienes o servicios, en forma gratuita u onerosa, como destinatario final, en beneficio propio o de su grupo familiar o social.
 
 (Artículo sustituido por punto 3.1 del Anexo II de la [Ley N° 26.994](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=235975) B.O. 08/10/2014 Suplemento. Vigencia: 1° de agosto de 2015, texto según art. 1° de la [Ley N° 27.077](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do;jsessionid=0E7C62548ECDA6F46E822E78EADD7A86?id=239773) B.O. 19/12/2014)
 
-**ARTICULO 2.-** PROVEEDOR.
+**Art. 2.-** PROVEEDOR.
 
 Es la persona física o jurídica de naturaleza pública o privada, que desarrolla de manera profesional, aun ocasionalmente, actividades de producción, montaje, creación, construcción, transformación, importación, concesión de marca, distribución y comercialización de bienes y servicios, destinados a consumidores o usuarios. Todo proveedor está obligado al cumplimiento de la presente ley.
 
@@ -24,7 +24,7 @@ No están comprendidos en esta ley los servicios de profesionales liberales que 
 
 (Artículo sustituido por art. 2° de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 3.-** Relación de consumo. Integración normativa. Preeminencia.
+**Art. 3.-** Relación de consumo. Integración normativa. Preeminencia.
 
 Relación de consumo es el vínculo jurídico entre el proveedor y el consumidor o usuario.
 
@@ -36,33 +36,33 @@ Las relaciones de consumo se rigen por el régimen establecido en esta ley y sus
 
 ### CAPITULO II - INFORMACION AL CONSUMIDOR Y PROTECCION DE SU SALUD
 
-**ARTICULO 4.-** Información. El proveedor está obligado a suministrar al consumidor en forma cierta, clara y detallada todo lo relacionado con las características esenciales de los bienes y servicios que provee, y las condiciones de su comercialización.
+**Art. 4.-** Información. El proveedor está obligado a suministrar al consumidor en forma cierta, clara y detallada todo lo relacionado con las características esenciales de los bienes y servicios que provee, y las condiciones de su comercialización.
 
 La información debe ser siempre gratuita para el consumidor y proporcionada en soporte físico, con claridad necesaria que permita su comprensión. Solo se podrá suplantar la comunicación en soporte físico si el consumidor o usuario optase de forma expresa por utilizar cualquier otro medio alternativo de comunicación que el proveedor ponga a disposición.
 
 (Artículo sustituido por art. 1° de la [Ley N° 27.250](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=262686) B.O.  14/6/2016. Conforme pedido formal recibido por [Nota](https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/638/PedidoHCDactual.pdf) de la Comisión de Defensa del Consumidor, del Usuario y de la Competencia de la Honorable Cámara de Diputados de la Nación)
 
-**ARTICULO 5.-** Protección al Consumidor. Las cosas y servicios deben ser suministrados o prestados en forma tal que, utilizados en condiciones previsibles o normales de uso, no presenten peligro alguno para la salud o integridad física de los consumidores o usuarios.
+**Art. 5.-** Protección al Consumidor. Las cosas y servicios deben ser suministrados o prestados en forma tal que, utilizados en condiciones previsibles o normales de uso, no presenten peligro alguno para la salud o integridad física de los consumidores o usuarios.
 
-**ARTICULO 6.-** Cosas y Servicios Riesgosos. Las cosas y servicios, incluidos los servicios públicos domiciliarios, cuya utilización pueda suponer un riesgo para la salud o la integridad física de los consumidores o usuarios, deben comercializarse observando los mecanismos, instrucciones y normas establecidas o razonables para garantizar la seguridad de los mismos.
+**Art. 6.-** Cosas y Servicios Riesgosos. Las cosas y servicios, incluidos los servicios públicos domiciliarios, cuya utilización pueda suponer un riesgo para la salud o la integridad física de los consumidores o usuarios, deben comercializarse observando los mecanismos, instrucciones y normas establecidas o razonables para garantizar la seguridad de los mismos.
 
 En tales casos debe entregarse un manual en idioma nacional sobre el uso, la instalación y mantenimiento de la cosa o servicio de que se trate y brindarle adecuado asesoramiento. Igual obligación regirá en todos los casos en que se trate de artículos importados, siendo los sujetos anunciados en el artículo 4 responsables del contenido de la traducción.
 
 ### CAPITULO III - CONDICIONES DE LA OFERTA Y VENTA
 
-**ARTICULO 7.-** Oferta. La oferta dirigida a consumidores potenciales indeterminados, obliga a quien la emite durante el tiempo en que se realice, debiendo contener la fecha precisa de comienzo y de finalización, así como también sus modalidades, condiciones o limitaciones.
+**Art. 7.-** Oferta. La oferta dirigida a consumidores potenciales indeterminados, obliga a quien la emite durante el tiempo en que se realice, debiendo contener la fecha precisa de comienzo y de finalización, así como también sus modalidades, condiciones o limitaciones.
 
 La revocación de la oferta hecha pública es eficaz una vez que haya sido difundida por medios similares a los empleados para hacerla conocer.
 
 La no efectivización de la oferta será considerada negativa o restricción injustificada de venta, pasible de las sanciones previstas en el artículo 47 de esta ley. (Ultimo párrafo incorporado por art. 5° de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 8.-** Efectos de la publicidad. Las precisiones formuladas en la publicidad o en anuncios, prospectos, circulares u otros medios de difusión se tienen por incluidas en el contrato con el consumidor y obligan al oferente.
+**Art. 8.-** Efectos de la publicidad. Las precisiones formuladas en la publicidad o en anuncios, prospectos, circulares u otros medios de difusión se tienen por incluidas en el contrato con el consumidor y obligan al oferente.
 
 En los casos en que las ofertas de bienes y servicios se realicen mediante el sistema de compras telefónicas, por catálogos o por correos, publicados por cualquier medio de comunicación, deberá figurar el nombre, domicilio y número de CUIT del oferente.
 
 (Artículo sustituido por punto 3.2 del Anexo II de la [Ley N° 26.994](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=235975) B.O. 08/10/2014 Suplemento. Vigencia: 1° de agosto de 2015, texto según art. 1° de la [Ley N° 27.077](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do;jsessionid=0E7C62548ECDA6F46E822E78EADD7A86?id=239773) B.O. 19/12/2014)
 
-**ARTICULO 8º bis.-** Trato digno. Prácticas abusivas. Los proveedores deberán garantizar condiciones de atención y trato digno y equitativo a los consumidores y usuarios. Deberán abstenerse de desplegar conductas que coloquen a los consumidores en situaciones vergonzantes, vejatorias o intimidatorias. No podrán ejercer sobre los consumidores extranjeros diferenciación alguna sobre precios, calidades técnicas o comerciales o cualquier otro aspecto relevante sobre los bienes y servicios que comercialice. Cualquier excepción a lo señalado deberá ser autorizada por la autoridad de aplicación en razones de interés general debidamente fundadas.
+**Art. 8º bis.-** Trato digno. Prácticas abusivas. Los proveedores deberán garantizar condiciones de atención y trato digno y equitativo a los consumidores y usuarios. Deberán abstenerse de desplegar conductas que coloquen a los consumidores en situaciones vergonzantes, vejatorias o intimidatorias. No podrán ejercer sobre los consumidores extranjeros diferenciación alguna sobre precios, calidades técnicas o comerciales o cualquier otro aspecto relevante sobre los bienes y servicios que comercialice. Cualquier excepción a lo señalado deberá ser autorizada por la autoridad de aplicación en razones de interés general debidamente fundadas.
 
 En los reclamos extrajudiciales de deudas, deberán abstenerse de utilizar cualquier medio que le otorgue la apariencia de reclamo judicial.
 
@@ -70,9 +70,9 @@ Tales conductas, además de las sanciones previstas en la presente ley, podrán 
 
 (Artículo incorporado por art. 6° de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 9.-** Cosas Deficientes Usadas o Reconstituidas. Cuando se ofrezcan en forma pública a consumidores potenciales indeterminados cosas que presenten alguna deficiencia, que sean usadas o reconstituidas debe indicarse las circunstancia en forma precisa y notoria.
+**Art. 9.-** Cosas Deficientes Usadas o Reconstituidas. Cuando se ofrezcan en forma pública a consumidores potenciales indeterminados cosas que presenten alguna deficiencia, que sean usadas o reconstituidas debe indicarse las circunstancia en forma precisa y notoria.
 
-**ARTICULO 10.-** Contenido del documento de venta. En el documento que se extienda por la venta de cosas muebles o inmuebles, sin perjuicio de la información exigida por otras leyes o normas, deberá constar:
+**Art. 10.-** Contenido del documento de venta. En el documento que se extienda por la venta de cosas muebles o inmuebles, sin perjuicio de la información exigida por otras leyes o normas, deberá constar:
 
 a) La descripción y especificación del bien.
 
@@ -98,7 +98,7 @@ La reglamentación establecerá modalidades más simples cuando la índole del b
 
 (Artículo sustituido por art. 7° de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 10 bis.-** Incumplimiento de la obligación. El incumplimiento de la oferta o del contrato por el proveedor, salvo caso fortuito o fuerza mayor, faculta al consumidor, a su libre elección a:
+**Art. 10 bis.-** Incumplimiento de la obligación. El incumplimiento de la oferta o del contrato por el proveedor, salvo caso fortuito o fuerza mayor, faculta al consumidor, a su libre elección a:
 
 a) Exigir el cumplimiento forzado de la obligación, siempre que ello fuera posible;
 
@@ -110,31 +110,31 @@ Todo ello sin perjuicio de las acciones de daños y perjuicios que correspondan.
 
 (Artículo incorporado por el art. 2º de la [Ley Nº 24.787](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=42463) B.O. 2/4/1997)
 
-**ARTICULO 10 ter.-** Modos de Rescisión. Cuando la contratación de un servicio, incluidos los servicios públicos domiciliarios, haya sido realizada en forma telefónica, electrónica o similar, podrá ser rescindida a elección del consumidor o usuario mediante el mismo medio utilizado en la contratación.
+**Art. 10 ter.-** Modos de Rescisión. Cuando la contratación de un servicio, incluidos los servicios públicos domiciliarios, haya sido realizada en forma telefónica, electrónica o similar, podrá ser rescindida a elección del consumidor o usuario mediante el mismo medio utilizado en la contratación.
 
 La empresa receptora del pedido de rescisión del servicio deberá enviar sin cargo al domicilio del consumidor o usuario una constancia fehaciente dentro de las SETENTA Y DOS (72) horas posteriores a la recepción del pedido de rescisión. Esta disposición debe ser publicada en la factura o documento equivalente que la empresa enviare regularmente al domicilio del consumidor o usuario.
 
 (Artículo incorporado por art. 8° de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 10 quáter.-** Prohibición de cobro. Prohíbase el cobro de preaviso, mes adelantado y/o cualquier otro concepto, por parte de los prestadores de servicios, incluidos los servicios públicos domiciliarios, en los casos de solicitud de baja del mismo realizado por el consumidor ya sea en forma personal, telefónica, electrónica o similar.
+**Art. 10 quáter.-** Prohibición de cobro. Prohíbase el cobro de preaviso, mes adelantado y/o cualquier otro concepto, por parte de los prestadores de servicios, incluidos los servicios públicos domiciliarios, en los casos de solicitud de baja del mismo realizado por el consumidor ya sea en forma personal, telefónica, electrónica o similar.
 
 (Artículo incorporado por art. 1° de la [Ley N° 27.265](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=264483) B.O. 17/8/2016.)
 
 ### CAPITULO IV - COSAS MUEBLES NO CONSUMIBLES
 
-**ARTICULO 11.-** Garantías. Cuando se comercialicen cosas muebles no consumibles conforme lo establece el artículo 2325 del Código Civil, el consumidor y los sucesivos adquirentes gozarán de garantía legal por los defectos o vicios de cualquier índole, aunque hayan sido ostensibles o manifiestos al tiempo del contrato, cuando afecten la identidad entre lo ofrecido y lo entregado, o su correcto funcionamiento.
+**Art. 11.-** Garantías. Cuando se comercialicen cosas muebles no consumibles conforme lo establece el artículo 2325 del Código Civil, el consumidor y los sucesivos adquirentes gozarán de garantía legal por los defectos o vicios de cualquier índole, aunque hayan sido ostensibles o manifiestos al tiempo del contrato, cuando afecten la identidad entre lo ofrecido y lo entregado, o su correcto funcionamiento.
 
 La garantía legal tendrá vigencia por TRES (3) meses cuando se trate de bienes muebles usados y por SEIS (6) meses en los demás casos a partir de la entrega, pudiendo las partes convenir un plazo mayor. En caso de que la cosa deba trasladarse a fábrica o taller habilitado el transporte será realizado por el responsable de la garantía, y serán a su cargo los gastos de flete y seguros y cualquier otro que deba realizarse para la ejecución del mismo.
 
 (Artículo sustituido por art. 9° de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 12.-** Servicio Técnico. Los fabricantes, importadores y vendedores de las cosas mencionadas en el artículo anterior, deben asegurar un servicio técnico adecuado y el suministro de partes y repuestos.
+**Art. 12.-** Servicio Técnico. Los fabricantes, importadores y vendedores de las cosas mencionadas en el artículo anterior, deben asegurar un servicio técnico adecuado y el suministro de partes y repuestos.
 
-**ARTICULO 13.-** Responsabilidad solidaria. Son solidariamente responsables del otorgamiento y cumplimiento de la garantía legal, los productores, importadores, distribuidores y vendedores de las cosas comprendidas en el artículo 11\.
+**Art. 13.-** Responsabilidad solidaria. Son solidariamente responsables del otorgamiento y cumplimiento de la garantía legal, los productores, importadores, distribuidores y vendedores de las cosas comprendidas en el artículo 11\.
 
 (Artículo incorporado por el art. 2º de la [Ley Nº 24.999](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=52068) B.O. 30/7/1998)
 
-**ARTICULO 14.-** Certificado de Garantía. El certificado de garantía deberá constar por escrito en idioma nacional, con redacción de fácil comprensión en letra legible, y contendrá como mínimo:
+**Art. 14.-** Certificado de Garantía. El certificado de garantía deberá constar por escrito en idioma nacional, con redacción de fácil comprensión en letra legible, y contendrá como mínimo:
 
 a) La identificación del vendedor, fabricante, importador o distribuidor;
 
@@ -152,7 +152,7 @@ Cualquier cláusula cuya redacción o interpretación contraríen las normas del
 
 (Artículo sustituido por el art. 3º de la [Ley Nº 24.999](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=52068) B.O. 30/7/1998)
 
-**ARTICULO 15.-** Constancia de Reparación. Cuando la cosa hubiese sido reparada bajo los términos de una garantía legal, el garante estará obligado a entregar al consumidor una constancia de reparación en donde se indique:
+**Art. 15.-** Constancia de Reparación. Cuando la cosa hubiese sido reparada bajo los términos de una garantía legal, el garante estará obligado a entregar al consumidor una constancia de reparación en donde se indique:
 
 a) La naturaleza de la reparación;
 
@@ -162,9 +162,9 @@ c) La fecha en que el consumidor le hizo entrega de la cosa;
 
 d) La fecha de devolución de la cosa al consumidor.
 
-**ARTICULO 16.-** Prolongación del Plazo de Garantía. El tiempo durante el cual el consumidor está privado del uso de la cosa en garantía, por cualquier causa relacionada con su reparación, debe computarse como prolongación del plazo de garantía legal.
+**Art. 16.-** Prolongación del Plazo de Garantía. El tiempo durante el cual el consumidor está privado del uso de la cosa en garantía, por cualquier causa relacionada con su reparación, debe computarse como prolongación del plazo de garantía legal.
 
-**ARTICULO 17.-** Reparación no Satisfactoria. En los supuestos en que la reparación efectuada no resulte satisfactoria por no reunir la cosa reparada, las condiciones óptimas para cumplir con el uso al que está destinada, el consumidor puede:
+**Art. 17.-** Reparación no Satisfactoria. En los supuestos en que la reparación efectuada no resulte satisfactoria por no reunir la cosa reparada, las condiciones óptimas para cumplir con el uso al que está destinada, el consumidor puede:
 
 a) Pedir la sustitución de la cosa adquirida por otra de idénticas características. En tal caso el plazo de la garantía legal se computa a partir de la fecha de la entrega de la nueva cosa;
 
@@ -174,7 +174,7 @@ c) Obtener una quita proporcional del precio.
 
 En todos los casos, la opción por parte del consumidor no impide la reclamación de los eventuales daños y perjuicios que pudieren corresponder.
 
-**ARTICULO 18.-** Vicios Redhibitorios. La aplicación de las disposiciones precedentes, no obsta a la subsistencia de la garantía legal por vicios redhibitorios. En caso de vicio redhibitorio:
+**Art. 18.-** Vicios Redhibitorios. La aplicación de las disposiciones precedentes, no obsta a la subsistencia de la garantía legal por vicios redhibitorios. En caso de vicio redhibitorio:
 
 a) A instancia del consumidor se aplicará de pleno derecho el artículo 2176 del Código Civil;
 
@@ -182,11 +182,11 @@ b) El artículo 2170 del Código Civil no podrá ser opuesto al consumidor.
 
 ### CAPITULO V - DE LA PRESTACION DE LOS SERVICIOS
 
-**ARTICULO 19.-** Modalidades de Prestación de Servicios. Quienes presten servicios de cualquier naturaleza están obligados a respetar los términos, plazos, condiciones, modalidades, reservas y demás circunstancias conforme a las cuales hayan sido ofrecidos, publicitados o convenidos.
+**Art. 19.-** Modalidades de Prestación de Servicios. Quienes presten servicios de cualquier naturaleza están obligados a respetar los términos, plazos, condiciones, modalidades, reservas y demás circunstancias conforme a las cuales hayan sido ofrecidos, publicitados o convenidos.
 
-**ARTICULO 20.-** Materiales a Utilizar en la Reparación. En los contratos de prestación de servicios cuyo objeto sea la reparación, mantenimiento, acondicionamiento, limpieza o cualquier otro similar, se entiende implícita la obligación a cargo del prestador del servicio de emplear materiales o productos nuevos o adecuados a la cosa de que se trate, salvo pacto escrito en contrario.
+**Art. 20.-** Materiales a Utilizar en la Reparación. En los contratos de prestación de servicios cuyo objeto sea la reparación, mantenimiento, acondicionamiento, limpieza o cualquier otro similar, se entiende implícita la obligación a cargo del prestador del servicio de emplear materiales o productos nuevos o adecuados a la cosa de que se trate, salvo pacto escrito en contrario.
 
-**ARTICULO 21.-** Presupuesto. En los supuestos contemplados en el artículo anterior, el prestador del servicio debe extender un presupuesto que contenga como mínimo los siguientes datos:
+**Art. 21.-** Presupuesto. En los supuestos contemplados en el artículo anterior, el prestador del servicio debe extender un presupuesto que contenga como mínimo los siguientes datos:
 
 a) Nombre, domicilio y otros datos de identificación del prestador del servicio;
 
@@ -204,11 +204,11 @@ g) El plazo para la aceptación del presupuesto;
 
 h) Los números de inscripción en la Dirección General Impositiva y en el Sistema Previsional.
 
-**ARTICULO 22.-** Supuestos no Incluidos en el Presupuesto. Todo servicio, tarea o empleo material o costo adicional, que se evidencie como necesario durante la prestación del servicio y que por su naturaleza o características no pudo ser incluido en el presupuesto original, deberá ser comunicado al consumidor antes de su realización o utilización. Queda exceptuado de esta obligación el prestador del servicio que, por la naturaleza del mismo, no pueda interrumpirlo sin afectar su calidad o sin daño para las cosas del consumidor.
+**Art. 22.-** Supuestos no Incluidos en el Presupuesto. Todo servicio, tarea o empleo material o costo adicional, que se evidencie como necesario durante la prestación del servicio y que por su naturaleza o características no pudo ser incluido en el presupuesto original, deberá ser comunicado al consumidor antes de su realización o utilización. Queda exceptuado de esta obligación el prestador del servicio que, por la naturaleza del mismo, no pueda interrumpirlo sin afectar su calidad o sin daño para las cosas del consumidor.
 
-**ARTICULO 23.-** Deficiencias en la Prestación del Servicio. Salvo previsión expresa y por escrito en contrario, si dentro de los treinta (30) días siguientes a la fecha en que concluyó el servicio se evidenciaren deficiencias o defectos en el trabajo realizado, el prestador del servicio estará obligado a corregir todas las deficiencias o defectos o a reformar o a reemplazar los materiales y productos utilizados sin costo adicional de ningún tipo para el consumidor.
+**Art. 23.-** Deficiencias en la Prestación del Servicio. Salvo previsión expresa y por escrito en contrario, si dentro de los treinta (30) días siguientes a la fecha en que concluyó el servicio se evidenciaren deficiencias o defectos en el trabajo realizado, el prestador del servicio estará obligado a corregir todas las deficiencias o defectos o a reformar o a reemplazar los materiales y productos utilizados sin costo adicional de ningún tipo para el consumidor.
 
-**ARTICULO 24.-** Garantía. La garantía sobre un contrato de prestación de servicios deberá documentarse por escrito haciendo constar:
+**Art. 24.-** Garantía. La garantía sobre un contrato de prestación de servicios deberá documentarse por escrito haciendo constar:
 
 a) La correcta individualización del trabajo realizado;
 
@@ -218,7 +218,7 @@ c) La correcta individualización de la persona, empresa o entidad que la hará 
 
 ### CAPITULO VI - USUARIOS DE SERVICIOS PUBLICOS DOMICILIARIOS
 
-**ARTICULO 25.-** Constancia escrita. Información al usuario. Las empresas prestadoras de servicios públicos a domicilio deben entregar al usuario constancia escrita de las condiciones de la prestación y de los derechos y obligaciones de ambas partes contratantes. Sin perjuicio de ello, deben mantener tal información a disposición de los usuarios en todas las oficinas de atención al público.
+**Art. 25.-** Constancia escrita. Información al usuario. Las empresas prestadoras de servicios públicos a domicilio deben entregar al usuario constancia escrita de las condiciones de la prestación y de los derechos y obligaciones de ambas partes contratantes. Sin perjuicio de ello, deben mantener tal información a disposición de los usuarios en todas las oficinas de atención al público.
 
 Las empresas prestadoras de servicios públicos domiciliarios deberán colocar en toda facturación que se extienda al usuario y en las oficinas de atención al público carteles con la leyenda: "Usted tiene derecho a reclamar una indemnización si le facturamos sumas o conceptos indebidos o reclamamos el pago de facturas ya abonadas, Ley Nº 24.240".
 
@@ -228,21 +228,21 @@ Los usuarios de los servicios podrán presentar sus reclamos ante la autoridad i
 
 (Artículo sustituido por art. 10 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 26.-** Reciprocidad en el Trato. Las empresas indicadas en el artículo anterior deben otorgar a los usuarios reciprocidad de trato, aplicando para los reintegros o devoluciones los mismos criterios que establezcan para los cargos por mora.
+**Art. 26.-** Reciprocidad en el Trato. Las empresas indicadas en el artículo anterior deben otorgar a los usuarios reciprocidad de trato, aplicando para los reintegros o devoluciones los mismos criterios que establezcan para los cargos por mora.
 
-**ARTICULO 27.-** Registro de reclamos. Atención personalizada. Las empresas prestadoras deben habilitar un registro de reclamos donde quedarán asentadas las presentaciones de los usuarios. Los mismos podrán efectuarse por nota, teléfono, fax, correo o correo electrónico, o por otro medio disponible, debiendo extenderse constancia con la identificación del reclamo. Dichos reclamos deben ser satisfechos en plazos perentorios, conforme la reglamentación de la presente ley. Las empresas prestadoras de servicios públicos deberán garantizar la atención personalizada a los usuarios.
+**Art. 27.-** Registro de reclamos. Atención personalizada. Las empresas prestadoras deben habilitar un registro de reclamos donde quedarán asentadas las presentaciones de los usuarios. Los mismos podrán efectuarse por nota, teléfono, fax, correo o correo electrónico, o por otro medio disponible, debiendo extenderse constancia con la identificación del reclamo. Dichos reclamos deben ser satisfechos en plazos perentorios, conforme la reglamentación de la presente ley. Las empresas prestadoras de servicios públicos deberán garantizar la atención personalizada a los usuarios.
 
 (Artículo sustituido por art. 11 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 28.-** Seguridad de las Instalaciones. Información. Los usuarios de servicios públicos que se prestan a domicilio y requieren instalaciones específicas, deben ser convenientemente informados sobre las condiciones de seguridad de las instalaciones y de los artefactos.
+**Art. 28.-** Seguridad de las Instalaciones. Información. Los usuarios de servicios públicos que se prestan a domicilio y requieren instalaciones específicas, deben ser convenientemente informados sobre las condiciones de seguridad de las instalaciones y de los artefactos.
 
-**ARTICULO 29.-** Instrumentos y Unidades de Medición. La autoridad competente queda facultada para intervenir en la verificación del buen funcionamiento de los instrumentos de medición de energía, combustibles, comunicaciones, agua potable o cualquier otro similar, cuando existan dudas sobre las lecturas efectuadas por las empresas prestadoras de los respectivos servicios.
+**Art. 29.-** Instrumentos y Unidades de Medición. La autoridad competente queda facultada para intervenir en la verificación del buen funcionamiento de los instrumentos de medición de energía, combustibles, comunicaciones, agua potable o cualquier otro similar, cuando existan dudas sobre las lecturas efectuadas por las empresas prestadoras de los respectivos servicios.
 
 Tanto los instrumentos como las unidades de medición, deberán ser los reconocidos y legalmente autorizados. Las empresas prestatarias garantizarán a los usuarios el control individual de los consumos. Las facturas deberán ser entregadas al usuario con no menos de diez (10) días de anticipación a la fecha de su vencimiento.
 
-**ARTICULO 30.-** Interrupción de la Prestación del Servicio. Cuando la prestación del servicio público domiciliario se interrumpa o sufra alteraciones, se presume que es por causa imputable a la empresa prestadora. Efectuado el reclamo por el usuario, la empresa dispone de un plazo máximo de treinta (30) días para demostrar que la interrupción o alteración no le es imputable. En caso contrario, la empresa deberá reintegrar el importe total del servicio no prestado dentro del plazo establecido precedentemente. Esta disposición no es aplicable cuando el valor del servicio no prestado sea deducido de la factura correspondiente. El usuario puede interponer el reclamo desde la interrupción o alteración del servicio y hasta los quince (15) días posteriores al vencimiento de la factura.
+**Art. 30.-** Interrupción de la Prestación del Servicio. Cuando la prestación del servicio público domiciliario se interrumpa o sufra alteraciones, se presume que es por causa imputable a la empresa prestadora. Efectuado el reclamo por el usuario, la empresa dispone de un plazo máximo de treinta (30) días para demostrar que la interrupción o alteración no le es imputable. En caso contrario, la empresa deberá reintegrar el importe total del servicio no prestado dentro del plazo establecido precedentemente. Esta disposición no es aplicable cuando el valor del servicio no prestado sea deducido de la factura correspondiente. El usuario puede interponer el reclamo desde la interrupción o alteración del servicio y hasta los quince (15) días posteriores al vencimiento de la factura.
 
-**ARTICULO 30 bis.-** Las constancias que las empresas prestatarias de servicios públicos, entreguen a sus usuarios para el cobro de los servicios prestados, deberán expresar si existen períodos u otras deudas pendientes, en su caso fechas, concepto e intereses si correspondiera, todo ello escrito en forma clara y con caracteres destacados. En caso que no existan deudas pendientes se expresará: "no existen deudas pendientes".
+**Art. 30 bis.-** Las constancias que las empresas prestatarias de servicios públicos, entreguen a sus usuarios para el cobro de los servicios prestados, deberán expresar si existen períodos u otras deudas pendientes, en su caso fechas, concepto e intereses si correspondiera, todo ello escrito en forma clara y con caracteres destacados. En caso que no existan deudas pendientes se expresará: "no existen deudas pendientes".
 
 La falta de esta manifestación hace presumir que el usuario se encuentra al día con sus pagos y que no mantiene deudas con la prestataria.
 
@@ -254,7 +254,7 @@ Para el supuesto que algún ente que sea titular del derecho, no comunicare al a
 
 (Artículo incorporado por el art. 4º de la [Ley Nº 24.787](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=42463) B.O. 2/4/1997. Párrafos cuarto y quinto de este último artículo, observados por el [Decreto Nacional Nº 270/97](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=42464) B.O 2/4/1997)
 
-**ARTICULO 31.-** Cuando una empresa de servicio público domiciliario con variaciones regulares estacionales facture en un período consumos que exceden en un SETENTA Y CINCO POR CIENTO (75%) el promedio de los consumos correspondientes al mismo período de los DOS (2) años anteriores se presume que existe error en la facturación.
+**Art. 31.-** Cuando una empresa de servicio público domiciliario con variaciones regulares estacionales facture en un período consumos que exceden en un SETENTA Y CINCO POR CIENTO (75%) el promedio de los consumos correspondientes al mismo período de los DOS (2) años anteriores se presume que existe error en la facturación.
 
 Para el caso de servicios de consumos no estacionales se tomará en cuenta el consumo promedio de los últimos DOCE (12) meses anteriores a la facturación. En ambos casos, el usuario abonará únicamente el valor de dicho consumo promedio.
 
@@ -278,7 +278,7 @@ Las facultades conferidas al usuario en este artículo se conceden sin perjuicio
 
 ### CAPITULO VII - DE LA VENTA DOMICILIARIA, POR CORRESPONDENCIA Y OTRAS
 
-**ARTICULO 32.-** Venta domiciliaria. Es la oferta o propuesta de venta de un bien o prestación de un servicio efectuada al consumidor fuera del establecimiento del proveedor. También se entenderá comprendida dentro de la venta domiciliaria o directa aquella contratación que resulte de una convocatoria al consumidor o usuario al establecimiento del proveedor o a otro sitio, cuando el objetivo de dicha convocatoria sea total o parcialmente distinto al de la contratación, o se trate de un premio u obsequio.
+**Art. 32.-** Venta domiciliaria. Es la oferta o propuesta de venta de un bien o prestación de un servicio efectuada al consumidor fuera del establecimiento del proveedor. También se entenderá comprendida dentro de la venta domiciliaria o directa aquella contratación que resulte de una convocatoria al consumidor o usuario al establecimiento del proveedor o a otro sitio, cuando el objetivo de dicha convocatoria sea total o parcialmente distinto al de la contratación, o se trate de un premio u obsequio.
 
 El contrato debe ser instrumentado por escrito y con las precisiones establecidas en los artículos 10 y 34 de la presente ley.
 
@@ -286,11 +286,11 @@ Lo dispuesto precedentemente no es aplicable a la compraventa de bienes perecede
 
 (Artículo sustituido por art. 13 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 33.-** Venta por Correspondencia y Otras. Es aquella en que la propuesta se efectúa por medio postal, telecomunicaciones, electrónico o similar y la respuesta a la misma se realiza por iguales medios.
+**Art. 33.-** Venta por Correspondencia y Otras. Es aquella en que la propuesta se efectúa por medio postal, telecomunicaciones, electrónico o similar y la respuesta a la misma se realiza por iguales medios.
 
 No se permitirá la publicación del número postal como domicilio.
 
-**ARTICULO 34.-** Revocación de aceptación. En los casos previstos en los artículos 32 y 33 de la presente ley, el consumidor tiene derecho a revocar la aceptación durante el plazo de DIEZ (10) días corridos contados a partir de la fecha en que se entregue el bien o se celebre el contrato, lo último que ocurra, sin responsabilidad alguna. Esta facultad no puede ser dispensada ni renunciada.
+**Art. 34.-** Revocación de aceptación. En los casos previstos en los artículos 32 y 33 de la presente ley, el consumidor tiene derecho a revocar la aceptación durante el plazo de DIEZ (10) días corridos contados a partir de la fecha en que se entregue el bien o se celebre el contrato, lo último que ocurra, sin responsabilidad alguna. Esta facultad no puede ser dispensada ni renunciada.
 
 El vendedor debe informar por escrito al consumidor de esta facultad de revocación en todo documento que con motivo de venta le sea presentado al consumidor.
 
@@ -300,13 +300,13 @@ El consumidor debe poner el bien a disposición del vendedor y los gastos de dev
 
 (Artículo sustituido por art. 14 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 35.-** Prohibición. Queda prohibida la realización de propuesta al consumidor, por cualquier tipo de medio, sobre una cosa o servicio que no haya sido requerido previamente y que genere un cargo automático en cualquier sistema de débito, que obligue al consumidor a manifestarse por la negativa para que dicho cargo no se efectivice.
+**Art. 35.-** Prohibición. Queda prohibida la realización de propuesta al consumidor, por cualquier tipo de medio, sobre una cosa o servicio que no haya sido requerido previamente y que genere un cargo automático en cualquier sistema de débito, que obligue al consumidor a manifestarse por la negativa para que dicho cargo no se efectivice.
 
 Si con la oferta se envió una cosa, el receptor no está obligado a conservarla ni a restituirla al remitente aunque la restitución pueda ser realizada libre de gastos.
 
 ### CAPITULO VIII - DE LAS OPERACIONES DE VENTA DE CREDITO
 
-**ARTICULO 36.-** Requisitos. En las operaciones financieras para consumo y en las de crédito para el consumo deberá consignarse de modo claro al consumidor o usuario, bajo pena de nulidad:
+**Art. 36.-** Requisitos. En las operaciones financieras para consumo y en las de crédito para el consumo deberá consignarse de modo claro al consumidor o usuario, bajo pena de nulidad:
 
 a) La descripción del bien o servicio objeto de la compra o contratación, para los casos de adquisición de bienes o servicios;
 
@@ -338,7 +338,7 @@ Será competente para entender en el conocimiento de los litigios relativos a co
 
 ### CAPITULO IX - DE LOS TERMINOS ABUSIVOS Y CLAUSULAS INEFICACES
 
-**ARTICULO 37.-** Interpretación. Sin perjuicio de la validez del contrato, se tendrán por no convenidas:
+**Art. 37.-** Interpretación. Sin perjuicio de la validez del contrato, se tendrán por no convenidas:
 
 a) Las cláusulas que desnaturalicen las obligaciones o limiten la responsabilidad por daños;
 
@@ -350,7 +350,7 @@ La interpretación del contrato se hará en el sentido más favorable para el co
 
 En caso en que el oferente viole el deber de buena fe en la etapa previa a la conclusión del contrato o en su celebración o transgreda el deber de información o la legislación de defensa de la competencia o de lealtad comercial, el consumidor tendrá derecho a demandar la nulidad del contrato o la de una o más cláusulas. Cuando el juez declare la nulidad parcial, simultáneamente integrará el contrato, si ello fuera necesario.
 
-**ARTICULO 38.-** Contrato de adhesión. Contratos en formularios. La autoridad de aplicación vigilará que los contratos de adhesión o similares, no contengan cláusulas de las previstas en el artículo anterior. La misma atribución se ejercerá respecto de las cláusulas uniformes, generales o estandarizadas de los contratos hechos en formularios, reproducidos en serie y en general, cuando dichas cláusulas hayan sido redactadas unilateralmente por el proveedor de la cosa o servicio, sin que la contraparte tuviere posibilidades de discutir su contenido.
+**Art. 38.-** Contrato de adhesión. Contratos en formularios. La autoridad de aplicación vigilará que los contratos de adhesión o similares, no contengan cláusulas de las previstas en el artículo anterior. La misma atribución se ejercerá respecto de las cláusulas uniformes, generales o estandarizadas de los contratos hechos en formularios, reproducidos en serie y en general, cuando dichas cláusulas hayan sido redactadas unilateralmente por el proveedor de la cosa o servicio, sin que la contraparte tuviere posibilidades de discutir su contenido.
 
 Todas las personas físicas o jurídicas, de naturaleza pública y privada, que presten servicios o comercialicen bienes a consumidores o usuarios mediante la celebración de contratos de adhesión, deben publicar en su sitio web un ejemplar del modelo de contrato a suscribir.
 
@@ -358,17 +358,17 @@ Asimismo deben entregar sin cargo y con antelación a la contratación, en sus l
 
 (Artículo sustituido por art. 1° de la [Ley N° 27.266](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=264485) B.O. 17/8/2016.)
 
-**ARTICULO 39.-** Modificación Contratos Tipo. Cuando los contratos a los que se refiere el artículo anterior requieran la aprobación de otra autoridad nacional o provincial, ésta tomará las medidas necesarias para la modificación del contrato tipo a pedido de la autoridad de aplicación.
+**Art. 39.-** Modificación Contratos Tipo. Cuando los contratos a los que se refiere el artículo anterior requieran la aprobación de otra autoridad nacional o provincial, ésta tomará las medidas necesarias para la modificación del contrato tipo a pedido de la autoridad de aplicación.
 
 ### CAPITULO X - RESPONSABILIDAD POR DAÑOS
 
-**ARTICULO 40.-** Si el daño al consumidor resulta del vicio o riesgo de la cosa o de la prestación del servicio, responderán el productor, el fabricante, el importador, el distribuidor, el proveedor, el vendedor y quien haya puesto su marca en la cosa o servicio. El transportista responderá por los daños ocasionados a la cosa con motivo o en ocasión del servicio.
+**Art. 40.-** Si el daño al consumidor resulta del vicio o riesgo de la cosa o de la prestación del servicio, responderán el productor, el fabricante, el importador, el distribuidor, el proveedor, el vendedor y quien haya puesto su marca en la cosa o servicio. El transportista responderá por los daños ocasionados a la cosa con motivo o en ocasión del servicio.
 
 La responsabilidad es solidaria, sin perjuicio de las acciones de repetición que correspondan. Sólo se liberará total o parcialmente quien demuestre que la causa del daño le ha sido ajena.
 
 (Artículo incorporado por el art. 4º de la [Ley Nº 24.999](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=52068) B.O. 30/7/1998)
 
-**ARTICULO 40 bis.-** Daño directo. El daño directo es todo perjuicio o menoscabo al derecho del usuario o consumidor, susceptible de apreciación pecuniaria, ocasionado de manera inmediata sobre sus bienes o sobre su persona, como consecuencia de la acción u omisión del proveedor de bienes o del prestador de servicios.
+**Art. 40 bis.-** Daño directo. El daño directo es todo perjuicio o menoscabo al derecho del usuario o consumidor, susceptible de apreciación pecuniaria, ocasionado de manera inmediata sobre sus bienes o sobre su persona, como consecuencia de la acción u omisión del proveedor de bienes o del prestador de servicios.
 
 Los organismos de aplicación, mediante actos administrativos, fijarán las indemnizaciones para reparar los daños materiales sufridos por el consumidor en los bienes objeto de la relación de consumo.
 
@@ -388,15 +388,15 @@ Este artículo no se aplica a las consecuencias de la violación de los derechos
 
 ### CAPITULO XI - AUTORIDAD DE APLICACION
 
-**ARTICULO 41.-** Aplicación nacional y local. La Secretaría de Comercio Interior dependiente del Ministerio de Economía y Producción, será la autoridad nacional de aplicación de esta ley. La Ciudad Autónoma de Buenos Aires y las provincias actuarán como autoridades locales de aplicación ejerciendo el control, vigilancia y juzgamiento en el cumplimiento de esta ley y de sus normas reglamentarias respecto de las presuntas infracciones cometidas en sus respectivas jurisdicciones.
+**Art. 41.-** Aplicación nacional y local. La Secretaría de Comercio Interior dependiente del Ministerio de Economía y Producción, será la autoridad nacional de aplicación de esta ley. La Ciudad Autónoma de Buenos Aires y las provincias actuarán como autoridades locales de aplicación ejerciendo el control, vigilancia y juzgamiento en el cumplimiento de esta ley y de sus normas reglamentarias respecto de las presuntas infracciones cometidas en sus respectivas jurisdicciones.
 
 (Artículo sustituido por art. 17 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 42.-** Facultades concurrentes. La autoridad nacional de aplicación, sin perjuicio de las facultades que son competencia de las autoridades locales de aplicación referidas en el artículo 41 de esta ley, podrá actuar concurrentemente en el control y vigilancia en el cumplimiento de la presente ley.
+**Art. 42.-** Facultades concurrentes. La autoridad nacional de aplicación, sin perjuicio de las facultades que son competencia de las autoridades locales de aplicación referidas en el artículo 41 de esta ley, podrá actuar concurrentemente en el control y vigilancia en el cumplimiento de la presente ley.
 
 (Artículo sustituido por art. 18 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 43.-** Facultades y Atribuciones. La Secretaría de Comercio Interior dependiente del Ministerio de Economía y Producción, sin perjuicio de las funciones específicas, en su carácter de autoridad de aplicación de la presente ley tendrá las siguientes facultades y atribuciones:
+**Art. 43.-** Facultades y Atribuciones. La Secretaría de Comercio Interior dependiente del Ministerio de Economía y Producción, sin perjuicio de las funciones específicas, en su carácter de autoridad de aplicación de la presente ley tendrá las siguientes facultades y atribuciones:
 
 a) Proponer el dictado de la reglamentación de esta ley y elaborar políticas tendientes a la defensa del consumidor o usuario a favor de un consumo sustentable con protección del medio ambiente e intervenir en su instrumentación mediante el dictado de las resoluciones pertinentes.
 
@@ -414,11 +414,11 @@ La autoridad de aplicación nacional podrá delegar, de acuerdo con la reglament
 
 (Artículo sustituido por art. 19 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 44.-** Auxilio de la Fuerza Pública. Para el ejercicio de las atribuciones a que se refieren los incisos d) y f) del artículo 43 de la presente ley, la autoridad de aplicación podrá solicitar el auxilio de la fuerza pública.
+**Art. 44.-** Auxilio de la Fuerza Pública. Para el ejercicio de las atribuciones a que se refieren los incisos d) y f) del artículo 43 de la presente ley, la autoridad de aplicación podrá solicitar el auxilio de la fuerza pública.
 
 ### CAPITULO XII - PROCEDIMIENTO Y SANCIONES
 
-**ARTICULO 45.-** Actuaciones Administrativas. La autoridad nacional de aplicación iniciará actuaciones administrativas en caso de presuntas infracciones a las disposiciones de esta ley, sus normas reglamentarias y resoluciones que en consecuencia se dicten, de oficio, por denuncia de quien invocare un interés particular o actuare en defensa del interés general de los consumidores, o por comunicación de autoridad administrativa o judicial.
+**Art. 45.-** Actuaciones Administrativas. La autoridad nacional de aplicación iniciará actuaciones administrativas en caso de presuntas infracciones a las disposiciones de esta ley, sus normas reglamentarias y resoluciones que en consecuencia se dicten, de oficio, por denuncia de quien invocare un interés particular o actuare en defensa del interés general de los consumidores, o por comunicación de autoridad administrativa o judicial.
 
 Se procederá a labrar actuaciones en las que se dejará constancia del hecho denunciado o verificado y de la disposición presuntamente infringida.
 
@@ -448,9 +448,9 @@ La Ciudad Autónoma de Buenos Aires y las provincias dictarán las normas referi
 
 (Artículo sustituido por art. 60 de la [Ley N° 26.993](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=235275) B.O. 19/09/2014)
 
-**ARTICULO 46.-** Incumplimiento de Acuerdos Conciliatorios. El incumplimiento de los acuerdos conciliatorios se considerará violación a esta ley. En tal caso, el infractor será pasible de las sanciones establecidas en la presente, sin perjuicio del cumplimiento imperativo de las obligaciones que las partes hubieran acordado.
+**Art. 46.-** Incumplimiento de Acuerdos Conciliatorios. El incumplimiento de los acuerdos conciliatorios se considerará violación a esta ley. En tal caso, el infractor será pasible de las sanciones establecidas en la presente, sin perjuicio del cumplimiento imperativo de las obligaciones que las partes hubieran acordado.
 
-**ARTICULO 47.-** Sanciones. Verificada la existencia de la infracción, quienes la hayan cometido serán pasibles de las siguientes sanciones, las que se podrán aplicar independiente o conjuntamente, según resulte de las circunstancias del caso:
+**Art. 47.-** Sanciones. Verificada la existencia de la infracción, quienes la hayan cometido serán pasibles de las siguientes sanciones, las que se podrán aplicar independiente o conjuntamente, según resulte de las circunstancias del caso:
 
 a) Apercibimiento;
 
@@ -470,23 +470,23 @@ El cincuenta por ciento (50%) del monto percibido en concepto de multas y otras 
 
 (Artículo sustituido por art. 119 de la [Ley N° 27.701](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=375860) B.O. 1/12/2022.)
 
-**ARTICULO 48.-** Denuncias Maliciosas. Quienes presentaren denuncias maliciosas o sin justa causa ante la autoridad de aplicación, serán sancionados según lo previsto en los incisos a) y b) del artículo anterior, sin perjuicio de las que pudieren corresponder por aplicación de las normas civiles y penales.
+**Art. 48.-** Denuncias Maliciosas. Quienes presentaren denuncias maliciosas o sin justa causa ante la autoridad de aplicación, serán sancionados según lo previsto en los incisos a) y b) del artículo anterior, sin perjuicio de las que pudieren corresponder por aplicación de las normas civiles y penales.
 
-**ARTICULO 49.-** Aplicación y graduación de las sanciones. En la aplicación y graduación de las sanciones previstas en el artículo 47 de la presente ley se tendrá en cuenta el perjuicio resultante de la infracción para el consumidor o usuario, la posición en el mercado del infractor, la cuantía del beneficio obtenido, el grado de intencionalidad, la gravedad de los riesgos o de los perjuicios sociales derivados de la infracción y su generalización, la reincidencia y las demás circunstancias relevantes del hecho.
+**Art. 49.-** Aplicación y graduación de las sanciones. En la aplicación y graduación de las sanciones previstas en el artículo 47 de la presente ley se tendrá en cuenta el perjuicio resultante de la infracción para el consumidor o usuario, la posición en el mercado del infractor, la cuantía del beneficio obtenido, el grado de intencionalidad, la gravedad de los riesgos o de los perjuicios sociales derivados de la infracción y su generalización, la reincidencia y las demás circunstancias relevantes del hecho.
 
 Se considerará reincidente a quien, habiendo sido sancionado por una infracción a esta ley, incurra en otra dentro del término de CINCO (5) años.
 
 (Artículo sustituido por art. 22 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 50.-** Prescripción.  Las sanciones emergentes de la presente ley prescriben en el término de TRES (3) años.  La prescripción se interrumpe por la comisión de nuevas infracciones o por el inicio de las actuaciones administrativas.
+**Art. 50.-** Prescripción.  Las sanciones emergentes de la presente ley prescriben en el término de TRES (3) años.  La prescripción se interrumpe por la comisión de nuevas infracciones o por el inicio de las actuaciones administrativas.
 
 (Artículo sustituido por punto 3.4 del Anexo II de la [Ley N° 26.994](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=235975) B.O. 08/10/2014 Suplemento. Vigencia: 1° de agosto de 2015, texto según art. 1° de la [Ley N° 27.077](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do;jsessionid=0E7C62548ECDA6F46E822E78EADD7A86?id=239773) B.O. 19/12/2014)
 
-**ARTICULO 51.-** Comisión de un Delito. Si del sumario surgiese la eventual comisión de un delito, se remitirán las actuaciones al juez competente.
+**Art. 51.-** Comisión de un Delito. Si del sumario surgiese la eventual comisión de un delito, se remitirán las actuaciones al juez competente.
 
 ### CAPITULO XIII - DE LAS ACCIONES
 
-**ARTICULO 52.-** Acciones Judiciales. Sin perjuicio de lo dispuesto en esta ley, el consumidor y usuario podrán iniciar acciones judiciales cuando sus intereses resulten afectados o amenazados.
+**Art. 52.-** Acciones Judiciales. Sin perjuicio de lo dispuesto en esta ley, el consumidor y usuario podrán iniciar acciones judiciales cuando sus intereses resulten afectados o amenazados.
 
 La acción corresponderá al consumidor o usuario por su propio derecho, a las asociaciones de consumidores o usuarios autorizadas en los términos del artículo 56 de esta ley, a la autoridad de aplicación nacional o local, al Defensor del Pueblo y al Ministerio Público Fiscal. Dicho Ministerio, cuando no intervenga en el proceso como parte, actuará obligatoriamente como fiscal de la ley.
 
@@ -498,11 +498,11 @@ En caso de desistimiento o abandono de la acción de las referidas asociaciones 
 
 (Artículo sustituido por art. 24 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 52 bis.-** Daño Punitivo. Al proveedor que no cumpla sus obligaciones legales o contractuales con el consumidor, a instancia del damnificado, el juez podrá aplicar una multa civil a favor del consumidor, la que se graduará en función de la gravedad del hecho y demás circunstancias del caso, independientemente de otras indemnizaciones que correspondan. Cuando más de un proveedor sea responsable del incumplimiento responderán todos solidariamente ante el consumidor, sin perjuicio de las acciones de regreso que les correspondan. La multa civil que se imponga no podrá superar el máximo de la sanción de multa prevista en el artículo 47, inciso b) de esta ley.
+**Art. 52 bis.-** Daño Punitivo. Al proveedor que no cumpla sus obligaciones legales o contractuales con el consumidor, a instancia del damnificado, el juez podrá aplicar una multa civil a favor del consumidor, la que se graduará en función de la gravedad del hecho y demás circunstancias del caso, independientemente de otras indemnizaciones que correspondan. Cuando más de un proveedor sea responsable del incumplimiento responderán todos solidariamente ante el consumidor, sin perjuicio de las acciones de regreso que les correspondan. La multa civil que se imponga no podrá superar el máximo de la sanción de multa prevista en el artículo 47, inciso b) de esta ley.
 
 (Artículo incorporado por art. 25 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 53.-** Normas del proceso. En las causas iniciadas por ejercicio de los derechos establecidos en esta ley regirán las normas del proceso de conocimiento más abreviado que rijan en la jurisdicción del tribunal ordinario competente, a menos que a pedido de parte el Juez por resolución fundada y basado en la complejidad de la pretensión, considere necesario un trámite de conocimiento más adecuado.
+**Art. 53.-** Normas del proceso. En las causas iniciadas por ejercicio de los derechos establecidos en esta ley regirán las normas del proceso de conocimiento más abreviado que rijan en la jurisdicción del tribunal ordinario competente, a menos que a pedido de parte el Juez por resolución fundada y basado en la complejidad de la pretensión, considere necesario un trámite de conocimiento más adecuado.
 
 Quienes ejerzan las acciones previstas en esta ley representando un derecho o interés individual, podrán acreditar mandato mediante simple acta poder en los términos que establezca la reglamentación.
 
@@ -512,7 +512,7 @@ Las actuaciones judiciales que se inicien de conformidad con la presente ley en 
 
 (Artículo sustituido por art. 26 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 54.-** Acciones de incidencia colectiva. Para arribar a un acuerdo conciliatorio o transacción, deberá correrse vista previa al Ministerio Público Fiscal, salvo que éste sea el propio actor de la acción de incidencia colectiva, con el objeto de que se expida respecto de la adecuada consideración de los intereses de los consumidores o usuarios afectados. La homologación requerirá de auto fundado. El acuerdo deberá dejar a salvo la posibilidad de que los consumidores o usuarios individuales que así lo deseen puedan apartarse de la solución general adoptada para el caso.
+**Art. 54.-** Acciones de incidencia colectiva. Para arribar a un acuerdo conciliatorio o transacción, deberá correrse vista previa al Ministerio Público Fiscal, salvo que éste sea el propio actor de la acción de incidencia colectiva, con el objeto de que se expida respecto de la adecuada consideración de los intereses de los consumidores o usuarios afectados. La homologación requerirá de auto fundado. El acuerdo deberá dejar a salvo la posibilidad de que los consumidores o usuarios individuales que así lo deseen puedan apartarse de la solución general adoptada para el caso.
 
 La sentencia que haga lugar a la pretensión hará cosa juzgada para el demandado y para todos los consumidores o usuarios que se encuentren en similares condiciones, excepto de aquellos que manifiesten su voluntad en contrario previo a la sentencia en los términos y condiciones que el magistrado disponga.
 
@@ -520,7 +520,7 @@ Si la cuestión tuviese contenido patrimonial establecerá las pautas para la re
 
 (Artículo incorporado por art. 27 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 54 bis.-** Las sentencias definitivas y firmes deberán ser publicadas de acuerdo a lo previsto en la ley 26.856.
+**Art. 54 bis.-** Las sentencias definitivas y firmes deberán ser publicadas de acuerdo a lo previsto en la ley 26.856.
 
 La autoridad de aplicación que corresponda adoptará las medidas concernientes a su competencia y establecerá un registro de antecedentes en materia de relaciones de consumo.
 
@@ -528,13 +528,13 @@ La autoridad de aplicación que corresponda adoptará las medidas concernientes 
 
 ### CAPITULO XIV - DE LAS ASOCIACIONES DE CONSUMIDORES
 
-**ARTICULO 55.-** Legitimación. Las asociaciones de consumidores y usuarios constituidas como personas jurídicas reconocidas por la autoridad de aplicación, están legitimadas para accionar cuando resulten objetivamente afectados o amenazados intereses de los consumidores o usuarios, sin perjuicio de la intervención de éstos prevista en el segundo párrafo del artículo 58 de esta ley.
+**Art. 55.-** Legitimación. Las asociaciones de consumidores y usuarios constituidas como personas jurídicas reconocidas por la autoridad de aplicación, están legitimadas para accionar cuando resulten objetivamente afectados o amenazados intereses de los consumidores o usuarios, sin perjuicio de la intervención de éstos prevista en el segundo párrafo del artículo 58 de esta ley.
 
 Las acciones judiciales iniciadas en defensa de intereses de incidencia colectiva cuentan con el beneficio de justicia gratuita.
 
 (Artículo sustituido por art. 28 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 56.-** Autorización para Funcionar. Las organizaciones que tengan como finalidad la defensa, información y educación del consumidor, deberán requerir autorización a la autoridad de aplicación para funcionar como tales. Se entenderá que cumplen con dicho objetivo, cuando sus fines sean los siguientes:
+**Art. 56.-** Autorización para Funcionar. Las organizaciones que tengan como finalidad la defensa, información y educación del consumidor, deberán requerir autorización a la autoridad de aplicación para funcionar como tales. Se entenderá que cumplen con dicho objetivo, cuando sus fines sean los siguientes:
 
 a) Velar por el fiel cumplimiento de las leyes, decretos y resoluciones de carácter nacional, provincial o municipal, que hayan sido dictadas para proteger al consumidor;
 
@@ -556,7 +556,7 @@ i) Realizar cualquier otra actividad tendiente a la defensa o protección de los
 
 (La parte del inciso g) que dice: En los estudios sobre controles de calidad, previo a su divulgación, se requerirá la certificación de los mismos por los organismos de contralor correspondientes, quienes se expedirán en los plazos que establezca la reglamentación" fue observada por el Art. 10 del [Decreto Nacional Nº 2089/93](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=17723) B.O. 15/10/1993)
 
-**ARTICULO 57.-** Requisitos para Obtener el Reconocimiento. Para ser reconocidas como organizaciones de consumidores, las asociaciones civiles deberán acreditar, además de los requisitos generales, las siguientes condiciones especiales:
+**Art. 57.-** Requisitos para Obtener el Reconocimiento. Para ser reconocidas como organizaciones de consumidores, las asociaciones civiles deberán acreditar, además de los requisitos generales, las siguientes condiciones especiales:
 
 a) No podrán participar en actividades políticas partidarias;
 
@@ -566,7 +566,7 @@ c) No podrán recibir donaciones, aportes o contribuciones de empresas comercial
 
 d) Sus publicaciones no podrán contener avisos publicitarios.
 
-**ARTICULO 58.-** Promoción de Reclamos. Las asociaciones de consumidores podrán sustanciar los reclamos de los consumidores de bienes y servicios ante los fabricantes, productores, comerciantes, intermediarios o prestadores de servicios que correspondan, que se deriven del incumplimiento de la presente ley.
+**Art. 58.-** Promoción de Reclamos. Las asociaciones de consumidores podrán sustanciar los reclamos de los consumidores de bienes y servicios ante los fabricantes, productores, comerciantes, intermediarios o prestadores de servicios que correspondan, que se deriven del incumplimiento de la presente ley.
 
 Para promover el reclamo, el consumidor deberá suscribir la petición ante la asociación correspondiente, adjuntando la documentación e información que obre en su poder, a fin de que la entidad promueva todas las acciones necesarias para acercar a las partes.
 
@@ -576,7 +576,7 @@ En esta instancia, la función de las asociaciones de consumidores es estrictame
 
 ### CAPITULO XV - ARBITRAJE
 
-**ARTICULO 59.-** Tribunales Arbitrales. La autoridad de aplicación propiciará la organización de tribunales arbitrales que actuarán como amigables componedores o árbitros de derecho común, según el caso, para resolver las controversias que se susciten con motivo de lo previsto en esta ley. Podrá invitar para que integren estos tribunales arbitrales, en las condiciones que establezca la reglamentación, a las personas que teniendo en cuenta las competencias propongan las asociaciones de consumidores o usuarios y las cámaras empresarias.
+**Art. 59.-** Tribunales Arbitrales. La autoridad de aplicación propiciará la organización de tribunales arbitrales que actuarán como amigables componedores o árbitros de derecho común, según el caso, para resolver las controversias que se susciten con motivo de lo previsto en esta ley. Podrá invitar para que integren estos tribunales arbitrales, en las condiciones que establezca la reglamentación, a las personas que teniendo en cuenta las competencias propongan las asociaciones de consumidores o usuarios y las cámaras empresarias.
 
 Dichos tribunales arbitrales tendrán asiento en la Ciudad Autónoma de Buenos Aires y en todas las ciudades capitales de provincia. Regirá el procedimiento del lugar en que actúa el tribunal arbitral.
 
@@ -586,11 +586,11 @@ Dichos tribunales arbitrales tendrán asiento en la Ciudad Autónoma de Buenos A
 
 ### CAPITULO XVI - EDUCACION AL CONSUMIDOR
 
-**ARTICULO 60.-** Planes educativos. Incumbe al Estado nacional, a la Ciudad Autónoma de Buenos Aires, a las provincias y a los Municipios, la formulación de planes generales de educación para el consumo y su difusión pública, arbitrando las medidas necesarias para incluir dentro de los planes oficiales de educación inicial, primaria, media, terciaria y universitaria los preceptos y alcances de esta ley, así como también fomentar la creación y el funcionamiento de las asociaciones de consumidores y usuarios y la participación de la comunidad en ellas, garantizando la implementación de programas destinados a aquellos consumidores y usuarios que se encuentren en situación desventajosa, tanto en zonas rurales como urbanas.
+**Art. 60.-** Planes educativos. Incumbe al Estado nacional, a la Ciudad Autónoma de Buenos Aires, a las provincias y a los Municipios, la formulación de planes generales de educación para el consumo y su difusión pública, arbitrando las medidas necesarias para incluir dentro de los planes oficiales de educación inicial, primaria, media, terciaria y universitaria los preceptos y alcances de esta ley, así como también fomentar la creación y el funcionamiento de las asociaciones de consumidores y usuarios y la participación de la comunidad en ellas, garantizando la implementación de programas destinados a aquellos consumidores y usuarios que se encuentren en situación desventajosa, tanto en zonas rurales como urbanas.
 
 (Artículo sustituido por art. 30 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 61.-** Formación del Consumidor. La formación del consumidor debe facilitar la comprensión y utilización de la información sobre temas inherentes al consumidor, orientarlo a prevenir los riesgos que puedan derivarse del consumo de productos o de la utilización de los servicios. Para ayudarlo a evaluar alternativas y emplear los recursos en forma eficiente deberán incluir en su formación, entre otros, los siguientes contenidos:
+**Art. 61.-** Formación del Consumidor. La formación del consumidor debe facilitar la comprensión y utilización de la información sobre temas inherentes al consumidor, orientarlo a prevenir los riesgos que puedan derivarse del consumo de productos o de la utilización de los servicios. Para ayudarlo a evaluar alternativas y emplear los recursos en forma eficiente deberán incluir en su formación, entre otros, los siguientes contenidos:
 
 a) Sanidad, nutrición, prevención de las enfermedades transmitidas por los alimentos y adulteración de los alimentos.
 
@@ -604,29 +604,29 @@ e) Protección del medio ambiente y utilización eficiente de materiales.
 
 (Artículo sustituido por art. 31 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 62.-** Contribuciones Estatales. El Estado nacional podrá disponer el otorgamiento de contribuciones financieras con cargo al presupuesto nacional a las asociaciones de consumidores para cumplimentar con los objetivos mencionados en los artículos anteriores.
+**Art. 62.-** Contribuciones Estatales. El Estado nacional podrá disponer el otorgamiento de contribuciones financieras con cargo al presupuesto nacional a las asociaciones de consumidores para cumplimentar con los objetivos mencionados en los artículos anteriores.
 
 En todos los casos estas asociaciones deberán acreditar el reconocimiento conforme a los artículos 56 y 57 de la presente ley. La autoridad de aplicación seleccionará a las asociaciones en función de criterios de representatividad, autofinanciamiento, actividad y planes futuros de acción a cumplimentar por éstas.
 
 ### CAPITULO XVII - DISPOSICIONES FINALES
 
-**ARTICULO 63.-** Para el supuesto de contrato de transporte aéreo, se aplicarán las normas del Código Aeronáutico, los tratados internacionales y, supletoriamente, la presente ley.
+**Art. 63.-** Para el supuesto de contrato de transporte aéreo, se aplicarán las normas del Código Aeronáutico, los tratados internacionales y, supletoriamente, la presente ley.
 
 (Artículo derogado por art. 32 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008, este último artículo fue observado por art. 1° [Decreto N° 565/2008](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139253) B.O. 7/4/2008)
 
-**ARTICULO 64.-** Modifícase el artículo 13 de la ley 22.802, que quedará redactado de la siguiente forma:
+**Art. 64.-** Modifícase el artículo 13 de la ley 22.802, que quedará redactado de la siguiente forma:
 
 Los gobiernos provinciales y la Municipalidad de la Ciudad de Buenos Aires actuarán como autoridades locales de aplicación ejerciendo el control y vigilancia sobre el cumplimiento de la presente ley y sus normas reglamentarias, con respecto a los hechos cometidos en su jurisdicción y que afecten exclusivamente al comercio local, juzgando las presuntas infracciones.
 
 A ese fin determinarán los organismos que cumplirán tales funciones, pudiendo los gobiernos provinciales delegar sus atribuciones en los gobiernos municipales, excepto la de juzgamiento que sólo será delegable en el caso de exhibición de precios previsto en el inciso i) del artículo 12\.
 
-**ARTICULO 65.-** La presente ley es de orden público, rige en todo el territorio nacional y entrará en vigencia a partir de la fecha de su publicación en el Boletín Oficial. El Poder Ejecutivo debe reglamentar la presente ley dentro de los ciento veinte (120) días a partir de su publicación.
+**Art. 65.-** La presente ley es de orden público, rige en todo el territorio nacional y entrará en vigencia a partir de la fecha de su publicación en el Boletín Oficial. El Poder Ejecutivo debe reglamentar la presente ley dentro de los ciento veinte (120) días a partir de su publicación.
 
-**ARTICULO 66.-** El Poder Ejecutivo nacional, a través de la autoridad de aplicación, dispondrá la edición de un texto ordenado de la Ley Nº 24.240 de Defensa del Consumidor con sus modificaciones.
+**Art. 66.-** El Poder Ejecutivo nacional, a través de la autoridad de aplicación, dispondrá la edición de un texto ordenado de la Ley Nº 24.240 de Defensa del Consumidor con sus modificaciones.
 
 (Artículo incorporado por art. 33 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008)
 
-**ARTICULO 66.-** Comuníquese al Poder Ejecutivo. — ALBERTO R. PIERRI. — EDUARDO MENEM. — Juan Estrada. — Edgardo Piuzzi.
+**Art. 66.-** Comuníquese al Poder Ejecutivo. — ALBERTO R. PIERRI. — EDUARDO MENEM. — Juan Estrada. — Edgardo Piuzzi.
 
 (Nota Infoleg: debido a la incorporación dispuesta por art. 33 de la [Ley N° 26.361](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=139252) B.O. 7/4/2008, ha quedado duplicado el número del presente artículo)
 
