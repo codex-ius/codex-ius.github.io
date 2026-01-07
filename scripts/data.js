@@ -168,6 +168,14 @@ export const cardsData = {
       linkText: 'Ejecutar Terminal',
       icon: 'history_toggle_off',
       version: 'v1.0'
+    },
+    {
+      title: 'Editor de Codex_Jus',
+      description: 'Herramienta para generar publicaciones editoriales.',
+      link: './sources/res_app/generador.html',
+      linkText: 'Ejecutar Terminal',
+      icon: 'history_toggle_off',
+      version: 'v1.0'
     }
   ]
 };

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex_Ius - Editor Vertical</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+
+        * {
+            -webkit-print-color-adjust: exact;
+            /* Fuerza a Chrome a imprimir fondos y colores */
+            print-color-adjust: exact;
+        }
+
+        :root {
+            --slide-width: 1080px;
+            --slide-height: 1350px;
+            --zoom: 0.50;
+            --bg-slide: #ffffff;
+            --text-main: #1a1a1f;
+            --accent-cyber: #003366;
+            --accent-digital: #00d4ff;
+            --bg-dark-module: #0f0f12;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: var(--font-mono);
+            background: #050505;
+            /* Quitamos el overflow hidden para permitir que el motor de impresión vea todo */
+        }
+
+        /* EDITOR INTERFACE */
+        #editor-container {
+            height: 40vh;
+            background: #0f0f12;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            box-sizing: border-box;
+            border-bottom: 2px solid var(--accent-digital);
+            /* Corregido: accent-digital */
+            z-index: 100;
+            flex-shrink: 0;
+        }
+
+        textarea {
+            flex-grow: 1;
+            background: #050505;
+            color: var(--accent-digital);
+            /* Corregido: accent-digital */
+            padding: 15px;
+            border: 1px solid #222;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            resize: none;
+            outline: none;
+            border-radius: 4px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: transparent;
+            color: var(--accent-digital);
+            /* Corregido: accent-digital */
+            border: 1px solid var(--accent-digital);
+            /* Corregido: accent-digital */
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: var(--accent-digital);
+            color: black;
+            box-shadow: 0 0 15px var(--accent-digital);
+        }
+
+        /* PREVIEW PANEL */
+        #preview-container {
+            flex-grow: 1;
+            /* Ocupa el resto de la pantalla */
+            background: #222;
+            overflow-y: auto;
+            /* Permite scroll en pantalla */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        #render-area {
+            transform: scale(var(--zoom));
+            transform-origin: top center;
+        }
+
+        /* LÁMINA - FONDO BLANCO */
+        .slide {
+            width: var(--slide-width);
+            height: var(--slide-height);
+            background: var(--bg-slide);
+            margin-bottom: 30px;
+            padding: 100px 80px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            color: var(--text-main);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header Decorativo */
+        .slide::before {
+            content: "CODEX_IUS // SYSTEM_LOG // 2026";
+            position: absolute;
+            top: 40px;
+            left: 80px;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--accent-cyber);
+            letter-spacing: 3px;
+        }
+
+        /* TÍTULOS */
+        .slide h1 {
+            font-size: 80px;
+            color: white;
+            background: var(--accent-cyber);
+            /* Título invertido para impacto */
+            padding: 10px 30px;
+            display: inline-block;
+            width: fit-content;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+        }
+
+        .slide h2 {
+            font-size: 50px;
+            color: var(--accent-cyber);
+            border-bottom: 6px solid var(--accent-cyber);
+            padding-bottom: 10px;
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .slide h2::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100px;
+            height: 12px;
+            background: var(--accent-digital);
+            /* Detalle cian sobre el azul */
+        }
+
+        /* --- SUBTÍTULO H3 (TÉCNICO / CYBER) --- */
+        .slide h3 {
+            font-size: 34px;
+            color: var(--accent-digital);
+            background: rgba(0, 212, 255, 0.08);
+            /* Fondo muy sutil */
+            padding: 10px 15px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            border-left: 4px solid var(--accent-digital);
+        }
+
+        /* Prefijo decorativo para el H3 */
+        .slide h3::before {
+            content: "[LOG_SEC]";
+            /* O cualquier etiqueta técnica que prefieras */
+            font-size: 14px;
+            margin-right: 15px;
+            background: var(--accent-digital);
+            color: #000;
+            padding: 2px 8px;
+            font-weight: 800;
+        }
+
+        /* PÁRRAFOS */
+        .slide p {
+            font-size: 34px;
+            line-height: 1.6;
+            color: #222;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .slide strong {
+            color: var(--accent-cyber);
+            font-weight: 800;
+            font-style: italic;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 0 4px;
+        }
+
+        /* CITA: EL MÓDULO OSCURO (CYBER-CARD) */
+        .slide blockquote {
+            background: var(--bg-dark-module);
+            color: var(--accent-digital);
+            padding: 60px 40px;
+            margin: 50px 0;
+            border-left: 15px solid var(--accent-digital);
+            position: relative;
+            box-shadow: 15px 15px 0px var(--accent-cyber);
+        }
+
+        .slide blockquote::before {
+            content: "EXTRACTED_DATA";
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 16px;
+            letter-spacing: 2px;
+            color: rgba(0, 212, 255, 0.5);
+        }
+
+        .slide blockquote p {
+            font-size: 32px !important;
+            color: var(--accent-digital) !important;
+            font-style: italic;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* --- LISTAS NO NUMERADAS (MARKDOWN *) --- */
+        .slide ul {
+            list-style: none;
+            /* Eliminamos el círculo aburrido */
+            padding-left: 40px;
+            margin: 30px 0;
+        }
+
+        .slide ul li {
+            font-size: 32px;
+            line-height: 1.4;
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 50px;
+            /* Espacio para el nuevo icono */
+            text-align: left;
+        }
+
+        /* El nuevo "Bullet" Digital */
+        .slide ul li::before {
+            content: "::";
+            /* O puedes usar ">" o "■" */
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-digital);
+            font-weight: 800;
+            font-family: var(--font-mono);
+            /* Un pequeño resplandor para que parezca luz */
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+        }
+
+        /* Efecto para sub-elementos si anidas listas */
+        .slide ul ul {
+            margin: 15px 0;
+            opacity: 0.8;
+        }
+
+        .slide ul ul li {
+            font-size: 28px;
+        }
+
+        .slide ul ul li::before {
+            content: ">>";
+            color: var(--accent-cyber);
+        }
+
+        /* --- CUADRO DE DATOS HTML --- */
+        .cyber-table {
+            width: 100%;
+            border: 2px solid var(--accent-cyber);
+            font-family: var(--font-mono);
+            font-size: 28px;
+            margin: 20px 0;
+        }
+
+        .cyber-table th {
+            background: var(--accent-cyber);
+            color: var(--accent-digital);
+            padding: 15px;
+            text-align: left;
+            border-bottom: 4px solid var(--accent-digital);
+        }
+
+        .cyber-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+        }
+
+        /* Resaltado de la primera celda como "Primary Key" */
+        .cyber-table td:first-child {
+            color: var(--accent-cyber);
+            font-weight: 800;
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        /* FOOTER */
+        .slide::after {
+            content: "© 2026 CODEX_IUS - ANALÍTICA JURÍDICA // SECURED_CONNECTION";
+            position: absolute;
+            bottom: 50px;
+            left: 80px;
+            right: 80px;
+            border-top: 2px solid #eee;
+            padding-top: 15px;
+            font-size: 18px;
+            color: #999;
+            text-align: center;
+        }
+
+        /* SOLUCIÓN FINAL PARA IMPRESIÓN */
+        @media print {
+            body {
+                overflow: visible !important;
+                display: block !important;
+                background: white !important;
+            }
+
+            #editor-container {
+                display: none !important;
+            }
+
+            #preview-container {
+                display: block !important;
+                overflow: visible !important;
+                background: white !important;
+                height: auto !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            #render-area {
+                transform: scale(1) !important;
+                width: var(--slide-width) !important;
+            }
+
+            .slide {
+                margin: 0 !important;
+                box-shadow: none !important;
+                page-break-after: always !important;
+                page-break-inside: avoid !important;
+                border: none !important;
+            }
+        }
+
+        /* --- ESTILOS DE PORTADA IMPACTO --- */
+        .portada {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--bg-slide);
+            border: 20px solid var(--accent-cyber);
+            /* Marco perimetral */
+            padding: 60px !important;
+        }
+
+        .portada-header {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 20px;
+            color: var(--accent-cyber);
+            font-weight: 800;
+            border-bottom: 2px solid var(--accent-digital);
+            padding-bottom: 10px;
+        }
+
+        .portada-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .titulo-principal {
+            font-size: 110px !important;
+            /* Tamaño masivo */
+            line-height: 0.85;
+            background: var(--accent-cyber) !important;
+            color: white !important;
+            padding: 20px !important;
+            margin: 0 !important;
+            clip-path: none !important;
+            letter-spacing: -5px;
+            width: 100%;
+        }
+
+        .divider {
+            height: 15px;
+            background: var(--accent-digital);
+            width: 150px;
+            margin: 40px 0;
+        }
+
+        .subtitulo-portada {
+            font-size: 60px !important;
+            color: var(--accent-cyber) !important;
+            background: none !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            line-height: 1.1;
+        }
+
+        .subtitulo-portada strong {
+            background: var(--accent-digital) !important;
+            color: black !important;
+            font-style: normal !important;
+        }
+
+        .portada-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
+        }
+
+        .autor-box {
+            display: flex;
+            flex-direction: column;
+            font-family: var(--font-mono);
+        }
+
+        .autor-box .label {
+            font-size: 16px;
+            color: #999;
+        }
+
+        .autor-box .value {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent-cyber);
+        }
+
+        /* Línea de efecto "escáner" decorativa */
+        .scan-line {
+            width: 100%;
+            height: 2px;
+            background: var(--accent-digital);
+            position: absolute;
+            bottom: -20px;
+            box-shadow: 0 0 10px var(--accent-digital);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="editor-container">
+        <div class="controls">
+            <span style="color: #007bff; font-weight: bold;">Codex_Ius Mobile Editor</span>
+            <button onclick="window.print()">Exportar PDF</button>
+        </div>
+        <textarea id="markdown-input" placeholder="Escribe aquí tu Markdown..."></textarea>
+    </div>
+
+    <div id="preview-container">
+        <div id="render-area">
+        </div>
+    </div>
+
+    <script>
+        // Añade esto al principio de tu <script>
+        marked.setOptions({
+            headerIds: false,
+            mangle: false,
+            sanitize: false, // Permite el uso de HTML Vanilla
+            breaks: true    // Respeta los saltos de línea simples
+        });
+
+        const input = document.getElementById('markdown-input');
+        const output = document.getElementById('render-area');
+
+        function updatePreview() {
+            const slidesContent = input.value.split('---');
+            output.innerHTML = '';
+            slidesContent.forEach(content => {
+                if (content.trim() === "") return;
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'slide';
+                slideDiv.innerHTML = marked.parse(content.trim());
+                output.appendChild(slideDiv);
+            });
+        }
+
+        input.addEventListener('input', updatePreview);
+
+        // Contenido de inicio
+        input.value = `<div class="portada">
+  <div class="portada-header">
+    <span class="version">V.2026.01</span>
+    <span class="status">STATUS: ENCRYPTED_FILE</span>
+  </div>
+  
+  <div class="portada-content">
+    <h1 class="titulo-principal">CODEX_IUS</h1>
+    <div class="divider"></div>
+    <h2 class="subtitulo-portada">Análisis Avanzado de la <strong>Reforma Procesal 2026</strong></h2>
+  </div>
+
+  <div class="portada-footer">
+    <div class="autor-box">
+      <span class="label">EDITORIAL_LEGAL</span>
+      <span class="value">EXCELENCIA JURÍDICA DIGITAL</span>
+    </div>
+    <div class="scan-line"></div>
+  </div>
+</div>`;
+        updatePreview();
+    </script>
+</body>
+
+</html>
