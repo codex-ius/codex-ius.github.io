@@ -174,7 +174,7 @@
             /* Detalle cian sobre el azul */
         }
 
-        h2.subtitulo-portada::after{
+        h2.subtitulo-portada::after {
             bottom: -20px;
         }
 
@@ -252,6 +252,65 @@
             margin: 0;
             margin-top: 5px;
             text-align: left;
+        }
+
+        /* --- LISTAS NUMERADAS (MARKDOWN 1.) --- */
+        .slide ol {
+            list-style: none;
+            /* Quitamos el número por defecto */
+            counter-reset: slide-counter;
+            /* Inicializamos un contador */
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+
+        .slide ol li {
+            font-size: 17px;
+            line-height: 1.2;
+            color: #333;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 35px;
+            /* Un poco más de espacio para números de dos dígitos */
+            text-align: left;
+            counter-increment: slide-counter;
+            /* Incrementamos el contador en cada li */
+        }
+
+        /* El número "Digital" */
+        .slide ol li::before {
+            content: counter(slide-counter, decimal-leading-zero) ".";
+            /* "decimal-leading-zero" pone un 0 antes (01, 02...) para más estilo tech */
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-digital);
+            font-weight: 800;
+            font-family: var(--font-mono);
+            text-shadow: 0 0 8px rgba(0, 213, 255, 0.735);
+            font-size: 0.9em;
+            /* Ligeramente más pequeño para que no compita con el texto */
+        }
+
+        /* Sub-niveles para listas numeradas */
+        .slide ol ol {
+            margin: 15px 0;
+            opacity: 0.8;
+            counter-reset: sub-counter;
+            /* Reinicia contador para sub-listas */
+        }
+
+        .slide ol ol li {
+            font-size: 16px;
+            /* Ajustado de tus 28px (que quizás era un typo) para ser legible */
+            padding-left: 40px;
+            counter-increment: sub-counter;
+        }
+
+        .slide ol ol li::before {
+            content: counter(slide-counter) "." counter(sub-counter);
+            /* Formato tipo 1.1, 1.2... */
+            color: var(--accent-cyber);
         }
 
         /* --- LISTAS NO NUMERADAS (MARKDOWN *) --- */
@@ -419,7 +478,7 @@
         }
 
         .titulo-principal {
-            font-size: 68px !important;
+            font-size: 50px !important;
             /* Tamaño masivo */
             line-height: 0.9;
             background: var(--accent-cyber) !important;
@@ -545,7 +604,7 @@
             border-bottom: 2px solid var(--accent-cyber);
         }
 
-        .portada.contraportada h2::after{
+        .portada.contraportada h2::after {
             bottom: -4px;
         }
     </style>
@@ -677,7 +736,7 @@ El artículo 92 bis de la LCT ha sido modificado para extender los plazos de eva
 ## Fondo de Cese
 ### Alternativa a la Indemnización
 
-### [LOG_SEC] Art. 245 LCT (Opcional)
+### Art. 245 LCT (Opcional)
 Se permite que por convenio colectivo se sustituya el sistema de indemnizaciones por un **Fondo de Cese Laboral** (Modelo UOCRA).
 
 * **Aporte:** Mensual a cargo del empleador.
