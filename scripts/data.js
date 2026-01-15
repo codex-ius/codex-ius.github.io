@@ -27,7 +27,7 @@ export const cardsData = {
       author: 'Abog. Quiroga, R.',
       date: '2018'
     },
-    {
+   /* {
       title: 'Derecho Internacional Privado: Según Cod. Civ. Com, Tratados de Montevideo y CIDIPs',
       description: 'Comentario a la legislación internacional privada y ensayo de concordancias.',
       link: './sources/res_archive/dipr.html',
@@ -35,7 +35,7 @@ export const cardsData = {
       branch: 'internacional-privado',
       author: 'Abog. Quiroga, R.',
       date: '2017'
-    },
+    },*/
     {
       title: 'Ensayo de respuesta al delito - 26/09/2017',
       description: 'Muchas ciencias se han involucrado en la tarea de intentar explicar el delito y brindar algún tipo de solución, sin embargo hasta el día de hoy resulta un esfuerzo sin frutos. En este trabajo hago una reseña a algunas teorías que resultarían útiles considerar al momento de intentar abordar el fenómeno delictivo o al menos tratar de entender porque una persona decide cometer crímenes.',
@@ -54,7 +54,7 @@ export const cardsData = {
       author: 'Abog. Quiroga, R.',
       date: '2021'
     },
-    {
+   /* {
       title: 'Derecho Penal Neurocriminal',
       description: '¿Y si la respuesta al delito se lograse, al menos académicamente, mediante la creación de una nueva transdisciplina?',
       link: './sources/res_archive/dpnc.html',
@@ -62,8 +62,8 @@ export const cardsData = {
       branch: 'penal',
       author: 'Abog. Quiroga, R.',
       date: '2020'
-    },
-    {
+    },*/
+    /*{
       title: 'Breve reflexión sobre el "Ecotributo"...',
       description: 'Ecotaxes o ecotributos, el nombre que se le da a lo que puede ser en apariencia una buena política de estado o una excusa ética para privarnos de nuestra propiedad injustamente. En este trabajo hago una breve reseña del fenómeno.',
       link: './sources/res_archive/ecotax.html',
@@ -71,7 +71,7 @@ export const cardsData = {
       branch: 'tributario',
       author: 'Abog. Quiroga, R.',
       date: '2020'
-    },
+    },*/
     {
       title: 'Ética Judicial: Lineamientos - 27/12/2019',
       description: '¿Quien juzga a quienes nos juzgan?... Resulta ser una pregunta que todos nos hemos hecho alguna vez y a pesar de que tenga respuesta constitucional, puede que no esté de mas cuestionarnos si es suficiente o considerar si resultaría útil juzgar la ética de quienes nos juzgan.',
