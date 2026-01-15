@@ -183,7 +183,7 @@
             height: var(--slide-height);
             background: var(--bg-slide);
             margin-bottom: 30px;
-            padding: 80px 60px;
+            padding: 30px 60px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -252,7 +252,7 @@
         /* --- SUBTÍTULO H3 (TÉCNICO / CYBER) --- */
         .slide h3 {
             /* font-size: 22px;*/
-            color: var(--accent-digital);
+            color: var(--accent-cyber);
             background: rgba(0, 212, 255, 0.08);
             /* Fondo muy sutil */
             /* padding: 8px 12px;*/
@@ -481,7 +481,7 @@
         .cyber-table td {
             padding: 10px;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            /*color: #333;*/
+            color: #333;
         }
 
         /* FILAS PARES: El efecto Zebra */
@@ -501,6 +501,7 @@
         }
 
         /* FOOTER */
+
         .slide::after {
             content: "© 2026 CODEX_IUS - ANALÍTICA JURÍDICA // SECURED_CONNECTION";
             position: absolute;
@@ -513,6 +514,17 @@
             color: #999;
             text-align: right;
             font-family: var(--font-mono);
+        }
+
+        /* OCULTAR EN PORTADA (Primera lámina) */
+        .slide:first-of-type::after {
+            display: none !important;
+        }
+
+        /* OCULTAR EN CONTRAPORTADA (Última lámina) */
+        /* Lo ocultamos porque la contraportada ya tiene su propio diseño de cierre */
+        .slide:last-of-type::after {
+            display: none !important;
         }
 
         /* --- PRINT LOGIC --- */
