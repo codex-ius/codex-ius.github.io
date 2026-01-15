@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codex_Ius - Editor Vertical</title>
+    <title>REPORTE_SISTEMA</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <style>
@@ -14,21 +14,55 @@
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
             box-sizing: border-box;
+
         }
 
         :root {
+            /* Dimensiones */
             --slide-width: 176mm;
             --slide-height: 250mm;
             --zoom: 0.65;
-            /* Zoom optimizado para edición */
-            /* Ajusta este zoom para ver la hoja completa en tu monitor */
+
+            /* Colores Base */
             --bg-slide: #ffffff;
             --text-main: #1a1a1f;
-            --accent-cyber: #003366;
-            --accent-digital: #00d4ff;
             --bg-dark-module: #0f0f12;
             --font-mono: 'JetBrains Mono', monospace;
+
         }
+
+        /* --- VARIABLES DE TEMA CENTRALIZADAS --- */
+
+        /* --- PALETA TÓXICA / TERMINAL DESATURADA --- */
+
+        /* Tema Default (Noticia - Azul Cobalto/Grisáceo) */
+        body,
+        :root {
+            --accent-cyber: #1a2b3c;
+            /* Azul petróleo oscuro y sobrio */
+            --accent-digital: #7dd3fc;
+            /* Cian pálido, menos neón, más "fósforo" */
+            --accent-glow: rgba(125, 211, 252, 0.8);
+        }
+
+        /* Variación Doctrina (Ámbar / Terminal Clásica) */
+        body.tema-doctrina {
+            --accent-cyber: #3d2b1f;
+            /* Marrón cuero/madera oscuro */
+            --accent-digital: #e2a046;
+            /* Ámbar desaturado (estilo terminal vintage) */
+            --accent-glow: rgba(226, 160, 70, 0.8);
+        }
+
+        /* Variación Educación (Verde Fósforo / Tóxico) */
+        body.tema-educacion {
+            --accent-cyber: #1a2a1a;
+            /* Verde bosque profundo, casi negro */
+            --accent-digital: #84cc16;
+            /* Verde lima lavado (el clásico "Matrix" desaturado) */
+            --accent-glow: rgba(132, 204, 22, 0.8);
+        }
+
 
         body {
             display: flex;
@@ -37,7 +71,6 @@
             margin: 0;
             font-family: var(--font-mono);
             background: #050505;
-            /* Quitamos el overflow hidden para permitir que el motor de impresión vea todo */
         }
 
         /* EDITOR INTERFACE */
@@ -47,25 +80,29 @@
             display: flex;
             flex-direction: column;
             padding: 15px;
-            box-sizing: border-box;
             border-bottom: 2px solid var(--accent-digital);
-            /* Corregido: accent-digital */
             z-index: 100;
             flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        #editor-container.hidden {
+            height: 0;
+            padding: 0;
+            overflow: hidden;
+            border-bottom: none;
         }
 
         textarea {
             flex-grow: 1;
             background: #050505;
             color: var(--accent-digital);
-            /* Corregido: accent-digital */
             padding: 15px;
             border: 1px solid #222;
             font-family: var(--font-mono);
             font-size: 14px;
             resize: none;
             outline: none;
-            border-radius: 4px;
         }
 
         .controls {
@@ -73,15 +110,35 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
+            gap: 10px;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="text"],
+        select {
+            background: #1a1a1f;
+            border: 1px solid #333;
+            color: white;
+            padding: 5px 10px;
+            font-family: var(--font-mono);
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            border-color: var(--accent-digital);
         }
 
         button {
             padding: 8px 16px;
             background: transparent;
             color: var(--accent-digital);
-            /* Corregido: accent-digital */
             border: 1px solid var(--accent-digital);
-            /* Corregido: accent-digital */
             cursor: pointer;
             font-weight: bold;
             text-transform: uppercase;
@@ -94,13 +151,21 @@
             box-shadow: 0 0 15px var(--accent-digital);
         }
 
+        /* BOTÓN FLOTANTE MODO ENFOQUE */
+        #toggle-editor-btn {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+            z-index: 1001;
+            font-size: 10px;
+            opacity: 0.7;
+        }
+
         /* PREVIEW PANEL */
         #preview-container {
             flex-grow: 1;
-            /* Ocupa el resto de la pantalla */
             background: #222;
             overflow-y: auto;
-            /* Permite scroll en pantalla */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -147,19 +212,25 @@
             color: white;
             background: var(--accent-cyber);
             /* Título invertido para impacto */
-            padding: 8px 20px;
+            /*padding: 8px 20px;*/
             display: inline-block;
             width: fit-content;
-            margin-bottom: 25px;
+            /* margin-bottom: 25px;*/
             clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+            font-size: 38px;
+            /* Antes 48px */
+            padding: 6px 15px;
+            margin-bottom: 20px;
         }
 
         .slide h2 {
-            font-size: 32px;
+            /* font-size: 32px;*/
             color: var(--accent-cyber);
             border-bottom: 4px solid var(--accent-cyber);
-            padding-bottom: 8px;
-
+            /*padding-bottom: 8px;*/
+            font-size: 26px;
+            /* Antes 32px */
+            padding-bottom: 6px;
             position: relative;
         }
 
@@ -180,11 +251,11 @@
 
         /* --- SUBTÍTULO H3 (TÉCNICO / CYBER) --- */
         .slide h3 {
-            font-size: 22px;
+            /* font-size: 22px;*/
             color: var(--accent-digital);
             background: rgba(0, 212, 255, 0.08);
             /* Fondo muy sutil */
-            padding: 8px 12px;
+            /* padding: 8px 12px;*/
             margin-top: 15px;
             margin-bottom: 10px;
             font-weight: 700;
@@ -193,6 +264,11 @@
             display: flex;
             align-items: center;
             border-left: 4px solid var(--accent-digital);
+
+            font-size: 18px;
+            /* Antes 22px */
+            padding: 6px 10px;
+
         }
 
         /* Prefijo decorativo para el H3 */
@@ -209,19 +285,34 @@
 
         /* PÁRRAFOS */
         .slide p {
-            font-size: 17px;
-            line-height: 1.6;
+            /* font-size: 17px;*/
+            /* line-height: 1.6;*/
             color: #333;
             text-align: justify;
-            margin-bottom: 18px;
+            /* margin-bottom: 18px;*/
+
+            font-size: 14px;
+            /* Antes 17px */
+            line-height: 1.5;
+            margin-bottom: 14px;
         }
 
         .slide strong {
             color: var(--accent-cyber);
             font-weight: 800;
             font-style: italic;
-            background: rgba(0, 212, 255, 0.1);
-            padding: 0 3px;
+            /* El truco para que no tape: */
+            background: var(--accent-glow);
+            padding: 0 4px;
+            border-radius: 2px;
+
+            /* Esto lo envía "visualmente" al fondo de las letras */
+            mix-blend-mode: multiply;
+
+            /* Aseguramos que se comporte como una caja inline pero contenida */
+            display: inline;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
         }
 
         /* CITA: EL MÓDULO OSCURO (CYBER-CARD) */
@@ -246,12 +337,14 @@
         }
 
         .slide blockquote p {
-            font-size: 19px !important;
+            /* font-size: 19px !important;*/
             color: var(--accent-digital) !important;
             font-style: italic;
             margin: 0;
             margin-top: 5px;
             text-align: left;
+            font-size: 16px !important;
+            /* Antes 19px */
         }
 
         /* --- LISTAS NUMERADAS (MARKDOWN 1.) --- */
@@ -265,16 +358,20 @@
         }
 
         .slide ol li {
-            font-size: 17px;
+            /* font-size: 17px;*/
             line-height: 1.2;
             color: #333;
-            margin-bottom: 12px;
+            /* margin-bottom: 12px;*/
             position: relative;
             padding-left: 35px;
             /* Un poco más de espacio para números de dos dígitos */
             text-align: left;
             counter-increment: slide-counter;
             /* Incrementamos el contador en cada li */
+
+            font-size: 14px;
+            /* Antes 17px */
+            margin-bottom: 8px;
         }
 
         /* El número "Digital" */
@@ -301,7 +398,7 @@
         }
 
         .slide ol ol li {
-            font-size: 16px;
+            /*font-size: 16px;*/
             /* Ajustado de tus 28px (que quizás era un typo) para ser legible */
             padding-left: 40px;
             counter-increment: sub-counter;
@@ -322,14 +419,18 @@
         }
 
         .slide ul li {
-            font-size: 17px;
+            /* font-size: 17px;*/
             line-height: 1.2;
             color: #333;
-            margin-bottom: 12px;
+            /* margin-bottom: 12px;*/
             position: relative;
             padding-left: 25px;
             /* Espacio para el nuevo icono */
             text-align: left;
+
+            font-size: 14px;
+            /* Antes 17px */
+            margin-bottom: 8px;
         }
 
         /* El nuevo "Bullet" Digital */
@@ -352,9 +453,7 @@
             opacity: 0.8;
         }
 
-        .slide ul ul li {
-            font-size: 28px;
-        }
+
 
         .slide ul ul li::before {
             content: ">>";
@@ -368,6 +467,7 @@
             font-family: var(--font-mono);
             font-size: 14px;
             margin: 15px 0;
+            border-collapse: collapse;
         }
 
         .cyber-table th {
@@ -380,15 +480,24 @@
 
         .cyber-table td {
             padding: 10px;
-            border-bottom: 1px solid #eee;
-            color: #333;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            /*color: #333;*/
+        }
+
+        /* FILAS PARES: El efecto Zebra */
+        .cyber-table tr:nth-child(even) {
+            background: var(--accent-glow);
+            /* Usa el color tenue del tema actual */
+            color: var(--bg-slide) !important;
         }
 
         /* Resaltado de la primera celda como "Primary Key" */
         .cyber-table td:first-child {
-            color: var(--accent-cyber);
+            /* color: var(--accent-cyber);
             font-weight: 800;
-            background: rgba(0, 212, 255, 0.05);
+            /* Quitamos el background fijo de aquí para que no tape el efecto zebra */
+            border-left: 4px solid var(--accent-digital);
+            /* Un detalle más tech */
         }
 
         /* FOOTER */
@@ -406,8 +515,9 @@
             font-family: var(--font-mono);
         }
 
-        /* SOLUCIÓN FINAL PARA IMPRESIÓN */
+        /* --- PRINT LOGIC --- */
         @media print {
+
             @page {
                 size: 176mm 250mm;
                 /* B5 Exacto */
@@ -417,17 +527,18 @@
             body {
                 overflow: visible !important;
                 display: block !important;
-                background: white !important;
+                /*background: white !important;*/
             }
 
-            #editor-container {
+            #editor-container,
+            #toggle-editor-btn {
                 display: none !important;
             }
 
             #preview-container {
                 display: block !important;
                 overflow: visible !important;
-                background: white !important;
+                /* background: white !important;*/
                 height: auto !important;
                 padding: 0 !important;
                 margin: 0 !important;
@@ -444,6 +555,15 @@
                 page-break-after: always !important;
                 page-break-inside: avoid !important;
                 border: none !important;
+                background-color: #ffffff;/
+            }
+
+            /* Forzamos que la última lámina mantenga su degradado en la impresión */
+            .slide:last-of-type {
+                display: flex !important;
+                /* Asegura que se vea */
+                background: linear-gradient(135deg, #ffffff 0%, var(--accent-glow) 100%) !important;
+                -webkit-print-color-adjust: exact;
             }
         }
 
@@ -478,7 +598,7 @@
         }
 
         .titulo-principal {
-            font-size: 50px !important;
+            /* font-size: 50px !important;*/
             /* Tamaño masivo */
             line-height: 0.9;
             background: var(--accent-cyber) !important;
@@ -488,6 +608,8 @@
             clip-path: none !important;
             letter-spacing: -2px;
             width: 100%;
+            font-size: 42px !important;
+            /* Antes 50px */
         }
 
         .divider {
@@ -498,7 +620,7 @@
         }
 
         .subtitulo-portada {
-            font-size: 32px !important;
+            /* font-size: 32px !important;*/
             color: var(--accent-cyber) !important;
             background: none !important;
             border: none !important;
@@ -506,12 +628,30 @@
             margin: 0 !important;
             margin-top: 20px !important;
             line-height: 1.1;
+            font-size: 26px !important;
+            /* Antes 32px */
         }
 
         .subtitulo-portada strong {
-            background: var(--accent-digital) !important;
+            /* background: var(--accent-digital) !important;
             color: black !important;
-            font-style: normal !important;
+            font-style: normal !important;*/
+            color: var(--accent-cyber);
+            font-weight: 800;
+            font-style: italic;
+
+            /* El truco para que no tape: */
+            background: var(--accent-glow);
+            padding: 0 4px;
+            border-radius: 2px;
+
+            /* Esto lo envía "visualmente" al fondo de las letras */
+            mix-blend-mode: multiply;
+
+            /* Aseguramos que se comporte como una caja inline pero contenida */
+            display: inline;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
         }
 
         .portada-footer {
@@ -607,31 +747,71 @@
         .portada.contraportada h2::after {
             bottom: -4px;
         }
+
+        /* ESTILO DINÁMICO PARA LA CONTRAPORTADA */
+        .slide:last-of-type {
+            /* Usamos el color de acento pero con muy baja opacidad (5% a 8%) */
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 1) 0%,
+                    var(--accent-glow) 100%) !important;
+
+            /*border-right: 20px solid var(--accent-cyber);*/
+            position: relative;
+        }
+
+        /* La barra lateral ahora es interna, garantizando su impresión */
+        .slide::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 100%;
+            background-color: var(--accent-cyber) !important;
+            /* Forzamos que el color se imprima */
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            z-index: 10;
+        }
+
+        /* Marca de agua decorativa solo para la última lámina */
+        .slide:last-of-type::after {
+
+            color: var(--accent-cyber);
+
+        }
     </style>
 </head>
 
 <body>
 
+    <button id="toggle-editor-btn" onclick="toggleEditor()">Editor: ON/OFF</button>
+
     <div id="editor-container">
         <div class="controls">
-            <span style="color: #007bff; font-weight: bold;">Codex_Ius Mobile Editor</span>
+            <div class="input-group">
+                <input type="text" id="doc-title" placeholder="Nombre del reporte..." oninput="updateTitle(this.value)">
+                <select id="theme-selector" onchange="changeTheme(this.value)">
+                    <option value="tema-noticia">Noticia (Azul)</option>
+                    <option value="tema-doctrina">Doctrina (Naranja)</option>
+                    <option value="tema-educacion">Educación (Verde)</option>
+                </select>
+            </div>
             <button onclick="window.print()">Exportar PDF</button>
         </div>
         <textarea id="markdown-input" placeholder="Escribe aquí tu Markdown..."></textarea>
     </div>
 
     <div id="preview-container">
-        <div id="render-area">
-        </div>
+        <div id="render-area"></div>
     </div>
 
     <script>
-        // Añade esto al principio de tu <script>
         marked.setOptions({
             headerIds: false,
             mangle: false,
-            sanitize: false, // Permite el uso de HTML Vanilla
-            breaks: true    // Respeta los saltos de línea simples
+            sanitize: false,
+            breaks: true
         });
 
         const input = document.getElementById('markdown-input');
@@ -649,153 +829,151 @@
             });
         }
 
+        function toggleEditor() {
+            document.getElementById('editor-container').classList.toggle('hidden');
+        }
+
+        function updateTitle(val) {
+            document.title = val || "REPORTE_SISTEMA";
+        }
+
+        function changeTheme(themeName) {
+            document.body.className = themeName;
+        }
+
         input.addEventListener('input', updatePreview);
 
-        // Contenido de inicio
-        input.value = `<div class="portada">
+        // Contenido de inicio (Placeholder)
+        const initialContent = `<div class="portada">
   <div class="portada-header">
-    <span class="version">V.2026.01</span>
-    <span class="status">REPORTE_SISTEMA: REFORMA_LABORAL</span>
+    <span class="version">V.2026.01_STRESS_TEST</span>
+    <span class="status">SISTEMA_OPERATIVO: ESTABLE</span>
   </div>
   
   <div class="portada-content">
-    <h1 class="titulo-principal">REFORMA<br>LABORAL</h1>
+    <h1 class="titulo-principal">PRUEBA_DE<br>SISTEMA</h1>
     <div class="divider"></div>
-    <h2 class="subtitulo-portada">Puntos clave del nuevo <strong>Escenario Normativo</strong> en Argentina</h2>
+    <h2 class="subtitulo-portada">Verificación de límites y <strong>Arquitectura Visual</strong> de Codex_Ius</h2>
   </div>
 
   <div class="portada-footer">
     <div class="autor-box">
-      <span class="label">EDICIÓN_ESPECIAL</span>
-      <span class="value">CODEX_IUS // ANALÍTICA JURÍDICA</span>
+      <span class="label">MODO_DEBUG_ON</span>
+      <span class="value">ESTRÉS_DE_CONTENEDORES_V1</span>
     </div>
   </div>
 </div>
 
 ---
 
-# Visión General
-## Modernización Laboral
-La reforma introducida por la **Ley de Bases** busca reducir la litigiosidad y fomentar la registración, alterando principios históricos del Derecho del Trabajo en Argentina.
-
-### Objetivos Sistémicos
-* Eliminación de multas por falta de registración.
-* Ampliación del período de prueba.
-* Creación del fondo de cese laboral (opcional).
-
-> "La reforma busca equilibrar la carga indemnizatoria con la sostenibilidad de las PyMES."
+# 01_DENSIDAD_TEXTUAL
+## Verificación de Párrafos y Resaltados
+Este es un test de párrafo estándar a **14px**. El objetivo es verificar que la lectura sea cómoda y que el interlineado permita una alta densidad de datos sin sacrificar la estética técnica. Aquí probamos un **resaltado fuerte con strong** que utiliza el modo de mezcla \`multiply\` para no tapar las letras vecinas.
 
 ---
 
-## Registración Laboral
-### Comparativa de Sanciones
+### Sub-módulo de Carga
+* **Punto de Control A:** Verificación de alineación de bullets :: en listas no numeradas.
+* **Punto de Control B:** Test de anidamiento de sub-listas:
+  * Sub-item con color de acento automático.
+  * Verificación de margen izquierdo en segundo nivel.
+* **Punto de Control C:** Resistencia de la caja de texto ante contenidos extensos que rozan el footer decorativo.
+
+> "Esta cita es un bloque de prueba diseñado para ocupar al menos tres líneas de texto y verificar que la sombra proyectada no interfiera con el siguiente elemento del DOM."
+
+---
+
+## 02_ESTRÉS_DATOS
+### Renderizado de Tablas Complejas
+
+A continuación, probamos la \`cyber-table\` con una carga de datos comparativa para verificar el comportamiento de los bordes y el contraste del encabezado.
 
 <table class="cyber-table">
   <thead>
     <tr>
-      <th>CONCEPTO</th>
-      <th>RÉGIMEN ANTERIOR</th>
-      <th>NUEVO SISTEMA</th>
+      <th>PROTOCOLO</th>
+      <th>ESTADO_BASE</th>
+      <th>LATENCIA_MS</th>
+      <th>RESULTADO</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Multas L. 24.013</td>
-      <td>Indemnizaciones duplicadas</td>
-      <td>[ELIMINADAS]</td>
+      <td>CSS_RENDER</td>
+      <td>OPTIMIZADO</td>
+      <td>0.04ms</td>
+      <td>[PASSED]</td>
     </tr>
     <tr>
-      <td>Condonación</td>
-      <td>Inexistente</td>
-      <td>Para PyMES con deudas</td>
+      <td>FONTS_JS_MONO</td>
+      <td>CARGADO</td>
+      <td>1.2ms</td>
+      <td>[ACTIVE]</td>
     </tr>
     <tr>
-      <td>Prueba de Pago</td>
-      <td>Recibos físicos/digitales</td>
-      <td>Bancarización total</td>
+      <td>PRINT_LOGIC</td>
+      <td>MODIFICADO</td>
+      <td>--</td>
+      <td>[WAITING]</td>
+    </tr>
+    <tr>
+      <td>COLOR_THEME</td>
+      <td>DINÁMICO</td>
+      <td>0.1ms</td>
+      <td>[READY]</td>
     </tr>
   </tbody>
 </table>
 
 ---
 
-## Modificaciones Estructurales
-### El Período de Prueba
+## 03_JERARQUÍA_NUMÉRICA
+### Test de Listas Numeradas y Anidadas
 
-El artículo 92 bis de la LCT ha sido modificado para extender los plazos de evaluación del personal, permitiendo una mayor flexibilidad en la contratación inicial.
-
-### Plazos de Implementación
-* **Empresas +100 empleados:** 6 meses.
-* **PyMES (6-99 empleados):** 8 meses.
-* **Microempresas (hasta 5):** 10 meses.
-
-*Nota: Durante este período, ambas partes pueden extinguir la relación sin causa y sin derecho a indemnización.*
-
----
-
-## Fondo de Cese
-### Alternativa a la Indemnización
-
-### Art. 245 LCT (Opcional)
-Se permite que por convenio colectivo se sustituya el sistema de indemnizaciones por un **Fondo de Cese Laboral** (Modelo UOCRA).
-
-* **Aporte:** Mensual a cargo del empleador.
-* **Uso:** Disponible para el trabajador al finalizar el vínculo.
-* **Seguridad:** Administrado por entes especializados.
-
-> "Este mecanismo elimina la incertidumbre del costo de salida para el empleador."
-
----
-
-# Conclusión Analítica
-## El Desafío del 2026
-La reforma plantea un cambio de paradigma. Para el profesional del derecho, el desafío reside en la **correcta interpretación de los nuevos fallos** que surgirán ante posibles planteos de inconstitucionalidad.
-
-### Acciones Sugeridas
-1. Revisar contratos de trabajo vigentes.
-2. Analizar convenios colectivos por rama.
-3. Auditar estados de registración.
-
-**¿Qué impacto cree que tendrá en la tasa de empleo?**
+1. **Nivel Primario de Prueba:** Verificación del prefijo \`01.\` con estilo tecnológico.
+2. **Segmentación de Datos:**
+   1. Sub-nivel numerado para verificar el formato \`1.1\`.
+   2. Verificación de color en el contador secundario.
+3. **Carga de Bloque Crítico:**
+   A continuación se prueba un párrafo extremadamente largo dentro de una lista para ver cómo se comporta la sangría francesa del componente.
 
 ---
 
 <div class="portada contraportada">
   <div class="portada-header">
-    <span class="version">CODEX_IUS // FINAL_LOG</span>
-    <span class="status">SISTEMA_OPERATIVO: ONLINE</span>
+    <span class="version">TEST_END // 2026</span>
+    <span class="status">CONTRA-PORTADA: ACTIVA</span>
   </div>
   
   <div class="portada-content contra-content">
     <div class="status-box">
-      <h2 class="subtitulo-portada">FIN DE <strong>REPORTE</strong></h2>
-      <p class="desc-final">El análisis presentado forma parte de la red de inteligencia jurídica de <strong>Codex_Ius</strong>. La normativa laboral argentina está en constante actualización.</p>
+      <h2 class="subtitulo-portada">SISTEMA <strong>VALIDADO</strong></h2>
+      <p class="desc-final">Si estás viendo un fondo degradado con el color del tema y una barra lateral sólida a la derecha, la **Print Logic** ha sido implementada con éxito.</p>
     </div>
 
    <div class="social-grid">
       <div class="social-item">
-        <span class="label">LINKEDIN_CONTACT</span>
-        <span class="value">linkedin.com/in/tu-perfil</span>
+        <span class="label">DEBUG_ID</span>
+        <span class="value">0X-STRESS-99</span>
       </div>
       <div class="social-item">
-        <span class="label">DATABASE_WEB</span>
-        <span class="value">WWW.CODEXIUS.COM</span>
-      </div>
-      <div class="social-item">
-        <span class="label">ENCRYPTED_MAIL</span>
-        <span class="value">contacto@codexius.com</span>
+        <span class="label">INTEGRIDAD_VISUAL</span>
+        <span class="value">100%_VERIFIED</span>
       </div>
     </div>
   </div>
 
   <div class="portada-footer">
     <div class="autor-box">
-      <span class="label">DISCLAIMER_LEGAL</span>
-      <span class="value" style="font-size: 10px; opacity: 0.7;">Este documento es de carácter informativo. Codex_Ius no se responsabiliza por decisiones tomadas sin asesoría técnica específica.</span>
+      <span class="label">END_OF_LINE</span>
+      <span class="value" style="font-size: 10px; opacity: 0.7;">Prueba de impresión final. No olvides marcar "Gráficos de fondo" en el diálogo de impresión.</span>
     </div>
     <div class="scan-line"></div>
   </div>
 </div>`;
+
+        // Asignación al input
+        input.value = initialContent;
         updatePreview();
     </script>
 </body>

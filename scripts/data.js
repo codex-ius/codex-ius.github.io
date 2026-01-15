@@ -85,14 +85,14 @@ export const cardsData = {
 
   educacion: [
     {
-      title: 'Derecho Privado: Nociones Básicas',
-      description: 'Arts. 1 - 400 del CCyC: Sujetos, bienes, hechos jurídicos y actos jurídicos, relaciones jurídicas... Ver. 23/09/2025',
-      link: './sources/res_archive/pdoGral.html',
-      linkText: 'Ir al Sitio...',
-      branch: 'civil',
-      level: 'Nivel inicial',
-      time: '20 min'
-    },
+      title: 'Próximamente...',
+      description: 'Capsulas o guías de estudio de derecho.',
+      link: '##',
+      linkText: 'Próximamente...',
+      branch: '-',
+      level: '-',
+      time: '-'
+    }/*,
     {
       title: 'Derecho Privado: Nociones Básicas',
       description: 'Arts. 1 - 400 del CCyC: Sujetos, bienes, hechos jurídicos y actos jurídicos, relaciones jurídicas... Ver. 23/09/2025',
@@ -110,7 +110,7 @@ export const cardsData = {
       branch: 'civil',
       level: 'Nivel inicial',
       time: '20 min'
-    }
+    }*/
   ],
 
   noticias: [
@@ -121,33 +121,6 @@ export const cardsData = {
       linkText: 'Ir al sitio...',
       branch: 'laboral',
       isFeatured: true,
-      date: '12 OCT 2023'
-    },
-    {
-      title: 'Reforma Laboral: DNU. 70/2023',
-      description: 'Este análisis completo resume las modificaciones de la Ley 20.744 por el Decreto DNU 70/2023, destacando cambios, supresiones y adiciones en los artículos clave. Se brinda claridad sobre las reformas esenciales y su impacto, facilitando una comprensión precisa y actualizada para quienes consulten la normativa laboral vigente.',
-      link: './sources/res_archive/refLaboral.html',
-      linkText: 'Ir al sitio...',
-      branch: 'civil',
-      isFeatured: false,
-      date: '12 OCT 2023'
-    },
-    {
-      title: 'Reforma Laboral: DNU. 70/2023',
-      description: 'Este análisis completo resume las modificaciones de la Ley 20.744 por el Decreto DNU 70/2023, destacando cambios, supresiones y adiciones en los artículos clave. Se brinda claridad sobre las reformas esenciales y su impacto, facilitando una comprensión precisa y actualizada para quienes consulten la normativa laboral vigente.',
-      link: './sources/res_archive/refLaboral.html',
-      linkText: 'Ir al sitio...',
-      branch: 'penal',
-      isFeatured: false,
-      date: '12 OCT 2023'
-    },
-    {
-      title: 'Reforma Laboral: DNU. 70/2023',
-      description: 'Este análisis completo resume las modificaciones de la Ley 20.744 por el Decreto DNU 70/2023, destacando cambios, supresiones y adiciones en los artículos clave. Se brinda claridad sobre las reformas esenciales y su impacto, facilitando una comprensión precisa y actualizada para quienes consulten la normativa laboral vigente.',
-      link: './sources/res_archive/refLaboral.html',
-      linkText: 'Ir al sitio...',
-      branch: 'laboral',
-      isFeatured: false,
       date: '12 OCT 2023'
     }
   ],
