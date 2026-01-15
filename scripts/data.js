@@ -116,7 +116,7 @@ export const cardsData = {
   noticias: [
     {
       title: 'Proximamente',
-      description: 'Trabajando en el sitio.'
+      description: 'Trabajando en el sitio.',
       link: '##',
       linkText: '-',
       branch: '-',
