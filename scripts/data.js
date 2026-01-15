@@ -115,13 +115,13 @@ export const cardsData = {
 
   noticias: [
     {
-      title: 'Reforma Laboral: DNU. 70/2023',
-      description: 'Este análisis completo resume las modificaciones de la Ley 20.744 por el Decreto DNU 70/2023, destacando cambios, supresiones y adiciones en los artículos clave. Se brinda claridad sobre las reformas esenciales y su impacto, facilitando una comprensión precisa y actualizada para quienes consulten la normativa laboral vigente.',
-      link: './sources/res_archive/refLaboral.html',
-      linkText: 'Ir al sitio...',
-      branch: 'laboral',
+      title: 'Proximamente',
+      description: 'Trabajando en el sitio.'
+      link: '##',
+      linkText: '-',
+      branch: '-',
       isFeatured: true,
-      date: '12 OCT 2023'
+      date: '-'
     }
   ],
 
