@@ -273,23 +273,7 @@
             <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_07.pdf', this)">
                 APLICACIÓN_DEL_DERECHO</div>
             <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_08.pdf', this)">
-                CONCEPTOS_JURÍDICOS</div>
-            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_01.pdf', this)">
-                DIMENSIONES_JURÍDICAS</div>
-            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_02.pdf', this)">
-                ESCUELAS_JURÍDICAS</div>
-            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_03.pdf', this)">
-                FUENTES_DEL_DERECHO</div>
-            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_04.pdf', this)">
-                AXIOLOGÍA_JURÍDICA</div>
-            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_05.pdf', this)">
-                EL_DERECHO_COMO_SISTEMA</div>
-            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_06.pdf', this)">
-                HERMENÉUTICA_JURÍDICA</div>
-            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_07.pdf', this)">
-                APLICACIÓN_DEL_DERECHO</div>
-            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_08.pdf', this)">
-                CONCEPTOS_JURÍDICOS</div>
+                CONCEPTOS_JURÍDICOS</div>            
         </nav>
 
         <main class="viewer-area" style="flex-direction: column;">
@@ -302,7 +286,7 @@
                 </p>
                 <a id="download-link" href="#" target="_blank" class="menu-toggle"
                     style="text-decoration: none; display: inline-block; font-size: 12px;">
-                    [ DOWNLOAD_DOCUMENT_DIRECTLY ]
+                    [ DESCARGA_DIRECTA_DEL_DOCUMENTO ]
                 </a>
             </div>
         </main>
@@ -345,7 +329,7 @@
             // 6. Activar Fallback si la carga es lenta o falla (6 segundos)
             setTimeout(() => {
                 fallback.style.display = 'block';
-            }, 6000);
+            }, 10000);
 
             if (window.innerWidth <= 768) toggleMenu();
         }
