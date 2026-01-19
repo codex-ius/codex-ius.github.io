@@ -23,44 +23,59 @@
             --slide-height: 250mm;
             --zoom: 0.65;
 
-            /* Colores Base */
+            /* Colores Base Corregidos */
             --bg-slide: #ffffff;
-            --text-main: #1a1a1f;
-            --bg-dark-module: #0f0f12;
+            /* Blanco puro para el papel */
+            --text-main: #1e293b;
+            /* Azul pizarra oscuro (más legible que el negro puro) */
+            --bg-dark-module: #0f172a;
+            /* Fondo azul Oxford profundo para blockquotes/tablas */
             --font-mono: 'JetBrains Mono', monospace;
 
+            /* Variable de apoyo para sombras suaves */
+            --shadow-legal: rgba(15, 23, 42, 0.1);
+
         }
 
-        /* --- VARIABLES DE TEMA CENTRALIZADAS --- */
 
-        /* --- PALETA TÓXICA / TERMINAL DESATURADA --- */
+        /* Tema Default (Noticia - Azul Oxford / Autoridad) */
+        /* --- VARIABLES DE TEMA CENTRALIZADAS (CORREGIDAS) --- */
 
-        /* Tema Default (Noticia - Azul Cobalto/Grisáceo) */
+        /* Tema Default (Noticia - Azul Institucional) */
         body,
         :root {
-            --accent-cyber: #1a2b3c;
-            /* Azul petróleo oscuro y sobrio */
-            --accent-digital: #7dd3fc;
-            /* Cian pálido, menos neón, más "fósforo" */
-            --accent-glow: rgba(125, 211, 252, 0.8);
+            --accent-cyber: #0f172a;
+            /* Azul Marino: Autoridad en marcos y títulos */
+            --accent-digital: #334155;
+            /* Azul Pizarra: Discreción en bordes */
+            --accent-glow: #e2e8f0;
+            /* Gris Azulado: Claridad para lectura en tablas */
+            --accent-brand: #2563eb;
+            /* Azul Vibrante: Impacto en bullets y números */
         }
 
-        /* Variación Doctrina (Ámbar / Terminal Clásica) */
+        /* Variación Doctrina (Borgonia / Académico) */
         body.tema-doctrina {
-            --accent-cyber: #3d2b1f;
-            /* Marrón cuero/madera oscuro */
-            --accent-digital: #e2a046;
-            /* Ámbar desaturado (estilo terminal vintage) */
-            --accent-glow: rgba(226, 160, 70, 0.8);
+            --accent-cyber: #450a0a;
+            /* Granate: Rigor académico */
+            --accent-digital: #7f1d1d;
+            /* Vino: Elegancia en subtítulos */
+            --accent-glow: #fce7f3;
+            /* Rosa Pastel: Suavidad para el fondo de citas */
+            --accent-brand: #b91c1c;
+            /* Rojo: Resaltado de jerarquía */
         }
 
-        /* Variación Educación (Verde Fósforo / Tóxico) */
+        /* Variación Educación (Verde Pino / Pedagógico) */
         body.tema-educacion {
-            --accent-cyber: #1a2a1a;
-            /* Verde bosque profundo, casi negro */
-            --accent-digital: #84cc16;
-            /* Verde lima lavado (el clásico "Matrix" desaturado) */
-            --accent-glow: rgba(132, 204, 22, 0.8);
+            --accent-cyber: #064e3b;
+            /* Verde Pino: Estabilidad y formación */
+            --accent-digital: #065f46;
+            /* Esmeralda: Claridad visual */
+            --accent-glow: #d1fae5;
+            /* Menta: Frescura para bloques educativos */
+            --accent-brand: #10b981;
+            /* Esmeralda Vivo: Guía visual en listas */
         }
 
 
@@ -70,13 +85,13 @@
             height: 100vh;
             margin: 0;
             font-family: var(--font-mono);
-            background: #050505;
+            background: #020617;
         }
 
         /* EDITOR INTERFACE */
         #editor-container {
             height: 35vh;
-            background: #0f0f12;
+            background: var(--bg-dark-module);
             display: flex;
             flex-direction: column;
             padding: 15px;
@@ -95,14 +110,20 @@
 
         textarea {
             flex-grow: 1;
-            background: #050505;
-            color: var(--accent-digital);
+            background: #020617;
+            /* Fondo ultra-oscuro */
+            color: var(--accent-glow);
             padding: 15px;
-            border: 1px solid #222;
+            border: 1px solid var(--accent-digital);
             font-family: var(--font-mono);
             font-size: 14px;
             resize: none;
             outline: none;
+        }
+
+        textarea:focus {
+            border-color: var(--accent-brand);
+            /* Resalta el área de escritura activa */
         }
 
         .controls {
@@ -121,8 +142,8 @@
 
         input[type="text"],
         select {
-            background: #1a1a1f;
-            border: 1px solid #333;
+            background: #1e293b;
+            border: 1px solid var(--accent-digital);
             color: white;
             padding: 5px 10px;
             font-family: var(--font-mono);
@@ -131,14 +152,15 @@
 
         input[type="text"]:focus,
         select:focus {
-            border-color: var(--accent-digital);
+            border-color: var(--accent-brand);
         }
 
         button {
             padding: 8px 16px;
             background: transparent;
-            color: var(--accent-digital);
-            border: 1px solid var(--accent-digital);
+            color: var(--accent-brand);
+            /* Botones más visibles */
+            border: 1px solid var(--accent-brand);
             cursor: pointer;
             font-weight: bold;
             text-transform: uppercase;
@@ -146,9 +168,9 @@
         }
 
         button:hover {
-            background: var(--accent-digital);
-            color: black;
-            box-shadow: 0 0 15px var(--accent-digital);
+            background: var(--accent-brand);
+            color: white;
+            box-shadow: 0 0 12px var(--accent-brand);
         }
 
         /* BOTÓN FLOTANTE MODO ENFOQUE */
@@ -159,12 +181,16 @@
             z-index: 1001;
             font-size: 10px;
             opacity: 0.7;
+            background: var(--bg-dark-module);
+            color: var(--accent-brand);
+            border: 1px solid var(--accent-brand);
         }
 
         /* PREVIEW PANEL */
         #preview-container {
             flex-grow: 1;
-            background: #222;
+            background: #0f172a;
+            /* Fondo azul noche para resaltar la lámina blanca */
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -189,7 +215,7 @@
             flex-direction: column;
             position: relative;
             color: var(--text-main);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 40px var(--shadow-legal);
             /*TESTING*/
             overflow: hidden;
         }
@@ -202,7 +228,8 @@
             left: 60px;
             font-size: 12px;
             font-weight: 800;
-            color: var(--accent-cyber);
+            color: var(--accent-digital);
+            /* Color más discreto para metadatos */
             letter-spacing: 2px;
         }
 
@@ -226,7 +253,7 @@
         .slide h2 {
             /* font-size: 32px;*/
             color: var(--accent-cyber);
-            border-bottom: 4px solid var(--accent-cyber);
+            border-bottom: 4px solid var(--accent-glow);
             /*padding-bottom: 8px;*/
             font-size: 26px;
             /* Antes 32px */
@@ -241,7 +268,7 @@
             left: 0;
             width: 60px;
             height: 8px;
-            background: var(--accent-digital);
+            background: var(--accent-brand);
             /* Detalle cian sobre el azul */
         }
 
@@ -253,7 +280,7 @@
         .slide h3 {
             /* font-size: 22px;*/
             color: var(--accent-cyber);
-            background: rgba(0, 212, 255, 0.08);
+            background: var(--accent-glow);
             /* Fondo muy sutil */
             /* padding: 8px 12px;*/
             margin-top: 15px;
@@ -263,8 +290,7 @@
             letter-spacing: 2px;
             display: flex;
             align-items: center;
-            border-left: 4px solid var(--accent-digital);
-
+            border-left: 4px solid var(--accent-brand);
             font-size: 18px;
             /* Antes 22px */
             padding: 6px 10px;
@@ -277,22 +303,18 @@
             /* O cualquier etiqueta técnica que prefieras */
             font-size: 10px;
             margin-right: 15px;
-            background: var(--accent-digital);
-            color: #000;
+            background: var(--accent-brand);
+            color: white;
             padding: 2px 8px;
             font-weight: 800;
         }
 
         /* PÁRRAFOS */
         .slide p {
-            /* font-size: 17px;*/
-            /* line-height: 1.6;*/
-            color: #333;
+            color: var(--text-main);
+            /* Uso de la variable del root */
             text-align: justify;
-            /* margin-bottom: 18px;*/
-
             font-size: 14px;
-            /* Antes 17px */
             line-height: 1.5;
             margin-bottom: 14px;
         }
@@ -301,15 +323,12 @@
             color: var(--accent-cyber);
             font-weight: 800;
             font-style: italic;
-            /* El truco para que no tape: */
             background: var(--accent-glow);
+            /* Color pastel del tema */
             padding: 0 4px;
             border-radius: 2px;
-
-            /* Esto lo envía "visualmente" al fondo de las letras */
             mix-blend-mode: multiply;
-
-            /* Aseguramos que se comporte como una caja inline pero contenida */
+            /* Efecto marca-textos profesional */
             display: inline;
             box-decoration-break: clone;
             -webkit-box-decoration-break: clone;
@@ -318,12 +337,14 @@
         /* CITA: EL MÓDULO OSCURO (CYBER-CARD) */
         .slide blockquote {
             background: var(--bg-dark-module);
-            color: var(--accent-digital);
+            color: #cbd5e1;
+            /* Gris claro para lectura sobre oscuro */
             padding: 35px 30px;
             margin: 25px 0;
-            border-left: 10px solid var(--accent-digital);
+            border-left: 10px solid var(--accent-brand);
+            /* MARCADOR VIVO */
             position: relative;
-            box-shadow: 15px 15px 0px var(--accent-cyber);
+            box-shadow: 10px 10px 0px var(--accent-cyber);
         }
 
         .slide blockquote::before {
@@ -331,133 +352,78 @@
             position: absolute;
             top: 15px;
             left: 20px;
-            font-size: 16px;
+            font-size: 10px;
             letter-spacing: 2px;
-            color: rgba(0, 212, 255, 0.5);
+            color: var(--accent-brand);
+            /* Identificador de tema */
+            font-weight: 800;
         }
 
         .slide blockquote p {
-            /* font-size: 19px !important;*/
-            color: var(--accent-digital) !important;
+            color: #f1f5f9 !important;
+            /* Casi blanco para máxima lectura */
             font-style: italic;
             margin: 0;
             margin-top: 5px;
             text-align: left;
             font-size: 16px !important;
-            /* Antes 19px */
         }
 
-        /* --- LISTAS NUMERADAS (MARKDOWN 1.) --- */
+        /* --- LISTAS NUMERADAS --- */
         .slide ol {
             list-style: none;
-            /* Quitamos el número por defecto */
             counter-reset: slide-counter;
-            /* Inicializamos un contador */
             padding-left: 20px;
             margin: 20px 0;
         }
 
         .slide ol li {
-            /* font-size: 17px;*/
-            line-height: 1.2;
-            color: #333;
-            /* margin-bottom: 12px;*/
+            color: var(--text-main);
             position: relative;
             padding-left: 35px;
-            /* Un poco más de espacio para números de dos dígitos */
-            text-align: left;
             counter-increment: slide-counter;
-            /* Incrementamos el contador en cada li */
-
             font-size: 14px;
-            /* Antes 17px */
             margin-bottom: 8px;
+            line-height: 1.4;
         }
 
-        /* El número "Digital" */
         .slide ol li::before {
             content: counter(slide-counter, decimal-leading-zero) ".";
-            /* "decimal-leading-zero" pone un 0 antes (01, 02...) para más estilo tech */
             position: absolute;
             left: 0;
             top: 0;
-            color: var(--accent-digital);
+            color: var(--accent-brand);
+            /* NÚMERO VIVO */
             font-weight: 800;
             font-family: var(--font-mono);
-            text-shadow: 0 0 8px rgba(0, 213, 255, 0.735);
             font-size: 0.9em;
-            /* Ligeramente más pequeño para que no compita con el texto */
         }
 
-        /* Sub-niveles para listas numeradas */
-        .slide ol ol {
-            margin: 15px 0;
-            opacity: 0.8;
-            counter-reset: sub-counter;
-            /* Reinicia contador para sub-listas */
-        }
-
-        .slide ol ol li {
-            /*font-size: 16px;*/
-            /* Ajustado de tus 28px (que quizás era un typo) para ser legible */
-            padding-left: 40px;
-            counter-increment: sub-counter;
-        }
-
-        .slide ol ol li::before {
-            content: counter(slide-counter) "." counter(sub-counter);
-            /* Formato tipo 1.1, 1.2... */
-            color: var(--accent-cyber);
-        }
-
-        /* --- LISTAS NO NUMERADAS (MARKDOWN *) --- */
+        /* --- LISTAS NO NUMERADAS --- */
         .slide ul {
             list-style: none;
-            /* Eliminamos el círculo aburrido */
             padding-left: 20px;
             margin: 20px 0;
         }
 
         .slide ul li {
-            /* font-size: 17px;*/
-            line-height: 1.2;
-            color: #333;
-            /* margin-bottom: 12px;*/
+            color: var(--text-main);
             position: relative;
             padding-left: 25px;
-            /* Espacio para el nuevo icono */
-            text-align: left;
-
             font-size: 14px;
-            /* Antes 17px */
             margin-bottom: 8px;
+            line-height: 1.4;
         }
 
-        /* El nuevo "Bullet" Digital */
         .slide ul li::before {
             content: "::";
-            /* O puedes usar ">" o "■" */
             position: absolute;
             left: 0;
             top: 0;
-            color: var(--accent-digital);
+            color: var(--accent-brand);
+            /* BULLET VIVO */
             font-weight: 800;
             font-family: var(--font-mono);
-            /* Un pequeño resplandor para que parezca luz */
-            text-shadow: 0 0 8px rgba(0, 213, 255, 0.735);
-        }
-
-        /* Efecto para sub-elementos si anidas listas */
-        .slide ul ul {
-            margin: 15px 0;
-            opacity: 0.8;
-        }
-
-
-
-        .slide ul ul li::before {
-            content: ">>";
-            color: var(--accent-cyber);
         }
 
         /* --- CUADRO DE DATOS HTML --- */
@@ -465,64 +431,54 @@
             width: 100%;
             border: 2px solid var(--accent-cyber);
             font-family: var(--font-mono);
-            font-size: 14px;
+            font-size: 13px;
             margin: 15px 0;
             border-collapse: collapse;
         }
 
         .cyber-table th {
             background: var(--accent-cyber);
-            color: var(--accent-digital);
+            color: white;
+            /* Texto blanco en cabecera */
             padding: 10px;
             text-align: left;
-            border-bottom: 2px solid var(--accent-digital);
+            border-bottom: 2px solid var(--accent-brand);
         }
 
         .cyber-table td {
-            padding: 10px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            color: #333;
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--accent-glow);
+            color: var(--text-main);
         }
 
-        /* FILAS PARES: El efecto Zebra */
+        /* FILAS PARES: El efecto Zebra corregido */
         .cyber-table tr:nth-child(even) {
             background: var(--accent-glow);
-            /* Usa el color tenue del tema actual */
-            color: var(--bg-slide) !important;
+            /* Quitamos el color: white para que se lea sobre el fondo claro */
         }
 
-        /* Resaltado de la primera celda como "Primary Key" */
         .cyber-table td:first-child {
-            /* color: var(--accent-cyber);
-            font-weight: 800;
-            /* Quitamos el background fijo de aquí para que no tape el efecto zebra */
-            border-left: 4px solid var(--accent-digital);
-            /* Un detalle más tech */
+            border-left: 4px solid var(--accent-brand);
+            font-weight: 700;
         }
 
         /* FOOTER */
-
         .slide::after {
             content: "© 2026 CODEX_IUS - ANALÍTICA JURÍDICA // SECURED_CONNECTION";
             position: absolute;
             bottom: 30px;
             left: 60px;
             right: 60px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid var(--accent-glow);
             padding-top: 10px;
-            font-size: 11px;
-            color: #999;
+            font-size: 10px;
+            color: var(--accent-digital);
             text-align: right;
             font-family: var(--font-mono);
         }
 
-        /* OCULTAR EN PORTADA (Primera lámina) */
-        .slide:first-of-type::after {
-            display: none !important;
-        }
-
-        /* OCULTAR EN CONTRAPORTADA (Última lámina) */
-        /* Lo ocultamos porque la contraportada ya tiene su propio diseño de cierre */
+        /* Ocultar en portada y contraportada */
+        .slide:first-of-type::after,
         .slide:last-of-type::after {
             display: none !important;
         }
@@ -580,25 +536,24 @@
         }
 
         /* --- ESTILOS DE PORTADA IMPACTO --- */
-        .portada {
+       .portada {
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             background: var(--bg-slide);
-            border: 12px solid var(--accent-cyber);
-            /* Marco perimetral */
+            border: 12px solid var(--accent-cyber); /* Marco de autoridad */
             padding: 40px !important;
         }
 
-        .portada-header {
+       .portada-header {
             display: flex;
             justify-content: space-between;
             font-family: var(--font-mono);
             font-size: 14px;
             color: var(--accent-cyber);
             font-weight: 800;
-            border-bottom: 2px solid var(--accent-digital);
+            border-bottom: 2px solid var(--accent-brand); /* Línea de impacto */
             padding-bottom: 8px;
         }
 
@@ -626,7 +581,7 @@
 
         .divider {
             height: 15px;
-            background: var(--accent-digital);
+            background: var(--accent-brand);
             width: 150px;
             margin: 40px 0;
         }
@@ -648,7 +603,7 @@
             /* background: var(--accent-digital) !important;
             color: black !important;
             font-style: normal !important;*/
-            color: var(--accent-cyber);
+            color: var(--accent-brand);
             font-weight: 800;
             font-style: italic;
 
@@ -679,9 +634,11 @@
             font-family: var(--font-mono);
         }
 
-        .autor-box .label {
-            font-size: 16px;
-            color: #999;
+       .autor-box .label {
+            font-size: 12px;
+            color: var(--accent-digital);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .autor-box .value {
@@ -694,16 +651,16 @@
         .scan-line {
             width: 100%;
             height: 2px;
-            background: var(--accent-digital);
+            background: var(--accent-brand);
             position: absolute;
             bottom: -20px;
-            box-shadow: 0 0 10px var(--accent-digital);
+            box-shadow: 0 0 10px var(--accent-brand);
             opacity: 0.5;
         }
 
         /* Estilos específicos para la Contraportada */
         .contraportada {
-            background: linear-gradient(180deg, #ffffff 0%, #f4f4f4 100%);
+            background: linear-gradient(180deg, #ffffff 0%, var(--accent-glow) 100%);
             border-color: var(--accent-digital);
             /* Cambia el color del marco para el cierre */
         }
@@ -713,7 +670,7 @@
         }
 
         .status-box {
-            border-left: 5px solid var(--accent-cyber);
+            border-left: 5px solid var(--accent-brand);
             padding-left: 20px;
             margin-bottom: 30px;
         }
@@ -735,13 +692,13 @@
         .social-item {
             background: var(--bg-dark-module);
             padding: 15px;
-            border-right: 4px solid var(--accent-digital);
+            border-right: 4px solid var(--accent-brand);
         }
 
         .social-item .label {
             display: block;
             font-size: 10px;
-            color: var(--accent-digital);
+            color: var(--accent-brand);
             letter-spacing: 1px;
             margin-bottom: 5px;
         }
@@ -857,131 +814,146 @@
 
         // Contenido de inicio (Placeholder)
         const initialContent = `<div class="portada">
-  <div class="portada-header">
-    <span class="version">V.2026.01_STRESS_TEST</span>
-    <span class="status">SISTEMA_OPERATIVO: ESTABLE</span>
-  </div>
-  
-  <div class="portada-content">
-    <h1 class="titulo-principal">PRUEBA_DE<br>SISTEMA</h1>
-    <div class="divider"></div>
-    <h2 class="subtitulo-portada">Verificación de límites y <strong>Arquitectura Visual</strong> de Codex_Ius</h2>
-  </div>
+<div class="portada-header">
+<span class="version">V.2026.01</span>
+<span class="status">REPORTE_SISTEMA: [TITULO_CATEGORIA]</span>
+</div>
+<div class="portada-content">
+<h1 class="titulo-principal">TITULO<br>PRINCIPAL</h1>
+<div class="divider"></div>
+<h2 class="subtitulo-portada">Descripción breve del <strong>Concepto Central</strong> del reporte</h2>
+</div>
 
-  <div class="portada-footer">
-    <div class="autor-box">
-      <span class="label">MODO_DEBUG_ON</span>
-      <span class="value">ESTRÉS_DE_CONTENEDORES_V1</span>
-    </div>
-  </div>
+<div class="portada-footer">
+<div class="autor-box">
+<span class="label">EDICIÓN_ESPECIAL</span>
+<span class="value">NOMBRE_ORGANIZACIÓN // DEPARTAMENTO</span>
+</div>
+</div>
 </div>
 
 ---
 
-# 01_DENSIDAD_TEXTUAL
-## Verificación de Párrafos y Resaltados
-Este es un test de párrafo estándar a **14px**. El objetivo es verificar que la lectura sea cómoda y que el interlineado permita una alta densidad de datos sin sacrificar la estética técnica. Aquí probamos un **resaltado fuerte con strong** que utiliza el modo de mezcla \`multiply\` para no tapar las letras vecinas.
+# Visión General
+## [Subtítulo de Introducción]
+Lorem ipsum dolor sit amet, **consectetur adipiscing elit**. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+
+### Objetivos Sistémicos
+* Punto de control o meta número uno.
+* Punto de control o meta número dos.
+* Punto de control o meta número tres.
+
+> "Aquí va una cita destacada o una premisa fundamental que resuma el espíritu del reporte."
 
 ---
 
-### Sub-módulo de Carga
-* **Punto de Control A:** Verificación de alineación de bullets :: en listas no numeradas.
-* **Punto de Control B:** Test de anidamiento de sub-listas:
-  * Sub-item con color de acento automático.
-  * Verificación de margen izquierdo en segundo nivel.
-* **Punto de Control C:** Resistencia de la caja de texto ante contenidos extensos que rozan el footer decorativo.
-
-> "Esta cita es un bloque de prueba diseñado para ocupar al menos tres líneas de texto y verificar que la sombra proyectada no interfiera con el siguiente elemento del DOM."
-
----
-
-## 02_ESTRÉS_DATOS
-### Renderizado de Tablas Complejas
-
-A continuación, probamos la \`cyber-table\` con una carga de datos comparativa para verificar el comportamiento de los bordes y el contraste del encabezado.
+## [Sección de Datos]
+### Comparativa de Variables
 
 <table class="cyber-table">
-  <thead>
-    <tr>
-      <th>PROTOCOLO</th>
-      <th>ESTADO_BASE</th>
-      <th>LATENCIA_MS</th>
-      <th>RESULTADO</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>CSS_RENDER</td>
-      <td>OPTIMIZADO</td>
-      <td>0.04ms</td>
-      <td>[PASSED]</td>
-    </tr>
-    <tr>
-      <td>FONTS_JS_MONO</td>
-      <td>CARGADO</td>
-      <td>1.2ms</td>
-      <td>[ACTIVE]</td>
-    </tr>
-    <tr>
-      <td>PRINT_LOGIC</td>
-      <td>MODIFICADO</td>
-      <td>--</td>
-      <td>[WAITING]</td>
-    </tr>
-    <tr>
-      <td>COLOR_THEME</td>
-      <td>DINÁMICO</td>
-      <td>0.1ms</td>
-      <td>[READY]</td>
-    </tr>
-  </tbody>
+<thead>
+<tr>
+<th>CONCEPTO</th>
+<th>ESTADO ANTERIOR</th>
+<th>NUEVO ESTADO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variable Alfa</td>
+<td>Descripción de origen</td>
+<td>[CAMBIO_EFECTUADO]</td>
+</tr>
+<tr>
+<td>Variable Beta</td>
+<td>Dato comparativo</td>
+<td>Dato actualizado</td>
+</tr>
+<tr>
+<td>Variable Gamma</td>
+<td>Estado de registro</td>
+<td>Confirmación final</td>
+</tr>
+</tbody>
 </table>
 
 ---
 
-## 03_JERARQUÍA_NUMÉRICA
-### Test de Listas Numeradas y Anidadas
+## Análisis Estructural
+### [Subtítulo Específico]
 
-1. **Nivel Primario de Prueba:** Verificación del prefijo \`01.\` con estilo tecnológico.
-2. **Segmentación de Datos:**
-   1. Sub-nivel numerado para verificar el formato \`1.1\`.
-   2. Verificación de color en el contador secundario.
-3. **Carga de Bloque Crítico:**
-   A continuación se prueba un párrafo extremadamente largo dentro de una lista para ver cómo se comporta la sangría francesa del componente.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+### Desglose de Categorías
+* **Categoría A:** Descripción técnica de la categoría A.
+* **Categoría B:** Descripción técnica de la categoría B.
+* **Categoría C:** Descripción técnica de la categoría C.
+
+*Nota: Aquí se puede incluir una aclaración importante o una excepción a la regla descrita arriba.*
+
+---
+
+## [Sección Adicional]
+### [Subtítulo Operativo]
+
+### [Detalle de Procedimiento]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+* **Fase 1:** Detalle del aporte o proceso.
+* **Fase 2:** Detalle de disponibilidad o uso.
+* **Fase 3:** Detalle de seguridad o administración.
+
+> "Conclusión parcial sobre la eficiencia de este mecanismo específico."
+
+---
+
+# Conclusión Analítica
+## El Desafío del [Año/Periodo]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. El desafío reside en la **correcta interpretación de los datos** y la implementación de las estrategias sugeridas.
+
+### Acciones Sugeridas
+1. Primera acción recomendada.
+2. Segunda acción recomendada.
+3. Tercera acción recomendada.
+
+**¿Qué impacto o duda le genera esta nueva implementación?**
 
 ---
 
 <div class="portada contraportada">
-  <div class="portada-header">
-    <span class="version">TEST_END // 2026</span>
-    <span class="status">CONTRA-PORTADA: ACTIVA</span>
-  </div>
-  
-  <div class="portada-content contra-content">
-    <div class="status-box">
-      <h2 class="subtitulo-portada">SISTEMA <strong>VALIDADO</strong></h2>
-      <p class="desc-final">Si estás viendo un fondo degradado con el color del tema y una barra lateral sólida a la derecha, la **Print Logic** ha sido implementada con éxito.</p>
-    </div>
+<div class="portada-header">
+<span class="version">IDENTIFICADOR // FINAL_LOG</span>
+<span class="status">ESTADO_SISTEMA: FINALIZADO</span>
+</div>
+<div class="portada-content contra-content">
+<div class="status-box">
+<h2 class="subtitulo-portada">FIN DE <strong>REPORTE</strong></h2>
+<p class="desc-final">Lorem ipsum dolor sit amet, consectetur adipiscing elit. El análisis presentado forma parte de la red de inteligencia de <strong>Nombre_Entidad</strong>.</p>
+</div>
 
-   <div class="social-grid">
-      <div class="social-item">
-        <span class="label">DEBUG_ID</span>
-        <span class="value">0X-STRESS-99</span>
-      </div>
-      <div class="social-item">
-        <span class="label">INTEGRIDAD_VISUAL</span>
-        <span class="value">100%_VERIFIED</span>
-      </div>
-    </div>
-  </div>
+<div class="social-grid">
+<div class="social-item">
+<span class="label">RED_SOCIAL</span>
+<span class="value">url.com/tu-usuario</span>
+</div>
+<div class="social-item">
+<span class="label">WEB_SITIO</span>
+<span class="value">WWW.TUWEB.COM</span>
+</div>
+<div class="social-item">
+<span class="label">CONTACTO_MAIL</span>
+<span class="value">email@ejemplo.com</span>
+</div>
+</div>
+</div>
 
-  <div class="portada-footer">
-    <div class="autor-box">
-      <span class="label">END_OF_LINE</span>
-      <span class="value" style="font-size: 10px; opacity: 0.7;">Prueba de impresión final. No olvides marcar "Gráficos de fondo" en el diálogo de impresión.</span>
-    </div>
-    <div class="scan-line"></div>
-  </div>
+<div class="portada-footer">
+<div class="autor-box">
+<span class="label">DISCLAIMER_LEGAL</span>
+<span class="value" style="font-size: 10px; opacity: 0.7;">Este documento es de carácter informativo. No se responsabiliza por decisiones tomadas sin asesoría técnica específica.</span>
+</div>
+<div class="scan-line"></div>
+</div>
 </div>`;
 
         // Asignación al input

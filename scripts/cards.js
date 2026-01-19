@@ -1,9 +1,13 @@
 import { cardsData } from './data.js';
 
-export function createCard(data, category) {
+// Agregamos 'index' como parámetro
+export function createCard(data, category, index) {
     const card = document.createElement('article');
 
-    // 1. LÓGICA PARA NOTICIAS (BENTO)
+    // Formatear el ID secuencial (Ej: 1 -> 001)
+    const sequentialId = String(index + 1).padStart(3, '0');
+
+    // 1. LÓGICA PARA NOTICIAS
     if (category === 'noticias') {
         card.className = `card-news ${data.branch || 'general'} ${data.isFeatured ? 'featured' : ''}`;
         card.innerHTML = `
@@ -16,7 +20,7 @@ export function createCard(data, category) {
             <p>${data.description}</p>
         </div>
         <div class="news-footer">
-            <span class="news-id">CODE_ID: ${Math.random().toString(36).substr(2, 5).toUpperCase()}</span>
+            <span class="news-id">LOG_ID: ${sequentialId}</span>
             <a href="${data.link}" class="news-link">
                 LEER REPORTE <span class="material-icons">arrow_forward</span>
             </a>
@@ -118,7 +122,6 @@ export function renderCards(containerSelector, categories) {
         section.className = `category-section section-${category}`;
         section.id = `section-${category}`;
 
-        // Si es noticias, usamos el contenedor Bento
         const gridClass = category === 'noticias' ? 'bento-grid' :
             category === 'ensayos' ? 'research-grid' : 'cards-grid';
 
@@ -126,8 +129,10 @@ export function renderCards(containerSelector, categories) {
         const grid = section.querySelector(`.${gridClass}`);
 
         const data = cardsData[category] || [];
-        data.forEach(item => {
-            grid.appendChild(createCard(item, category));
+
+        // Pasamos el index (i) aquí
+        data.forEach((item, i) => {
+            grid.appendChild(createCard(item, category, i));
         });
 
         container.appendChild(section);

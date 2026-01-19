@@ -1,39 +1,64 @@
-/* --- 2. VARIABLES Y TEMAS --- */
+/* --- TEMA DOCTRINA DARK (SISTEMA ACTIVO) --- */
 :root {
-  --color-fondo-principal: #121212;
-  --color-fondo-secundario: #1f1f1f;
-  --color-header-footer-bg: #121212;
-  --color-texto-principal: #eaeaea;
-  --color-texto-muted: #aaaaaa;
-  --color-titulo: #ffffff;
-  --color-enlace: #999999;
+  /* Fondos */
+  --color-fondo-principal: #0f0202;
+  /* Negro rojizo */
+  --color-fondo-secundario: #1a0505;
+  /* Granate oscuro */
+  --color-header-footer-bg: #0f0202;
+
+  /* Textos */
+  --color-texto-principal: #f8fafc;
+  --color-texto-muted: #94a3b8;
+  --color-titulo: #fce7f3;
+  /* Rosa/Blanco glow */
+
+  /* Acentos y Bordes */
+  --color-accent-doctrina: #b91c1c;
+  /* Rojo puro */
+  --color-accent-soft: #7f1d1d;
+  /* Vino */
+  --color-borde: #b91c1c;
+  --color-enlace: #b91c1c;
   --color-enlace-hover: #ffffff;
-  --color-borde: #333333;
-  --color-fondo-hover: #292929;
-  --color-shadow: rgba(0, 0, 0, 0.4);
+  --color-fondo-hover: #450a0a;
+  --color-shadow: rgba(185, 28, 28, 0.3);
 
-  --legal-civil: #2196F3;
-  --legal-penal: #FF5252;
-  --legal-laboral: #00E676;
-  --legal-const: #E040FB;
+  /* Ramas Legales */
+  --legal-civil: #3b82f6;
+  --legal-penal: #b91c1c;
+  --legal-laboral: #059669;
+  --legal-const: #d946ef;
 
-  /* Espaciados */
-  --spacing-s: 0.5em;
-  --spacing-m: 1em;
-  --spacing-l: 1.5em;
-  --border-radius: 1em;
+  --border-radius: 0px;
 }
 
-
+/* --- TEMA DOCTRINA LIGHT (ARCHIVO DE PAPEL) --- */
+/* Esta clase se activa al pulsar el botón de tema */
 .light-theme {
-  --color-fondo-principal: #ffffff;
-  --color-fondo-secundario: #f2f2f2;
-  --color-header-footer-bg: #fafafa;
-  --color-texto-principal: #111111;
-  --color-texto-muted: #444444;
+  /* Fondos: Color hueso/papel viejo */
+  --color-fondo-principal: #f4f4f0;
+  --color-fondo-secundario: #e9e9e2;
+  --color-header-footer-bg: #dadad0;
+
+  /* Textos: Tinta negra/sepia */
+  --color-texto-principal: #1c1917;
+  --color-texto-muted: #57534e;
   --color-titulo: #000000;
-  --color-enlace: #333333;
+
+  /* Acentos y Bordes: Rojo lacre / Sangre seca */
+  --color-accent-doctrina: #991b1b;
+  --color-accent-soft: #b91c1c;
+  --color-borde: #78716c;
+  /* Gris cemento */
+  --color-enlace: #991b1b;
   --color-enlace-hover: #000000;
-  --color-borde: #d9d9d9;
-  --color-fondo-hover: #e6e6e6;
+  --color-fondo-hover: #d6d3d1;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+
+  /* Ramas Legales ajustadas para legibilidad en blanco */
+  --legal-civil: #1d4ed8;
+  --legal-penal: #991b1b;
+  --legal-laboral: #065f46;
+  --legal-const: #a21caf;
 }

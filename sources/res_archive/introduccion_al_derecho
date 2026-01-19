@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA_ARCHIVO_CENTRAL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-ultra-dark: #020617;
+            --bg-module: #0f172a;
+            --accent-brand: #2563eb; /* Azul Vibrante */
+            --accent-digital: #334155; /* Azul Pizarra */
+            --accent-glow: #e2e8f0;
+            --text-main: #cbd5e1;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-ultra-dark);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            overflow: hidden;
+        }
+
+        /* --- HEADER TÉCNICO --- */
+        header {
+            height: 40px;
+            background: var(--bg-ultra-dark);
+            border-bottom: 2px solid var(--accent-digital);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .status-tag {
+            color: var(--accent-brand);
+            font-weight: 800;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .main-container {
+            display: flex;
+            flex-grow: 1;
+            height: calc(100vh - 40px);
+        }
+
+        /* --- NAVEGACIÓN LATERAL --- */
+        nav {
+            width: 280px;
+            background: var(--bg-module);
+            border-right: 2px solid var(--accent-digital);
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        nav h3 {
+            font-size: 14px;
+            color: var(--accent-brand);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--accent-digital);
+            padding-bottom: 10px;
+        }
+
+        .file-item {
+            padding: 10px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            margin-bottom: 5px;
+            font-size: 13px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .file-item::before {
+            content: "[OFF]";
+            margin-right: 10px;
+            font-size: 10px;
+            opacity: 0.5;
+        }
+
+        .file-item.active::before {
+            content: "[READ]";
+            color: var(--accent-brand);
+            opacity: 1;
+        }
+
+        .file-item:hover {
+            border-color: var(--accent-brand);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .file-item.active {
+            background: var(--accent-digital);
+            border-left: 4px solid var(--accent-brand);
+        }
+
+        /* --- ÁREA DEL VISUALIZADOR --- */
+        .viewer-area {
+            flex-grow: 1;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        iframe {
+            width: 95%;
+            height: 95%;
+            border: 1px solid var(--accent-digital);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        /* Marca de agua decorativa */
+        .viewer-area::after {
+            content: "SECURE_VIEWER // ENCRYPTED_STREAM";
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 10px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>SYSTEM: <span class="status-tag">ACTIVE_SESSION</span></div>
+        <div>PATH: <span id="current-path">/root/vault/</span></div>
+        <div>V.2026.01</div>
+    </header>
+
+    <div class="main-container">
+        <nav id="file-list">
+            <h3>Directorio_PDF</h3>
+            <div class="file-item active" onclick="loadPDF('URL_DE_TU_PDF_1.pdf', this)">REPORTE_ALFA.pdf</div>
+            <div class="file-item" onclick="loadPDF('URL_DE_TU_PDF_2.pdf', this)">ANÁLISIS_BETA.pdf</div>
+            <div class="file-item" onclick="loadPDF('URL_DE_TU_PDF_3.pdf', this)">LOG_SISTEMA_01.pdf</div>
+        </nav>
+
+        <main class="viewer-area">
+            <iframe id="pdf-viewer" src="" frameborder="0"></iframe>
+        </main>
+    </div>
+
+    <script>
+        function loadPDF(url, element) {
+            // Actualizar el Iframe
+            const viewer = document.getElementById('pdf-viewer');
+            viewer.src = url;
+
+            // Actualizar UI del Nav
+            document.querySelectorAll('.file-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+
+            // Actualizar Path en Header
+            const fileName = element.innerText;
+            document.getElementById('current-path').innerText = `/root/vault/${fileName}`;
+        }
+
+        // Cargar el primero por defecto
+        window.onload = () => {
+            const firstItem = document.querySelector('.file-item');
+            if(firstItem) firstItem.click();
+        };
+    </script>
+</body>
+</html>

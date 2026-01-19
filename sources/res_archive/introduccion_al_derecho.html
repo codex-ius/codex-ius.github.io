@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA_ARCHIVO_DOCTRINA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+
+        :root {
+            /* Paleta Doctrina Corregida */
+            --bg-ultra-dark: #0f0202;
+            /* Fondo casi negro rojizo */
+            --bg-module: #450a0a;
+            /* Granate: Rigor académico */
+            --accent-main: #b91c1c;
+            /* Rojo: Resaltado de jerarquía */
+            --accent-soft: #7f1d1d;
+            /* Vino: Elegancia en bordes */
+            --accent-glow: #fce7f3;
+            /* Rosa Pastel: Contraste suave */
+            --text-main: #f8fafc;
+            --font-mono: 'JetBrains Mono', monospace;
+            --nav-width: 280px;
+        }
+
+        /* --- PERSONALIZACIÓN DEL SCROLLBAR (ESTÉTICA CYBER) --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-ultra-dark);
+            border-left: 1px solid var(--accent-soft);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-soft);
+            border: 1px solid var(--accent-main);
+            border-radius: 0;
+            /* Bordes cuadrados para estética industrial */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-main);
+            box-shadow: 0 0 10px var(--accent-main);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-ultra-dark);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            overflow: hidden;
+        }
+
+        /* --- HEADER --- */
+        header {
+            height: 50px;
+            background: var(--bg-ultra-dark);
+            border-bottom: 2px solid var(--accent-main);
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            justify-content: space-between;
+            z-index: 1001;
+            box-shadow: 0 2px 15px rgba(185, 28, 28, 0.2);
+        }
+
+        .menu-toggle {
+            background: transparent;
+            border: 1px solid var(--accent-main);
+            color: var(--accent-main);
+            padding: 5px 12px;
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .menu-toggle:hover {
+            background: var(--accent-main);
+            color: white;
+            box-shadow: 0 0 15px var(--accent-main);
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .main-container {
+            display: flex;
+            flex-grow: 1;
+            height: calc(100vh - 50px);
+            position: relative;
+        }
+
+        /* --- NAV LATERAL (TEMA DOCTRINA) --- */
+        nav {
+            width: var(--nav-width);
+            min-width: var(--nav-width);
+            background: var(--bg-module);
+            border-right: 2px solid var(--accent-main);
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            overflow-y: auto;
+            transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.hidden {
+            margin-left: calc(var(--nav-width) * -1 - 30px);
+        }
+
+        nav h3 {
+            font-size: 14px;
+            color: var(--accent-glow);
+            border-bottom: 1px solid var(--accent-main);
+            padding-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .file-item {
+            padding: 12px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: var(--accent-glow);
+            transition: 0.2s;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .file-item:hover {
+            border-color: var(--accent-glow);
+            background: var(--accent-soft);
+        }
+
+        .file-item.active {
+            background: var(--accent-main);
+            border-left: 4px solid white;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* --- ÁREA DEL VISUALIZADOR --- */
+        .viewer-area {
+            flex-grow: 1;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            /* Filtro opcional para que el fondo del PDF no sea blanco puro si lo deseas */
+            /* filter: sepia(0.2) contrast(1.1); */
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                position: absolute;
+                height: 100%;
+                z-index: 1000;
+            }
+
+            #overlay.active {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.8);
+                z-index: 999;
+                display: block;
+            }
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 5px;
+            /* Espacio entre el botón Home y el de Menú */
+        }
+
+        .home-btn {
+            border-color: var(--accent-glow) !important;
+            color: var(--accent-glow) !important;
+            opacity: 0.8;
+        }
+
+        .home-btn:hover {
+            background: var(--accent-glow) !important;
+            color: var(--bg-ultra-dark) !important;
+            box-shadow: 0 0 15px var(--accent-glow) !important;
+            opacity: 1;
+        }
+
+        /* Ajuste para que en móviles muy pequeños no se amontone todo */
+        @media (max-width: 480px) {
+            header {
+                height: auto;
+                padding: 10px;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .header-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-controls">
+            <button class="menu-toggle home-btn" onclick="location.href='../../index.html'">
+                [ RETURN_HOME ]
+            </button>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                [ ACCESS_FILES ]
+            </button>
+        </div>
+
+        <div style="font-size: 10px; text-align: right; color: var(--accent-glow);">
+            PROTOCOL: <span style="color: var(--accent-main)">DOCTRINA_REDACTED</span><br>
+            <span id="path-display">/root/vault/</span>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div id="overlay" onclick="toggleMenu()" style="display:none;"></div>
+
+        <nav id="sidebar">
+            <h3>ARCHIVE_INDEX</h3>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_01.pdf', this)">
+                DIMENSIONES_JURÍDICAS</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_02.pdf', this)">
+                ESCUELAS_JURÍDICAS</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_03.pdf', this)">
+                FUENTES_DEL_DERECHO</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_04.pdf', this)">
+                AXIOLOGÍA_JURÍDICA</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_05.pdf', this)">
+                EL_DERECHO_COMO_SISTEMA</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_06.pdf', this)">
+                HERMENÉUTICA_JURÍDICA</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_07.pdf', this)">
+                APLICACIÓN_DEL_DERECHO</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_08.pdf', this)">
+                CONCEPTOS_JURÍDICOS</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_01.pdf', this)">
+                DIMENSIONES_JURÍDICAS</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_02.pdf', this)">
+                ESCUELAS_JURÍDICAS</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_03.pdf', this)">
+                FUENTES_DEL_DERECHO</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_04.pdf', this)">
+                AXIOLOGÍA_JURÍDICA</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_05.pdf', this)">
+                EL_DERECHO_COMO_SISTEMA</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_06.pdf', this)">
+                HERMENÉUTICA_JURÍDICA</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_07.pdf', this)">
+                APLICACIÓN_DEL_DERECHO</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_08.pdf', this)">
+                CONCEPTOS_JURÍDICOS</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_01.pdf', this)">
+                DIMENSIONES_JURÍDICAS</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_02.pdf', this)">
+                ESCUELAS_JURÍDICAS</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_03.pdf', this)">
+                FUENTES_DEL_DERECHO</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_04.pdf', this)">
+                AXIOLOGÍA_JURÍDICA</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_05.pdf', this)">
+                EL_DERECHO_COMO_SISTEMA</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_06.pdf', this)">
+                HERMENÉUTICA_JURÍDICA</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_07.pdf', this)">
+                APLICACIÓN_DEL_DERECHO</div>
+            <div class="file-item active" onclick="loadPDF('../../assets/intro_derecho/capsule_08.pdf', this)">
+                CONCEPTOS_JURÍDICOS</div>
+        </nav>
+
+        <main class="viewer-area">
+            <iframe id="pdf-viewer" src=""></iframe>
+        </main>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('hidden');
+            if (window.innerWidth <= 768) {
+                overlay.style.display = sidebar.classList.contains('hidden') ? 'none' : 'block';
+            }
+        }
+
+        function loadPDF(url, element) {
+            const viewer = document.getElementById('pdf-viewer');
+            const pathDisplay = document.getElementById('path-display');
+            viewer.src = url;
+            pathDisplay.innerText = `/vault/${element.innerText}`;
+            document.querySelectorAll('.file-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+            if (window.innerWidth <= 768) toggleMenu();
+        }
+
+        window.onload = () => {
+            const firstItem = document.querySelector('.file-item');
+            if (firstItem) {
+                const url = firstItem.getAttribute('onclick').match(/'([^']+)'/)[1];
+                loadPDF(url, firstItem);
+            }
+        };
+    </script>
+</body>
+
+</html>

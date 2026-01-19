@@ -3,7 +3,7 @@ import { setupThemeToggle } from './themeToggle.js';
 import { setupDetailsToggle } from './utils.js';
 
 // Renderizar cards
-renderCards('#cards-container', ['noticias', 'educacion','ensayos', 'software']);
+renderCards('#cards-container', ['noticias', 'educacion', 'ensayos', 'software']);
 
 // Configurar toggle de tema y botón volver arriba
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,9 +17,11 @@ let index = 0;
 
 function changeText() {
   el.style.opacity = 0;
+  el.style.transform = "translateX(-10px)"; // Efecto de desplazamiento
   setTimeout(() => {
     el.textContent = words[index];
     el.style.opacity = 1;
+    el.style.transform = "translateX(0)";
     index = (index + 1) % words.length;
   }, 500);
 }

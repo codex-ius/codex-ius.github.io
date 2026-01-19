@@ -1,139 +1,193 @@
+/* --- 1. IMPORTACIÓN DE VARIABLES Y TEMAS --- */
 @import url('./themes.css');
 
+/* --- 2. RESET TOTAL & BOX MODEL --- */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+    /* Eliminamos transiciones de radio para asegurar estética industrial */
+    border-radius: 0 !important; 
 }
 
+/* --- 3. BASE DEL SISTEMA (CUERPO) --- */
 body {
     margin: 0;
-    background: var(--color-fondo-principal);
+    background: var(--color-fondo-principal); /* #0f0202 */
     color: var(--color-texto-principal);
-    font-family: 'Roboto', sans-serif;
-    transition: all 0.3s ease;
-    line-height: 1.5;
+    /* Forzamos JetBrains Mono como fuente única del sistema */
+    font-family: 'JetBrains Mono', monospace; 
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--spacing-l);
-    max-width: 1200px;
-    margin: auto;
+/* --- 4. PERSONALIZACIÓN DEL SCROLLBAR (ESTÉTICA DOCTRINA) --- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-fondo-principal);
+    border-left: 1px solid var(--color-accent-soft);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-accent-soft);
+    border: 1px solid var(--color-accent-doctrina);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-doctrina);
+    box-shadow: 0 0 10px var(--color-accent-doctrina);
 }
 
-h1,
-h2,
-h3,
-h4 {
-    font-family: 'Montserrat', sans-serif;
-    margin: 1rem 0;
-}
-
-h1,
-h2 {
-    text-align: center;
-    font-weight: 800;
+/* --- 5. CABECERAS (HEADERS TÉCNICOS) --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 1.5rem 0;
     color: var(--color-titulo);
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    font-weight: 800;
 }
+
+h1 { font-size: 2.2rem; text-align: center; }
+h2 { font-size: 1.8rem; text-align: center; }
 
 h3 {
-    color: var(--color-titulo);
-    border-bottom: 1px solid var(--color-borde);
+    font-size: 1.2rem;
+    color: var(--color-accent-doctrina);
+    border-bottom: 2px solid var(--color-accent-doctrina);
     padding-bottom: 0.5rem;
     width: 100%;
-    text-align: center;
     margin-top: 3rem;
+    display: flex;
+    align-items: center;
 }
 
-/*--- Tags ---*/
+h3::before {
+    content: "> ";
+    margin-right: 10px;
+}
 
-a,
-button {
-    padding: var(--spacing-s) 1.5rem;
-    background: none;
-    border: 1px solid var(--color-borde);
-    border-radius: 0.5em;
-    color: var(--color-enlace);
+/* --- 6. ELEMENTOS DE ACCIÓN (BOTONES Y LINKS) --- */
+a, button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--color-accent-doctrina);
+    color: var(--color-accent-doctrina);
     text-decoration: none;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    display: inline-block;
-    margin: var(--spacing-s);
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    line-height: 1.5;
-    letter-spacing: 0.02em;
-    box-shadow: 0 2px 6px var(--color-shadow);
-    user-select: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
 }
 
-a:disabled,
-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    box-shadow: none;
-}
-
-a:hover,
-a:focus,
-button:hover,
-button:focus {
-    background: var(--color-fondo-hover);
-    color: var(--color-enlace-hover);
-    border-color: var(--color-enlace-hover);
-    outline-offset: 2px;
-    box-shadow: 0 4px 10px var(--color-shadow-hover);
-}
-
-a:active,
-button:active {
-    background: var(--color-borde);
-    box-shadow: none;
-    transform: translateY(0);
+/* Efecto Hover Consola */
+a:hover, button:hover, a:focus, button:focus {
+    background: var(--color-accent-doctrina);
+    color: #ffffff;
+    box-shadow: 0 0 15px var(--color-accent-doctrina);
     outline: none;
 }
 
-a::after {
-    content: none;
+a:active, button:active {
+    transform: scale(0.98);
+    background: var(--color-accent-soft);
 }
 
-/* --- 4. NAVEGACIÓN Y HEADER --- */
-header {
-    padding: 3em 0;
-    text-align: center;
-    border-bottom: 1px solid var(--color-borde);
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+button:disabled, a.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-color: var(--color-texto-muted);
+    color: var(--color-texto-muted);
 }
 
-nav {
-    padding: 1rem;
-    border-bottom: solid 1px var(--color-borde);
-    position: sticky;
-    top: 0;
-    background-color: var(--color-fondo-principal);
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-nav a:hover,
-button:hover {
-    background: var(--color-fondo-hover);
-    border-color: var(--color-enlace-hover);
-    color: var(--color-enlace-hover);
-}
-
-
-/* Main */
+/* --- 7. CONTENEDORES Y LAYOUT --- */
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    margin: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 80vh;
+}
+
+section {
+    width: 100%;
+    margin-bottom: 4rem;
+    scroll-margin-top: 100px;
+}
+
+/* --- 8. NAVEGACIÓN (STICKY TERMINAL) --- */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--color-fondo-principal);
+    border-bottom: 1px solid var(--color-accent-soft);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    backdrop-filter: blur(5px);
+}
+
+/* --- 9. ELEMENTOS DE TEXTO --- */
+p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-texto-principal);
+    margin-bottom: 1.2rem;
+}
+
+code, pre {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--color-fondo-secundario);
+    padding: 0.2rem 0.4rem;
+    color: var(--color-accent-doctrina);
+}
+
+/* --- 10. IMÁGENES Y MEDIA --- */
+img {
+    max-width: 100%;
+    height: auto;
+    filter: grayscale(100%) contrast(1.2); /* Efecto foto de archivo */
+    border: 1px solid var(--color-accent-soft);
+}
+
+img:hover {
+    filter: none;
+    border-color: var(--color-accent-doctrina);
+}
+
+nav a {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 10px 15px;
+    border: none !important; /* Quitamos el borde de botón del reset */
+    color: var(--color-texto-muted) !important;
+}
+
+nav a:hover {
+    color: var(--color-accent-doctrina) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: 0 0 8px var(--color-accent-doctrina);
+}
+
+nav{
+    display: flex;
+    flex-wrap: wrap;
 }

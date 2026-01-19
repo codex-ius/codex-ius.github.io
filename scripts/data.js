@@ -85,13 +85,13 @@ export const cardsData = {
 
   educacion: [
     {
-      title: 'Próximamente...',
+      title: 'Introducción al derecho',
       description: 'Capsulas o guías de estudio de derecho.',
-      link: '##',
-      linkText: 'Próximamente...',
-      branch: '-',
-      level: '-',
-      time: '-'
+      link: './sources/res_archive/introduccion_al_derecho.html',
+      linkText: 'Visitar el sitio',
+      branch: 'Fundamentos',
+      level: 'Básico',
+      time: '2 horas'
     }/*,
     {
       title: 'Derecho Privado: Nociones Básicas',
