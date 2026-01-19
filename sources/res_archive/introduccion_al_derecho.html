@@ -292,8 +292,19 @@
                 CONCEPTOS_JURÍDICOS</div>
         </nav>
 
-        <main class="viewer-area">
-            <iframe id="pdf-viewer" src=""></iframe>
+        <main class="viewer-area" style="flex-direction: column;">
+            <iframe id="pdf-viewer" src="" style="width: 100%; height: 100%;"></iframe>
+
+            <div id="fallback-container"
+                style="display:none; padding: 20px; text-align: center; background: var(--bg-ultra-dark); width: 100%; border-top: 1px solid var(--accent-soft);">
+                <p style="color: var(--accent-glow); font-size: 11px; margin-bottom: 10px; letter-spacing: 1px;">
+                    [ VIEWING_ISSUE_DETECTED ]
+                </p>
+                <a id="download-link" href="#" target="_blank" class="menu-toggle"
+                    style="text-decoration: none; display: inline-block; font-size: 12px;">
+                    [ DOWNLOAD_DOCUMENT_DIRECTLY ]
+                </a>
+            </div>
         </main>
     </div>
 
@@ -309,11 +320,33 @@
 
         function loadPDF(url, element) {
             const viewer = document.getElementById('pdf-viewer');
+            const fallback = document.getElementById('fallback-container');
+            const downloadLink = document.getElementById('download-link');
             const pathDisplay = document.getElementById('path-display');
-            viewer.src = url;
-            pathDisplay.innerText = `/vault/${element.innerText}`;
+
+            // 1. Resetear estados visuales
+            fallback.style.display = 'none';
+
+            // 2. Convertir ruta relativa a URL absoluta (Requerido por Google)
+            const absoluteURL = new URL(url, window.location.href).href;
+
+            // 3. Cargar a través del visualizador de Google para compatibilidad móvil
+            // Nota: Esto solo funcionará si el sitio está publicado en internet (GitHub Pages, etc.)
+            viewer.src = `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteURL)}&embedded=true`;
+
+            // 4. Actualizar metadatos en la interfaz
+            pathDisplay.innerText = `/vault/${element.innerText.trim()}`;
+            downloadLink.href = absoluteURL;
+
+            // 5. Gestión de Selección
             document.querySelectorAll('.file-item').forEach(item => item.classList.remove('active'));
             element.classList.add('active');
+
+            // 6. Activar Fallback si la carga es lenta o falla (6 segundos)
+            setTimeout(() => {
+                fallback.style.display = 'block';
+            }, 6000);
+
             if (window.innerWidth <= 768) toggleMenu();
         }
 

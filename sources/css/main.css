@@ -22,9 +22,9 @@
 #theme-toggle-container {
   position: fixed;
   right: 1.5em;
-  bottom: 1.5em;
+  bottom: 6em;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 0.5em;
   z-index: 2000;
   background: var(--color-fondo-secundario);

@@ -30,7 +30,7 @@
 }
 
 .software-icon {
-    color: var(--color-accent-doctrina) !important;
+    color: var(--color-accent-soft) !important;
     font-size: 18px !important;
     filter: drop-shadow(0 0 5px var(--color-accent-doctrina));
 }
