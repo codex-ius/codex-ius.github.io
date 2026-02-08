@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIBYL_EDITORIAL_STATION_FIXED</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --primary: #00e5ff; --bg-ui: #000b14;
+            --paper-bg: #ffffff; --paper-text: #1a1a1a;
+            --accent: #00e5ff;
+            --width-page: 210mm; --height-page: 297mm;
+        }
+
+        body, html { margin: 0; padding: 0; height: 100%; background: var(--bg-ui); color: var(--primary); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; overflow: hidden; }
+        
+        /* BARRA DE METADATOS */
+        #metadata-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px; background: rgba(0, 229, 255, 0.1); border-bottom: 1px solid var(--primary); }
+        #metadata-bar input { background: #000; border: 1px solid var(--primary); color: var(--primary); padding: 5px; font-family: monospace; }
+
+        /* EDITOR */
+        #input-area { height: 45%; display: flex; flex-direction: column; border-bottom: 2px solid var(--primary); z-index: 100; }
+        textarea { flex-grow: 1; background: #000; color: #fff; border: none; padding: 15px; font-family: 'Courier New', monospace; resize: none; outline: none; }
+
+        .toolbar { display: flex; background: var(--bg-ui); flex-wrap: wrap; }
+        .toolbar button, .toolbar select, .toolbar label { background: transparent; color: var(--primary); border: 1px solid var(--primary); padding: 10px; cursor: pointer; flex: 1; font-family: monospace; font-size: 10px; text-align: center;}
+
+        /* VIEWPORT */
+        #preview-viewport { flex-grow: 1; overflow-y: auto; background: #050505; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+
+        /* BOTÓN DE RETORNO FLOTANTE (Solo visible en modo foco) */
+        #floating-return { position: fixed; top: 10px; right: 10px; z-index: 999; background: var(--bg-ui); border: 1px solid var(--primary); color: var(--primary); padding: 10px; display: none; cursor: pointer; font-family: monospace; }
+
+        /* TEMAS */
+        .theme-default { --accent: #00e5ff; }
+        .theme-notice { --accent: #ff3e3e; }
+        .theme-educational { --accent: #00ff88; }
+        .theme-academic { --accent: #d4af37; }
+        .mode-light { --paper-bg: #ffffff; --paper-text: #1a1a1a; }
+        .mode-dark { --paper-bg: #0d1117; --paper-text: #e6edf3; }
+
+        /* HOJA DE PAPEL */
+        .page { background: var(--paper-bg); color: var(--paper-text); padding: 25mm 20mm; margin-bottom: 30px; width: var(--width-page); min-height: var(--height-page); position: relative; box-sizing: border-box; display: flex; flex-direction: column; transition: 0.3s; }
+        
+        .page-header { position: absolute; top: 8mm; left: 10mm; right: 10mm; display: flex; justify-content: space-between; font-family: monospace; font-size: 7pt; color: var(--accent); border-bottom: 0.5pt solid var(--accent); }
+        .page-footer { position: absolute; bottom: 8mm; left: 10mm; right: 10mm; display: flex; justify-content: space-between; font-family: monospace; font-size: 7pt; color: var(--accent); border-top: 0.5pt solid var(--accent); }
+
+        /* ETIQUETADO SIBYL */
+        .content h1::before { content: "[ROOT_HEADER]"; display: block; font-size: 7pt; color: var(--accent); }
+        .content h1 { border-left: 5px solid var(--accent); padding-left: 15px; }
+        .content blockquote { border-left: 3px solid var(--accent); padding: 5px 20px; background: rgba(0,0,0,0.05); }
+
+        /* FORMATOS */
+        .format-ig { --width-page: 500px; --height-page: 500px; }
+        .format-li { --width-page: 500px; --height-page: 625px; }
+        .format-a4 { --width-page: 210mm; --height-page: 297mm; }
+
+        /* CLASES ESPECIALES */
+        .portada { justify-content: center; align-items: center; text-align: center; border: 4px double var(--accent) !important; }
+        .contraportada { justify-content: center; align-items: center; background: var(--accent) !important; color: var(--paper-bg) !important; }
+        .hidden { display: none !important; }
+
+        @media print {
+            #input-area, #metadata-bar, #floating-return { display: none !important; }
+            #preview-viewport { padding: 0; background: white; overflow: visible; }
+            .page { margin: 0; page-break-after: always; box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+<body class="theme-default mode-dark">
+
+<button id="floating-return" onclick="toggleEditor()">[ MOSTRAR_EDITOR ]</button>
+
+<div id="metadata-bar">
+    <input type="text" id="meta-file" placeholder="ARCHIVO_ID" oninput="render()">
+    <input type="text" id="meta-author" placeholder="AUTOR_ID" oninput="render()">
+    <input type="text" id="meta-location" placeholder="LOC_DATA" oninput="render()">
+</div>
+
+<div id="editor-layout">
+    <section id="input-area">
+        <textarea id="markdown-input" placeholder="Escribe aquí... Usa <portada> o <---> para saltar página."></textarea>
+        <div class="toolbar">
+            <select id="format-select" onchange="updateLayout()">
+                <option value="format-a4">FORMATO_A4</option>
+                <option value="format-ig">INSTAGRAM_1:1</option>
+                <option value="format-li">LINKEDIN_4:5</option>
+            </select>
+            <select id="theme-select" onchange="updateLayout()">
+                <option value="theme-default">TEMA_SIBYL</option>
+                <option value="theme-notice">TEMA_NOTICE</option>
+                <option value="theme-educational">TEMA_EDUC</option>
+                <option value="theme-academic">TEMA_ACAD</option>
+            </select>
+            <label><input type="checkbox" id="mode-toggle" onchange="updateLayout()"> MODO_CLARO</label>
+            <button onclick="render()">[ GENERAR ]</button>
+            <button onclick="toggleEditor()">[ FOCO ]</button>
+            <button onclick="window.print()">[ IMPRIMIR ]</button>
+        </div>
+    </section>
+
+    <section id="preview-viewport">
+        <div id="render-target" class="format-a4"></div>
+    </section>
+</div>
+
+<script>
+    function render() {
+        const input = document.getElementById('markdown-input').value;
+        const target = document.getElementById('render-target');
+        const author = document.getElementById('meta-author').value || "SYS_AUTH";
+        const file = document.getElementById('meta-file').value || "UNNAMED_LOG";
+        const loc = document.getElementById('meta-location').value || "NET_HUB";
+        const time = new Date().toLocaleTimeString();
+
+        target.innerHTML = '';
+        const pages = input.split('<--->');
+
+        pages.forEach((content, i) => {
+            const page = document.createElement('div');
+            page.className = 'page';
+            
+            if(content.includes('<portada>')) page.classList.add('portada');
+            if(content.includes('<contraportada>')) page.classList.add('contraportada');
+
+            const cleanContent = content.replace(/<portada>|<\/portada>|<contraportada>|<\/contraportada>/g, '');
+
+            page.innerHTML = `
+                <div class="page-header"><span>ID: ${file}</span><span>LOC: ${loc}</span></div>
+                <div class="content">${marked.parse(cleanContent)}</div>
+                <div class="page-footer"><span>AUTH: ${author}</span><span>TS: ${time}</span><span>PAGE ${i+1}/${pages.length}</span></div>
+            `;
+            target.appendChild(page);
+        });
+        localStorage.setItem('sibyl_v3_content', input);
+    }
+
+    function updateLayout() {
+        const format = document.getElementById('format-select').value;
+        const theme = document.getElementById('theme-select').value;
+        const light = document.getElementById('mode-toggle').checked;
+        document.body.className = `${theme} ${light ? 'mode-light' : 'mode-dark'}`;
+        document.getElementById('render-target').className = format;
+        render();
+    }
+
+    function toggleEditor() {
+        const editor = document.getElementById('input-area');
+        const meta = document.getElementById('metadata-bar');
+        const floatBtn = document.getElementById('floating-return');
+        
+        editor.classList.toggle('hidden');
+        meta.classList.toggle('hidden');
+        
+        floatBtn.style.display = editor.classList.contains('hidden') ? 'block' : 'none';
+    }
+
+    window.onload = () => {
+        const saved = localStorage.getItem('sibyl_v3_content');
+        if(saved) { document.getElementById('markdown-input').value = saved; render(); }
+    };
+</script>
+</body>
+</html>
