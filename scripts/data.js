@@ -149,12 +149,19 @@ export const cardsData = {
       linkText: 'Ejecutar Terminal',
       icon: 'history_toggle_off',
       version: 'v1.0'
-    },
-    
+    },    
     {
       title: 'Playground_HTML',
       description: 'Editor HTML.',
       link: './sources/res_app/sandbox_terminal.html',
+      linkText: 'Ejecutar Terminal',
+      icon: 'history_toggle_off',
+      version: 'v1.0'
+    },    
+    {
+      title: 'Editor_CodexIus',
+      description: 'Editor.',
+      link: './sources/res_app/editorial_codexius.html',
       linkText: 'Ejecutar Terminal',
       icon: 'history_toggle_off',
       version: 'v1.0'
