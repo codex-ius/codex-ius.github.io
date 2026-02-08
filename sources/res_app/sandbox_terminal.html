@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERMINAL_SANDBOX_V1.0</title>
+    <style>
+        /* ESTILOS ESTILO FALLOUT / TERMINAL */
+        :root {
+            --green: #1aff1a;
+            --dark-green: #062b06;
+            --bg: #0a0a0a;
+            --font: 'Courier New', Courier, monospace;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: var(--bg);
+            color: var(--green);
+            font-family: var(--font);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Efecto de líneas de escaneo CRT */
+        body::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 10;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        header {
+            padding: 10px;
+            border-bottom: 2px solid var(--green);
+            text-shadow: 0 0 5px var(--green);
+            font-weight: bold;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        #main-container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        /* ÁREA DE INPUT */
+        #input-section {
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            height: 40%;
+            border-bottom: 1px solid var(--green);
+        }
+
+        textarea {
+            flex-grow: 1;
+            background: var(--bg);
+            color: var(--green);
+            border: none;
+            padding: 15px;
+            font-family: var(--font);
+            font-size: 14px;
+            outline: none;
+            resize: none;
+        }
+
+        /* CONTROLES */
+        .controls {
+            display: flex;
+            background: var(--dark-green);
+            border-top: 1px solid var(--green);
+            border-bottom: 1px solid var(--green);
+        }
+
+        button {
+            flex: 1;
+            background: transparent;
+            color: var(--green);
+            border: 1px solid var(--green);
+            padding: 12px;
+            cursor: pointer;
+            font-family: var(--font);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        button:active {
+            background: var(--green);
+            color: var(--bg);
+        }
+
+        /* ÁREA DE VISUALIZACIÓN */
+        #output-section {
+            flex-grow: 1;
+            background: #fff; /* Fondo blanco para el renderizado real */
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* CLASE PARA OCULTAR INPUT */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    > TERMINAL_CORE :: INPUT_MODE_ACTIVE
+</header>
+
+<div id="main-container">
+    <section id="input-section">
+        <textarea id="code-input" placeholder="INGRESE HTML/CSS/JS AQUÍ..."></textarea>
+    </section>
+
+    <div class="controls">
+        <button onclick="runCode()">[ EJECUTAR ]</button>
+        <button id="toggle-btn" onclick="toggleInput()">[ PANTALLA COMPLETA ]</button>
+    </div>
+
+    <section id="output-section">
+        <iframe id="preview-iframe" sandbox="allow-scripts"></iframe>
+    </section>
+</div>
+
+<script>
+    const inputSection = document.getElementById('input-section');
+    const codeInput = document.getElementById('code-input');
+    const previewIframe = document.getElementById('preview-iframe');
+    const toggleBtn = document.getElementById('toggle-btn');
+
+    // Recuperar código guardado al iniciar
+    window.onload = () => {
+        const savedCode = localStorage.getItem('sandbox_code');
+        if (savedCode) {
+            codeInput.value = savedCode;
+        }
+    };
+
+    function runCode() {
+        const code = codeInput.value;
+        // Guardar en localstorage para no perderlo al recargar
+        localStorage.setItem('sandbox_code', code);
+        
+        // Inyectar código en el iframe
+        const blob = new Blob([code], { type: 'text/html' });
+        previewIframe.src = URL.createObjectURL(blob);
+    }
+
+    function toggleInput() {
+        inputSection.classList.toggle('hidden');
+        if (inputSection.classList.contains('hidden')) {
+            toggleBtn.innerText = "[ MOSTRAR EDITOR ]";
+        } else {
+            toggleBtn.innerText = "[ PANTALLA COMPLETA ]";
+        }
+    }
+</script>
+
+</body>
+</html>
