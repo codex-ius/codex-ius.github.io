@@ -141,7 +141,7 @@ export const cardsData = {
       linkText: 'Ejecutar Terminal',
       icon: 'history_toggle_off',
       version: 'v1.0'
-    },
+    },/*
     {
       title: 'Editor de Codex_Jus',
       description: 'Herramienta para generar publicaciones editoriales.',
@@ -149,10 +149,10 @@ export const cardsData = {
       linkText: 'Ejecutar Terminal',
       icon: 'history_toggle_off',
       version: 'v1.0'
-    },    
+    },  */
     {
       title: 'Playground_HTML',
-      description: 'Editor HTML.',
+      description: 'Editor y visualizador HTML, CSS, JS VANILLA.',
       link: './sources/res_app/sandbox_terminal.html',
       linkText: 'Ejecutar Terminal',
       icon: 'history_toggle_off',
@@ -160,7 +160,7 @@ export const cardsData = {
     },    
     {
       title: 'Editor_CodexIus',
-      description: 'Editor.',
+      description: 'Editor de publicaciones para Codex_ius.',
       link: './sources/res_app/editorial_codexius.html',
       linkText: 'Ejecutar Terminal',
       icon: 'history_toggle_off',
