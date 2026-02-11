@@ -3,185 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor Previsional Soberano - v1.0</title>
+    <title>Gestor Previsional v1.0</title>
     <style>
-        :root { --primary: #1a73e8; --success: #34a853; --bg: #f8f9fa; --text: #202124; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: var(--bg); color: var(--text); }
-        header { background: var(--primary); color: white; padding: 15px; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        .container { padding: 20px; max-width: 600px; margin: auto; }
-        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; border: 1px solid #dadce0; }
-        .hidden { display: none !important; }
-        label { display: block; font-weight: 600; font-size: 13px; color: var(--primary); margin-bottom: 5px; text-transform: uppercase; }
-        input, select, textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #dadce0; border-radius: 8px; box-sizing: border-box; font-size: 15px; outline: none; }
-        input:focus { border: 2px solid var(--primary); }
-        input:disabled { background: #f1f3f4; cursor: not-allowed; }
-        .btn { background: var(--primary); color: white; border: none; padding: 14px; width: 100%; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s; }
-        .btn:active { transform: scale(0.98); }
-        .btn-search { width: 60px; margin-left: 5px; background: #5f6368; }
-        .btn-add { background: var(--success); margin-bottom: 15px; }
-        .btn-clear { background: white; color: #d93025; border: 1px solid #d93025; margin-top: 10px; }
-        .moratoria-box { background: #e8f0fe; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 5px solid var(--primary); position: relative; }
-        .delete-icon { color: #d93025; cursor: pointer; font-size: 12px; text-decoration: underline; }
-        #loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+        body { font-family: sans-serif; background: #eee; padding: 10px; }
+        .card { background: white; padding: 15px; border-radius: 5px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .hidden { display: none; }
+        label { display: block; font-weight: bold; margin-top: 10px; font-size: 0.9em; }
+        input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+        .btn { background: #007bff; color: white; border: none; padding: 10px; width: 100%; border-radius: 3px; cursor: pointer; margin-top: 10px; font-weight: bold; }
+        .btn-add { background: #28a745; }
+        .btn-search { background: #6c757d; width: auto; padding: 8px 15px; }
+        .moratoria-item { border: 1px solid #ddd; padding: 10px; margin-top: 10px; background: #f9f9f9; }
+        .row { display: flex; gap: 10px; align-items: flex-end; }
+        #loading { text-align: center; color: #007bff; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<header> GESTOR PREVISIONAL </header>
+<div id="loading" class="hidden">Cargando datos...</div>
 
-<div id="loading-overlay" class="hidden"><b>PROCESANDO...</b></div>
+<div id="login-screen" class="card">
+    <h3>Acceso Seguro</h3>
+    <label>PIN de Acceso</label>
+    <input type="password" id="pass-input">
+    <button class="btn" onclick="ejecutarLogin()">INGRESAR</button>
+</div>
 
-<div class="container">
-    <div id="login-screen" class="card">
-        <h3 style="margin-top:0">Acceso al Sistema</h3>
-        <label>PIN de Seguridad</label>
-        <input type="password" id="pass-input" placeholder="Ingresa 123 o 456">
-        <button class="btn" onclick="ejecutarLogin()">INGRESAR AL GESTOR</button>
+<div id="main-content" class="hidden">
+    <div class="card">
+        <h3>Datos del Cliente</h3>
+        <div class="row">
+            <div style="flex:1"><label>DNI</label><input type="number" id="dni"></div>
+            <button class="btn btn-search" onclick="consultarExpediente()">🔍 Buscar</button>
+        </div>
+        
+        <label>Nombre Completo</label>
+        <input type="text" id="nombre" class="master-field">
+
+        <div class="row">
+            <div style="flex:1"><label>Fecha Nacimiento</label><input type="date" id="fecha_nac" class="master-field"></div>
+            <div style="flex:1">
+                <label>Estado Civil</label>
+                <select id="estado_civil" class="master-field">
+                    <option value="Soltero/a">Soltero/a</option>
+                    <option value="Casado/a">Casado/a</option>
+                    <option value="Divorciado/a">Divorciado/a</option>
+                    <option value="Viudo/a">Viudo/a</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div style="flex:1"><label>CUIL</label><input type="text" id="cuil" class="master-field"></div>
+            <div style="flex:1">
+                <label>Clave ANSES</label>
+                <input type="text" id="clave_anses" class="master-field">
+            </div>
+        </div>
     </div>
 
-    <div id="main-content" class="hidden">
-        <div class="card">
-            <h3>Ficha del Cliente</h3>
-            <label>DNI</label>
-            <div style="display:flex;">
-                <input type="number" id="dni" placeholder="Sin puntos">
-                <button class="btn btn-search" onclick="consultarExpediente()" title="Buscar cliente">🔍</button>
-            </div>
-            
-            <label>Nombre y Apellido</label>
-            <input type="text" id="nombre" class="master-field">
-            
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-                <div><label>CUIL</label><input type="text" id="cuil" class="master-field"></div>
-                <div><label>Clave ANSES</label><input type="password" id="clave_anses" class="master-field"></div>
-            </div>
-        </div>
+    <div class="card">
+        <h3>Moratorias y Planes</h3>
+        <div id="moratorias-wrapper"></div>
+        <button class="btn btn-add" onclick="crearGrupoMoratoria()">+ Agregar Plan</button>
+    </div>
 
-        <div class="card">
-            <h3>Planes de Moratoria</h3>
-            <div id="moratorias-wrapper">
-                </div>
-            <button class="btn btn-add" onclick="crearGrupoMoratoria()">+ AGREGAR NUEVA LEY / PLAN</button>
-        </div>
+    <div class="card">
+        <label>Estado del Trámite</label>
+        <select id="estado_tramite">
+            <option>Esperando Turno</option>
+            <option>Iniciado</option>
+            <option>En Cómputos</option>
+            <option>Acordado</option>
+        </select>
 
-        <div class="card">
-            <label>Estado Actual</label>
-            <select id="estado_tramite">
-                <option>Esperando Turno</option>
-                <option>Iniciado</option>
-                <option>En Cómputos</option>
-                <option>Acordado</option>
-                <option>Denegado</option>
-            </select>
+        <label>Notas de Gestión</label>
+        <textarea id="notas" rows="4"></textarea>
 
-            <label>Notas de Gestión</label>
-            <textarea id="notas" rows="4" placeholder="Notas sobre el caso..."></textarea>
-            
-            <button class="btn" onclick="enviarDatos()">💾 GUARDAR EXPEDIENTE</button>
-            <button class="btn btn-clear" onclick="limpiarFormulario()">LIMPIAR PANTALLA / NUEVO</button>
-        </div>
+        <button class="btn" onclick="enviarDatos()" style="background:#000">💾 GUARDAR TODO</button>
+        <button class="btn btn-search" onclick="location.reload()" style="background:#dc3545; margin-top:20px;">Cerrar Sesión</button>
     </div>
 </div>
 
 <script>
-    // URL DE TU SCRIPT DE GOOGLE
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwLdk4j2Pc7Ng88TunAhNTveET1SDgDIcm-JVgXxNxLkMWReNYDB3JLf5-4o2lQE0T-/exec";
-    
     let USER_ROLE = "";
 
-    // 1. GESTIÓN DE LOGIN
     async function ejecutarLogin() {
         const pin = document.getElementById('pass-input').value;
-        if (pin === "123" || pin === "456") {
-            USER_ROLE = (pin === "123") ? "MAESTRO" : "RESTRINGIDO";
-            
-            document.getElementById('login-screen').classList.add('hidden');
-            document.getElementById('main-content').classList.remove('hidden');
-            
-            if(USER_ROLE === "RESTRINGIDO") {
-                document.querySelectorAll('.master-field').forEach(el => el.disabled = true);
-            }
-        } else {
-            alert("PIN incorrecto. Prueba con 123 o 456");
-        }
+        toggleLoad(true);
+        try {
+            const resp = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "login", pin: pin }) });
+            const res = await resp.json();
+            if (res.success) {
+                USER_ROLE = res.role;
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('main-content').classList.remove('hidden');
+                if(USER_ROLE === "RESTRINGIDO") document.querySelectorAll('.master-field').forEach(el => el.disabled = true);
+            } else { alert("PIN Incorrecto"); }
+        } catch (e) { alert("Error de conexión"); }
+        toggleLoad(false);
     }
 
-    // 2. CONSULTAR DNI EXISTENTE
     async function consultarExpediente() {
         const dni = document.getElementById('dni').value;
-        if(!dni) return alert("Ingresa un DNI para buscar");
-
-        mostrarCargando(true);
+        toggleLoad(true);
         try {
-            const resp = await fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: JSON.stringify({ action: "consultarDNI", dni: dni })
-            });
+            const resp = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "consultarDNI", dni: dni }) });
             const res = await resp.json();
-            
             if(res) {
-                // El orden res[index] depende de las columnas de tu Sheet
                 document.getElementById('nombre').value = res[2] || "";
+                document.getElementById('fecha_nac').value = res[3] ? res[3].split('T')[0] : "";
                 document.getElementById('cuil').value = res[4] || "";
                 document.getElementById('clave_anses').value = res[5] || "";
-                document.getElementById('estado_tramite').value = res[7] || "Iniciado";
+                document.getElementById('estado_civil').value = res[6] || "Soltero/a";
+                document.getElementById('estado_tramite').value = res[7] || "";
                 document.getElementById('notas').value = res[9] || "";
                 
-                // Cargar Moratorias
-                const moras = JSON.parse(res[8] || "[]");
-                document.getElementById('moratorias-wrapper').innerHTML = "";
-                moras.forEach(m => crearGrupoMoratoria(m));
-                
-                alert("Expediente cargado.");
-            } else {
-                alert("No se encontró ningún expediente con ese DNI.");
-            }
-        } catch (e) {
-            alert("Error al conectar con el servidor.");
-        } finally {
-            mostrarCargando(false);
-        }
+                const wrapper = document.getElementById('moratorias-wrapper');
+                wrapper.innerHTML = "";
+                JSON.parse(res[8] || "[]").forEach(m => crearGrupoMoratoria(m));
+                alert("Expediente cargado");
+            } else { alert("DNI no encontrado"); }
+        } catch (e) { console.error(e); }
+        toggleLoad(false);
     }
 
-    // 3. AGREGAR MORATORIA DINÁMICA
-    function crearGrupoMoratoria(datos = {}) {
-        const wrapper = document.getElementById('moratorias-wrapper');
-        const box = document.createElement('div');
-        box.className = 'moratoria-box';
-        box.innerHTML = `
-            <label>Ley Aplicable</label>
-            <input type="text" class="m-ley" value="${datos.ley || ''}" placeholder="Ej: Ley 27.705">
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-                <div><label>Cuotas Pactadas</label><input type="number" class="m-pactadas" value="${datos.pactadas || ''}"></div>
-                <div><label>Cuotas Pagas</label><input type="number" class="m-pagas" value="${datos.pagas || ''}"></div>
+    function crearGrupoMoratoria(d = {}) {
+        const div = document.createElement('div');
+        div.className = 'moratoria-item';
+        div.innerHTML = `
+            <label>Ley</label><input type="text" class="m-ley" value="${d.ley||''}">
+            <div class="row">
+                <div style="flex:1"><label>Pactadas</label><input type="number" class="m-pact" value="${d.pactadas||''}"></div>
+                <div style="flex:1"><label>Pagas</label><input type="number" class="m-pagas" value="${d.pagas||''}"></div>
             </div>
-            <span class="delete-icon" onclick="this.parentElement.remove()">Eliminar este plan</span>
+            <button onclick="this.parentElement.remove()" style="color:red; background:none; border:none; margin-top:5px; cursor:pointer;">[Eliminar]</button>
         `;
-        wrapper.appendChild(box);
+        document.getElementById('moratorias-wrapper').appendChild(div);
     }
 
-    // 4. GUARDAR DATOS EN DRIVE
     async function enviarDatos() {
-        const dni = document.getElementById('dni').value;
-        if(!dni) return alert("El DNI es obligatorio");
-
-        mostrarCargando(true);
-
-        const moratorias = [];
-        document.querySelectorAll('.moratoria-box').forEach(box => {
-            moratorias.push({
-                ley: box.querySelector('.m-ley').value,
-                pactadas: box.querySelector('.m-pactadas').value,
-                pagas: box.querySelector('.m-pagas').value
-            });
-        });
+        toggleLoad(true);
+        const moratorias = Array.from(document.querySelectorAll('.moratoria-item')).map(it => ({
+            ley: it.querySelector('.m-ley').value,
+            pactadas: it.querySelector('.m-pact').value,
+            pagas: it.querySelector('.m-pagas').value
+        }));
 
         const payload = {
             action: "guardarExpediente",
-            dni: dni,
+            dni: document.getElementById('dni').value,
             nombre: document.getElementById('nombre').value,
+            fecha_nac: document.getElementById('fecha_nac').value,
             cuil: document.getElementById('cuil').value,
             clave_anses: document.getElementById('clave_anses').value,
+            estado_civil: document.getElementById('estado_civil').value,
             estado: document.getElementById('estado_tramite').value,
             notas: document.getElementById('notas').value,
             moratorias: JSON.stringify(moratorias),
@@ -189,30 +166,13 @@
         };
 
         try {
-            await fetch(SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: JSON.stringify(payload)
-            });
-            alert("Expediente guardado/actualizado en db_gestor");
-        } catch (e) {
-            alert("Error al intentar guardar.");
-        } finally {
-            mostrarCargando(false);
-        }
+            await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+            alert("Guardado correctamente");
+        } catch (e) { alert("Error al guardar"); }
+        toggleLoad(false);
     }
 
-    // 5. UTILIDADES
-    function mostrarCargando(ver) {
-        document.getElementById('loading-overlay').className = ver ? "" : "hidden";
-    }
-
-    function limpiarFormulario() {
-        document.querySelectorAll('input, textarea').forEach(el => el.value = "");
-        document.getElementById('moratorias-wrapper').innerHTML = "";
-        document.getElementById('estado_tramite').selectedIndex = 0;
-    }
+    function toggleLoad(v) { document.getElementById('loading').className = v ? "" : "hidden"; }
 </script>
-
 </body>
 </html>
