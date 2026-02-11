@@ -165,6 +165,14 @@ export const cardsData = {
       linkText: 'Ejecutar Terminal',
       icon: 'history_toggle_off',
       version: 'v1.0'
+    },    
+    {
+      title: 'Gestor_CodexIus',
+      description: 'Gestor de causas.',
+      link: './sources/res_app/gestor.html',
+      linkText: 'Ejecutar Terminal',
+      icon: 'history_toggle_off',
+      version: 'v1.0'
     }
   ]
 };
