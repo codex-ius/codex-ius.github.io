@@ -113,55 +113,114 @@
 </div>
 
 <script>
-    let sessionTimeout;
-    let userRole = "";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwLdk4j2Pc7Ng88TunAhNTveET1SDgDIcm-JVgXxNxLkMWReNYDB3JLf5-4o2lQE0T-/exec";
+    let USER_ROLE = "";
+    let SESSION_TIMER;
 
-    function login() {
-        const pass = document.getElementById('pass-input').value;
-        // Aquí iría la llamada al Apps Script. Por ahora simulamos:
-        if(pass === "123") {
-            userRole = "RESTRINGIDO";
-            document.getElementById('login-screen').classList.add('hidden');
-            document.getElementById('main-content').classList.remove('hidden');
-            document.getElementById('user-role').innerText = "ROL: " + userRole;
-            aplicarPrivilegios();
-            resetInactividad();
-        }
+    // --- LÓGICA DE LOGIN ---
+    async function ejecutarLogin() {
+        const pin = document.getElementById('pass-input').value;
+        if (!pin) return alert("Ingrese un PIN");
+
+        alternarCargando(true);
+        
+        // Simulación de validación (el Script de Google debe manejar esto)
+        // Por ahora, '123' es Maestro, cualquier otro es Usuario
+        setTimeout(() => {
+            if(pin === "123") {
+                iniciarSesion("MAESTRO");
+            } else if(pin === "456") {
+                iniciarSesion("RESTRINGIDO");
+            } else {
+                alert("PIN Incorrecto");
+            }
+            alternarCargando(false);
+        }, 800);
     }
 
-    function aplicarPrivilegios() {
-        if(userRole === "RESTRINGIDO") {
+    function iniciarSesion(rol) {
+        USER_ROLE = rol;
+        document.getElementById('login-screen').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+        document.getElementById('user-display').innerText = "ROL: " + rol;
+        
+        if(rol === "RESTRINGIDO") {
             document.querySelectorAll('.master-field').forEach(el => el.disabled = true);
         }
+        resetTimer();
     }
 
-    function agregarMoratoria() {
-        const container = document.getElementById('moratorias-container');
-        const div = document.createElement('div');
-        div.className = 'moratoria-box';
-        div.innerHTML = `
-            <div class="input-group">
-                <label>LEY APLICABLE</label>
-                <input type="text" placeholder="Ej: Ley 27.705">
+    // --- LÓGICA DE MORATORIAS DINÁMICAS ---
+    function crearGrupoMoratoria(datos = {}) {
+        const container = document.getElementById('moratorias-wrapper');
+        const box = document.createElement('div');
+        box.className = 'moratoria-box';
+        box.innerHTML = `
+            <div class="input-group"><label>Ley Aplicable</label><input type="text" class="m-ley" value="${datos.ley || ''}"></div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                <div class="input-group"><label>Cuotas Pactadas</label><input type="number" class="m-pactadas" value="${datos.pactadas || ''}"></div>
+                <div class="input-group"><label>Cuotas Pagas</label><input type="number" class="m-pagas" value="${datos.pagas || ''}"></div>
             </div>
-            <div style="display:flex; gap:10px;">
-                <div class="input-group"><label>CUOTAS PACTADAS</label><input type="number"></div>
-                <div class="input-group"><label>CUOTAS PAGAS</label><input type="number"></div>
-            </div>
+            <button onclick="this.parentElement.remove()" style="color:red; border:none; background:none; cursor:pointer; font-size:10px;">ELIMINAR ESTE PLAN</button>
         `;
-        container.appendChild(div);
+        container.appendChild(box);
     }
 
-    function resetInactividad() {
-        clearTimeout(sessionTimeout);
-        sessionTimeout = setTimeout(() => {
-            alert("Sesión expirada por inactividad");
+    // --- ENVÍO DE DATOS A GOOGLE SHEETS ---
+    async function enviarDatos() {
+        alternarCargando(true);
+
+        // Recolectar moratorias en un array para enviarlo como JSON
+        const moratorias = [];
+        document.querySelectorAll('.moratoria-box').forEach(box => {
+            moratorias.push({
+                ley: box.querySelector('.m-ley').value,
+                pactadas: box.querySelector('.m-pactadas').value,
+                pagas: box.querySelector('.m-pagas').value
+            });
+        });
+
+        const payload = {
+            action: "guardarExpediente",
+            dni: document.getElementById('dni').value,
+            nombre: document.getElementById('nombre').value,
+            cuil: document.getElementById('cuil').value,
+            clave_anses: document.getElementById('clave_anses').value,
+            estado: document.getElementById('estado_tramite').value,
+            notas: document.getElementById('notas').value,
+            moratorias: JSON.stringify(moratorias),
+            usuario: USER_ROLE
+        };
+
+        try {
+            await fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify(payload)
+            });
+            alert("Solicitud enviada al servidor (Google Sheet)");
+        } catch (e) {
+            alert("Error al conectar con el servidor");
+        } finally {
+            alternarCargando(false);
+        }
+    }
+
+    // --- UTILIDADES ---
+    function alternarCargando(ver) {
+        document.getElementById('loading').className = ver ? "" : "hidden";
+    }
+
+    function resetTimer() {
+        clearTimeout(SESSION_TIMER);
+        SESSION_TIMER = setTimeout(() => {
+            alert("Sesión cerrada por inactividad");
             location.reload();
-        }, 15 * 60 * 1000); // 15 minutos
+        }, 15 * 60 * 1000); // 15 Minutos
     }
 
-    document.onmousemove = resetInactividad;
-    document.onkeydown = resetInactividad;
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
 </script>
 </body>
 </html>
