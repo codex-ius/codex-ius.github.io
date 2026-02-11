@@ -43,9 +43,10 @@
 
 <div id="main-app" class="hidden">
     <nav>
-        <span class="nav-item" onclick="mostrarSeccion('form')">📝 NUEVA FICHA</span>
-        <span class="nav-item" onclick="mostrarSeccion('agenda')">📂 AGENDA</span>
-    </nav>
+    <span class="nav-item" onclick="mostrarSeccion('form')">📝 NUEVA FICHA</span>
+    <span class="nav-item" onclick="mostrarSeccion('agenda')">📂 AGENDA</span>
+    <span class="nav-item" style="color:var(--red);" onclick="cerrarSesion()">🚫 SALIR</span>
+</nav>
 
     <div id="sec-form" class="container">
         <div class="card">
@@ -273,6 +274,43 @@
     }
 
     function toggleLoad(v) { document.getElementById('loading').className = v ? "" : "hidden"; }
+
+    let timeoutReloj;
+
+// Configura el tiempo de inactividad (ejemplo: 15 minutos)
+const MINUTOS_INACTIVIDAD = 15;
+
+function resetearTemporizador() {
+    clearTimeout(timeoutReloj);
+    // Si el usuario está logueado, comienza la cuenta regresiva
+    if (!document.getElementById('main-app').classList.contains('hidden')) {
+        timeoutReloj = setTimeout(() => {
+            alert("Sesión cerrada por inactividad para proteger los datos.");
+            cerrarSesion();
+        }, MINUTOS_INACTIVIDAD * 60 * 1000);
+    }
+}
+
+function cerrarSesion() {
+    // Borramos datos sensibles de la memoria
+    USER_ROLE = "";
+    limpiarFormulario();
+    document.getElementById('pass-input').value = "";
+    
+    // Volvemos a la pantalla de login
+    document.getElementById('main-app').classList.add('hidden');
+    document.getElementById('login-screen').classList.remove('hidden');
+    
+    // Limpiamos el reloj
+    clearTimeout(timeoutReloj);
+}
+
+// Detectar movimiento o clics para resetear el tiempo
+window.onload = resetearTemporizador;
+document.onmousemove = resetearTemporizador;
+document.onkeypress = resetearTemporizador;
+document.ontouchstart = resetearTemporizador; // Importante para tu tablet
+
 </script>
 
 </body>
