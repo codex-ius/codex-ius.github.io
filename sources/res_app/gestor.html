@@ -3,90 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor Previsional Soberano</title>
+    <title>Gestor Previsional Soberano v2.0</title>
     <style>
-        body { font-family: sans-serif; background: #f4f4f4; margin: 0; padding-bottom: 50px; }
-        header { background: #1a73e8; color: white; padding: 15px; text-align: center; font-weight: bold; }
-        nav { background: #fff; display: flex; justify-content: space-around; padding: 10px; border-bottom: 1px solid #ddd; }
-        .nav-item { cursor: pointer; color: #1a73e8; font-weight: bold; font-size: 0.9em; }
+        :root { --blue: #1a73e8; --green: #34a853; --red: #d93025; --gray: #5f6368; }
+        body { font-family: sans-serif; background: #f0f2f5; margin: 0; padding-bottom: 30px; }
+        header { background: var(--blue); color: white; padding: 15px; text-align: center; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        nav { background: white; display: flex; justify-content: space-around; padding: 10px; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 10; }
+        .nav-item { cursor: pointer; color: var(--blue); font-weight: bold; font-size: 0.9em; padding: 5px 10px; }
         .container { padding: 15px; max-width: 600px; margin: auto; }
-        .card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        .card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 15px; }
         .hidden { display: none !important; }
-        label { display: block; font-weight: bold; margin-top: 10px; font-size: 0.8em; color: #666; }
-        input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
-        .btn { border: none; padding: 12px; width: 100%; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 10px; }
-        .btn-blue { background: #1a73e8; color: white; }
-        .btn-green { background: #34a853; color: white; }
-        .btn-red { background: #d93025; color: white; }
-        .btn-outline { background: none; border: 1px solid #1a73e8; color: #1a73e8; }
-        /* Estilo Agenda */
-        .agenda-card { border-left: 5px solid #1a73e8; margin-bottom: 10px; padding: 10px; background: white; border-radius: 4px; position: relative; }
-        .agenda-info { font-size: 0.9em; }
-        .edad-tag { background: #e8f0fe; color: #1a73e8; padding: 2px 6px; border-radius: 10px; font-size: 0.8em; }
+        label { display: block; font-weight: bold; margin-top: 10px; font-size: 0.8em; color: var(--gray); text-transform: uppercase; }
+        input, select, textarea { width: 100%; padding: 12px; margin-top: 5px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        .btn { border: none; padding: 14px; width: 100%; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 10px; font-size: 14px; }
+        .btn-blue { background: var(--blue); color: white; }
+        .btn-green { background: var(--green); color: white; }
+        .btn-red { background: var(--red); color: white; }
+        .btn-outline { background: none; border: 1px solid var(--blue); color: var(--blue); }
+        .row { display: flex; gap: 10px; align-items: flex-end; }
+        .agenda-card { border-left: 5px solid var(--blue); margin-bottom: 10px; padding: 15px; background: white; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .edad-badge { background: #e8f0fe; color: var(--blue); padding: 3px 8px; border-radius: 12px; font-size: 0.85em; margin-left: 5px; }
+        #loading { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); color: white; padding: 20px; border-radius: 10px; z-index: 1000; }
     </style>
 </head>
 <body>
 
-<header id="header-title">GESTOR PREVISIONAL</header>
+<header>SISTEMA GESTOR PREVISIONAL</header>
+
+<div id="loading" class="hidden">PROCESANDO...</div>
 
 <div id="login-screen" class="container">
     <div class="card">
-        <h3>Acceso Personal</h3>
-        <input type="password" id="pass-input" placeholder="Ingresa tu PIN">
+        <h3 style="margin-top:0">Iniciar Sesión</h3>
+        <label>PIN de Acceso</label>
+        <input type="password" id="pass-input" placeholder="Ingresa tu clave">
         <button class="btn btn-blue" onclick="ejecutarLogin()">INGRESAR</button>
     </div>
 </div>
 
 <div id="main-app" class="hidden">
     <nav>
-        <span class="nav-item" onclick="mostrarSeccion('form')">📝 FICHA</span>
+        <span class="nav-item" onclick="mostrarSeccion('form')">📝 NUEVA FICHA</span>
         <span class="nav-item" onclick="mostrarSeccion('agenda')">📂 AGENDA</span>
     </nav>
 
-    <div id="loading" class="hidden" style="text-align:center; padding:10px;">Procesando...</div>
-
     <div id="sec-form" class="container">
         <div class="card">
-            <div style="display:flex; gap:5px;">
-                <input type="number" id="dni" placeholder="DNI para buscar o crear">
+            <h3>Ficha del Cliente</h3>
+            <div class="row">
+                <div style="flex:1"><label>DNI</label><input type="number" id="dni"></div>
                 <button class="btn btn-blue" style="width:60px; margin:0;" onclick="consultarExpediente()">🔍</button>
             </div>
             
-            <label>NOMBRE</label><input type="text" id="nombre" class="master-field">
+            <label>Nombre y Apellido</label>
+            <input type="text" id="nombre" class="master-field">
             
-            <div style="display:flex; gap:10px;">
+            <div class="row">
                 <div style="flex:1">
-                    <label>NACIMIENTO</label>
+                    <label>Nacimiento</label>
                     <input type="date" id="fecha_nac" class="master-field" onchange="actualizarEdad()">
                 </div>
                 <div style="flex:1">
-                    <label>EDAD ACTUAL</label>
-                    <div id="edad-display" style="padding:10px; font-weight:bold; color:#1a73e8;">-</div>
+                    <label>Edad</label>
+                    <div id="edad-display" style="padding:12px; font-weight:bold; color:var(--blue);">-</div>
                 </div>
             </div>
 
-            <label>CUIL</label><input type="text" id="cuil" class="master-field">
-            <label>CLAVE ANSES</label><input type="text" id="clave_anses" class="master-field">
-            <label>ESTADO CIVIL</label>
+            <div class="row">
+                <div style="flex:1"><label>CUIL</label><input type="text" id="cuil" class="master-field"></div>
+                <div style="flex:1"><label>Clave ANSES</label><input type="text" id="clave_anses" class="master-field"></div>
+            </div>
+
+            <label>Estado Civil</label>
             <select id="estado_civil" class="master-field">
-                <option>Soltero/a</option><option>Casado/a</option><option>Divorciado/a</option><option>Viudo/a</option>
+                <option value="Soltero/a">Soltero/a</option>
+                <option value="Casado/a">Casado/a</option>
+                <option value="Divorciado/a">Divorciado/a</option>
+                <option value="Viudo/a">Viudo/a</option>
             </select>
         </div>
 
         <div class="card">
-            <label>MORATORIAS</label>
+            <h3>Moratorias</h3>
             <div id="moratorias-wrapper"></div>
             <button class="btn btn-outline" onclick="crearGrupoMoratoria()">+ Agregar Plan</button>
         </div>
 
         <div class="card">
-            <label>ESTADO TRÁMITE</label>
+            <label>Estado Trámite</label>
             <select id="estado_tramite">
-                <option>Iniciado</option><option>En Cómputos</option><option>Acordado</option>
+                <option>Iniciado</option>
+                <option>En Cómputos</option>
+                <option>Esperando Turno</option>
+                <option>Acordado</option>
+                <option>Denegado</option>
             </select>
-            <label>NOTAS</label>
-            <textarea id="notas" rows="3"></textarea>
+            <label>Notas</label>
+            <textarea id="notas" rows="4"></textarea>
             <button class="btn btn-green" onclick="enviarDatos()">💾 GUARDAR EXPEDIENTE</button>
+            <button class="btn btn-outline" style="color:var(--red); border-color:var(--red);" onclick="limpiarFormulario()">LIMPIAR PANTALLA</button>
         </div>
     </div>
 
@@ -100,6 +115,7 @@
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwLdk4j2Pc7Ng88TunAhNTveET1SDgDIcm-JVgXxNxLkMWReNYDB3JLf5-4o2lQE0T-/exec";
     let USER_ROLE = "";
 
+    // 1. LOGIN SEGURO
     async function ejecutarLogin() {
         const pin = document.getElementById('pass-input').value;
         toggleLoad(true);
@@ -110,11 +126,13 @@
                 USER_ROLE = res.role;
                 document.getElementById('login-screen').classList.add('hidden');
                 document.getElementById('main-app').classList.remove('hidden');
+                if(USER_ROLE === "RESTRINGIDO") document.querySelectorAll('.master-field').forEach(el => el.disabled = true);
             } else { alert("PIN Incorrecto"); }
-        } catch (e) { alert("Error de red"); }
+        } catch (e) { alert("Error de conexión con el servidor"); }
         toggleLoad(false);
     }
 
+    // 2. NAVEGACIÓN
     function mostrarSeccion(sec) {
         document.getElementById('sec-form').classList.add('hidden');
         document.getElementById('sec-agenda').classList.add('hidden');
@@ -122,17 +140,43 @@
         if(sec === 'agenda') cargarAgenda();
     }
 
+    // 3. CÁLCULO DE EDAD
     function actualizarEdad() {
-        const fecha = document.getElementById('fecha_nac').value;
-        if(!fecha) return;
-        const nac = new Date(fecha);
-        const hoy = new Date();
-        let edad = hoy.getFullYear() - nac.getFullYear();
-        const m = hoy.getMonth() - nac.getMonth();
-        if (m < 0 || (m === 0 && hoy.getDate() < nac.getDate())) edad--;
-        document.getElementById('edad-display').innerText = edad + " años";
+        const f = document.getElementById('fecha_nac').value;
+        if(!f) return;
+        const n = new Date(f);
+        const h = new Date();
+        let e = h.getFullYear() - n.getFullYear();
+        if (h.getMonth() < n.getMonth() || (h.getMonth() === n.getMonth() && h.getDate() < n.getDate())) e--;
+        document.getElementById('edad-display').innerText = e + " años";
     }
 
+    // 4. CONSULTA INDIVIDUAL
+    async function consultarExpediente() {
+        const dni = document.getElementById('dni').value;
+        if(!dni) return alert("Ingresa un DNI");
+        toggleLoad(true);
+        try {
+            const r = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "consultarDNI", dni: dni }) });
+            const res = await r.json();
+            if(res) {
+                document.getElementById('nombre').value = res[2] || "";
+                document.getElementById('fecha_nac').value = res[3] || "";
+                document.getElementById('cuil').value = res[4] || "";
+                document.getElementById('clave_anses').value = res[5] || "";
+                document.getElementById('estado_civil').value = res[6] || "Soltero/a";
+                document.getElementById('estado_tramite').value = res[7] || "";
+                document.getElementById('notas').value = res[9] || "";
+                document.getElementById('moratorias-wrapper').innerHTML = "";
+                JSON.parse(res[8] || "[]").forEach(m => crearGrupoMoratoria(m));
+                actualizarEdad();
+                alert("Datos cargados correctamente");
+            } else { alert("DNI no encontrado en la base de datos"); }
+        } catch (e) { alert("Error al buscar"); }
+        toggleLoad(false);
+    }
+
+    // 5. AGENDA Y BORRADO
     async function cargarAgenda() {
         toggleLoad(true);
         const lista = document.getElementById('agenda-lista');
@@ -141,29 +185,30 @@
             const r = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "listarTodo" }) });
             const datos = await r.json();
             datos.forEach(c => {
-                const card = document.createElement('div');
-                card.className = "agenda-card";
-                card.innerHTML = `
-                    <div class="agenda-info">
-                        <strong>${c[2]}</strong> (DNI: ${c[1]})<br>
-                        <small>Estado: ${c[7]}</small>
-                    </div>
-                    <div style="margin-top:8px; display:flex; gap:5px;">
-                        <button class="btn btn-blue" style="padding:5px; font-size:10px;" onclick="editarDesdeAgenda('${c[1]}')">EDITAR</button>
-                        ${USER_ROLE === 'MAESTRO' ? `<button class="btn btn-red" style="padding:5px; font-size:10px;" onclick="borrarExpediente('${c[1]}')">BORRAR</button>` : ''}
+                const item = document.createElement('div');
+                item.className = "agenda-card";
+                item.innerHTML = `
+                    <strong>${c[2]}</strong> (DNI: ${c[1]})<br>
+                    <small>Estado: ${c[7]} | Modificado por: ${c[10]}</small>
+                    <div style="display:flex; gap:10px; margin-top:10px;">
+                        <button class="btn btn-blue" style="padding:5px; font-size:11px;" onclick="editarDesdeAgenda('${c[1]}')">EDITAR</button>
+                        ${USER_ROLE === 'MAESTRO' ? `<button class="btn btn-red" style="padding:5px; font-size:11px;" onclick="borrarExpediente('${c[1]}')">BORRAR</button>` : ''}
                     </div>
                 `;
-                lista.appendChild(card);
+                lista.appendChild(item);
             });
-        } catch (e) { alert("Error al cargar agenda"); }
+        } catch (e) { alert("Error al listar agenda"); }
         toggleLoad(false);
     }
 
     async function borrarExpediente(dni) {
-        if(!confirm("¿Estás seguro de borrar este expediente?")) return;
+        if(!confirm("¿Eliminar permanentemente este registro?")) return;
         toggleLoad(true);
-        await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "borrarExpediente", dni: dni, usuario: USER_ROLE }) });
-        cargarAgenda();
+        try {
+            await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "borrarExpediente", dni: dni, usuario: USER_ROLE }) });
+            cargarAgenda();
+        } catch (e) { alert("Error al borrar"); }
+        toggleLoad(false);
     }
 
     function editarDesdeAgenda(dni) {
@@ -172,10 +217,63 @@
         mostrarSeccion('form');
     }
 
-    // ... (Mantener funciones de consultarExpediente, crearGrupoMoratoria y enviarDatos de la versión anterior) ...
-    // Solo asegúrate de llamar a actualizarEdad() dentro de consultarExpediente cuando rellenes la fecha.
-    
+    // 6. MORATORIAS DINÁMICAS
+    function crearGrupoMoratoria(d = {}) {
+        const div = document.createElement('div');
+        div.style = "border:1px solid #ddd; padding:10px; margin-top:10px; background:#f9f9f9; position:relative;";
+        div.className = "moratoria-item";
+        div.innerHTML = `
+            <label>Ley</label><input type="text" class="m-ley" value="${d.ley||''}">
+            <div class="row">
+                <div style="flex:1"><label>Pactadas</label><input type="number" class="m-pact" value="${d.pactadas||''}"></div>
+                <div style="flex:1"><label>Pagas</label><input type="number" class="m-pagas" value="${d.pagas||''}"></div>
+            </div>
+            <button onclick="this.parentElement.remove()" style="color:red; background:none; border:none; cursor:pointer; font-size:11px; margin-top:5px;">[Eliminar Plan]</button>
+        `;
+        document.getElementById('moratorias-wrapper').appendChild(div);
+    }
+
+    // 7. GUARDAR
+    async function enviarDatos() {
+        const dni = document.getElementById('dni').value;
+        if(!dni) return alert("Falta el DNI");
+        toggleLoad(true);
+        
+        const moratorias = Array.from(document.querySelectorAll('.moratoria-item')).map(it => ({
+            ley: it.querySelector('.m-ley').value,
+            pactadas: it.querySelector('.m-pact').value,
+            pagas: it.querySelector('.m-pagas').value
+        }));
+
+        const payload = {
+            action: "guardarExpediente",
+            dni: dni,
+            nombre: document.getElementById('nombre').value,
+            fecha_nac: document.getElementById('fecha_nac').value,
+            cuil: document.getElementById('cuil').value,
+            clave_anses: document.getElementById('clave_anses').value,
+            estado_civil: document.getElementById('estado_civil').value,
+            estado: document.getElementById('estado_tramite').value,
+            notas: document.getElementById('notas').value,
+            moratorias: JSON.stringify(moratorias),
+            usuario: USER_ROLE
+        };
+
+        try {
+            await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+            alert("Guardado exitoso");
+        } catch (e) { alert("Error al guardar"); }
+        toggleLoad(false);
+    }
+
+    function limpiarFormulario() {
+        document.querySelectorAll('input, textarea').forEach(i => i.value = "");
+        document.getElementById('moratorias-wrapper').innerHTML = "";
+        document.getElementById('edad-display').innerText = "-";
+    }
+
     function toggleLoad(v) { document.getElementById('loading').className = v ? "" : "hidden"; }
 </script>
+
 </body>
 </html>
