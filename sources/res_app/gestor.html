@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor Previsional - ver_02</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --md-primary: #1a73e8;
+            --md-bg: #f8f9fa;
+            --md-card: #ffffff;
+            --md-text: #202124;
+            --md-border: #dadce0;
+        }
+
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background: var(--md-bg); color: var(--md-text); margin: 0; 
+        }
+
+        header {
+            background: var(--md-primary); color: white;
+            padding: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .container { padding: 20px; max-width: 800px; margin: auto; }
+
+        /* Estilo de Tarjetas (Cards) */
+        .card {
+            background: var(--md-card); border-radius: 8px;
+            border: 1px solid var(--md-border); padding: 20px;
+            margin-bottom: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        /* Inputs Material Design */
+        .input-group { position: relative; margin-bottom: 24px; }
+        label { 
+            display: block; font-size: 12px; color: var(--md-primary); 
+            font-weight: 500; margin-bottom: 4px; 
+        }
+        input, textarea, select {
+            width: 100%; border: 1px solid var(--md-border);
+            padding: 10px; border-radius: 4px; box-sizing: border-box;
+            font-size: 14px; outline: none; transition: border 0.2s;
+        }
+        input:focus { border: 2px solid var(--md-primary); }
+
+        /* Apartado Moratoria Dinámico */
+        .moratoria-box {
+            background: #e8f0fe; border-left: 4px solid var(--md-primary);
+            padding: 15px; margin-top: 10px; border-radius: 4px;
+        }
+
+        .btn {
+            background: var(--md-primary); color: white; border: none;
+            padding: 10px 20px; border-radius: 4px; cursor: pointer;
+            font-weight: 500; text-transform: uppercase;
+        }
+        .btn-sec { background: #5f6368; }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<header>
+    <span>ESTUDIO JURÍDICO - GESTOR PREVISIONAL</span>
+    <span id="user-role" style="font-size: 12px;">INICIAR SESIÓN</span>
+</header>
+
+<div class="container" id="app">
+    <div id="login-screen" class="card">
+        <h3>Acceso al Sistema</h3>
+        <div class="input-group">
+            <label>CLAVE DE ACCESO</label>
+            <input type="password" id="pass-input" placeholder="Ingrese su clave personal">
+        </div>
+        <button class="btn" onclick="login()">Ingresar</button>
+    </div>
+
+    <div id="main-content" class="hidden">
+        <div class="card">
+            <h3>Ficha de Expediente</h3>
+            <div class="input-group">
+                <label>APELLIDO Y NOMBRE</label>
+                <input type="text" id="nombre" class="master-field">
+            </div>
+            <div class="input-group">
+                <label>ESTADO DEL TRÁMITE</label>
+                <select id="estado-tramite">
+                    <option>En espera de turno</option>
+                    <option>En cómputos</option>
+                    <option>Acordado</option>
+                </select>
+            </div>
+
+            <div id="moratorias-container">
+                <h4>Planes de Moratoria</h4>
+            </div>
+            <button class="btn btn-sec" onclick="agregarMoratoria()">+ Agregar Plan</button>
+        </div>
+        
+        <div class="card">
+            <div class="input-group">
+                <label>NOTAS DE GESTIÓN</label>
+                <textarea id="notas" rows="4"></textarea>
+            </div>
+            <button class="btn" onclick="guardar()">Guardar Cambios</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let sessionTimeout;
+    let userRole = "";
+
+    function login() {
+        const pass = document.getElementById('pass-input').value;
+        // Aquí iría la llamada al Apps Script. Por ahora simulamos:
+        if(pass === "123") {
+            userRole = "RESTRINGIDO";
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('main-content').classList.remove('hidden');
+            document.getElementById('user-role').innerText = "ROL: " + userRole;
+            aplicarPrivilegios();
+            resetInactividad();
+        }
+    }
+
+    function aplicarPrivilegios() {
+        if(userRole === "RESTRINGIDO") {
+            document.querySelectorAll('.master-field').forEach(el => el.disabled = true);
+        }
+    }
+
+    function agregarMoratoria() {
+        const container = document.getElementById('moratorias-container');
+        const div = document.createElement('div');
+        div.className = 'moratoria-box';
+        div.innerHTML = `
+            <div class="input-group">
+                <label>LEY APLICABLE</label>
+                <input type="text" placeholder="Ej: Ley 27.705">
+            </div>
+            <div style="display:flex; gap:10px;">
+                <div class="input-group"><label>CUOTAS PACTADAS</label><input type="number"></div>
+                <div class="input-group"><label>CUOTAS PAGAS</label><input type="number"></div>
+            </div>
+        `;
+        container.appendChild(div);
+    }
+
+    function resetInactividad() {
+        clearTimeout(sessionTimeout);
+        sessionTimeout = setTimeout(() => {
+            alert("Sesión expirada por inactividad");
+            location.reload();
+        }, 15 * 60 * 1000); // 15 minutos
+    }
+
+    document.onmousemove = resetInactividad;
+    document.onkeydown = resetInactividad;
+</script>
+</body>
+</html>
