@@ -3,179 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor Previsional - ver_02</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Gestor Jurídico v1.0</title>
     <style>
-        :root {
-            --md-primary: #1a73e8;
-            --md-bg: #f8f9fa;
-            --md-card: #ffffff;
-            --md-text: #202124;
-            --md-border: #dadce0;
-        }
-
-        body { 
-            font-family: 'Roboto', sans-serif; 
-            background: var(--md-bg); color: var(--md-text); margin: 0; 
-        }
-
-        header {
-            background: var(--md-primary); color: white;
-            padding: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            display: flex; justify-content: space-between; align-items: center;
-        }
-
-        .container { padding: 20px; max-width: 800px; margin: auto; }
-
-        /* Estilo de Tarjetas (Cards) */
-        .card {
-            background: var(--md-card); border-radius: 8px;
-            border: 1px solid var(--md-border); padding: 20px;
-            margin-bottom: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-
-        /* Inputs Material Design */
-        .input-group { position: relative; margin-bottom: 24px; }
-        label { 
-            display: block; font-size: 12px; color: var(--md-primary); 
-            font-weight: 500; margin-bottom: 4px; 
-        }
-        input, textarea, select {
-            width: 100%; border: 1px solid var(--md-border);
-            padding: 10px; border-radius: 4px; box-sizing: border-box;
-            font-size: 14px; outline: none; transition: border 0.2s;
-        }
-        input:focus { border: 2px solid var(--md-primary); }
-
-        /* Apartado Moratoria Dinámico */
-        .moratoria-box {
-            background: #e8f0fe; border-left: 4px solid var(--md-primary);
-            padding: 15px; margin-top: 10px; border-radius: 4px;
-        }
-
-        .btn {
-            background: var(--md-primary); color: white; border: none;
-            padding: 10px 20px; border-radius: 4px; cursor: pointer;
-            font-weight: 500; text-transform: uppercase;
-        }
-        .btn-sec { background: #5f6368; }
-
-        .hidden { display: none; }
+        /* CSS MÍNIMO Y FUNCIONAL */
+        body { font-family: sans-serif; margin: 0; background: #f0f2f5; color: #333; }
+        header { background: #1a73e8; color: white; padding: 15px; text-align: center; font-weight: bold; }
+        .container { padding: 20px; max-width: 600px; margin: auto; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .hidden { display: none !important; }
+        input, select, textarea { width: 100%; padding: 10px; margin: 8px 0 20px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        label { font-weight: bold; font-size: 14px; color: #1a73e8; }
+        .btn { background: #1a73e8; color: white; border: none; padding: 12px; width: 100%; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-add { background: #34a853; margin-bottom: 15px; }
+        .moratoria-box { background: #e8f0fe; padding: 15px; border-radius: 4px; margin-bottom: 10px; border-left: 5px solid #1a73e8; }
     </style>
 </head>
 <body>
 
-<header>
-    <span>ESTUDIO JURÍDICO - GESTOR PREVISIONAL</span>
-    <span id="user-role" style="font-size: 12px;">INICIAR SESIÓN</span>
-</header>
+<header> GESTOR DE EXPEDIENTES </header>
 
-<div class="container" id="app">
+<div class="container">
     <div id="login-screen" class="card">
         <h3>Acceso al Sistema</h3>
-        <div class="input-group">
-            <label>CLAVE DE ACCESO</label>
-            <input type="password" id="pass-input" placeholder="Ingrese su clave personal">
-        </div>
-        <button class="btn" onclick="login()">Ingresar</button>
+        <label>PIN de Seguridad</label>
+        <input type="password" id="pass-input" placeholder="Ingresa 123 o 456">
+        <button class="btn" onclick="ejecutarLogin()">ENTRAR</button>
     </div>
 
     <div id="main-content" class="hidden">
         <div class="card">
-            <h3>Ficha de Expediente</h3>
-            <div class="input-group">
-                <label>APELLIDO Y NOMBRE</label>
-                <input type="text" id="nombre" class="master-field">
-            </div>
-            <div class="input-group">
-                <label>ESTADO DEL TRÁMITE</label>
-                <select id="estado-tramite">
-                    <option>En espera de turno</option>
-                    <option>En cómputos</option>
-                    <option>Acordado</option>
-                </select>
-            </div>
-
-            <div id="moratorias-container">
-                <h4>Planes de Moratoria</h4>
-            </div>
-            <button class="btn btn-sec" onclick="agregarMoratoria()">+ Agregar Plan</button>
+            <h3>Datos del Cliente</h3>
+            <label>DNI</label>
+            <input type="number" id="dni" class="master-field">
+            
+            <label>Nombre y Apellido</label>
+            <input type="text" id="nombre" class="master-field">
+            
+            <label>Estado del Trámite</label>
+            <select id="estado_tramite">
+                <option>Iniciado</option>
+                <option>En Cómputos</option>
+                <option>Acordado</option>
+            </select>
         </div>
-        
+
         <div class="card">
-            <div class="input-group">
-                <label>NOTAS DE GESTIÓN</label>
-                <textarea id="notas" rows="4"></textarea>
-            </div>
-            <button class="btn" onclick="guardar()">Guardar Cambios</button>
+            <h3>Moratorias</h3>
+            <div id="moratorias-wrapper"></div>
+            <button class="btn btn-add" onclick="crearGrupoMoratoria()">+ Agregar Plan</button>
+        </div>
+
+        <div class="card">
+            <label>Notas de Gestión</label>
+            <textarea id="notas" rows="4"></textarea>
+            <button class="btn" onclick="enviarDatos()">GUARDAR EN DRIVE</button>
         </div>
     </div>
 </div>
 
 <script>
+    // CAMBIA ESTA URL POR LA TUYA DE GOOGLE (LA QUE TERMINA EN /exec)
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwLdk4j2Pc7Ng88TunAhNTveET1SDgDIcm-JVgXxNxLkMWReNYDB3JLf5-4o2lQE0T-/exec";
+    
     let USER_ROLE = "";
-    let SESSION_TIMER;
 
-    // --- LÓGICA DE LOGIN ---
+    // FUNCIÓN DE LOGIN
     async function ejecutarLogin() {
         const pin = document.getElementById('pass-input').value;
-        if (!pin) return alert("Ingrese un PIN");
-
-        alternarCargando(true);
         
-        // Simulación de validación (el Script de Google debe manejar esto)
-        // Por ahora, '123' es Maestro, cualquier otro es Usuario
-        setTimeout(() => {
-            if(pin === "123") {
-                iniciarSesion("MAESTRO");
-            } else if(pin === "456") {
-                iniciarSesion("RESTRINGIDO");
-            } else {
-                alert("PIN Incorrecto");
+        if (pin === "123" || pin === "456") {
+            USER_ROLE = (pin === "123") ? "MAESTRO" : "RESTRINGIDO";
+            
+            // Intentar avisar al script (opcional, para registro)
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify({ action: "login", pin: pin })
+            });
+
+            // Cambiar de pantalla
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('main-content').classList.remove('hidden');
+            
+            if(USER_ROLE === "RESTRINGIDO") {
+                document.querySelectorAll('.master-field').forEach(el => el.disabled = true);
             }
-            alternarCargando(false);
-        }, 800);
-    }
-
-    function iniciarSesion(rol) {
-        USER_ROLE = rol;
-        document.getElementById('login-screen').classList.add('hidden');
-        document.getElementById('main-content').classList.remove('hidden');
-        document.getElementById('user-display').innerText = "ROL: " + rol;
-        
-        if(rol === "RESTRINGIDO") {
-            document.querySelectorAll('.master-field').forEach(el => el.disabled = true);
+        } else {
+            alert("PIN Incorrecto");
         }
-        resetTimer();
     }
 
-    // --- LÓGICA DE MORATORIAS DINÁMICAS ---
-    function crearGrupoMoratoria(datos = {}) {
-        const container = document.getElementById('moratorias-wrapper');
+    // AGREGAR MORATORIA
+    function crearGrupoMoratoria() {
+        const wrapper = document.getElementById('moratorias-wrapper');
         const box = document.createElement('div');
         box.className = 'moratoria-box';
         box.innerHTML = `
-            <div class="input-group"><label>Ley Aplicable</label><input type="text" class="m-ley" value="${datos.ley || ''}"></div>
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-                <div class="input-group"><label>Cuotas Pactadas</label><input type="number" class="m-pactadas" value="${datos.pactadas || ''}"></div>
-                <div class="input-group"><label>Cuotas Pagas</label><input type="number" class="m-pagas" value="${datos.pagas || ''}"></div>
-            </div>
-            <button onclick="this.parentElement.remove()" style="color:red; border:none; background:none; cursor:pointer; font-size:10px;">ELIMINAR ESTE PLAN</button>
+            <label>Ley</label><input type="text" class="m-ley">
+            <label>Cuotas Pagas</label><input type="number" class="m-pagas">
+            <button onclick="this.parentElement.remove()" style="color:red; background:none; border:none; cursor:pointer;">[Eliminar]</button>
         `;
-        container.appendChild(box);
+        wrapper.appendChild(box);
     }
 
-    // --- ENVÍO DE DATOS A GOOGLE SHEETS ---
+    // ENVIAR DATOS AL SHEET
     async function enviarDatos() {
-        alternarCargando(true);
-
-        // Recolectar moratorias en un array para enviarlo como JSON
         const moratorias = [];
         document.querySelectorAll('.moratoria-box').forEach(box => {
             moratorias.push({
                 ley: box.querySelector('.m-ley').value,
-                pactadas: box.querySelector('.m-pactadas').value,
                 pagas: box.querySelector('.m-pagas').value
             });
         });
@@ -184,8 +120,6 @@
             action: "guardarExpediente",
             dni: document.getElementById('dni').value,
             nombre: document.getElementById('nombre').value,
-            cuil: document.getElementById('cuil').value,
-            clave_anses: document.getElementById('clave_anses').value,
             estado: document.getElementById('estado_tramite').value,
             notas: document.getElementById('notas').value,
             moratorias: JSON.stringify(moratorias),
@@ -198,29 +132,12 @@
                 mode: 'no-cors',
                 body: JSON.stringify(payload)
             });
-            alert("Solicitud enviada al servidor (Google Sheet)");
+            alert("Datos enviados con éxito a la nube.");
         } catch (e) {
-            alert("Error al conectar con el servidor");
-        } finally {
-            alternarCargando(false);
+            alert("Error al enviar. Revisa la consola.");
         }
     }
-
-    // --- UTILIDADES ---
-    function alternarCargando(ver) {
-        document.getElementById('loading').className = ver ? "" : "hidden";
-    }
-
-    function resetTimer() {
-        clearTimeout(SESSION_TIMER);
-        SESSION_TIMER = setTimeout(() => {
-            alert("Sesión cerrada por inactividad");
-            location.reload();
-        }, 15 * 60 * 1000); // 15 Minutos
-    }
-
-    document.onmousemove = resetTimer;
-    document.onkeypress = resetTimer;
 </script>
+
 </body>
 </html>
