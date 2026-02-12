@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor Previsional Soberano v2.1</title>
+    <title>Gestor Previsional Soberano v2.2</title>
     <style>
         :root { --blue: #1a73e8; --green: #34a853; --red: #d93025; --gray: #5f6368; --light-blue: #e8f0fe; }
         body { font-family: sans-serif; background: #f0f2f5; margin: 0; padding-bottom: 30px; }
@@ -21,33 +21,9 @@
         .btn-red { background: var(--red); color: white; }
         .btn-outline { background: none; border: 1px solid var(--blue); color: var(--blue); }
         .row { display: flex; gap: 10px; align-items: flex-end; }
-        .resumen-laboral { background: var(--light-blue); padding: 15px; border-radius: 8px; margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .resumen-dato { text-align: center; }
-        .resumen-dato span { display: block; font-size: 1.2em; font-weight: bold; color: var(--blue); }
-        #loading { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); color: white; padding: 20px; border-radius: 10px; z-index: 1000; }
-    .resumen-laboral {
-    margin-top: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.resumen-laboral table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9em;
-}
-
-.resumen-laboral th {
-    background-color: var(--blue);
-    color: white;
-    padding: 8px;
-    text-align: left;
-}
-
-.resumen-laboral td {
-    padding: 8px;
-    border-bottom: 1px solid #eee;
-}
-
+        #loading { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); color: white; padding: 20px; border-radius: 10px; z-index: 1000; }
+        .resumen-laboral { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; margin-top: 15px; }
+        .moratoria-item { border: 1px solid #ddd; padding: 10px; margin-top: 10px; background: #f9f9f9; border-radius: 5px; }
     </style>
 </head>
 <body>
@@ -80,33 +56,38 @@
                 <button class="btn btn-blue" style="width:60px; margin:0;" onclick="consultarExpediente()">🔍</button>
             </div>
             <label>Nombre y Apellido</label>
-            <input type="text" id="nombre" class="master-field">
+            <input type="text" id="nombre">
+            
             <div class="row">
                 <div style="flex:1"><label>Nacimiento</label><input type="date" id="fecha_nac" onchange="actualizarEdad()"></div>
                 <div style="flex:1"><label>Edad</label><div id="edad-display" style="padding:12px; font-weight:bold; color:var(--blue);">-</div></div>
             </div>
+
             <div class="row">
-            <div style="flex:1"><label>CUIL</label><input type="text" id="cuil"></div>
-            <div style="flex:1"><label>Clave ANSES</label><input type="text" id="clave_anses"></div> 
-            <div style="flex:1"><label>Hijos</label><input type="number" id="hijos"></div>
+                <div style="flex:1"><label>CUIL</label><input type="text" id="cuil"></div>
+                <div style="flex:1"><label>Clave ANSES</label><input type="text" id="clave_anses"></div> 
             </div>
 
-            
+            <div class="row">
+                <div style="flex:1">
+                    <label>Estado Civil</label>
+                    <select id="estado_civil">
+                        <option value="Soltero/a">Soltero/a</option>
+                        <option value="Casado/a">Casado/a</option>
+                        <option value="Divorciado/a">Divorciado/a</option>
+                        <option value="Viudo/a">Viudo/a</option>
+                    </select>
+                </div>
+                <div style="flex:1"><label>Hijos</label><input type="number" id="hijos"></div>
+            </div>
         </div>
 
         <div class="card">
             <h3>Cómputo de Datos Laborales</h3>
-            <label>Sábana Pre-94</label>
-            <textarea id="inputPre94" placeholder="Pegue datos anteriores al 06/94..." rows="3"></textarea>
-            
             <label>Sábana Post-94</label>
-            <textarea id="inputPost94" placeholder="Pegue datos posteriores al 07/94..." rows="3"></textarea>
-            
-            <button class="btn btn-outline" onclick="ejecutarComputo()">📊 GENERAR RESUMEN LABORAL</button>
-
-            <div id="panel-resumen" class="resumen-laboral hidden" style="overflow-x: auto; padding: 10px; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;">
-    </div>
-
+            <textarea id="inputPost94" placeholder="Pegue datos posteriores al 07/94..." rows="5"></textarea>
+            <button class="btn btn-outline" onclick="ejecutarComputo()">📊 GENERAR RESUMEN</button>
+            <div id="panel-resumen" class="resumen-laboral hidden"></div>
         </div>
 
         <div class="card">
@@ -120,10 +101,11 @@
                 <option>En Cómputos</option>
                 <option>Acordado</option>
             </select>
+
             <label>Notas</label>
             <textarea id="notas" rows="3"></textarea>
             
-            <button class="btn btn-green" onclick="enviarDatos()">💾 GUARDAR EXPEDIENTE COMPLETO</button>
+            <button class="btn btn-green" onclick="enviarDatos()">💾 GUARDAR EXPEDIENTE</button>
             <button class="btn btn-outline" style="color:var(--red); border-color:var(--red);" onclick="limpiarFormulario()">LIMPIAR PANTALLA</button>
         </div>
     </div>
@@ -133,20 +115,20 @@
         <div id="agenda-lista" style="margin-top:15px;"></div>
     </div>
 </div>
+
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwLdk4j2Pc7Ng88TunAhNTveET1SDgDIcm-JVgXxNxLkMWReNYDB3JLf5-4o2lQE0T-/exec";
 let USER_ROLE = "", desgloseEmpleadores = {}, timeoutReloj;
 const MINUTOS_INACTIVIDAD = 15;
 
-// ==========================================
-// 1. CÓMPUTO LABORAL (LIGERO Y PRECISO)
-// ==========================================
+// 1. CÓMPUTO LABORAL
 function ejecutarComputo() {
     desgloseEmpleadores = {};
     let remsParaPromedio = [], lineaTiempo = new Set();
     const texto = document.getElementById('inputPost94').value;
+    if(!texto) return alert("Pegue datos para procesar");
 
-    // Regex que captura las 4 columnas finales de dinero por separado
+    // Regex: Penúltima columna es Especial
     const regex = /^(.+?)\s+([\d-]{11,})\s+[EC]\s*[DP]?\s+(\d{2}\/\d{4})\s+\d+\s+\d+\s+([\d.,]+)\s+[\d.,]+\s+([\d.,]+)\s+([\d.,]+)/gm;
     
     let m;
@@ -169,7 +151,6 @@ function ejecutarComputo() {
 
     const ult120 = remsParaPromedio.slice(-120);
     const prom = ult120.length ? (ult120.reduce((a, b) => a + b, 0) / ult120.length) : 0;
-    
     renderizarResumen(lineaTiempo.size, prom);
 }
 
@@ -181,29 +162,26 @@ function renderizarResumen(totalMeses, prom) {
     for (const id in desgloseEmpleadores) {
         const emp = desgloseEmpleadores[id];
         html += `<p style="margin:5px 0; font-size:0.9em;">
-            <b>${emp.n}</b> (${emp.m.size}m)<br>
+            <b>${emp.n}</b> (${emp.m.size} meses)<br>
             Común: $${emp.c.toLocaleString('es-AR')} | 
             <span style="color:red">Esp: $${emp.e.toLocaleString('es-AR')}</span>
         </p>`;
     }
-
     const panel = document.getElementById('panel-resumen');
     panel.innerHTML = html;
     panel.classList.remove('hidden');
     panel.dataset.resumenTotal = resTotalTxt;
 }
 
-// ==========================================
 // 2. GESTIÓN DE DATOS (CRUD)
-// ==========================================
 async function enviarDatos() {
-    const dni = document.getElementById('dni').value;
-    if(!dni) return alert("Falta DNI");
+    const dniEl = document.getElementById('dni');
+    if(!dniEl || !dniEl.value) return alert("Falta DNI");
+    
     toggleLoad(true);
-
     const payload = {
         action: "guardarExpediente",
-        dni: dni,
+        dni: dniEl.value,
         nombre: document.getElementById('nombre').value,
         fecha_nac: document.getElementById('fecha_nac').value,
         cuil: document.getElementById('cuil').value,
@@ -222,14 +200,14 @@ async function enviarDatos() {
 
     try {
         await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
-        alert("Guardado OK");
-    } catch (e) { alert("Error"); }
+        alert("Guardado con éxito");
+    } catch (e) { alert("Error al conectar con el servidor"); }
     toggleLoad(false);
 }
 
 async function consultarExpediente() {
     const dni = document.getElementById('dni').value;
-    if(!dni) return alert("DNI?");
+    if(!dni) return alert("Ingrese DNI");
     toggleLoad(true);
     try {
         const r = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "consultarDNI", dni: dni }) });
@@ -239,28 +217,24 @@ async function consultarExpediente() {
             if (res[3]) document.getElementById('fecha_nac').value = new Date(res[3]).toISOString().split('T')[0];
             document.getElementById('cuil').value = res[4] || "";
             document.getElementById('clave_anses').value = res[5] || "";
-            document.getElementById('estado_civil').value = res[6] || "";
+            document.getElementById('estado_civil').value = res[6] || "Soltero/a";
             document.getElementById('hijos').value = res[7] || "";
-            document.getElementById('estado_tramite').value = res[8] || "";
+            document.getElementById('estado_tramite').value = res[8] || "Iniciado";
             document.getElementById('notas').value = res[10] || "";
-            
             document.getElementById('moratorias-wrapper').innerHTML = "";
             JSON.parse(res[9] || "[]").forEach(m => crearGrupoMoratoria(m));
-            
             if(res[11]) {
                 const p = document.getElementById('panel-resumen');
-                p.innerHTML = `<p><b>Último:</b> ${res[11]}</p>`;
+                p.innerHTML = `<p><b>Último Resumen:</b> ${res[11]}</p>`;
                 p.classList.remove('hidden');
             }
             actualizarEdad();
-        }
-    } catch (e) { alert("Error"); }
+        } else { alert("DNI no encontrado"); }
+    } catch (e) { alert("Error de consulta"); }
     toggleLoad(false);
 }
 
-// ==========================================
 // 3. UTILIDADES
-// ==========================================
 async function ejecutarLogin() {
     const pin = document.getElementById('pass-input').value;
     toggleLoad(true);
@@ -272,8 +246,8 @@ async function ejecutarLogin() {
             document.getElementById('login-screen').classList.add('hidden');
             document.getElementById('main-app').classList.remove('hidden');
             resetearTemporizador();
-        }
-    } catch (e) {}
+        } else { alert("PIN Incorrecto"); }
+    } catch (e) { alert("Error de Login"); }
     toggleLoad(false);
 }
 
@@ -290,10 +264,12 @@ function crearGrupoMoratoria(d = {}) {
     const div = document.createElement('div');
     div.className = "moratoria-item";
     div.innerHTML = `
-        <input type="text" class="m-ley" placeholder="Ley" value="${d.ley||''}" style="width:30%">
-        <input type="number" class="m-pact" placeholder="Pact" value="${d.pactadas||''}" style="width:25%">
-        <input type="number" class="m-pagas" placeholder="Pagas" value="${d.pagas||''}" style="width:25%">
-        <button onclick="this.parentElement.remove()">X</button>`;
+        <div class="row">
+            <input type="text" class="m-ley" placeholder="Ley" value="${d.ley||''}" style="width:40%">
+            <input type="number" class="m-pact" placeholder="Pact." value="${d.pactadas||''}" style="width:25%">
+            <input type="number" class="m-pagas" placeholder="Pag." value="${d.pagas||''}" style="width:25%">
+            <button onclick="this.parentElement.parentElement.remove()" style="color:red; border:none; background:none;">X</button>
+        </div>`;
     document.getElementById('moratorias-wrapper').appendChild(div);
 }
 
@@ -306,11 +282,12 @@ async function cargarAgenda() {
         const datos = await r.json();
         datos.forEach(c => {
             const div = document.createElement('div');
-            div.className = "agenda-card";
-            div.innerHTML = `<b>${c[2]}</b><br><small>${c[1]}</small> <button onclick="editarDesdeAgenda('${c[1]}')">VER</button>`;
+            div.className = "card";
+            div.innerHTML = `<b>${c[2]}</b><br><small>DNI: ${c[1]}</small><br>
+            <button class="btn btn-blue" style="padding:5px; font-size:10px; width:80px;" onclick="editarDesdeAgenda('${c[1]}')">VER FICHA</button>`;
             lista.appendChild(div);
         });
-    } catch (e) {}
+    } catch (e) { alert("Error al cargar agenda"); }
     toggleLoad(false);
 }
 
@@ -343,4 +320,5 @@ document.onmousemove = resetearTemporizador;
 </script>
 
 </body>
-</html>
+                    </html>
+                                                                  
