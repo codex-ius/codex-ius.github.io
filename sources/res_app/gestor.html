@@ -152,7 +152,7 @@
         document.getElementById('edad-display').innerText = e + " años";
     }
 
-    // 4. CONSULTA INDIVIDUAL
+        // 4. CONSULTA INDIVIDUAL (CORREGIDA)
     async function consultarExpediente() {
         const dni = document.getElementById('dni').value;
         if(!dni) return alert("Ingresa un DNI");
@@ -162,18 +162,37 @@
             const res = await r.json();
             if(res) {
                 document.getElementById('nombre').value = res[2] || "";
-                document.getElementById('fecha_nac').value = res[3] || "";
+                
+                // --- CORRECCIÓN DE FECHA ---
+                if (res[3]) {
+                    // Convertimos lo que venga del Sheet a un objeto Date de JS
+                    const fechaObj = new Date(res[3]);
+                    // Formateamos a YYYY-MM-DD para que el input lo entienda
+                    const ano = fechaObj.getFullYear();
+                    const mes = String(fechaObj.getMonth() + 1).padStart(2, '0');
+                    const dia = String(fechaObj.getDate()).padStart(2, '0');
+                    document.getElementById('fecha_nac').value = `${ano}-${mes}-${dia}`;
+                } else {
+                    document.getElementById('fecha_nac').value = "";
+                }
+                // ---------------------------
+
                 document.getElementById('cuil').value = res[4] || "";
                 document.getElementById('clave_anses').value = res[5] || "";
                 document.getElementById('estado_civil').value = res[6] || "Soltero/a";
                 document.getElementById('estado_tramite').value = res[7] || "";
                 document.getElementById('notas').value = res[9] || "";
+                
                 document.getElementById('moratorias-wrapper').innerHTML = "";
                 JSON.parse(res[8] || "[]").forEach(m => crearGrupoMoratoria(m));
-                actualizarEdad();
+                
+                actualizarEdad(); // Esto ahora sí mostrará la edad apenas cargues
                 alert("Datos cargados correctamente");
             } else { alert("DNI no encontrado en la base de datos"); }
-        } catch (e) { alert("Error al buscar"); }
+        } catch (e) { 
+            console.error("Error en consulta:", e);
+            alert("Error al buscar"); 
+        }
         toggleLoad(false);
     }
 
