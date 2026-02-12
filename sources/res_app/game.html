@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crucigrama Live ⚡</title>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --success: #00b894;
+            --error: #ff7675;
+            --dark: #2d3436;
+            --cell-size: 40px;
+        }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            display: flex; flex-direction: column; align-items: center; 
+            min-height: 100vh; margin: 0; padding: 20px; color: white;
+        }
+
+        h2 { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); margin-bottom: 15px; }
+
+        #grid-container {
+            display: grid;
+            grid-template-columns: repeat(9, var(--cell-size));
+            grid-template-rows: repeat(7, var(--cell-size));
+            gap: 2px;
+            background: rgba(0,0,0,0.2);
+            padding: 8px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .cell {
+            width: var(--cell-size); height: var(--cell-size);
+            background: #2d3436; position: relative;
+            transition: all 0.2s ease; border-radius: 4px;
+        }
+
+        .cell.white { background: white; }
+        
+        .cell input {
+            width: 100%; height: 100%; border: none; text-align: center;
+            font-size: 1.2rem; text-transform: uppercase; font-weight: bold;
+            background: transparent; outline: none; color: var(--dark);
+        }
+
+        .cell .num {
+            position: absolute; top: 1px; left: 3px;
+            font-size: 0.6rem; color: #636e72; pointer-events: none;
+        }
+
+        /* Estados de Validación Live */
+        .correct { background-color: #55efc4 !important; transform: scale(0.95); }
+        .correct input { color: #006266; }
+        .wrong { background-color: #ff7675 !important; animation: shake 0.3s ease; }
+        .wrong input { color: white; }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
+        }
+
+        .clues-container {
+            display: flex; gap: 20px; margin-top: 25px; width: 100%; max-width: 700px;
+        }
+        .clues-column { 
+            flex: 1; background: rgba(255, 255, 255, 0.95); padding: 15px; border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: var(--dark);
+        }
+        .clues-column h3 { margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 5px; }
+        ul { list-style: none; padding: 0; max-height: 180px; overflow-y: auto; }
+        li { padding: 4px 0; border-bottom: 1px solid #eee; font-size: 0.85rem; }
+
+        .controls { margin-bottom: 15px; }
+        button { 
+            padding: 12px 25px; cursor: pointer; border: none; border-radius: 50px; 
+            font-weight: bold; background: white; color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.3s;
+        }
+        button:hover { transform: scale(1.05); background: #f0f0f0; }
+        
+        #win-msg { margin-top: 15px; font-size: 1.2rem; font-weight: bold; height: 30px; }
+    </style>
+</head>
+<body>
+
+    <h2>Crucigrama Real-Time ⚡</h2>
+
+    <div class="controls">
+        <button onclick="generateGame()">🔄 Generar Nuevo Tablero</button>
+    </div>
+
+    <div id="grid-container"></div>
+    <div id="win-msg"></div>
+
+    <div class="clues-container">
+        <div class="clues-column">
+            <h3>↕️ Verticales</h3>
+            <ul id="v-clues"></ul>
+        </div>
+        <div class="clues-column">
+            <h3>↔️ Horizontales</h3>
+            <ul id="h-clues"></ul>
+        </div>
+    </div>
+
+    <script>
+        const ROWS = 7;
+        const COLS = 9;
+        const dictionary = [
+    // 3 LETRAS
+    {w: "SAL", p: "Única piedra que se disuelve y se saborea"},
+    {w: "MAR", p: "Cuna de olas que nunca descansa"},
+    {w: "SOL", p: "Anciano que madruga y se viste de fuego"},
+    {w: "CAL", p: "Polvo blanco que devora la humedad"},
+    {w: "LEY", p: "Invisible cadena que ordena el caos"},
+    {w: "PAZ", p: "Silencio que llega tras la tormenta"},
+    {w: "LUZ", p: "Cincel que dibuja las formas en el vacío"},
+    {w: "OJO", p: "Ventana redonda que no tiene cristal"},
+    {w: "SED", p: "Grito seco de la garganta"},
+
+    // 4 LETRAS
+    {w: "ALMA", p: "Lo que queda cuando el cuerpo calla"},
+    {w: "VINO", p: "Sangre de la uva dormida en madera"},
+    {w: "NADA", p: "El único lugar donde no existe el tiempo"},
+    {w: "RAYO", p: "Cicatriz de luz en el cielo nublado"},
+    {w: "AZAR", p: "Arquitecto invisible del destino"},
+    {w: "POZO", p: "Boca profunda que bebe del subsuelo"},
+    {w: "VELA", p: "Columna de cera que llora luz"},
+    {w: "AIRE", p: "Gigante invisible que sostiene el vuelo"},
+    {w: "LUNA", p: "Espejo nocturno del ausente sol"},
+    {w: "NUDO", p: "Punto donde dos caminos se abrazan"},
+    {w: "EDAD", p: "Peso invisible que se acumula en la piel"},
+    {w: "RAIZ", p: "Ancla que busca el corazón de la tierra"},
+    {w: "RITO", p: "Hábito que se vuelve sagrado"},
+    {w: "VIDA", p: "Paréntesis entre dos silencios"},
+    {w: "HUMO", p: "Cuerpo gris de un fuego que se apaga"},
+    {w: "CARA", p: "Mapa de gestos que revela el nombre"},
+    {w: "ORILLA", p: "Lugar donde el agua se rinde ante la tierra"},
+    {w: "MITO", p: "Mentira antigua que guarda una verdad"},
+    {w: "POEMA", p: "Cárcel de palabras para un sentimiento"},
+    {w: "SUEÑO", p: "Cine nocturno para un espectador dormido"},
+
+    // 5 LETRAS
+    {w: "FUEGO", p: "Danza roja que devora lo que toca"},
+    {w: "NUEVE", p: "Número que antes de nacer fue seis"},
+    {w: "ARBOL", p: "Escultura viva con pulmones de clorofila"},
+    {w: "LLAVE", p: "Pequeño metal que domina al portal"},
+    {w: "NORTE", p: "Destino que la aguja siempre busca"},
+    {w: "POLVO", p: "Hijo del tiempo y de la quietud"},
+    {w: "ARENA", p: "Reloj deshecho a los pies del océano"},
+    {w: "NIEVE", p: "Lluvia que se quedó dormida por el frío"},
+    {w: "MURO", p: "Silencio de piedra que separa dos mundos"},
+    {w: "CIEGO", p: "Aquel que mira con las yemas de los dedos"},
+    {w: "MUNDO", p: "Esfera de roca perdida en el vacío"},
+    {w: "HUESO", p: "Armadura interna que sobrevive al hombre"},
+    {w: "SABIO", p: "Aquel que sabe que ignora casi todo"},
+    {w: "CANTO", p: "Vuelo de la voz en el aire"},
+    {w: "RELOJ", p: "Carcelero de los segundos"},
+    {w: "MAPA", p: "Papel que finge contener el mundo"},
+    {w: "OASIS", p: "Milagro verde en el infierno amarillo"},
+    {w: "LLUVIA", p: "Llanto del cielo que refresca el alma"},
+    {w: "DUEÑO", p: "Aquel que cree poseer lo efímero"},
+    {w: "PULSO", p: "Tambor interno que marca la salida"},
+
+    // 6 LETRAS
+    {w: "ESPEJO", p: "Ladrón de rostros que no tiene memoria"},
+    {w: "HUELLA", p: "Memoria del pie escrita en el barro"},
+    {w: "SOMBRA", p: "Fiel compañera que huye de la noche"},
+    {w: "VIENTO", p: "Invisible viajero que silba en las esquinas"},
+    {w: "CAMINO", p: "Cinta de tierra que une deseos"},
+    {w: "OLVIDO", p: "Naufragio de los recuerdos"},
+    {w: "TIEMPO", p: "Río que nos lleva sin tener agua"},
+    {w: "ESTRELLA", p: "Diamante lejano de una noche muerta"},
+    {w: "DIBUJO", p: "Rastro del alma sobre el papel"},
+    {w: "ESPINAS", p: "Dientes de la rosa que defienden su belleza"},
+    {w: "ABISMO", p: "Lugar donde el eco se pierde"},
+    {w: "PUENTE", p: "Gesto de piedra que une riberas"},
+    {w: "SILENCIO", p: "Espacio vacío entre dos ruidos"},
+    {w: "HIERRO", p: "Fuerza fría nacida en la fragua"},
+    {w: "SANGRE", p: "Río carmesí que recorre el cuerpo"},
+    {w: "CIUDAD", p: "Laberinto de cemento y soledades"},
+    {w: "FANTASMA", p: "Recuerdo que se niega a morir"},
+    {w: "BRÚJULA", p: "Círculo que guía al náufrago terrestre"},
+
+    // 7 LETRAS
+    {w: "DESTINO", p: "Libro escrito que nadie ha leído"},
+    {w: "MEMORIA", p: "Biblioteca de sombras y luces"},
+    {w: "SILUETA", p: "Contorno oscuro de un cuerpo ausente"},
+    {w: "PALABRA", p: "Flecha de aire lanzada por la boca"},
+    {w: "TRISTEZA", p: "Lluvia interna que no moja la piel"},
+    {w: "VENTANA", p: "Cuadro transparente de la realidad"},
+    {w: "ESCUELA", p: "Semillero de mentes y preguntas"},
+    {w: "CASCADA", p: "Río que decide volar por un instante"},
+    {w: "MÁSCARA", p: "Rostro postizo para engañar al miedo"},
+    {w: "AUREOLA", p: "Corona de luz para los santos"},
+    {w: "INVIERNO", p: "Sueño blanco de la naturaleza"},
+    {w: "ESTRELLA", p: "Faro lejano en el océano negro"},
+    {w: "PÉNDULO", p: "Viajero que va y viene sin avanzar"},
+    {w: "TESORO", p: "Lo que el corazón guarda bajo llave"},
+
+    // 8 LETRAS
+    {w: "HORIZONTE", p: "Línea que huye cuando intentas tocarla"},
+    {w: "GIGANTE", p: "Aquel que mira las nubes desde arriba"},
+    {w: "NAUFRAGIO", p: "Final del viaje en el vientre del mar"},
+    {w: "ESCRITOR", p: "Aquel que crea mundos con tinta"},
+    {w: "DESIERTO", p: "Mar de arena donde el agua es mito"},
+    {w: "SILENCIO", p: "Música que suena cuando nada se dice"},
+    {w: "LIBERTAD", p: "Pájaro que vuela sin conocer la jaula"},
+    {w: "NOSTALGIA", p: "Dolor de un pasado que parece mejor"},
+    {w: "LABERINTO", p: "Lugar diseñado para que te encuentres perdiéndote"},
+
+    // 9 LETRAS
+    {w: "ESPERANZA", p: "Última luz que se apaga en el pecho"},
+    {w: "EQUILIBRIO", p: "Danza perfecta entre la caída y el paso"},
+    {w: "PENSAMIENTO", p: "Relámpago mudo dentro del cráneo"},
+    {w: "ETERNIDAD", p: "Tiempo que no tiene orillas"},
+    {w: "RELÁMPAGO", p: "Fotografía instantánea de la tormenta"},
+    {w: "ACERTIJO", p: "Nudo de palabras que busca una salida"},
+    {w: "CREPÚSCULO", p: "Herida del sol al final del día"},
+    {w: "SOLEDAD", p: "Habitación donde solo habita uno"},
+    {w: "UNIVERSO", p: "Todo lo que es, fue y será"}
+];
+
+
+        let grid = [];
+        let placedWords = [];
+
+        function initGrid() {
+            grid = Array(ROWS).fill().map(() => Array(COLS).fill(null));
+            placedWords = [];
+            document.getElementById('win-msg').innerText = "";
+        }
+
+        function canPlace(word, r, c, vertical) {
+            if (vertical && r + word.length > ROWS) return false;
+            if (!vertical && c + word.length > COLS) return false;
+            for (let i = 0; i < word.length; i++) {
+                let currR = vertical ? r + i : r;
+                let currC = vertical ? c : c + i;
+                if (grid[currR][currC] !== null && grid[currR][currC] !== word[i]) return false;
+            }
+            return true;
+        }
+
+        function addWord(wordObj, r, c, vertical) {
+            for (let i = 0; i < wordObj.w.length; i++) {
+                let currR = vertical ? r + i : r;
+                let currC = vertical ? c : c + i;
+                grid[currR][currC] = wordObj.w[i];
+            }
+            placedWords.push({ ...wordObj, r, c, vertical, num: placedWords.length + 1 });
+        }
+
+        function generateGame() {
+            initGrid();
+            let pool = [...dictionary].sort(() => Math.random() - 0.5);
+            pool.forEach(wordObj => {
+                let placed = false;
+                for(let tryIdx = 0; tryIdx < 50 && !placed; tryIdx++) {
+                    let r = Math.floor(Math.random() * ROWS);
+                    let c = Math.floor(Math.random() * COLS);
+                    let vert = Math.random() > 0.5;
+                    if (canPlace(wordObj.w, r, c, vert)) {
+                        addWord(wordObj, r, c, vert);
+                        placed = true;
+                    }
+                }
+            });
+            drawGrid();
+        }
+
+        function drawGrid() {
+            const container = document.getElementById('grid-container');
+            container.innerHTML = '';
+            document.getElementById('h-clues').innerHTML = '';
+            document.getElementById('v-clues').innerHTML = '';
+
+            for (let r = 0; r < ROWS; r++) {
+                for (let c = 0; c < COLS; c++) {
+                    const cellDiv = document.createElement('div');
+                    cellDiv.className = 'cell';
+                    if (grid[r][c]) {
+                        cellDiv.classList.add('white');
+                        const input = document.createElement('input');
+                        input.maxLength = 1;
+                        input.dataset.answer = grid[r][c];
+                        input.dataset.r = r;
+                        input.dataset.c = c;
+                        
+                        input.addEventListener('input', (e) => validateInput(e.target));
+                        input.addEventListener('keydown', handleNav);
+
+                        const wordStart = placedWords.find(w => w.r === r && w.c === c);
+                        if (wordStart) {
+                            const span = document.createElement('span');
+                            span.className = 'num';
+                            span.innerText = wordStart.num;
+                            cellDiv.appendChild(span);
+                        }
+                        cellDiv.appendChild(input);
+                    }
+                    container.appendChild(cellDiv);
+                }
+            }
+
+            placedWords.forEach(w => {
+                const li = document.createElement('li');
+                li.innerText = `${w.num}. ${w.p}`;
+                document.getElementById(w.vertical ? 'v-clues' : 'h-clues').appendChild(li);
+            });
+        }
+
+        function validateInput(input) {
+            const val = input.value.toUpperCase();
+            const parent = input.parentElement;
+            
+            if (val === "") {
+                parent.classList.remove('correct', 'wrong');
+                return;
+            }
+
+            if (val === input.dataset.answer) {
+                parent.classList.add('correct');
+                parent.classList.remove('wrong');
+                focusNext(input);
+            } else {
+                parent.classList.add('wrong');
+                parent.classList.remove('correct');
+            }
+            checkWin();
+        }
+
+        function focusNext(current) {
+            const inputs = Array.from(document.querySelectorAll('input'));
+            const index = inputs.indexOf(current);
+            if (index < inputs.length - 1) inputs[index + 1].focus();
+        }
+
+        function handleNav(e) {
+            if (e.key === "Backspace" && e.target.value === "") {
+                const inputs = Array.from(document.querySelectorAll('input'));
+                const index = inputs.indexOf(e.target);
+                if (index > 0) inputs[index - 1].focus();
+            }
+        }
+
+        function checkWin() {
+            const inputs = Array.from(document.querySelectorAll('input'));
+            const allCorrect = inputs.every(i => i.value.toUpperCase() === i.dataset.answer);
+            if (allCorrect && inputs.length > 0) {
+                document.getElementById('win-msg').innerText = "¡FELICIDADES! 🎉🏆";
+            }
+        }
+
+        generateGame();
+    </script>
+</body>
+</html>
+
