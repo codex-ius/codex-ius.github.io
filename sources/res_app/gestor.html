@@ -114,104 +114,285 @@
         <div id="agenda-lista" style="margin-top:15px;"></div>
     </div>
 </div>
-
 <script>
-    const SCRIPT_URL = "tu_url_de_apps_script";
-    let USER_ROLE = "";
-    let lineaDeTiempo = new Map();
-    let remuneracionesParaPromedio = [];
+// ==========================================
+// CONFIGURACIÓN Y VARIABLES GLOBALES
+// ==========================================
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwLdk4j2Pc7Ng88TunAhNTveET1SDgDIcm-JVgXxNxLkMWReNYDB3JLf5-4o2lQE0T-/exec";
+let USER_ROLE = "";
+let lineaDeTiempo = new Map();
+let remuneracionesParaPromedio = [];
+let timeoutReloj;
+const MINUTOS_INACTIVIDAD = 15;
 
-    // --- LÓGICA DE CÓMPUTO (Tus Regex Adaptadas) ---
-    function ejecutarComputo() {
-        lineaDeTiempo.clear();
-        remuneracionesParaPromedio = [];
-        
-        procesarPre94();
-        procesarPost94();
-        
-        const totalMeses = lineaDeTiempo.size;
-        const anios = Math.floor(totalMeses / 12);
-        const meses = totalMeses % 12;
-        
-        document.getElementById('res-total').innerText = `${anios}a ${meses}m`;
-        
-        // Calcular promedio últimos 120
-        const ultimas120 = remuneracionesParaPromedio.slice(-120);
-        const suma = ultimas120.reduce((acc, curr) => acc + curr.monto, 0);
-        const promedio = ultimas120.length > 0 ? suma / ultimas120.length : 0;
-        
-        document.getElementById('res-promedio').innerText = `$${promedio.toLocaleString('es-AR')}`;
-        document.getElementById('panel-resumen').classList.remove('hidden');
-    }
-
-    function procesarPre94() {
-        const texto = document.getElementById('inputPre94').value;
-        const regex = /^(.+?)\s+(\d+)\s+(\d{4})\s+\d+\s+(\d{2})\/(\d{2})\s*-\s*\d{2}\/\d{2}\s+(\d+)/gm;
-        let match;
-        while ((match = regex.exec(texto)) !== null) {
-            const [_, emp, cta, anio, dia, mes, cant] = match;
-            for (let i = 0; i < parseInt(cant); i++) {
-                let m = parseInt(mes) + i;
-                let a = parseInt(anio);
-                if (m > 12) { m -= 12; a += 1; }
-                lineaDeTiempo.set(`${m.toString().padStart(2,'0')}/${a}`, { emp });
-            }
-        }
-    }
-
-    function procesarPost94() {
-        const texto = document.getElementById('inputPost94').value;
-        const regex = /^(.+?)\s+[\d-]+\s+[EC]\s*[A-Z]?\s+(\d{2}\/\d{4})\s+\d+\s+\d+\s+([\d.,]+)\s+[\d.,]+\s+[\d.,]+\s+([\d.,]+)/gm;
-        let match;
-        while ((match = regex.exec(texto)) !== null) {
-            const [_, emp, periodo, remTotalStr, sacStr] = match;
-            const rem = parseFloat(remTotalStr.replace(/\./g, '').replace(',', '.'));
-            const sac = parseFloat(sacStr.replace(/\./g, '').replace(',', '.'));
-            lineaDeTiempo.set(periodo, { emp });
-            if (sac === 0) remuneracionesParaPromedio.push({ monto: rem });
-        }
-    }
-
-    // --- FUNCIONES DEL SISTEMA ---
-    async function enviarDatos() {
-        const dni = document.getElementById('dni').value;
-        if(!dni) return alert("DNI requerido");
-        toggleLoad(true);
-
-        const payload = {
-            action: "guardarExpediente",
-            dni: dni,
-            nombre: document.getElementById('nombre').value,
-            fecha_nac: document.getElementById('fecha_nac').value,
-            cuil: document.getElementById('cuil').value,
-            hijos: document.getElementById('hijos').value,
-            estado: document.getElementById('estado_tramite').value,
-            notas: document.getElementById('notas').value,
-            resumen_aportes: document.getElementById('res-total').innerText,
-            promedio_rem: document.getElementById('res-promedio').innerText,
-            sabana_pre: document.getElementById('inputPre94').value,
-            sabana_post: document.getElementById('inputPost94').value,
-            usuario: USER_ROLE
-        };
-
-        try {
-            await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
-            alert("Guardado exitoso");
-        } catch (e) { alert("Error al guardar"); }
-        toggleLoad(false);
-    }
-
-    // (Aquí seguirían las funciones de Login, ConsultarExpediente, Agenda, etc. del código anterior)
-    // Recuerda que en consultarExpediente debes cargar también los TextAreas y el resumen.
+// ==========================================
+// 1. LÓGICA DE CÓMPUTO LABORAL (REGEX)
+// ==========================================
+function ejecutarComputo() {
+    lineaDeTiempo.clear();
+    remuneracionesParaPromedio = [];
     
-    function mostrarSeccion(sec) {
-        document.getElementById('sec-form').classList.add('hidden');
-        document.getElementById('sec-agenda').classList.add('hidden');
-        document.getElementById('sec-' + sec).classList.remove('hidden');
-        if(sec === 'agenda') cargarAgenda();
-    }
+    procesarPre94();
+    procesarPost94();
+    
+    const totalMeses = lineaDeTiempo.size;
+    const anios = Math.floor(totalMeses / 12);
+    const meses = totalMeses % 12;
+    
+    document.getElementById('res-total').innerText = `${anios}a ${meses}m`;
+    
+    const ultimas120 = remuneracionesParaPromedio.slice(-120);
+    const suma = ultimas120.reduce((acc, curr) => acc + curr.monto, 0);
+    const promedio = ultimas120.length > 0 ? suma / ultimas120.length : 0;
+    
+    document.getElementById('res-promedio').innerText = `$${promedio.toLocaleString('es-AR', {minimumFractionDigits: 2})}`;
+    document.getElementById('panel-resumen').classList.remove('hidden');
+}
 
-    function toggleLoad(v) { document.getElementById('loading').className = v ? "" : "hidden"; }
+function procesarPre94() {
+    const texto = document.getElementById('inputPre94').value;
+    const regex = /^(.+?)\s+(\d+)\s+(\d{4})\s+\d+\s+(\d{2})\/(\d{2})\s*-\s*\d{2}\/\d{2}\s+(\d+)/gm;
+    let match;
+    while ((match = regex.exec(texto)) !== null) {
+        const [_, emp, cta, anio, dia, mes, cant] = match;
+        for (let i = 0; i < parseInt(cant); i++) {
+            let m = parseInt(mes) + i;
+            let a = parseInt(anio);
+            while (m > 12) { m -= 12; a += 1; }
+            lineaDeTiempo.set(`${m.toString().padStart(2,'0')}/${a}`, { emp });
+        }
+    }
+}
+
+function procesarPost94() {
+    const texto = document.getElementById('inputPost94').value;
+    const regex = /^(.+?)\s+[\d-]+\s+[EC]\s*[A-Z]?\s+(\d{2}\/\d{4})\s+\d+\s+\d+\s+([\d.,]+)\s+[\d.,]+\s+[\d.,]+\s+([\d.,]+)/gm;
+    let match;
+    while ((match = regex.exec(texto)) !== null) {
+        const [_, emp, periodo, remTotalStr, sacStr] = match;
+        const rem = parseFloat(remTotalStr.replace(/\./g, '').replace(',', '.'));
+        const sac = parseFloat(sacStr.replace(/\./g, '').replace(',', '.'));
+        lineaDeTiempo.set(periodo, { emp });
+        if (sac === 0) remuneracionesParaPromedio.push({ monto: rem });
+    }
+}
+
+// ==========================================
+// 2. GESTIÓN DE EXPEDIENTES (CRUD)
+// ==========================================
+
+async function consultarExpediente() {
+    const dni = document.getElementById('dni').value;
+    if(!dni) return alert("Ingresa un DNI");
+    toggleLoad(true);
+    try {
+        const r = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "consultarDNI", dni: dni }) });
+        const res = await r.json();
+        if(res) {
+            // Mapeo según Estructura ver_02 (17 columnas)
+            document.getElementById('nombre').value = res[2] || "";
+            
+            if (res[3]) { // Fecha Nacimiento
+                const fechaObj = new Date(res[3]);
+                const ano = fechaObj.getFullYear();
+                const mes = String(fechaObj.getMonth() + 1).padStart(2, '0');
+                const dia = String(fechaObj.getDate()).padStart(2, '0');
+                document.getElementById('fecha_nac').value = `${ano}-${mes}-${dia}`;
+            }
+
+            document.getElementById('cuil').value = res[4] || "";
+            document.getElementById('clave_anses').value = res[5] || "";
+            document.getElementById('estado_civil').value = res[6] || "Soltero/a";
+            document.getElementById('hijos').value = res[7] || "";
+            document.getElementById('estado_tramite').value = res[8] || "Iniciado";
+            
+            // Moratorias
+            document.getElementById('moratorias-wrapper').innerHTML = "";
+            JSON.parse(res[9] || "[]").forEach(m => crearGrupoMoratoria(m));
+            
+            document.getElementById('notas').value = res[10] || "";
+            
+            // Datos Laborales (Nuevas columnas L, M, N, O)
+            document.getElementById('res-total').innerText = res[11] || "0a 0m";
+            document.getElementById('res-promedio').innerText = res[12] || "$0.00";
+            document.getElementById('inputPre94').value = res[13] || "";
+            document.getElementById('inputPost94').value = res[14] || "";
+
+            if(res[11]) document.getElementById('panel-resumen').classList.remove('hidden');
+
+            actualizarEdad();
+            alert("Datos cargados correctamente");
+        } else { alert("DNI no encontrado"); }
+    } catch (e) { alert("Error al buscar"); }
+    toggleLoad(false);
+}
+
+async function enviarDatos() {
+    const dni = document.getElementById('dni').value;
+    if(!dni) return alert("Falta el DNI");
+    toggleLoad(true);
+
+    const moratorias = Array.from(document.querySelectorAll('.moratoria-item')).map(it => ({
+        ley: it.querySelector('.m-ley').value,
+        pactadas: it.querySelector('.m-pact').value,
+        pagas: it.querySelector('.m-pagas').value
+    }));
+
+    const payload = {
+        action: "guardarExpediente",
+        dni: dni,
+        nombre: document.getElementById('nombre').value,
+        fecha_nac: document.getElementById('fecha_nac').value,
+        cuil: document.getElementById('cuil').value,
+        clave_anses: document.getElementById('clave_anses').value,
+        estado_civil: document.getElementById('estado_civil').value,
+        hijos: document.getElementById('hijos').value,
+        estado: document.getElementById('estado_tramite').value,
+        moratorias: JSON.stringify(moratorias),
+        notas: document.getElementById('notas').value,
+        resumen_aportes: document.getElementById('res-total').innerText,
+        promedio_rem: document.getElementById('res-promedio').innerText,
+        sabana_pre: document.getElementById('inputPre94').value,
+        sabana_post: document.getElementById('inputPost94').value,
+        usuario: USER_ROLE 
+    };
+
+    try {
+        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+        alert("Guardado exitoso");
+    } catch (e) { alert("Error al guardar"); }
+    toggleLoad(false);
+}
+
+// ==========================================
+// 3. AUXILIARES, LOGIN Y NAVEGACIÓN
+// ==========================================
+
+async function ejecutarLogin() {
+    const pin = document.getElementById('pass-input').value;
+    toggleLoad(true);
+    try {
+        const r = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "login", pin: pin }) });
+        const res = await r.json();
+        if (res.success) {
+            USER_ROLE = res.role;
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('main-app').classList.remove('hidden');
+            if(USER_ROLE === "RESTRINGIDO") document.querySelectorAll('.master-field').forEach(el => el.disabled = true);
+            resetearTemporizador();
+        } else { alert("PIN Incorrecto"); }
+    } catch (e) { alert("Error de conexión"); }
+    toggleLoad(false);
+}
+
+function mostrarSeccion(sec) {
+    document.getElementById('sec-form').classList.add('hidden');
+    document.getElementById('sec-agenda').classList.add('hidden');
+    document.getElementById('sec-' + sec).classList.remove('hidden');
+    if(sec === 'agenda') cargarAgenda();
+}
+
+function actualizarEdad() {
+    const f = document.getElementById('fecha_nac').value;
+    if(!f) return;
+    const n = new Date(f);
+    const h = new Date();
+    let e = h.getFullYear() - n.getFullYear();
+    if (h.getMonth() < n.getMonth() || (h.getMonth() === n.getMonth() && h.getDate() < n.getDate())) e--;
+    document.getElementById('edad-display').innerText = e + " años";
+}
+
+function limpiarFormulario() {
+    document.querySelectorAll('input, textarea').forEach(i => i.value = "");
+    document.getElementById('moratorias-wrapper').innerHTML = "";
+    document.getElementById('edad-display').innerText = "-";
+    document.getElementById('panel-resumen').classList.add('hidden');
+    document.getElementById('res-total').innerText = "0a 0m";
+    document.getElementById('res-promedio').innerText = "$0.00";
+}
+
+function crearGrupoMoratoria(d = {}) {
+    const div = document.createElement('div');
+    div.style = "border:1px solid #ddd; padding:10px; margin-top:10px; background:#f9f9f9; position:relative;";
+    div.className = "moratoria-item";
+    div.innerHTML = `
+        <label>Ley</label><input type="text" class="m-ley" value="${d.ley||''}">
+        <div class="row">
+            <div style="flex:1"><label>Pactadas</label><input type="number" class="m-pact" value="${d.pactadas||''}"></div>
+            <div style="flex:1"><label>Pagas</label><input type="number" class="m-pagas" value="${d.pagas||''}"></div>
+        </div>
+        <button onclick="this.parentElement.remove()" style="color:red; background:none; border:none; cursor:pointer; font-size:11px; margin-top:5px;">[Eliminar Plan]</button>
+    `;
+    document.getElementById('moratorias-wrapper').appendChild(div);
+}
+
+async function cargarAgenda() {
+    toggleLoad(true);
+    const lista = document.getElementById('agenda-lista');
+    lista.innerHTML = "";
+    try {
+        const r = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "listarTodo" }) });
+        const datos = await r.json();
+        datos.forEach(c => {
+            const item = document.createElement('div');
+            item.className = "agenda-card";
+            item.innerHTML = `
+                <strong>${c[2]}</strong> (DNI: ${c[1]})<br>
+                <small>Estado: ${c[8]} | Aportes: ${c[11] || 'Sin cómputo'}</small>
+                <div style="display:flex; gap:10px; margin-top:10px;">
+                    <button class="btn btn-blue" style="padding:5px; font-size:11px;" onclick="editarDesdeAgenda('${c[1]}')">EDITAR</button>
+                    ${USER_ROLE === 'MAESTRO' ? `<button class="btn btn-red" style="padding:5px; font-size:11px;" onclick="borrarExpediente('${c[1]}')">BORRAR</button>` : ''}
+                </div>
+            `;
+            lista.appendChild(item);
+        });
+    } catch (e) { alert("Error al listar agenda"); }
+    toggleLoad(false);
+}
+
+async function borrarExpediente(dni) {
+    if(!confirm("¿Eliminar registro?")) return;
+    toggleLoad(true);
+    try {
+        await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "borrarExpediente", dni: dni, usuario: USER_ROLE }) });
+        cargarAgenda();
+    } catch (e) { alert("Error al borrar"); }
+    toggleLoad(false);
+}
+
+function editarDesdeAgenda(dni) {
+    document.getElementById('dni').value = dni;
+    consultarExpediente();
+    mostrarSeccion('form');
+}
+
+function toggleLoad(v) { document.getElementById('loading').className = v ? "" : "hidden"; }
+
+function cerrarSesion() {
+    USER_ROLE = "";
+    limpiarFormulario();
+    document.getElementById('pass-input').value = "";
+    document.getElementById('main-app').classList.add('hidden');
+    document.getElementById('login-screen').classList.remove('hidden');
+    clearTimeout(timeoutReloj);
+}
+
+function resetearTemporizador() {
+    clearTimeout(timeoutReloj);
+    if (!document.getElementById('main-app').classList.contains('hidden')) {
+        timeoutReloj = setTimeout(() => {
+            alert("Sesión cerrada por inactividad.");
+            cerrarSesion();
+        }, MINUTOS_INACTIVIDAD * 60 * 1000);
+    }
+}
+
+// Eventos de usuario
+window.onload = resetearTemporizador;
+document.onmousemove = resetearTemporizador;
+document.onkeypress = resetearTemporizador;
+document.ontouchstart = resetearTemporizador;
 </script>
+
 </body>
 </html>
