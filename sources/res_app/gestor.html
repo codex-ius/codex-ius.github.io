@@ -82,6 +82,9 @@
                 <option value="Divorciado/a">Divorciado/a</option>
                 <option value="Viudo/a">Viudo/a</option>
             </select>
+            <label>Cantidad de Hijos</label>
+<input type="number" id="hijos" class="master-field" min="0">
+
         </div>
 
         <div class="card">
@@ -182,7 +185,7 @@
                 document.getElementById('estado_civil').value = res[6] || "Soltero/a";
                 document.getElementById('estado_tramite').value = res[7] || "";
                 document.getElementById('notas').value = res[9] || "";
-                
+                document.getElementById('hijos').value = res[12] || ""; // El índice 12 es la Columna M
                 document.getElementById('moratorias-wrapper').innerHTML = "";
                 JSON.parse(res[8] || "[]").forEach(m => crearGrupoMoratoria(m));
                 
@@ -276,7 +279,8 @@
             estado: document.getElementById('estado_tramite').value,
             notas: document.getElementById('notas').value,
             moratorias: JSON.stringify(moratorias),
-            usuario: USER_ROLE
+            hijos: document.getElementById('hijos').value, // NUEVA LÍNEA
+    usuario: USER_ROLE            
         };
 
         try {
@@ -290,6 +294,8 @@
         document.querySelectorAll('input, textarea').forEach(i => i.value = "");
         document.getElementById('moratorias-wrapper').innerHTML = "";
         document.getElementById('edad-display').innerText = "-";
+        document.getElementById('hijos').value = "";
+
     }
 
     function toggleLoad(v) { document.getElementById('loading').className = v ? "" : "hidden"; }
