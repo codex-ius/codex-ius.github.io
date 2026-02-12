@@ -134,92 +134,63 @@
     </div>
 </div>
 <script>
-    // ==========================================
-// CONFIGURACIÓN Y VARIABLES GLOBALES
-// ==========================================
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwLdk4j2Pc7Ng88TunAhNTveET1SDgDIcm-JVgXxNxLkMWReNYDB3JLf5-4o2lQE0T-/exec";
-let USER_ROLE = "";
-let desgloseEmpleadores = {}; 
-let timeoutReloj;
+let USER_ROLE = "", desgloseEmpleadores = {}, timeoutReloj;
 const MINUTOS_INACTIVIDAD = 15;
 
 // ==========================================
-// 1. LÓGICA DE CÓMPUTO LABORAL DISCRIMINADO
+// 1. CÓMPUTO LABORAL (LIGERO Y PRECISO)
 // ==========================================
 function ejecutarComputo() {
     desgloseEmpleadores = {};
-    let remuneracionesUltimas = [];
-    const lineaDeTiempoTotal = new Set();
+    let remsParaPromedio = [], lineaTiempo = new Set();
+    const texto = document.getElementById('inputPost94').value;
 
-    const textoPost = document.getElementById('inputPost94').value;
-    // Regex mejorada: Captura Empresa, CUIT, Especial(D/P), Periodo, Dias, Rem.Total y SAC
-    const regexPost = /^(.+?)\s+([\d-]{11,})\s+[EC]\s*([DP])?\s+(\d{2}\/\d{4})\s+(\d+)\s+\d+\s+([\d.,]+)\s+[\d.,]+\s+[\d.,]+\s+([\d.,]+)/gm;
+    // Regex que captura las 4 columnas finales de dinero por separado
+    const regex = /^(.+?)\s+([\d-]{11,})\s+[EC]\s*[DP]?\s+(\d{2}\/\d{4})\s+\d+\s+\d+\s+([\d.,]+)\s+[\d.,]+\s+([\d.,]+)\s+([\d.,]+)/gm;
     
     let m;
-    while ((m = regexPost.exec(textoPost)) !== null) {
-        const [_, empresa, cuit, especial, periodo, dias, totalStr, sacStr] = m;
-        const monto = parseFloat(totalStr.replace(/\./g, '').replace(',', '.'));
-        const sac = parseFloat(sacStr.replace(/\./g, '').replace(',', '.'));
-        const esEspecial = (especial === 'P' || especial === 'D');
+    while ((m = regex.exec(texto)) !== null) {
+        const [_, empresa, cuit, periodo, totalStr, especialStr, sacStr] = m;
+        const total = parseFloat(totalStr.replace(/\./g, '').replace(',', '.')) || 0;
+        const especial = parseFloat(especialStr.replace(/\./g, '').replace(',', '.')) || 0;
+        const sac = parseFloat(sacStr.replace(/\./g, '').replace(',', '.')) || 0;
         
-        lineaDeTiempoTotal.add(periodo);
-        
+        lineaTiempo.add(periodo);
         if (!desgloseEmpleadores[cuit]) {
-            desgloseEmpleadores[cuit] = { nombre: empresa, meses: new Set(), remComun: 0, remEspecial: 0 };
+            desgloseEmpleadores[cuit] = { n: empresa.trim(), m: new Set(), c: 0, e: 0 };
         }
         
-        desgloseEmpleadores[cuit].meses.add(periodo);
-        if (esEspecial) desgloseEmpleadores[cuit].remEspecial += monto;
-        else desgloseEmpleadores[cuit].remComun += monto;
-        
-        if (sac === 0) remuneracionesUltimas.push(monto);
+        desgloseEmpleadores[cuit].m.add(periodo);
+        desgloseEmpleadores[cuit].e += especial;
+        desgloseEmpleadores[cuit].c += (total - especial);
+        if (sac === 0) remsParaPromedio.push(total);
     }
 
-    // Calculamos Promedio (Últimos 120 meses)
-    const ultimas120 = remuneracionesUltimas.slice(-120);
-    const suma = ultimas120.reduce((a, b) => a + b, 0);
-    const promedio = ultimas120.length > 0 ? suma / ultimas120.length : 0;
-
-    renderizarTablaResumen(lineaDeTiempoTotal.size, promedio);
+    const ult120 = remsParaPromedio.slice(-120);
+    const prom = ult120.length ? (ult120.reduce((a, b) => a + b, 0) / ult120.length) : 0;
+    
+    renderizarResumen(lineaTiempo.size, prom);
 }
 
-function renderizarTablaResumen(totalMeses, promedio) {
-    const anios = Math.floor(totalMeses / 12);
-    const meses = totalMeses % 12;
-    const promedioTxt = promedio.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
-
-    let tablaHtml = `
-        <div style="background:var(--light-blue); padding:10px; border-radius:5px; margin-bottom:10px;">
-            <strong>RESUMEN GENERAL:</strong> ${anios} años y ${meses} meses | <strong>Promedio (u120):</strong> ${promedioTxt}
-        </div>
-        <table style="width:100%; font-size:12px; border-collapse:collapse; background:white;">
-            <tr style="background:var(--blue); color:white;">
-                <th style="padding:5px; text-align:left;">EMPLEADOR / CUIT</th>
-                <th style="padding:5px;">TIEMPO</th>
-                <th style="padding:5px;">COMÚN</th>
-                <th style="padding:5px;">ESPECIAL</th>
-            </tr>`;
-
-    for (const cuit in desgloseEmpleadores) {
-        const e = desgloseEmpleadores[cuit];
-        const aE = Math.floor(e.meses.size / 12);
-        const mE = e.meses.size % 12;
-        tablaHtml += `
-            <tr style="border-bottom:1px solid #ddd;">
-                <td style="padding:5px;">${e.nombre}<br><small>${cuit}</small></td>
-                <td style="padding:5px; text-align:center;">${aE}a ${mE}m</td>
-                <td style="padding:5px; text-align:right;">$${e.remComun.toLocaleString('es-AR')}</td>
-                <td style="padding:5px; text-align:right; color:var(--red);">${e.remEspecial > 0 ? '$'+e.remEspecial.toLocaleString('es-AR') : '-'}</td>
-            </tr>`;
+function renderizarResumen(totalMeses, prom) {
+    const anios = Math.floor(totalMeses / 12), meses = totalMeses % 12;
+    const resTotalTxt = `${anios}a ${meses}m | Prom: $${prom.toLocaleString('es-AR')}`;
+    
+    let html = `<p><strong>TOTAL:</strong> ${resTotalTxt}</p><hr>`;
+    for (const id in desgloseEmpleadores) {
+        const emp = desgloseEmpleadores[id];
+        html += `<p style="margin:5px 0; font-size:0.9em;">
+            <b>${emp.n}</b> (${emp.m.size}m)<br>
+            Común: $${emp.c.toLocaleString('es-AR')} | 
+            <span style="color:red">Esp: $${emp.e.toLocaleString('es-AR')}</span>
+        </p>`;
     }
-    tablaHtml += `</table>`;
 
     const panel = document.getElementById('panel-resumen');
-    panel.innerHTML = tablaHtml;
+    panel.innerHTML = html;
     panel.classList.remove('hidden');
-    
-    // Guardamos el texto del resumen total para el sheet
-    panel.dataset.resumenTotal = `${anios}a ${meses}m | Prom: ${promedioTxt}`;
+    panel.dataset.resumenTotal = resTotalTxt;
 }
 
 // ==========================================
@@ -229,19 +200,6 @@ async function enviarDatos() {
     const dni = document.getElementById('dni').value;
     if(!dni) return alert("Falta DNI");
     toggleLoad(true);
-
-    const moratorias = Array.from(document.querySelectorAll('.moratoria-item')).map(it => ({
-        ley: it.querySelector('.m-ley').value,
-        pactadas: it.querySelector('.m-pact').value,
-        pagas: it.querySelector('.m-pagas').value
-    }));
-
-    // Convertimos el desglose a un formato JSON simple para guardar
-    const detalleSimplificado = Object.keys(desgloseEmpleadores).map(cuit => ({
-        cuit, 
-        n: desgloseEmpleadores[cuit].nombre, 
-        t: desgloseEmpleadores[cuit].meses.size 
-    }));
 
     const payload = {
         action: "guardarExpediente",
@@ -253,64 +211,55 @@ async function enviarDatos() {
         estado_civil: document.getElementById('estado_civil').value,
         hijos: document.getElementById('hijos').value,
         estado: document.getElementById('estado_tramite').value,
-        moratorias: JSON.stringify(moratorias),
+        moratorias: JSON.stringify(Array.from(document.querySelectorAll('.moratoria-item')).map(it => ({
+            ley: it.querySelector('.m-ley').value, pactadas: it.querySelector('.m-pact').value, pagas: it.querySelector('.m-pagas').value
+        }))),
         notas: document.getElementById('notas').value,
         resumen_total: document.getElementById('panel-resumen').dataset.resumenTotal || "",
-        resumen_detallado: JSON.stringify(detalleSimplificado),
+        resumen_detallado: JSON.stringify(desgloseEmpleadores),
         usuario: USER_ROLE
     };
 
     try {
         await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
-        alert("Guardado exitoso");
-    } catch (e) { alert("Error al guardar"); }
+        alert("Guardado OK");
+    } catch (e) { alert("Error"); }
     toggleLoad(false);
 }
 
 async function consultarExpediente() {
     const dni = document.getElementById('dni').value;
-    if(!dni) return alert("DNI requerido");
+    if(!dni) return alert("DNI?");
     toggleLoad(true);
     try {
         const r = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "consultarDNI", dni: dni }) });
         const res = await r.json();
         if(res) {
-            // Sincronizado con Estructura ver_03 (14 columnas)
             document.getElementById('nombre').value = res[2] || "";
-            if (res[3]) {
-                const f = new Date(res[3]);
-                document.getElementById('fecha_nac').value = f.toISOString().split('T')[0];
-            }
+            if (res[3]) document.getElementById('fecha_nac').value = new Date(res[3]).toISOString().split('T')[0];
             document.getElementById('cuil').value = res[4] || "";
             document.getElementById('clave_anses').value = res[5] || "";
-            document.getElementById('estado_civil').value = res[6] || "Soltero/a";
+            document.getElementById('estado_civil').value = res[6] || "";
             document.getElementById('hijos').value = res[7] || "";
-            document.getElementById('estado_tramite').value = res[8] || "Iniciado";
+            document.getElementById('estado_tramite').value = res[8] || "";
+            document.getElementById('notas').value = res[10] || "";
             
             document.getElementById('moratorias-wrapper').innerHTML = "";
             JSON.parse(res[9] || "[]").forEach(m => crearGrupoMoratoria(m));
             
-            document.getElementById('notas').value = res[10] || "";
-            
-            // Visualización del resumen guardado
-            const panel = document.getElementById('panel-resumen');
             if(res[11]) {
-                panel.innerHTML = `<div style="padding:10px; background:#f0f0f0; border-radius:5px;">
-                    <strong>Último Cómputo:</strong> ${res[11]}<br>
-                    <small>Vuelva a pegar la sábana para actualizar desglose.</small>
-                </div>`;
-                panel.classList.remove('hidden');
+                const p = document.getElementById('panel-resumen');
+                p.innerHTML = `<p><b>Último:</b> ${res[11]}</p>`;
+                p.classList.remove('hidden');
             }
-
             actualizarEdad();
-            alert("Expediente cargado");
-        } else { alert("No se encontró el DNI"); }
-    } catch (e) { alert("Error de conexión"); }
+        }
+    } catch (e) { alert("Error"); }
     toggleLoad(false);
 }
 
 // ==========================================
-// 3. FUNCIONES DE INTERFAZ Y LOGIN
+// 3. UTILIDADES
 // ==========================================
 async function ejecutarLogin() {
     const pin = document.getElementById('pass-input').value;
@@ -323,16 +272,9 @@ async function ejecutarLogin() {
             document.getElementById('login-screen').classList.add('hidden');
             document.getElementById('main-app').classList.remove('hidden');
             resetearTemporizador();
-        } else { alert("PIN Incorrecto"); }
-    } catch (e) { alert("Error"); }
+        }
+    } catch (e) {}
     toggleLoad(false);
-}
-
-function mostrarSeccion(sec) {
-    document.getElementById('sec-form').classList.add('hidden');
-    document.getElementById('sec-agenda').classList.add('hidden');
-    document.getElementById('sec-' + sec).classList.remove('hidden');
-    if(sec === 'agenda') cargarAgenda();
 }
 
 function actualizarEdad() {
@@ -347,15 +289,11 @@ function actualizarEdad() {
 function crearGrupoMoratoria(d = {}) {
     const div = document.createElement('div');
     div.className = "moratoria-item";
-    div.style = "border:1px solid #ddd; padding:10px; margin-top:10px; background:#f9f9f9;";
     div.innerHTML = `
-        <label>Ley</label><input type="text" class="m-ley" value="${d.ley||''}">
-        <div class="row">
-            <div style="flex:1"><label>Pactadas</label><input type="number" class="m-pact" value="${d.pactadas||''}"></div>
-            <div style="flex:1"><label>Pagas</label><input type="number" class="m-pagas" value="${d.pagas||''}"></div>
-        </div>
-        <button onclick="this.parentElement.remove()" style="color:red; background:none; border:none; cursor:pointer; font-size:11px;">[Eliminar]</button>
-    `;
+        <input type="text" class="m-ley" placeholder="Ley" value="${d.ley||''}" style="width:30%">
+        <input type="number" class="m-pact" placeholder="Pact" value="${d.pactadas||''}" style="width:25%">
+        <input type="number" class="m-pagas" placeholder="Pagas" value="${d.pagas||''}" style="width:25%">
+        <button onclick="this.parentElement.remove()">X</button>`;
     document.getElementById('moratorias-wrapper').appendChild(div);
 }
 
@@ -367,11 +305,10 @@ async function cargarAgenda() {
         const r = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "listarTodo" }) });
         const datos = await r.json();
         datos.forEach(c => {
-            const item = document.createElement('div');
-            item.className = "agenda-card";
-            item.innerHTML = `<strong>${c[2]}</strong> (DNI: ${c[1]})<br><small>Estado: ${c[8]}</small>
-            <div style="margin-top:10px;"><button class="btn btn-blue" style="padding:5px; width:auto;" onclick="editarDesdeAgenda('${c[1]}')">EDITAR</button></div>`;
-            lista.appendChild(item);
+            const div = document.createElement('div');
+            div.className = "agenda-card";
+            div.innerHTML = `<b>${c[2]}</b><br><small>${c[1]}</small> <button onclick="editarDesdeAgenda('${c[1]}')">VER</button>`;
+            lista.appendChild(div);
         });
     } catch (e) {}
     toggleLoad(false);
@@ -383,6 +320,13 @@ function editarDesdeAgenda(dni) {
     mostrarSeccion('form');
 }
 
+function mostrarSeccion(s) {
+    document.getElementById('sec-form').classList.add('hidden');
+    document.getElementById('sec-agenda').classList.add('hidden');
+    document.getElementById('sec-' + s).classList.remove('hidden');
+    if(s === 'agenda') cargarAgenda();
+}
+
 function limpiarFormulario() {
     document.querySelectorAll('input, textarea').forEach(i => i.value = "");
     document.getElementById('moratorias-wrapper').innerHTML = "";
@@ -390,20 +334,12 @@ function limpiarFormulario() {
 }
 
 function toggleLoad(v) { document.getElementById('loading').className = v ? "" : "hidden"; }
-
-function cerrarSesion() {
-    USER_ROLE = "";
-    document.getElementById('main-app').classList.add('hidden');
-    document.getElementById('login-screen').classList.remove('hidden');
-}
-
+function cerrarSesion() { location.reload(); }
 function resetearTemporizador() {
     clearTimeout(timeoutReloj);
     timeoutReloj = setTimeout(cerrarSesion, MINUTOS_INACTIVIDAD * 60 * 1000);
 }
-
 document.onmousemove = resetearTemporizador;
-document.onkeypress = resetearTemporizador;
 </script>
 
 </body>
