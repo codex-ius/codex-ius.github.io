@@ -173,6 +173,14 @@ export const cardsData = {
       linkText: 'Ejecutar Terminal',
       icon: 'history_toggle_off',
       version: 'v1.0'
+    },    
+    {
+      title: 'Crucigrama',
+      description: 'Juego',
+      link: './sources/res_app/game.html',
+      linkText: 'Ejecutar Terminal',
+      icon: 'history_toggle_off',
+      version: 'v1.0'
     }
   ]
 };
