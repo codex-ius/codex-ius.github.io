@@ -167,25 +167,37 @@ function ejecutarComputo() {
     renderizarResumen(lineaTiempo.size, prom);
 }
 
+// Al final de ejecutarComputo() actualiza la llamada:
+// renderizarResumen(lineaTiempo.size, prom); 
+
 function renderizarResumen(totalMeses, prom) {
     const anios = Math.floor(totalMeses / 12), meses = totalMeses % 12;
     const resTotalTxt = `${anios}a ${meses}m | Prom: $${prom.toLocaleString('es-AR')}`;
     
-    let html = `<p><strong>TOTAL POST-94:</strong> ${resTotalTxt}</p><hr>`;
+    // Guardamos el texto en el dataset
+    document.getElementById('panel-resumen').dataset.resumenTotal = resTotalTxt;
+    
+    // Dibujamos el panel
+    dibujarResumenDesdeJSON(resTotalTxt);
+    document.getElementById('panel-resumen').classList.remove('hidden');
+}
+    function dibujarResumenDesdeJSON(titulo) {
+    let html = `<p><strong>TOTAL POST-94:</strong> ${titulo}</p><hr>`;
     for (const id in desgloseEmpleadores) {
         const emp = desgloseEmpleadores[id];
         const etiquetaPre = emp.pre ? " <small style='color:orange'>(Pre-94)</small>" : "";
+        // Manejo de meses: si es de base de datos, m puede ser array o set
+        const cantMeses = emp.m.size || (Array.isArray(emp.m) ? emp.m.length : Object.keys(emp.m).length);
+        
         html += `<p style="margin:5px 0; font-size:0.9em;">
-            <b>${emp.n}</b>${etiquetaPre} (${emp.m.size} meses)<br>
+            <b>${emp.n}</b>${etiquetaPre} (${cantMeses} meses)<br>
             Común: $${emp.c.toLocaleString('es-AR')} | 
             <span style="color:red">Esp: $${emp.e.toLocaleString('es-AR')}</span>
         </p>`;
     }
-    const panel = document.getElementById('panel-resumen');
-    panel.innerHTML = html;
-    panel.classList.remove('hidden');
-    panel.dataset.resumenTotal = resTotalTxt;
+    document.getElementById('panel-resumen').innerHTML = html;
 }
+
 
 // 2. GESTIÓN DE DATOS (CRUD)
 async function enviarDatos() {
@@ -237,11 +249,26 @@ async function consultarExpediente() {
             document.getElementById('notas').value = res[10] || "";
             document.getElementById('moratorias-wrapper').innerHTML = "";
             JSON.parse(res[9] || "[]").forEach(m => crearGrupoMoratoria(m));
-            if(res[11]) {
-                const p = document.getElementById('panel-resumen');
-                p.innerHTML = `<p><b>Último Resumen:</b> ${res[11]}</p>`;
-                p.classList.remove('hidden');
-            }
+            // Reemplazar esta parte dentro de consultarExpediente()
+if(res[11]) { // res[11] es el RES_TOTAL (texto)
+    const p = document.getElementById('panel-resumen');
+    p.classList.remove('hidden');
+    p.dataset.resumenTotal = res[11];
+    
+    // Si existe el detalle en res[12] (JSON), lo reconstruimos
+    if(res[12]) {
+        try {
+            desgloseEmpleadores = JSON.parse(res[12]);
+            // Llamamos a una función auxiliar para dibujar el HTML
+            dibujarResumenDesdeJSON(res[11]);
+        } catch(e) {
+            p.innerHTML = `<p><b>Último Resumen:</b> ${res[11]}</p>`;
+        }
+    } else {
+        p.innerHTML = `<p><b>Último Resumen:</b> ${res[11]}</p>`;
+    }
+}
+
             actualizarEdad();
         } else { alert("DNI no encontrado"); }
     } catch (e) { alert("Error de consulta"); }
@@ -317,11 +344,12 @@ function mostrarSeccion(s) {
     document.getElementById('sec-' + s).classList.remove('hidden');
     if(s === 'agenda') cargarAgenda();
 }
-
 function limpiarFormulario() {
     document.querySelectorAll('input, textarea').forEach(i => i.value = "");
     document.getElementById('moratorias-wrapper').innerHTML = "";
     document.getElementById('panel-resumen').classList.add('hidden');
+    document.getElementById('panel-resumen').innerHTML = "";
+    desgloseEmpleadores = {}; // IMPORTANTE: Limpiar el objeto global
 }
 
 function toggleLoad(v) { document.getElementById('loading').className = v ? "" : "hidden"; }
