@@ -84,6 +84,9 @@
 
         <div class="card">
             <h3>Cómputo de Datos Laborales</h3>
+    <label>Sábana Pre-94</label>
+    <textarea id="inputPre94" placeholder="Pegue datos anteriores al 06/94..." rows="4"></textarea>
+            <h3>Cómputo de Datos Laborales</h3>
             <label>Sábana Post-94</label>
             <textarea id="inputPost94" placeholder="Pegue datos posteriores al 07/94..." rows="5"></textarea>
             <button class="btn btn-outline" onclick="ejecutarComputo()">📊 GENERAR RESUMEN</button>
@@ -121,18 +124,28 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwLdk4j2Pc7Ng88TunAh
 let USER_ROLE = "", desgloseEmpleadores = {}, timeoutReloj;
 const MINUTOS_INACTIVIDAD = 15;
 
-// 1. CÓMPUTO LABORAL
 function ejecutarComputo() {
     desgloseEmpleadores = {};
     let remsParaPromedio = [], lineaTiempo = new Set();
-    const texto = document.getElementById('inputPost94').value;
-    if(!texto) return alert("Pegue datos para procesar");
-
-    // Regex: Penúltima columna es Especial
-    const regex = /^(.+?)\s+([\d-]{11,})\s+[EC]\s*[DP]?\s+(\d{2}\/\d{4})\s+\d+\s+\d+\s+([\d.,]+)\s+[\d.,]+\s+([\d.,]+)\s+([\d.,]+)/gm;
     
+    const textoPre = document.getElementById('inputPre94').value;
+    const textoPost = document.getElementById('inputPost94').value;
+
+    // --- PROCESAR PRE-94 ---
+    // Regex simple para capturar Empresa y CUIT en formato Pre-94
+    const regexPre = /^(.+?)\s+([\d-]{11,})/gm;
+    let mPre;
+    while ((mPre = regexPre.exec(textoPre)) !== null) {
+        const [_, empresa, cuit] = mPre;
+        if (!desgloseEmpleadores[cuit]) {
+            desgloseEmpleadores[cuit] = { n: empresa.trim(), m: new Set(), c: 0, e: 0, pre: true };
+        }
+    }
+
+    // --- PROCESAR POST-94 (Tu regex exitosa) ---
+    const regexPost = /^(.+?)\s+([\d-]{11,})\s+[EC]\s*[DP]?\s+(\d{2}\/\d{4})\s+\d+\s+\d+\s+([\d.,]+)\s+[\d.,]+\s+([\d.,]+)\s+([\d.,]+)/gm;
     let m;
-    while ((m = regex.exec(texto)) !== null) {
+    while ((m = regexPost.exec(textoPost)) !== null) {
         const [_, empresa, cuit, periodo, totalStr, especialStr, sacStr] = m;
         const total = parseFloat(totalStr.replace(/\./g, '').replace(',', '.')) || 0;
         const especial = parseFloat(especialStr.replace(/\./g, '').replace(',', '.')) || 0;
@@ -158,11 +171,12 @@ function renderizarResumen(totalMeses, prom) {
     const anios = Math.floor(totalMeses / 12), meses = totalMeses % 12;
     const resTotalTxt = `${anios}a ${meses}m | Prom: $${prom.toLocaleString('es-AR')}`;
     
-    let html = `<p><strong>TOTAL:</strong> ${resTotalTxt}</p><hr>`;
+    let html = `<p><strong>TOTAL POST-94:</strong> ${resTotalTxt}</p><hr>`;
     for (const id in desgloseEmpleadores) {
         const emp = desgloseEmpleadores[id];
+        const etiquetaPre = emp.pre ? " <small style='color:orange'>(Pre-94)</small>" : "";
         html += `<p style="margin:5px 0; font-size:0.9em;">
-            <b>${emp.n}</b> (${emp.m.size} meses)<br>
+            <b>${emp.n}</b>${etiquetaPre} (${emp.m.size} meses)<br>
             Común: $${emp.c.toLocaleString('es-AR')} | 
             <span style="color:red">Esp: $${emp.e.toLocaleString('es-AR')}</span>
         </p>`;
