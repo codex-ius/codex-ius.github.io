@@ -134,6 +134,8 @@
             <textarea id="notas" rows="3"></textarea>
             
             <button class="btn btn-green" onclick="enviarDatos()">💾 GUARDAR EXPEDIENTE</button>
+            <button id="btn-borrar-maestro" class="btn btn-red hidden" onclick="eliminarExpediente()">🗑️ ELIMINAR EXPEDIENTE (SOLO MAESTRO)</button>
+            
             <button class="btn btn-outline" style="color:var(--red); border-color:var(--red);" onclick="limpiarFormulario()">LIMPIAR PANTALLA</button>
         </div>
     </div>
@@ -373,16 +375,68 @@ async function ejecutarLogin() {
     try {
         const r = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: "login", pin: pin }) });
         const res = await r.json();
+        
         if (res.success) {
-            USER_ROLE = res.role;
+            USER_ROLE = res.role; // Se asigna el rol (ej: "maestro" o "operador")
+            
+            // 1. Mostrar la app
             document.getElementById('login-screen').classList.add('hidden');
             document.getElementById('main-app').classList.remove('hidden');
+            
+            // 2. Lógica de privilegios: Solo si es maestro mostramos el botón rojo
+            if (USER_ROLE === "maestro") {
+                document.getElementById('btn-borrar-maestro').classList.remove('hidden');
+            } else {
+                // Por seguridad, nos aseguramos que esté oculto para otros
+                document.getElementById('btn-borrar-maestro').classList.add('hidden');
+            }
+
             resetearTemporizador();
-        } else { alert("PIN Incorrecto"); }
-    } catch (e) { alert("Error de Login"); }
+        } else { 
+            alert("PIN Incorrecto"); 
+        }
+    } catch (e) { 
+        alert("Error de Login"); 
+    }
     toggleLoad(false);
 }
 
+async function eliminarExpediente() {
+    const dni = document.getElementById('dni').value;
+    if (!dni) return alert("Debe cargar un DNI primero");
+
+    if (!confirm(`¿Está seguro de eliminar permanentemente al cliente con DNI ${dni}? Esta acción no se puede deshacer.`)) {
+        return;
+    }
+
+    toggleLoad(true);
+    const payload = {
+        action: "eliminarExpediente",
+        dni: dni,
+        usuario: USER_ROLE 
+    };
+
+    try {
+        const response = await fetch(SCRIPT_URL, { 
+            method: 'POST', 
+            body: JSON.stringify(payload) 
+        });
+        const result = await response.json();
+        
+        if (result.status === "success") {
+            alert("Expediente eliminado correctamente.");
+            limpiarFormulario(); // Limpia la pantalla tras borrar
+            if(typeof cargarAgenda === "function") cargarAgenda(); // Refresca la lista si existe
+        } else {
+            alert("Error: " + result.message);
+        }
+    } catch (e) {
+        alert("Error al intentar eliminar. Verifique la conexión.");
+    }
+    toggleLoad(false);
+}
+
+    
 function actualizarEdad() {
     const f = document.getElementById('fecha_nac').value;
     if(!f) return;
