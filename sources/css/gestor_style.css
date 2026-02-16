@@ -1,39 +1,42 @@
 :root {
-    /* Paleta Psycho-Pass Institucional */
-    --blue: #00f2ff;       /* Cian Neón */
-    --green: #2ecc71;      /* Verde "Clear" */
-    --red: #ff4757;        /* Alerta Lethal Eliminator */
-    --gray: #94a3b8;       /* Texto secundario */
-    --bg-dark: #020617;    /* Fondo profundo */
-    --card-bg: #0f172a;    /* Fondo de tarjetas */
+    /* Paleta Psycho-Pass */
+    --blue: #00f2ff;       /* Cian - Estado Operativo */
+    --green: #00ff9d;      /* Verde - Coeficiente Limpio */
+    --red: #ff0055;        /* Rojo - Eliminación Letal */
+    --gray: #64748b;       
+    --bg-dark: #020617;    /* Profundidad Sibyl */
+    --card-bg: rgba(15, 23, 42, 0.95);
+    --border-glow: 0 0 10px rgba(0, 242, 255, 0.3);
 }
 
 body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    background: var(--bg-dark); 
-    color: #f1f5f9; /* Texto claro para legibilidad */
+    font-family: 'Segoe UI', 'Consolas', sans-serif; 
+    background-color: var(--bg-dark); 
+    background-image: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
+    color: #e2e8f0; 
     margin: 0; 
     padding-bottom: 30px; 
+    line-height: 1.6;
 }
 
 header { 
     background: #000; 
     color: var(--blue); 
-    padding: 15px; 
+    padding: 20px; 
     text-align: center; 
-    font-weight: bold; 
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-weight: 900; 
+    letter-spacing: 6px;
     border-bottom: 2px solid var(--blue);
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+    text-shadow: 0 0 12px var(--blue);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
 nav { 
-    background: #0f172a; 
+    background: #000; 
     display: flex; 
     justify-content: space-around; 
-    padding: 10px; 
-    border-bottom: 1px solid rgba(0, 242, 255, 0.2); 
+    padding: 12px; 
+    border-bottom: 1px solid rgba(0, 242, 255, 0.4); 
     position: sticky; 
     top: 0; 
     z-index: 10; 
@@ -43,33 +46,54 @@ nav {
     cursor: pointer; 
     color: var(--blue); 
     font-weight: bold; 
-    font-size: 0.8em; 
-    padding: 5px 10px; 
+    font-size: 0.75rem; 
+    padding: 8px 15px; 
     text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
 }
 
-.container { padding: 15px; max-width: 700px; margin: auto; }
+.nav-item:hover {
+    background: rgba(0, 242, 255, 0.1);
+    border: 1px solid var(--blue);
+    text-shadow: 0 0 8px var(--blue);
+}
+
+.container { padding: 20px; max-width: 700px; margin: auto; }
 
 .card { 
     background: var(--card-bg); 
-    padding: 15px; 
-    border-radius: 4px; /* Bordes más rectos/técnicos */
-    border: 1px solid rgba(0, 242, 255, 0.1);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
-    margin-bottom: 15px; 
+    padding: 20px; 
+    border-radius: 2px; /* Rectangular para look institucional */
+    border-left: 4px solid var(--blue); 
+    border-top: 1px solid rgba(0, 242, 255, 0.2);
+    border-right: 1px solid rgba(0, 242, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4); 
+    margin-bottom: 20px; 
 }
 
-/* Mantener DISPLAY exacto para que el JS funcione */
+h3 {
+    margin-top: 0;
+    font-size: 0.9rem;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+    padding-bottom: 8px;
+}
+
+/* Mantener DISPLAY exacto para funcionalidad */
 .hidden { display: none !important; }
 
 label { 
     display: block; 
     font-weight: bold; 
-    margin-top: 10px; 
-    font-size: 0.75em; 
-    color: var(--blue); /* Etiquetas en cian */
+    margin-top: 15px; 
+    font-size: 0.7rem; 
+    color: var(--gray);
     text-transform: uppercase; 
-    opacity: 0.8;
+    letter-spacing: 1px;
 }
 
 input, select, textarea { 
@@ -77,37 +101,77 @@ input, select, textarea {
     padding: 12px; 
     margin-top: 5px; 
     box-sizing: border-box; 
-    background: #1e293b; /* Fondo oscuro para inputs */
-    border: 1px solid #334155; 
-    border-radius: 4px; 
-    font-size: 16px; 
-    color: white; /* Texto blanco para escribir */
+    background: #0a0f1e; 
+    border: 1px solid #1e293b; 
+    border-radius: 0; 
+    font-size: 15px; 
+    color: #fff;
+    transition: all 0.3s ease;
 }
 
-input:focus {
+input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--blue);
+    background: #0f172a;
+    box-shadow: inset 0 0 8px rgba(0, 242, 255, 0.1);
 }
 
+/* Botones con estilo táctico */
 .btn { 
-    border: none; 
+    border: 1px solid transparent; 
     padding: 14px; 
     width: 100%; 
-    border-radius: 4px; 
+    border-radius: 2px; 
     cursor: pointer; 
-    font-weight: bold; 
-    margin-top: 10px; 
-    font-size: 14px; 
+    font-weight: 800; 
+    margin-top: 12px; 
+    font-size: 12px; 
     text-transform: uppercase;
-    transition: opacity 0.2s;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
 }
 
-.btn:active { opacity: 0.7; }
+.btn-blue { 
+    background: rgba(0, 242, 255, 0.15); 
+    color: var(--blue); 
+    border-color: var(--blue);
+}
+.btn-blue:hover { 
+    background: var(--blue); 
+    color: #000; 
+    box-shadow: 0 0 15px var(--blue);
+}
 
-.btn-blue { background: var(--blue); color: #000; }
-.btn-green { background: var(--green); color: #000; }
-.btn-red { background: var(--red); color: white; }
-.btn-outline { background: none; border: 1px solid var(--blue); color: var(--blue); }
+.btn-green { 
+    background: rgba(0, 255, 157, 0.15); 
+    color: var(--green); 
+    border-color: var(--green);
+}
+.btn-green:hover { 
+    background: var(--green); 
+    color: #000; 
+    box-shadow: 0 0 15px var(--green);
+}
+
+.btn-red { 
+    background: rgba(255, 0, 85, 0.15); 
+    color: var(--red); 
+    border-color: var(--red);
+}
+.btn-red:hover { 
+    background: var(--red); 
+    color: #fff; 
+    box-shadow: 0 0 15px var(--red);
+}
+
+.btn-outline { 
+    background: transparent; 
+    border: 1px solid var(--blue); 
+    color: var(--blue); 
+}
+.btn-outline:hover {
+    background: rgba(0, 242, 255, 0.05);
+}
 
 .row { display: flex; gap: 10px; align-items: flex-end; }
 
@@ -116,36 +180,52 @@ input:focus {
     top: 50%; 
     left: 50%; 
     transform: translate(-50%, -50%); 
-    background: rgba(0, 242, 255, 0.9); 
-    color: black; 
-    padding: 20px; 
-    border-radius: 4px; 
+    background: #000; 
+    color: var(--blue); 
+    padding: 30px; 
+    border: 2px solid var(--blue);
+    box-shadow: 0 0 30px var(--blue);
     z-index: 1000; 
     font-weight: bold;
-    letter-spacing: 3px;
+    letter-spacing: 5px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
 }
 
 .resumen-laboral { 
-    background: #1e293b; 
-    border: 1px solid var(--blue); 
-    border-radius: 4px; 
+    background: #000; 
+    border-left: 3px solid var(--green); 
+    border-radius: 0; 
     padding: 15px; 
     margin-top: 15px; 
-    font-family: monospace; /* Estilo terminal */
+    font-family: 'Consolas', monospace;
+    font-size: 0.85rem;
+    color: #adbac7;
 }
 
 .moratoria-item { 
-    border: 1px solid #334155; 
-    padding: 10px; 
+    border: 1px solid #1e293b; 
+    padding: 12px; 
     margin-top: 10px; 
-    background: #0f172a; 
-    border-radius: 4px; 
+    background: rgba(0,0,0,0.3); 
+    position: relative;
 }
 
+/* Scrollbar personalizada Cyberpunk */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--blue); box-shadow: 0 0 5px var(--blue); }
+
 @media print {
+    /* Mantenemos el blanco y negro para ahorro y claridad en PDF */
     .no-print, #area-ingreso-datos, button, nav { display: none !important; }
-    body { background: white; font-size: 12pt; color: black; }
-    #panel-resumen { box-shadow: none; border: 1px solid #ccc; width: 100%; color: black; }
-    input, textarea { color: black; background: white; border: 1px solid #ccc; }
-    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { background: white; color: black; }
+    .card { border: 1px solid #eee; background: white; box-shadow: none; }
+    input, textarea { border: 1px solid #ddd; color: black; background: white; }
+    .resumen-laboral { border: 1px solid #000; color: black; background: white; }
 }
