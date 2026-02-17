@@ -1,86 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Educación Jurídica</title>
+    <title>Codex_Ius | Glass-Organic Institutional</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@500;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./sources/css/themes.css">
+    <link rel="stylesheet" href="./sources/css/reset.css">
     <link rel="stylesheet" href="./sources/css/main.css">
-    <link rel="shortcut icon" href="./sources/icons/fav.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
 </head>
-
-<body id="top">
+<body class="dark-theme"> <div class="background-blobs">
+        <div class="blob blob-red"></div>
+        <div class="blob blob-blue"></div>
+    </div>
 
     <header>
-        <div class="header-prefix">SYSTEM_STATUS: <span style="color: var(--color-accent-doctrina)">ACTIVE</span></div>
-        <h1>Codex_Ius: <span id="animated-text">aprender;</span></h1>
-        <div class="header-sub">>> PORTAL_EDUCACION_JURIDICA_V2.5</div>
+        <div class="header-container">
+            <div class="system-tag">>> STATUS: SYSTEM_READY</div>
+            <h1>Codex_Ius<span id="animated-text">aprender;</span></h1>
+            <p class="subtitle">DERECHO & SOFTWARE ARGENTINO</p>
+        </div>
     </header>
-    <nav>
-        <a href="#section-noticias">[ NOTICIAS ]</a>
-        <a href="/sources/res_lex/leyes.html">[ LEGISLACIÓN ]</a>
-        <a href="#section-educacion">[ ACADEMIA ]</a>
-        <a href="#section-ensayos">[ ENSAYOS ]</a>
-        <a href="#section-software">[ TERMINAL_APPS ]</a>
+
+    <nav id="main-nav">
+        <a href="#section-noticias" class="nav-item">NOTICIAS</a>
+        <a href="#section-educacion" class="nav-item">ACADEMIA</a>
+        <a href="#section-ensayos" class="nav-item">DOCTRINA</a>
+        <a href="#section-software" class="nav-item">SOFTWARE</a>
     </nav>
-    <main>
-        <div id="cards-container"></div>
+
+    <main id="main">
+        <div id="cards-container">
+            <div class="loader">Iniciando sistema...</div>
+        </div>
     </main>
 
     <footer>
-        <div class="footer-container">
+        <div class="footer-grid">
             <div class="footer-brand">
-                <h2 id="footer-logo">CODEX_IUS</h2>
-                <p class="footer-tagline">Intersección entre el Derecho Argentino y el desarrollo de Software.</p>
-                <div class="notary-seal">
-                    <span class="material-icons">verified_user</span>
-                    <div class="seal-text">
-                        <span class="seal-date">EST. 2024</span>
-                        <span class="seal-auth">CONTENIDO CERTIFICADO</span>
-                    </div>
-                </div>
+                <h3>CODEX_IUS</h3>
+                <p>Evolución institucional a través del código y la ley.</p>
             </div>
-
-            <div class="footer-links">
-                <span class="footer-title">MAPA DEL SITIO</span>
-                <a href="#section-noticias">Noticias Jurídicas</a>
-                <a href="#section-educacion">Academia</a>
-                <a href="#section-ensayos">Biblioteca de Ensayos</a>
-                <a href="#section-software">Terminal de Software</a>
-            </div>
-
-            <div class="footer-contact">
-                <span class="footer-title">CONTACTO PROFESIONAL</span>
-                <div class="contact-item">
-                    <span class="material-icons">mail</span>
-                    <span>rodrigo.dev.ius@gmail.com</span>
-                </div>
-                <div class="social-links">
-                    <a href="https://linkedin.com/in/rodrigoquiroga-codexius" class="social-btn" title="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i> <span class="material-icons">terminal</span>
-                    </a>
-                    <a href="https://github.com/codex-ius/codex-ius.github.io" class="social-btn" title="GitHub">
-                        <span class="material-icons">code</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="copyright-content">
-                <span class="mono">COPYRIGHT © 2024 CODEX_IUS - ALL RIGHTS RESERVED</span>
-                <span class="footer-divider">|</span>
-                <span class="mono">BUILD: v2.5.0-STABLE</span>
-                <span class="footer-divider">|</span>
-                <span class="mono">DESARROLLADO EN MENDOZA, ARGENTINA</span>
+            <div class="footer-meta">
+                <span class="seal">Mendoza, Argentina 2026</span>
             </div>
         </div>
     </footer>
 
-
     <script type="module" src="./scripts/main.js"></script>
 </body>
-
 </html>
