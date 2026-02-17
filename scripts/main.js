@@ -2,33 +2,34 @@ import { renderCards } from './cards.js';
 import { setupThemeToggle } from './themeToggle.js';
 import { setupDetailsToggle } from './utils.js';
 
-// Renderizar cards
-renderCards('#cards-container', ['noticias', 'educacion', 'ensayos', 'software']);
-
-// Configurar toggle de tema y botón volver arriba
 document.addEventListener('DOMContentLoaded', () => {
+  // 1. Inicializar Tema y UI Global
   setupThemeToggle('main');
-});
+  setupDetailsToggle();
 
-// Animación texto (puedes modularizar también si quieres)
-const words = ["aprender;", "enseñar;", "servir;"];
-const el = document.getElementById("animated-text");
-let index = 0;
+  // 2. Renderizar contenido dinámico
+  // El renderizado ahora inyectará las clases .glass-card automáticamente
+  renderCards('#cards-container', ['noticias', 'educacion', 'ensayos', 'software']);
 
-function changeText() {
-  el.style.opacity = 0;
-  el.style.transform = "translateX(-10px)"; // Efecto de desplazamiento
-  setTimeout(() => {
-    el.textContent = words[index];
-    el.style.opacity = 1;
-    el.style.transform = "translateX(0)";
-    index = (index + 1) % words.length;
-  }, 500);
-}
+  // 3. Animación de Texto (Refactorizada para suavidad Glass-Organic)
+  const words = ["aprender;", "enseñar;", "servir;"];
+  const el = document.getElementById("animated-text");
+  let index = 0;
 
-setInterval(changeText, 3000);
+  function changeText() {
+    if (!el) return;
+    el.style.opacity = 0;
+    el.style.filter = "blur(10px)"; // Efecto de desenfoque al salir
+    el.style.transform = "translateY(10px)"; 
 
+    setTimeout(() => {
+      el.textContent = words[index];
+      el.style.opacity = 1;
+      el.style.filter = "blur(0px)";
+      el.style.transform = "translateY(0)";
+      index = (index + 1) % words.length;
+    }, 500);
+  }
 
-document.addEventListener('DOMContentLoaded', () => {
-  setupDetailsToggle(); // Usa el selector por defecto 'details'
+  setInterval(changeText, 3000);
 });
