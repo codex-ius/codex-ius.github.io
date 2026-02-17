@@ -2,42 +2,45 @@
 import { renderCategory } from './modules/cards.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Iniciar Animación de Título (Consola)
-    initTypewriter(['aprender', 'enseñar', 'servir']);
+    // 1. Renderizado Prioritario (First Input Delay Optimización)
+    // Renderizamos noticias primero (lo más importante arriba)
+    // Luego el resto para no saturar el renderizado inicial
+    const renderSequence = [
+        { cat: 'noticias', id: 'news-container' },
+        { cat: 'ensayos', id: 'doctrina-container' },
+        { cat: 'software', id: 'apps-container' }
+    ];
 
-    // 2. Renderizar secciones del Index
-    renderCategory('noticias', 'news-container');
-    renderCategory('ensayos', 'doctrina-container'); // Mapeado a tu sección repositorio
-    renderCategory('software', 'apps-container');
+    renderSequence.forEach(({ cat, id }) => {
+        // Usamos requestAnimationFrame para que el navegador decida el mejor momento 
+        // para renderizar cada sección sin congelar la UI
+        requestAnimationFrame(() => renderCategory(cat, id));
+    });
+
+    // 2. Animación de Texto (Más suave y accesible)
+    initConsoleAnimation();
 });
 
-function initTypewriter(words) {
-    const target = document.getElementById('typewriter');
-    let i = 0;
+function initConsoleAnimation() {
+    const words = ["aprender;", "enseñar;", "servir;"];
+    const el = document.getElementById("typewriter");
+    if (!el) return;
+
     let wordIdx = 0;
     
-    function type() {
-        const currentWord = words[wordIdx];
-        if (i < currentWord.length) {
-            target.textContent += currentWord.charAt(i);
-            i++;
-            setTimeout(type, 150);
-        } else {
-            setTimeout(erase, 2000);
-        }
-    }
+    // Usamos una clase de CSS para la transición en lugar de manipular estilos inline
+    // Esto es mucho más rápido para el motor de renderizado del navegador
+    const updateWord = () => {
+        el.classList.add('fade-out-blur'); // Clase que definiremos en home.css
 
-    function erase() {
-        if (i > 0) {
-            target.textContent = target.textContent.slice(0, -1);
-            i--;
-            setTimeout(erase, 100);
-        } else {
+        setTimeout(() => {
+            el.textContent = words[wordIdx];
+            el.classList.remove('fade-out-blur');
             wordIdx = (wordIdx + 1) % words.length;
-            setTimeout(type, 500);
-        }
-    }
+        }, 600);
+    };
 
-    type();
-              }
-      
+    setInterval(updateWord, 3500);
+    updateWord(); // Carga inicial
+        }
+        
