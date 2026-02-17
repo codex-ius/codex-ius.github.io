@@ -5,34 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Codex_ius: aprender, enseñar, servir</title>
-    <meta name="description" content="Codex_ius: Portal Jurídico Digital para el aprendizaje, enseñanza y herramientas legales.">
-    <meta name="author" content="Tu Nombre/Codex_ius">
+    <meta name="description" content="Codex_ius: Portal Jurídico Digital para el aprendizaje, enseñanza y herramientas legales bajo una arquitectura moderna.">
     <link rel="canonical" href="https://tu-usuario.github.io/tu-repo/">
 
-    <meta property="og:title" content="Codex_ius: Portal Jurídico Digital">
-    <meta property="og:description" content="Aprender, enseñar, servir. Herramientas y doctrina legal en un solo lugar.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tu-usuario.github.io/tu-repo/">
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/layouts/layout.css">
+    <link rel="stylesheet" href="css/layouts/layouts.css">
     <link rel="stylesheet" href="css/components/glass-theme.css">
 
-    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <header role="banner" class="glass-header">
-        <nav aria-label="Navegación principal">
-            <div class="logo-container">
+        <nav aria-label="Navegación principal" class="nav-container">
+            <div class="logo-area">
                 <h1 class="console-title">
                     Codex_ius: <span id="typewriter" class="cursor" aria-live="polite"></span>
                 </h1>
+                <p class="subtitle">Portal Jurídico Digital</p>
             </div>
-            <p class="subtitle">Portal Jurídico Digital</p>
             
             <ul class="nav-links">
                 <li><a href="#noticias">Noticias</a></li>
@@ -48,43 +45,29 @@
         <section id="noticias" aria-labelledby="title-noticias" class="section-organic">
             <header class="section-header">
                 <h2 id="title-noticias">Últimas Noticias</h2>
+                <div class="header-line"></div>
             </header>
             <div id="news-container" class="grid-layout">
-                <p class="loading">Cargando noticias...</p>
+                <p class="loading-text">Cargando bitácora...</p>
             </div>
         </section>
 
         <section id="repositorio" aria-labelledby="title-repositorio" class="section-organic">
             <header class="section-header">
                 <h2 id="title-repositorio">Repositorio Jurídico</h2>
+                <div class="header-line"></div>
             </header>
 
-            <div class="repo-grid">
-                <article id="cursos" class="card-glass">
-                    <h3>Cursos</h3>
-                    <p>Capacitación y formación jurídica continua.</p>
-                    <a href="sources/cursos/" class="btn-link">Explorar cursos</a>
-                </article>
-
-                <article id="digesto" class="card-glass">
-                    <h3>Digesto</h3>
-                    <p>Compilación normativa actualizada.</p>
-                    <a href="sources/apps/digesto/" class="btn-link">Ver Digesto</a>
-                </article>
-
-                <article id="doctrina" class="card-glass">
-                    <h3>Doctrina</h3>
-                    <p>Análisis y artículos de especialistas.</p>
-                    <a href="sources/doctrina/" class="btn-link">Leer artículos</a>
-                </article>
-            </div>
+            <div id="doctrina-container" class="grid-layout">
+                </div>
         </section>
 
         <section id="apps" aria-labelledby="title-apps" class="section-organic">
             <header class="section-header">
                 <h2 id="title-apps">Web Apps y Utilidades</h2>
+                <div class="header-line"></div>
             </header>
-            <div id="apps-container" class="utilities-grid">
+            <div id="apps-container" class="grid-layout">
                 </div>
         </section>
 
@@ -92,66 +75,21 @@
 
     <footer id="contacto" role="contentinfo" class="glass-footer">
         <div class="footer-content">
-            <section class="contact-details">
-                <h2>Contacto</h2>
-                <p>¿Tienes dudas o sugerencias? Contáctame:</p>
+            <section class="contact-box">
+                <h2>Conexión</h2>
                 <address>
-                    <a href="mailto:tu-email@ejemplo.com">Enviar Email</a><br>
-                    <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <p>Email: <a href="mailto:tu-email@ejemplo.com">tu-email@ejemplo.com</a></p>
+                    <p>Red profesional: <a href="#" target="_blank">LinkedIn</a></p>
                 </address>
             </section>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 Codex_ius - Desarrollado bajo estética Glass-Organic.</p>
+                <p>&copy; 2026 Codex_ius | <span>Aprender, Enseñar, Servir</span></p>
             </div>
         </div>
     </footer>
 
     <script type="module" src="js/main.js"></script>
 
-</body>
-</html>
-
-            <article id="digesto">
-                <h3>Digesto</h3>
-            </article>
-
-            <article id="doctrina">
-                <h3>Doctrina</h3>
-            </article>
-        </section>
-
-        <section id="apps" aria-labelledby="heading-apps">
-            <h2 id="heading-apps">Web Apps y Utilidades</h2>
-            </section>
-    </main>
-
-    <footer role="contentinfo">
-        <section class="contact-info">
-            <h2>Contacto</h2>
-            </section>
-        <small>&copy; 2026 Codex_ius. Todos los derechos reservados.</small>
-    </footer>
-
-    <script type="module" src="js/main.js"></script>
-</body>
-</html>
-            <div class="loader">Iniciando sistema...</div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h3>CODEX_IUS</h3>
-                <p>Evolución institucional a través del código y la ley.</p>
-            </div>
-            <div class="footer-meta">
-                <span class="seal">Mendoza, Argentina 2026</span>
-            </div>
-        </div>
-    </footer>
-
-    <script type="module" src="./scripts/main.js"></script>
 </body>
 </html>
