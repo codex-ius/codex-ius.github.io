@@ -1,231 +1,217 @@
 :root {
-    /* Paleta Psycho-Pass */
-    --blue: #00f2ff;       /* Cian - Estado Operativo */
-    --green: #00ff9d;      /* Verde - Coeficiente Limpio */
-    --red: #ff0055;        /* Rojo - Eliminación Letal */
-    --gray: #64748b;       
-    --bg-dark: #020617;    /* Profundidad Sibyl */
-    --card-bg: rgba(15, 23, 42, 0.95);
-    --border-glow: 0 0 10px rgba(0, 242, 255, 0.3);
+    /* Mesa de Trabajo - Fondo Perla */
+    --bg-mesa: #e0e5ec;
+    --text-main: #3d4756;
+    --text-sec: #64748b;
+    
+    /* Colores Institucionales de Jerarquía */
+    --glass-blue: rgba(196, 215, 243, 0.7);   /* Acción / Ingreso */
+    --glass-green: rgba(200, 235, 210, 0.7);  /* Resultado / Consulta */
+    --glass-white: rgba(255, 255, 255, 0.55); /* General */
+    
+    /* Paleta de Feedback Háptico */
+    --accent-blue: #2563eb;
+    --accent-green: #166534;
+    --accent-red: #991b1b;
+
+    /* Sombras Neumórficas (Relieve y Profundidad) */
+    --shadow-light: -8px -8px 16px rgba(255, 255, 255, 0.85);
+    --shadow-dark: 8px 8px 16px rgba(163, 177, 198, 0.6);
+    --inner-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.5), 
+                    inset -4px -4px 8px rgba(255, 255, 255, 0.9);
 }
 
 body { 
-    font-family: 'Segoe UI', 'Consolas', sans-serif; 
-    background-color: var(--bg-dark); 
-    background-image: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
-    color: #e2e8f0; 
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+    background-color: var(--bg-mesa); 
+    color: var(--text-main); 
     margin: 0; 
     padding-bottom: 30px; 
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 header { 
-    background: #000; 
-    color: var(--blue); 
-    padding: 20px; 
+    background: var(--bg-mesa); 
+    color: var(--accent-blue); 
+    padding: 25px; 
     text-align: center; 
-    font-weight: 900; 
-    letter-spacing: 6px;
-    border-bottom: 2px solid var(--blue);
-    text-shadow: 0 0 12px var(--blue);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    font-weight: 800; 
+    letter-spacing: 3px;
+    box-shadow: var(--shadow-dark), var(--shadow-light);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
 nav { 
-    background: #000; 
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex; 
     justify-content: space-around; 
     padding: 12px; 
-    border-bottom: 1px solid rgba(0, 242, 255, 0.4); 
+    margin: 15px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 4px 4px 10px rgba(163, 177, 198, 0.3);
     position: sticky; 
-    top: 0; 
+    top: 15px; 
     z-index: 10; 
 }
 
 .nav-item { 
     cursor: pointer; 
-    color: var(--blue); 
-    font-weight: bold; 
-    font-size: 0.75rem; 
-    padding: 8px 15px; 
+    color: var(--text-main); 
+    font-weight: 700; 
+    font-size: 0.8rem; 
+    padding: 10px 18px; 
     text-transform: uppercase;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
 }
 
 .nav-item:hover {
-    background: rgba(0, 242, 255, 0.1);
-    border: 1px solid var(--blue);
-    text-shadow: 0 0 8px var(--blue);
+    background: var(--bg-mesa);
+    box-shadow: var(--shadow-dark), var(--shadow-light);
+    color: var(--accent-blue);
 }
 
-.container { padding: 20px; max-width: 700px; margin: auto; }
+.container { padding: 20px; max-width: 720px; margin: auto; }
 
+/* Tarjetas con Glassmorphism diferenciado */
 .card { 
-    background: var(--card-bg); 
-    padding: 20px; 
-    border-radius: 2px; /* Rectangular para look institucional */
-    border-left: 4px solid var(--blue); 
-    border-top: 1px solid rgba(0, 242, 255, 0.2);
-    border-right: 1px solid rgba(0, 242, 255, 0.1);
-    border-bottom: 1px solid rgba(0, 242, 255, 0.1);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4); 
-    margin-bottom: 20px; 
+    background: var(--glass-white); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 25px; 
+    border-radius: 24px; 
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-dark), var(--shadow-light); 
+    margin-bottom: 25px; 
+    transition: all 0.3s ease;
 }
+
+/* Jerarquía Visual por color de Cristal */
+#sec-form .card { background: var(--glass-blue); } /* Sección entrada: Azul */
+#panel-resumen { background: var(--glass-green); }  /* Resultados: Verde */
 
 h3 {
     margin-top: 0;
-    font-size: 0.9rem;
-    color: var(--blue);
+    font-size: 1rem;
+    color: var(--text-main);
     text-transform: uppercase;
-    letter-spacing: 2px;
-    border-bottom: 1px solid rgba(0, 242, 255, 0.2);
-    padding-bottom: 8px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 12px;
 }
 
-/* Mantener DISPLAY exacto para funcionalidad */
 .hidden { display: none !important; }
 
 label { 
     display: block; 
-    font-weight: bold; 
-    margin-top: 15px; 
-    font-size: 0.7rem; 
-    color: var(--gray);
+    font-weight: 800; 
+    margin-top: 18px; 
+    font-size: 0.75rem; 
+    color: var(--text-sec);
     text-transform: uppercase; 
-    letter-spacing: 1px;
 }
 
+/* Inputs Neumórficos (Efecto grabado/hundido) */
 input, select, textarea { 
     width: 100%; 
-    padding: 12px; 
-    margin-top: 5px; 
-    box-sizing: border-box; 
-    background: #0a0f1e; 
-    border: 1px solid #1e293b; 
-    border-radius: 0; 
-    font-size: 15px; 
-    color: #fff;
-    transition: all 0.3s ease;
-}
-
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--blue);
-    background: #0f172a;
-    box-shadow: inset 0 0 8px rgba(0, 242, 255, 0.1);
-}
-
-/* Botones con estilo táctico */
-.btn { 
-    border: 1px solid transparent; 
     padding: 14px; 
+    margin-top: 8px; 
+    box-sizing: border-box; 
+    background: var(--bg-mesa); 
+    border: none; 
+    border-radius: 14px; 
+    font-size: 16px; 
+    color: var(--text-main);
+    box-shadow: var(--inner-shadow);
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    box-shadow: inset 2px 2px 4px rgba(163, 177, 198, 0.4), 
+                inset -2px -2px 4px rgba(255, 255, 255, 0.9);
+}
+
+/* Botones Hápticos (Efecto relieve real) */
+.btn { 
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    padding: 16px; 
     width: 100%; 
-    border-radius: 2px; 
+    border-radius: 16px; 
     cursor: pointer; 
     font-weight: 800; 
-    margin-top: 12px; 
-    font-size: 12px; 
+    margin-top: 15px; 
+    font-size: 13px; 
     text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.4s ease;
+    letter-spacing: 1px;
+    background: var(--bg-mesa);
+    color: var(--text-main);
+    box-shadow: var(--shadow-dark), var(--shadow-light);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.btn-blue { 
-    background: rgba(0, 242, 255, 0.15); 
-    color: var(--blue); 
-    border-color: var(--blue);
-}
-.btn-blue:hover { 
-    background: var(--blue); 
-    color: #000; 
-    box-shadow: 0 0 15px var(--blue);
+.btn:active {
+    box-shadow: var(--inner-shadow);
+    transform: scale(0.97);
 }
 
-.btn-green { 
-    background: rgba(0, 255, 157, 0.15); 
-    color: var(--green); 
-    border-color: var(--green);
-}
-.btn-green:hover { 
-    background: var(--green); 
-    color: #000; 
-    box-shadow: 0 0 15px var(--green);
-}
-
-.btn-red { 
-    background: rgba(255, 0, 85, 0.15); 
-    color: var(--red); 
-    border-color: var(--red);
-}
-.btn-red:hover { 
-    background: var(--red); 
-    color: #fff; 
-    box-shadow: 0 0 15px var(--red);
-}
+.btn-blue { color: var(--accent-blue); }
+.btn-green { color: var(--accent-green); }
+.btn-red { color: var(--accent-red); }
 
 .btn-outline { 
-    background: transparent; 
-    border: 1px solid var(--blue); 
-    color: var(--blue); 
-}
-.btn-outline:hover {
-    background: rgba(0, 242, 255, 0.05);
+    background: rgba(255, 255, 255, 0.2); 
+    border: 1px solid rgba(0,0,0,0.05); 
 }
 
-.row { display: flex; gap: 10px; align-items: flex-end; }
+.row { display: flex; gap: 12px; align-items: flex-end; }
 
 #loading { 
     position: fixed; 
-    top: 50%; 
-    left: 50%; 
+    top: 50%; left: 50%; 
     transform: translate(-50%, -50%); 
-    background: #000; 
-    color: var(--blue); 
-    padding: 30px; 
-    border: 2px solid var(--blue);
-    box-shadow: 0 0 30px var(--blue);
+    background: var(--glass-white); 
+    backdrop-filter: blur(20px);
+    color: var(--accent-blue); 
+    padding: 40px; 
+    border-radius: 30px; 
+    box-shadow: var(--shadow-dark);
     z-index: 1000; 
-    font-weight: bold;
-    letter-spacing: 5px;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { opacity: 0.6; }
-    50% { opacity: 1; }
-    100% { opacity: 0.6; }
+    font-weight: 900;
+    border: 1px solid white;
 }
 
 .resumen-laboral { 
-    background: #000; 
-    border-left: 3px solid var(--green); 
-    border-radius: 0; 
-    padding: 15px; 
+    background: rgba(255, 255, 255, 0.3); 
+    border-radius: 16px; 
+    padding: 20px; 
     margin-top: 15px; 
-    font-family: 'Consolas', monospace;
-    font-size: 0.85rem;
-    color: #adbac7;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: var(--inner-shadow);
 }
 
 .moratoria-item { 
-    border: 1px solid #1e293b; 
-    padding: 12px; 
-    margin-top: 10px; 
-    background: rgba(0,0,0,0.3); 
-    position: relative;
+    border-radius: 16px;
+    padding: 15px; 
+    margin-top: 12px; 
+    background: rgba(255, 255, 255, 0.2); 
+    box-shadow: 2px 2px 5px rgba(163, 177, 198, 0.2);
 }
 
-/* Scrollbar personalizada Cyberpunk */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-dark); }
-::-webkit-scrollbar-thumb { background: var(--blue); box-shadow: 0 0 5px var(--blue); }
+/* Scrollbar Orgánica */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-mesa); }
+::-webkit-scrollbar-thumb { 
+    background: #cbd5e1; 
+    border-radius: 10px;
+    border: 2px solid var(--bg-mesa);
+}
 
 @media print {
-    /* Mantenemos el blanco y negro para ahorro y claridad en PDF */
-    .no-print, #area-ingreso-datos, button, nav { display: none !important; }
+    .no-print, button, nav { display: none !important; }
     body { background: white; color: black; }
-    .card { border: 1px solid #eee; background: white; box-shadow: none; }
-    input, textarea { border: 1px solid #ddd; color: black; background: white; }
-    .resumen-laboral { border: 1px solid #000; color: black; background: white; }
+    .card { border: 1px solid #ccc; background: white; box-shadow: none; border-radius: 0; }
 }
