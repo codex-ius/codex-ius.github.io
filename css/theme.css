@@ -1,35 +1,36 @@
 /* =========================================
-   VARIABLES & DESIGN TOKENS
+   1. VARIABLES & DESIGN TOKENS (REMS)
    ========================================= */
 :root {
-    /* Fondos y Bases */
-    --bg-page: #eef2f5;
-    --text-main: #2c3e50;
-    --text-muted: #576574;
+    /* Tipografía Base */
+    font-size: 16px; 
 
-    /* Colores Orgánicos (Suaves pero vibrantes) */
-    --carmine-soft: #ff8a9d;
-    --jade-soft: #57cc99;
-    --cyan-soft: #4cc9f0;
-    
+    /* Colores Orgánicos (Paleta Suave) */
+    --carmine: #ff8a9d;
+    --jade: #57cc99;
+    --cyan: #4cc9f0;
+    --bg-base: #eef2f5;
+    --text-main: #2c3e50;
+    --text-light: #576574;
+
     /* Glassmorphism Core */
     --glass-bg: rgba(255, 255, 255, 0.45);
-    --glass-border: rgba(255, 255, 255, 0.7);
-    --blur-heavy: blur(20px);
+    --glass-line: rgba(255, 255, 255, 0.7);
+    --blur: blur(20px);
 
-    /* Neumorphism Core (Sombras balanceadas) */
-    --neu-upper: -6px -6px 12px rgba(255, 255, 255, 0.9);
-    --neu-lower: 6px 6px 12px rgba(163, 177, 198, 0.4);
+    /* Neumorphism Core (Sombras en PX para precisión) */
+    --neu-up: -6px -6px 12px rgba(255, 255, 255, 0.9);
+    --neu-down: 6px 6px 12px rgba(163, 177, 198, 0.4);
     --neu-inset: inset 3px 3px 6px rgba(163, 177, 198, 0.5), 
                  inset -3px -3px 6px rgba(255, 255, 255, 0.8);
-    
-    /* Geometría */
-    --radius-organic: 24px;
-    --radius-pill: 50px;
+
+    /* Espaciado y Radio en REM */
+    --p-main: 1.5rem;
+    --r-organic: 1.5rem;
 }
 
 /* =========================================
-   RESET & BASE
+   2. RESET MODERNO
    ========================================= */
 * {
     margin: 0;
@@ -37,83 +38,55 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background: var(--bg-page);
-    /* Fondo con orbes orgánicos */
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg-base);
     background-image: 
-        radial-gradient(at 0% 0%, rgba(76, 201, 240, 0.15) 0, transparent 40%),
-        radial-gradient(at 100% 0%, rgba(255, 138, 157, 0.15) 0, transparent 40%),
-        radial-gradient(at 50% 50%, rgba(87, 204, 153, 0.1) 0, transparent 50%);
+        radial-gradient(at 0% 0%, rgba(76, 201, 240, 0.15) 0, transparent 45%),
+        radial-gradient(at 100% 0%, rgba(255, 138, 157, 0.15) 0, transparent 45%);
     background-attachment: fixed;
     color: var(--text-main);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* =========================================
-   HEADER & NAVIGATION
+   3. COMPONENTES GLOBALES (REM/EM)
    ========================================= */
 .glass-header {
     position: sticky;
     top: 0;
     z-index: 1000;
     background: var(--glass-bg);
-    backdrop-filter: var(--blur-heavy);
-    -webkit-backdrop-filter: var(--blur-heavy);
-    border-bottom: 1px solid var(--glass-border);
-    padding: 0.75rem 5%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-bottom: 1px solid var(--glass-line);
+    padding: 0.8rem 1rem;
 }
 
 .nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-main);
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: var(--radius-pill);
-    transition: all 0.3s ease;
-}
-
-.nav-links a:hover {
-    background: var(--glass-bg);
-    box-shadow: var(--neu-upper), var(--neu-lower);
-}
-
-/* =========================================
-   COMPONENTES UNIVERSALES
-   ========================================= */
+/* Botones con escala interna en EM */
 .btn-action {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px 22px;
-    border-radius: var(--radius-pill);
+    padding: 0.6em 1.4em;
+    border-radius: 2em;
     background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--glass-line);
     color: var(--text-main);
     font-weight: 600;
     text-decoration: none;
-    box-shadow: var(--neu-upper), var(--neu-lower);
+    box-shadow: var(--neu-up), var(--neu-down);
     transition: all 0.2s ease;
     cursor: pointer;
+    font-size: 0.95rem;
 }
 
 .btn-action:active {
@@ -121,28 +94,14 @@ body {
     transform: scale(0.97);
 }
 
-/* Footer Glass */
-.glass-footer {
-    margin-top: 4rem;
-    padding: 3rem 5%;
-    background: var(--glass-bg);
-    backdrop-filter: var(--blur-heavy);
-    border-top: 1px solid var(--glass-border);
-}
-
-/* Skip Link para Accesibilidad */
 .skip-link {
     position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--cyan-soft);
+    top: -3rem;
+    left: 1rem;
+    background: var(--cyan);
     color: white;
-    padding: 8px;
-    z-index: 1001;
-    transition: top 0.3s;
+    padding: 0.5rem 1rem;
+    z-index: 2000;
 }
-
-.skip-link:focus {
-    top: 0;
-    }
-    
+.skip-link:focus { top: 1rem; }
+                                          
