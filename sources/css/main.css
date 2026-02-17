@@ -1,275 +1,137 @@
-/* --- 1. IMPORTACIONES (Sincronizadas) --- */
+/* --- 1. IMPORTACIONES (Sincronizadas) 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
 @import url('./views/apps.css');
 @import url('./views/doctrina.css');
 @import url('./views/noticias.css');
+@import url('./reset.css');*/
+
+/* --- 1. IMPORTACIONES --- */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@500;800&display=swap');
 @import url('./reset.css');
 
-/* --- 2. ELEMENTOS DINÁMICOS & TERMINAL --- */
+/* --- 2. HEADER & ANIMATED TEXT --- */
+header {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: radial-gradient(circle at 50% 0%, var(--accent-red-glass) 0%, transparent 70%);
+}
+
 #animated-text {
-  transition: opacity 0.5s;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--color-accent-doctrina);
-  /* Rojo Doctrina */
-  font-size: 0.85em;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-weight: 800;
+    color: var(--accent-red);
+    font-family: var(--font-mono);
+    text-shadow: 0 0 15px var(--accent-red-glass);
 }
 
-/* Contenedor de Flotantes (Theme Toggle) */
-#theme-toggle-container {
-  position: fixed;
-  right: 1.5em;
-  bottom: 6em;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  z-index: 2000;
-  background: var(--color-fondo-secundario);
-  padding: 0.4em;
-  border-radius: 0 !important;
-  /* Estética rígida */
-  border: 1px solid var(--color-accent-doctrina);
-  box-shadow: 0 0 15px var(--color-shadow);
+.header-sub {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    opacity: 0.6;
+    margin-top: 10px;
+    letter-spacing: 4px;
 }
 
-#theme-toggle-container button {
-  background: transparent;
-  border: 1px solid transparent;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.4em;
-  color: var(--color-accent-doctrina);
-  transition: 0.3s;
-  margin: 0;
+/* --- 3. NAVEGACIÓN (GLASSMORPHISM) --- */
+nav {
+    position: sticky;
+    top: 15px;
+    z-index: 1000;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 0.6rem 1.5rem;
+    display: flex;
+    gap: 10px;
+    /* Efecto Vidrio Esmerilado */
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-#theme-toggle-container button:hover {
-  background: var(--color-accent-doctrina);
-  color: white;
-  box-shadow: 0 0 10px var(--color-accent-doctrina);
+nav a {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 8px 12px;
+    color: var(--color-texto-muted) !important;
 }
 
-/* --- 3. SECCIONES Y GRID --- */
-section {
-  scroll-margin-top: 100px;
-  border-top: 1px solid rgba(185, 28, 28, 0.1);
-  padding-top: 2rem;
+nav a:hover {
+    color: var(--accent-red) !important;
+    text-shadow: 0 0 10px var(--accent-red);
 }
 
-/* --- 4. FOOTER (CERTIFICACIÓN TÉCNICA) --- */
+/* --- 4. LAYOUT PRINCIPAL --- */
+main {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+    min-height: 80vh;
+}
+
+/* Contenedor dinámico de Cards */
+#cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* --- 5. FOOTER INSTITUCIONAL --- */
 footer {
-  background: var(--color-fondo-principal);
-  border-top: 2px solid var(--color-accent-doctrina);
-  padding: 5rem 2rem 2rem 2rem;
-  margin-top: 8rem;
-  width: 100%;
-  position: relative;
+    margin-top: 6rem;
+    padding: 4rem 2rem 2rem;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Efecto de fondo en el footer para simular "Grid de Radar" */
+/* Decoración orgánica de fondo */
 footer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(var(--color-accent-soft) 0.5px, transparent 0.5px);
-  background-size: 30px 30px;
-  opacity: 0.05;
-  pointer-events: none;
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: var(--accent-red-glass);
+    filter: blur(100px);
+    border-radius: 50%;
+    z-index: 0;
 }
 
 .footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 4rem;
-  padding-bottom: 3rem;
-  position: relative;
-  z-index: 1;
-}
-
-#footer-logo {
-  text-align: left;
-  margin: 0;
-  font-size: 1.4rem;
-  letter-spacing: 4px;
-  color: var(--color-titulo);
-  font-weight: 800;
-}
-
-#footer-logo::after {
-  content: "_";
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-.footer-tagline {
-  font-size: 0.8rem;
-  color: var(--color-texto-muted);
-  margin: 1.5rem 0;
-  font-family: 'JetBrains Mono', monospace;
-  border-left: 2px solid var(--color-accent-soft);
-  padding-left: 15px;
-}
-
-/* El Sello Notarial / Digital */
-.notary-seal {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-top: 2rem;
-  background: rgba(185, 28, 28, 0.05);
-  padding: 15px;
-  border: 1px dashed var(--color-accent-soft);
-}
-
-.notary-seal .material-icons {
-  font-size: 35px;
-  color: var(--color-accent-doctrina);
-}
-
-.seal-text {
-  display: flex;
-  flex-direction: column;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.seal-date {
-  font-size: 0.75rem;
-  font-weight: bold;
-  color: var(--color-titulo);
-}
-
-.seal-auth {
-  font-size: 0.6rem;
-  color: var(--color-accent-doctrina);
-  text-transform: uppercase;
-}
-
-/* Links del Sistema */
-.footer-title {
-  display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: var(--color-accent-doctrina);
-  margin-bottom: 1.5rem;
-  letter-spacing: 2px;
-}
-
-.footer-links a {
-  color: var(--color-texto-muted);
-  text-decoration: none;
-  font-size: 0.8rem;
-  padding: 5px 0;
-  border: none !important;
-  /* Quitamos bordes de botón aquí */
-  background: none !important;
-  box-shadow: none !important;
-}
-
-.footer-links a:hover {
-  color: var(--color-accent-doctrina);
-  padding-left: 5px;
-}
-
-/* Barra Inferior Final */
-.footer-bottom {
-  border-top: 1px solid var(--color-accent-soft);
-  padding-top: 2rem;
-  text-align: center;
-}
-
-.copyright-content {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
-  color: var(--color-accent-soft);
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  letter-spacing: 1px;
-}
-
-.social-links {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-}
-
-/* --- 5. RESPONSIVIDAD --- */
-@media (max-width: 850px) {
-  .footer-container {
-    grid-template-columns: 1fr;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
     gap: 3rem;
-    text-align: center;
-  }
-
-  #footer-logo,
-  .footer-tagline,
-  .notary-seal {
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .footer-tagline {
-    border-left: none;
-    border-top: 2px solid var(--color-accent-soft);
-    padding: 10px 0;
-  }
 }
 
-/* --- FORMATO HEADER-SUB (TERMINAL LOG) --- */
-.header-sub {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--color-texto-muted);
-  letter-spacing: 2px;
-  margin-top: 5px;
-  opacity: 0.8;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+.notary-seal {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--accent-red-glass);
 }
 
-/* El prefijo de sistema que añadimos al index.html */
-.header-prefix {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  color: var(--color-texto-muted);
-}
-
-/* Efecto de parpadeo sutil para que parezca que el sistema está procesando */
-.header-sub::after {
-  content: "";
-  width: 8px;
-  height: 12px;
-  background: var(--color-accent-doctrina);
-  display: inline-block;
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
+/* --- 6. RESPONSIVIDAD --- */
+@media (max-width: 768px) {
+    nav {
+        width: 90%;
+        top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
 }
