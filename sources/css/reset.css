@@ -1,193 +1,97 @@
-/* --- 1. IMPORTACIÓN DE VARIABLES Y TEMAS --- */
+/* --- 1. IMPORTACIÓN DE VARIABLES --- */
 @import url('./themes.css');
 
-/* --- 2. RESET TOTAL & BOX MODEL --- */
+/* --- 2. RESET TOTAL & BOX MODEL ORGÁNICO --- */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-    /* Eliminamos transiciones de radio para asegurar estética industrial */
-    border-radius: 0 !important; 
+    /* Suavizado de bordes general para el estilo Glass */
+    border-radius: 16px; 
+    margin: 0;
+    padding: 0;
 }
 
 /* --- 3. BASE DEL SISTEMA (CUERPO) --- */
 body {
-    margin: 0;
-    background: var(--color-fondo-principal); /* #0f0202 */
+    background: var(--bg-deep);
+    background-attachment: fixed;
     color: var(--color-texto-principal);
-    /* Forzamos JetBrains Mono como fuente única del sistema */
-    font-family: 'JetBrains Mono', monospace; 
+    font-family: var(--font-main); /* Inter o Sans para legibilidad */
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
-    transition: background 0.3s ease, color 0.3s ease;
+    /* Transición suave para cambios de tema */
+    transition: background 0.5s ease;
 }
 
-/* --- 4. PERSONALIZACIÓN DEL SCROLLBAR (ESTÉTICA DOCTRINA) --- */
+/* --- 4. SCROLLBAR ESTILO VIDRIO --- */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 10px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--color-fondo-principal);
-    border-left: 1px solid var(--color-accent-soft);
+    background: var(--bg-deep);
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--color-accent-soft);
-    border: 1px solid var(--color-accent-doctrina);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 2px solid var(--bg-deep);
+    border-radius: 20px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-accent-doctrina);
-    box-shadow: 0 0 10px var(--color-accent-doctrina);
+    background: var(--accent-red);
 }
 
-/* --- 5. CABECERAS (HEADERS TÉCNICOS) --- */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'JetBrains Mono', monospace;
+/* --- 5. CABECERAS --- */
+h1, h2, h3, h4 {
+    font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 3px;
-    margin: 1.5rem 0;
+    letter-spacing: 2px;
     color: var(--color-titulo);
-    font-weight: 800;
 }
 
-h1 { font-size: 2.2rem; text-align: center; }
-h2 { font-size: 1.8rem; text-align: center; }
-
-h3 {
-    font-size: 1.2rem;
-    color: var(--color-accent-doctrina);
-    border-bottom: 2px solid var(--color-accent-doctrina);
-    padding-bottom: 0.5rem;
-    width: 100%;
-    margin-top: 3rem;
-    display: flex;
-    align-items: center;
-}
-
-h3::before {
-    content: "> ";
-    margin-right: 10px;
-}
-
-/* --- 6. ELEMENTOS DE ACCIÓN (BOTONES Y LINKS) --- */
+/* --- 6. ELEMENTOS DE ACCIÓN (NEUMORPHISM BASE) --- */
 a, button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 0.8rem 1.5rem;
-    background: transparent;
-    border: 1px solid var(--color-accent-doctrina);
-    color: var(--color-accent-doctrina);
     text-decoration: none;
     cursor: pointer;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    border: 1px solid var(--glass-border);
+    background: var(--bg-surface);
+    color: var(--color-texto-principal);
+    /* Neumorphism feedback */
+    box-shadow: 5px 5px 10px var(--neu-shadow-dark), 
+               -2px -2px 10px var(--neu-shadow-light);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    margin: 5px;
-    position: relative;
-    overflow: hidden;
 }
 
-/* Efecto Hover Consola */
-a:hover, button:hover, a:focus, button:focus {
-    background: var(--color-accent-doctrina);
-    color: #ffffff;
-    box-shadow: 0 0 15px var(--color-accent-doctrina);
-    outline: none;
+a:hover, button:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 15px var(--neu-shadow-dark), 
+               -4px -4px 15px var(--neu-shadow-light);
+    color: var(--accent-red);
 }
 
 a:active, button:active {
-    transform: scale(0.98);
-    background: var(--color-accent-soft);
+    transform: scale(0.97);
+    box-shadow: inset 3px 3px 7px var(--neu-shadow-dark), 
+                inset -2px -2px 7px var(--neu-shadow-light);
 }
 
-button:disabled, a.disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-    border-color: var(--color-texto-muted);
-    color: var(--color-texto-muted);
-}
-
-/* --- 7. CONTENEDORES Y LAYOUT --- */
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    min-height: 80vh;
-}
-
-section {
-    width: 100%;
-    margin-bottom: 4rem;
-    scroll-margin-top: 100px;
-}
-
-/* --- 8. NAVEGACIÓN (STICKY TERMINAL) --- */
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: var(--color-fondo-principal);
-    border-bottom: 1px solid var(--color-accent-soft);
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    backdrop-filter: blur(5px);
-}
-
-/* --- 9. ELEMENTOS DE TEXTO --- */
-p {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--color-texto-principal);
-    margin-bottom: 1.2rem;
-}
-
-code, pre {
-    font-family: 'JetBrains Mono', monospace;
-    background: var(--color-fondo-secundario);
-    padding: 0.2rem 0.4rem;
-    color: var(--color-accent-doctrina);
-}
-
-/* --- 10. IMÁGENES Y MEDIA --- */
+/* --- 7. IMÁGENES --- */
 img {
     max-width: 100%;
     height: auto;
-    filter: grayscale(100%) contrast(1.2); /* Efecto foto de archivo */
-    border: 1px solid var(--color-accent-soft);
+    border-radius: 12px;
+    filter: saturate(0.8);
+    transition: 0.4s;
 }
 
 img:hover {
-    filter: none;
-    border-color: var(--color-accent-doctrina);
-}
-
-nav a {
-    text-transform: uppercase;
-    font-weight: 800;
-    font-size: 0.8rem;
-    padding: 10px 15px;
-    border: none !important; /* Quitamos el borde de botón del reset */
-    color: var(--color-texto-muted) !important;
-}
-
-nav a:hover {
-    color: var(--color-accent-doctrina) !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    text-shadow: 0 0 8px var(--color-accent-doctrina);
-}
-
-nav{
-    display: flex;
-    flex-wrap: wrap;
-}
+    filter: saturate(1.1);
+        }
