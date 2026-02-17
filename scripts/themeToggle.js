@@ -2,60 +2,49 @@ export function setupThemeToggle(mainSelector) {
   const main = document.querySelector(mainSelector);
   const divContainer = document.createElement('div');
   divContainer.id = 'theme-toggle-container';
-  main.insertBefore(divContainer, main.firstChild);
+  // Insertamos al final del body para que flote sobre todo con glassmorphism
+  document.body.appendChild(divContainer);
 
-  // Botón de cambio de tema
   const btnToggle = document.createElement('button');
   btnToggle.id = 'btn-theme-toggle';
-  btnToggle.setAttribute('aria-label', 'Cambiar tema claro/oscuro');
+  btnToggle.className = 'btn-neu'; // Aplicamos clase neumórfica
 
-  // Botón volver al principio
   const btnTop = document.createElement('button');
   btnTop.id = 'btn-back-to-top';
-  btnTop.innerHTML = `<span class="material-icons">vertical_align_top</span>`;
-  btnTop.setAttribute('aria-label', 'Volver al principio de la página');
+  btnTop.className = 'btn-neu';
+  btnTop.innerHTML = `<span class="material-icons">north</span>`;
 
   divContainer.appendChild(btnToggle);
   divContainer.appendChild(btnTop);
 
   const body = document.body;
 
-  // Función para actualizar el ícono del botón según el tema
   function updateButtonIcon() {
-    if (body.classList.contains('light-theme')) {
-      // Modo claro activo: mostrar ícono de sol (para cambiar a oscuro)
-      btnToggle.innerHTML = `<span class="material-icons">light_mode</span>`;
-      btnToggle.setAttribute('aria-label', 'Cambiar a modo oscuro');
-    } else {
-      // Modo oscuro activo: mostrar ícono de luna (para cambiar a claro)
-      btnToggle.innerHTML = `<span class="material-icons">dark_mode</span>`;
-      btnToggle.setAttribute('aria-label', 'Cambiar a modo claro');
-    }
+    const isLight = body.classList.contains('light-theme');
+    btnToggle.innerHTML = isLight 
+      ? `<span class="material-icons">light_mode</span>` 
+      : `<span class="material-icons">dark_mode</span>`;
   }
 
-  // Aplicar tema guardado o, si no hay, forzar dark por defecto (sin clase)
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'light') {
-    body.classList.add('light-theme');
-  } else {
-    body.classList.remove('light-theme');
-    localStorage.setItem('theme', 'dark');
-  }
-
+  // Persistencia de tema
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') body.classList.add('light-theme');
   updateButtonIcon();
 
   btnToggle.addEventListener('click', () => {
-    if (body.classList.contains('light-theme')) {
-      body.classList.remove('light-theme');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      body.classList.add('light-theme');
-      localStorage.setItem('theme', 'light');
-    }
+    body.classList.toggle('light-theme');
+    const currentTheme = body.classList.contains('light-theme') ? 'light' : 'dark';
+    localStorage.setItem('theme', currentTheme);
     updateButtonIcon();
   });
 
   btnTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Mostrar/Ocultar botón "top" según scroll
+  window.addEventListener('scroll', () => {
+    btnTop.style.opacity = window.scrollY > 300 ? '1' : '0';
+    btnTop.style.pointerEvents = window.scrollY > 300 ? 'all' : 'none';
   });
 }
