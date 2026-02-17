@@ -1,137 +1,49 @@
-/* --- 1. IMPORTACIONES (Sincronizadas) 
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
-@import url('./views/apps.css');
-@import url('./views/doctrina.css');
-@import url('./views/noticias.css');
-@import url('./reset.css');*/
+/* main.css - Sistema Unificado Glass-Organic */
 
-/* --- 1. IMPORTACIONES --- */
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@500;800&display=swap');
-@import url('./reset.css');
-
-/* --- 2. HEADER & ANIMATED TEXT --- */
-header {
-    padding: 4rem 2rem;
-    text-align: center;
-    background: radial-gradient(circle at 50% 0%, var(--accent-red-glass) 0%, transparent 70%);
-}
-
-#animated-text {
-    color: var(--accent-red);
-    font-family: var(--font-mono);
-    text-shadow: 0 0 15px var(--accent-red-glass);
-}
-
-.header-sub {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    opacity: 0.6;
-    margin-top: 10px;
-    letter-spacing: 4px;
-}
-
-/* --- 3. NAVEGACIÓN (GLASSMORPHISM) --- */
-nav {
-    position: sticky;
-    top: 15px;
-    z-index: 1000;
-    margin: 0 auto;
-    width: fit-content;
-    padding: 0.6rem 1.5rem;
+/* 1. CONTENEDOR MAESTRO (NEUMORPHISM BASE) */
+.glass-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--glass-border);
+    box-shadow: 10px 10px 20px var(--neu-shadow-dark), 
+               -5px -5px 15px var(--neu-shadow-light);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
-    gap: 10px;
-    /* Efecto Vidrio Esmerilado */
+    flex-direction: column;
+}
+
+/* 2. CAPA DE VIDRIO (GLASSMORPHISM) */
+.glass-card:hover {
+    transform: translateY(-10px);
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-nav a {
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 8px 12px;
-    color: var(--color-texto-muted) !important;
-}
+/* 3. COLORES ORGÁNICOS POR CATEGORÍA (VIDRIO TINTADO) */
+.glass-card.category-noticias:hover { border-color: var(--accent-red); }
+.glass-card.category-educacion:hover { border-color: var(--legal-laboral); }
+.glass-card.category-software:hover { border-color: var(--legal-civil); }
 
-nav a:hover {
-    color: var(--accent-red) !important;
-    text-shadow: 0 0 10px var(--accent-red);
-}
-
-/* --- 4. LAYOUT PRINCIPAL --- */
-main {
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 0 2rem;
-    min-height: 80vh;
-}
-
-/* Contenedor dinámico de Cards */
-#cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
-}
-
-/* --- 5. FOOTER INSTITUCIONAL --- */
-footer {
-    margin-top: 6rem;
-    padding: 4rem 2rem 2rem;
+/* 4. BOTONES HÁPTICOS (NEUMORPHISM) */
+.btn-neu {
     background: var(--bg-surface);
-    border-top: 1px solid var(--glass-border);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Decoración orgánica de fondo */
-footer::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -10%;
-    width: 400px;
-    height: 400px;
-    background: var(--accent-red-glass);
-    filter: blur(100px);
-    border-radius: 50%;
-    z-index: 0;
-}
-
-.footer-container {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 3rem;
-}
-
-.notary-seal {
-    display: flex;
+    box-shadow: 4px 4px 8px var(--neu-shadow-dark), 
+               -2px -2px 6px var(--neu-shadow-light);
+    border: 1px solid var(--glass-border);
+    color: var(--accent-red);
+    padding: 10px 20px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    display: inline-flex;
     align-items: center;
-    gap: 15px;
-    margin-top: 2rem;
-    padding: 1rem;
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--accent-red-glass);
+    gap: 8px;
+    cursor: pointer;
 }
 
-/* --- 6. RESPONSIVIDAD --- */
-@media (max-width: 768px) {
-    nav {
-        width: 90%;
-        top: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
+.btn-neu:active {
+    box-shadow: inset 4px 4px 8px var(--neu-shadow-dark), 
+                inset -2px -2px 6px var(--neu-shadow-light);
+    transform: scale(0.96);
 }
