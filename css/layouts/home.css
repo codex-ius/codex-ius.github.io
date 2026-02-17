@@ -1,97 +1,176 @@
 /* =========================================
-   1. ESTRUCTURA DE CONTENEDOR (PX/REM)
+   1. ESTRUCTURA Y CONTENEDOR (LEGIBILIDAD)
    ========================================= */
 #main-content {
-    max-width: 1100px; /* Limite institucional para legibilidad */
-    margin: 2rem auto;
-    padding: 0 var(--p-main);
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    min-height: 80vh;
 }
 
-/* LAYOUT VERTICAL POR DEFECTO (Tu propuesta) */
+/* Encabezados de Sección Orgánicos */
+.section-header {
+    margin-bottom: 2.5rem;
+    text-align: left;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-deep);
+    letter-spacing: -0.5px;
+}
+
+.header-line {
+    width: 3.5rem;
+    height: 0.4rem;
+    background: linear-gradient(90deg, var(--cyan-glass), transparent);
+    border-radius: 50px;
+    margin-top: 0.5rem;
+    box-shadow: var(--neu-inset);
+}
+
+/* =========================================
+   2. LAYOUT DINÁMICO (VERTICAL A GRID)
+   ========================================= */
 .grid-layout {
     display: flex;
     flex-direction: column;
-    gap: 1.8rem;
-    margin-bottom: 3.5rem;
+    gap: 2.5rem;
+    margin-bottom: 5rem;
 }
 
-/* SALTO A HORIZONTAL (PX para Breakpoint) */
+/* Salto a Grid para Desktop (Controlado en PX) */
 @media (min-width: 768px) {
     .grid-layout {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Dos columnas controladas */
-        gap: 2.2rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
     }
 }
 
-/* Pantallas grandes: 3 columnas */
-@media (min-width: 1024px) {
+/* Pantallas Extra Grandes */
+@media (min-width: 1100px) {
     .grid-layout {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 /* =========================================
-   2. CARDS GLASS-NEUMORPHIC
+   3. EL CORAZÓN: GLASS-CARDS
    ========================================= */
 .glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
-    border: 1px solid var(--glass-line);
-    border-radius: var(--r-organic);
-    padding: 2rem;
-    box-shadow: var(--neu-up), var(--neu-down);
+    position: relative;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: var(--blur-std);
+    -webkit-backdrop-filter: var(--blur-std);
+    border: 1px solid var(--glass-border);
+    border-radius: 2.5rem; /* Curva Orgánica */
+    padding: 2.5rem;
+    box-shadow: var(--neu-shadow);
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1);
+    justify-content: space-between;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden; /* Para contener los resplandores internos */
+    z-index: 1;
 }
 
 .glass-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-12px) scale(1.02);
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: -10px -10px 25px rgba(255, 255, 255, 0.9), 
+                15px 15px 30px rgba(163, 177, 198, 0.5);
 }
 
-/* Bordes de Categoría (Jade, Carmín, Cian) */
-.card-noticias { border-top: 5px solid var(--carmine); }
-.card-ensayos { border-top: 5px solid var(--jade); }
-.card-software { border-top: 5px solid var(--cyan); }
+/* RESPLANDORES INTERNOS (Efecto Organic-Glow) */
+.glass-card::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -40%;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(50px);
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}
+
+.card-noticias::before { background: var(--carmine-glass); }
+.card-ensayos::before { background: var(--jade-glass); }
+.card-software::before { background: var(--cyan-glass); }
+
+.glass-card:hover::before {
+    opacity: 0.7;
+}
+
+/* Contenido de la Card */
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.badge-glass {
+    padding: 0.4rem 1rem;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 .glass-card h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
     line-height: 1.2;
-    color: var(--text-main);
+    color: var(--text-deep);
 }
 
 .glass-card p {
     font-size: 0.95rem;
-    color: var(--text-light);
+    color: var(--text-soft);
+    margin-bottom: 2rem;
 }
 
 /* =========================================
-   3. ANIMACIÓN CONSOLA (INDEX)
+   4. ANIMACIÓN CONSOLA Y TYPOGRAPHY
    ========================================= */
 .console-title {
     font-family: 'Fira Code', monospace;
-    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Fluidez controlada */
+    font-weight: 600;
 }
 
 #typewriter {
-    color: var(--cyan);
-    display: inline-block;
-    transition: opacity 0.5s, filter 0.5s, transform 0.5s;
+    color: #0077b6; /* Un cian institucional más profundo para lectura */
+    text-shadow: 0 0 15px rgba(76, 201, 240, 0.3);
 }
 
-.fade-out-blur {
-    opacity: 0;
-    filter: blur(8px);
-    transform: translateY(5px);
+/* Estado de carga (Skeleton) */
+.loading-text {
+    text-align: center;
+    padding: 3rem;
+    font-style: italic;
+    opacity: 0.6;
 }
 
-.cursor::after {
-    content: '_';
-    animation: blink 1s infinite;
-}
-
-@keyframes blink { 50% { opacity: 0; } }
-       
+/* Utilitarios de Glass */
+.glass-reflection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+        180deg, 
+        rgba(255, 255, 255, 0.2) 0%, 
+        transparent 100%
+    );
+    pointer-events: none;
+       }
+   
