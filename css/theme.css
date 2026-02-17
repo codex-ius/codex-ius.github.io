@@ -1,58 +1,148 @@
-/* 1. RESET MODERNO & VARIABLES */
+/* =========================================
+   VARIABLES & DESIGN TOKENS
+   ========================================= */
 :root {
-    /* Paleta Glass-Organic (Frutiger Aero Evolution) */
-    --bg-main: #f0f4f8; /* Un gris azulado muy claro e institucional */
-    --glass-bg: rgba(255, 255, 255, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.4);
-    --accent-organic: #007aff; /* Azul sistema */
-    --text-main: #1d1d1f;
-    --blur-val: blur(12px);
-    --shadow-soft: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    /* Fondos y Bases */
+    --bg-page: #eef2f5;
+    --text-main: #2c3e50;
+    --text-muted: #576574;
+
+    /* Colores Orgánicos (Suaves pero vibrantes) */
+    --carmine-soft: #ff8a9d;
+    --jade-soft: #57cc99;
+    --cyan-soft: #4cc9f0;
+    
+    /* Glassmorphism Core */
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.7);
+    --blur-heavy: blur(20px);
+
+    /* Neumorphism Core (Sombras balanceadas) */
+    --neu-upper: -6px -6px 12px rgba(255, 255, 255, 0.9);
+    --neu-lower: 6px 6px 12px rgba(163, 177, 198, 0.4);
+    --neu-inset: inset 3px 3px 6px rgba(163, 177, 198, 0.5), 
+                 inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+    
+    /* Geometría */
+    --radius-organic: 24px;
+    --radius-pill: 50px;
 }
 
+/* =========================================
+   RESET & BASE
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: var(--bg-main);
-    color: var(--text-main);
-    line-height: 1.6;
-    overflow-x: hidden;
+html {
+    scroll-behavior: smooth;
 }
 
-/* 2. COMPONENTES UNIVERSALES (BOTONES) */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg-page);
+    /* Fondo con orbes orgánicos */
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(76, 201, 240, 0.15) 0, transparent 40%),
+        radial-gradient(at 100% 0%, rgba(255, 138, 157, 0.15) 0, transparent 40%),
+        radial-gradient(at 50% 50%, rgba(87, 204, 153, 0.1) 0, transparent 50%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* =========================================
+   HEADER & NAVIGATION
+   ========================================= */
+.glass-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--glass-bg);
+    backdrop-filter: var(--blur-heavy);
+    -webkit-backdrop-filter: var(--blur-heavy);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 0.75rem 5%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: var(--glass-bg);
+    box-shadow: var(--neu-upper), var(--neu-lower);
+}
+
+/* =========================================
+   COMPONENTES UNIVERSALES
+   ========================================= */
 .btn-action {
     display: inline-flex;
     align-items: center;
-    padding: 10px 20px;
-    border-radius: 50px; /* Orgánico */
+    justify-content: center;
+    padding: 10px 22px;
+    border-radius: var(--radius-pill);
     background: var(--glass-bg);
-    backdrop-filter: var(--blur-val);
-    -webkit-backdrop-filter: var(--blur-val);
     border: 1px solid var(--glass-border);
-    color: var(--accent-organic);
-    text-decoration: none;
+    color: var(--text-main);
     font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-soft);
+    text-decoration: none;
+    box-shadow: var(--neu-upper), var(--neu-lower);
+    transition: all 0.2s ease;
+    cursor: pointer;
 }
 
-.btn-action:hover {
-    transform: translateY(-2px);
-    background: var(--accent-organic);
-    color: white;
+.btn-action:active {
+    box-shadow: var(--neu-inset);
+    transform: scale(0.97);
 }
 
-/* 3. ESTRUCTURA GLASS (Header/Footer) */
-.glass-header, .glass-footer {
+/* Footer Glass */
+.glass-footer {
+    margin-top: 4rem;
+    padding: 3rem 5%;
     background: var(--glass-bg);
-    backdrop-filter: var(--blur-val);
-    -webkit-backdrop-filter: var(--blur-val);
-    border-bottom: 1px solid var(--glass-border);
-    padding: 1rem 5%;
-      }
-  
+    backdrop-filter: var(--blur-heavy);
+    border-top: 1px solid var(--glass-border);
+}
+
+/* Skip Link para Accesibilidad */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--cyan-soft);
+    color: white;
+    padding: 8px;
+    z-index: 1001;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+    }
+    
