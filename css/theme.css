@@ -1,0 +1,58 @@
+/* 1. RESET MODERNO & VARIABLES */
+:root {
+    /* Paleta Glass-Organic (Frutiger Aero Evolution) */
+    --bg-main: #f0f4f8; /* Un gris azulado muy claro e institucional */
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --accent-organic: #007aff; /* Azul sistema */
+    --text-main: #1d1d1f;
+    --blur-val: blur(12px);
+    --shadow-soft: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 2. COMPONENTES UNIVERSALES (BOTONES) */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 50px; /* Orgánico */
+    background: var(--glass-bg);
+    backdrop-filter: var(--blur-val);
+    -webkit-backdrop-filter: var(--blur-val);
+    border: 1px solid var(--glass-border);
+    color: var(--accent-organic);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    background: var(--accent-organic);
+    color: white;
+}
+
+/* 3. ESTRUCTURA GLASS (Header/Footer) */
+.glass-header, .glass-footer {
+    background: var(--glass-bg);
+    backdrop-filter: var(--blur-val);
+    -webkit-backdrop-filter: var(--blur-val);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1rem 5%;
+      }
+  
