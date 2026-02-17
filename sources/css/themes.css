@@ -1,64 +1,23 @@
-/* --- TEMA DOCTRINA DARK (SISTEMA ACTIVO) --- */
 :root {
-  /* Fondos */
-  --color-fondo-principal: #0f0202;
-  /* Negro rojizo */
-  --color-fondo-secundario: #1a0505;
-  /* Granate oscuro */
-  --color-header-footer-bg: #0f0202;
-
-  /* Textos */
-  --color-texto-principal: #f8fafc;
-  --color-texto-muted: #94a3b8;
-  --color-titulo: #fce7f3;
-  /* Rosa/Blanco glow */
-
-  /* Acentos y Bordes */
-  --color-accent-doctrina: #b91c1c;
-  /* Rojo puro */
-  --color-accent-soft: #7f1d1d;
-  /* Vino */
-  --color-borde: #b91c1c;
-  --color-enlace: #b91c1c;
-  --color-enlace-hover: #ffffff;
-  --color-fondo-hover: #450a0a;
-  --color-shadow: rgba(185, 28, 28, 0.3);
-
-  /* Ramas Legales */
-  --legal-civil: #3b82f6;
-  --legal-penal: #b91c1c;
-  --legal-laboral: #059669;
-  --legal-const: #d946ef;
-
-  --border-radius: 0px;
-}
-
-/* --- TEMA DOCTRINA LIGHT (ARCHIVO DE PAPEL) --- */
-/* Esta clase se activa al pulsar el botón de tema */
-.light-theme {
-  /* Fondos: Color hueso/papel viejo */
-  --color-fondo-principal: #f4f4f0;
-  --color-fondo-secundario: #e9e9e2;
-  --color-header-footer-bg: #dadad0;
-
-  /* Textos: Tinta negra/sepia */
-  --color-texto-principal: #1c1917;
-  --color-texto-muted: #94a3b8;
-  --color-titulo: #000000;
-
-  /* Acentos y Bordes: Rojo lacre / Sangre seca */
-  --color-accent-doctrina: #991b1b;
-  --color-accent-soft: #b91c1c;
-  --color-borde: #78716c;
-  /* Gris cemento */
-  --color-enlace: #991b1b;
-  --color-enlace-hover: #000000;
-  --color-fondo-hover: #d6d3d1;
-  --color-shadow: rgba(0, 0, 0, 0.1);
-
-  /* Ramas Legales ajustadas para legibilidad en blanco */
-  --legal-civil: #1d4ed8;
-  --legal-penal: #991b1b;
-  --legal-laboral: #065f46;
-  --legal-const: #a21caf;
-}
+  /* Fondos Orgánicos */
+  --bg-deep: #0a0d14; /* Azul cobalto profundo */
+  --bg-surface: #0f141e; /* Superficie base para neumorfismo */
+  
+  /* Colores de Identidad (Vitreous) */
+  --accent-red: #d90429; 
+  --accent-red-glass: rgba(217, 4, 41, 0.15);
+  --accent-blue: #0077b6;
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: blur(16px) saturate(180%);
+  
+  /* Neumorphism (Sombras de feedback) */
+  --neu-shadow-dark: rgba(0, 0, 0, 0.5);
+  --neu-shadow-light: rgba(255, 255, 255, 0.02);
+  
+  /* Tipografía */
+  --font-main: 'Inter', system-ui, sans-serif; /* Para lectura legal */
+  --font-mono: 'JetBrains Mono', monospace;   /* Para labels técnicos */
+  }
