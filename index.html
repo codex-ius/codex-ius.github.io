@@ -3,229 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Codex_ius: Editorial e Instituto de Derecho. Aprender, enseñar, servir. Noticias, cursos y doctrina jurídica.">
-    <title>Codex_ius | Aprender, Enseñar, Servir</title>
+    <meta name="description" content="Codex_ius: Editorial e Instituto de Derecho. Aprender, enseñar, servir. Recursos jurídicos avanzados.">
+    <title>Codex_ius | Editorial e Instituto de Derecho</title>
     <style>
         :root {
-    /* Paleta de colores */
-    --carmine: #960018;
-    --jade: #00A86B;
-    --cyan: #00FFFF;
-    --amber: #FFBF00;
-    
-    /* Fondos y Sombras */
-    --bg-color: #e0e5ec; /* Color base para neumorphism */
-    --glass-bg: rgba(255, 255, 255, 0.2);
-    --neu-shadow-light: #ffffff;
-    --neu-shadow-dark: #a3b1c6;
-}
+            /* Paleta translúcida */
+            --carmine: rgba(150, 0, 24, 0.85);
+            --jade: rgba(0, 168, 107, 0.85);
+            --cyan: rgba(0, 255, 255, 0.7);
+            --amber: rgba(255, 191, 0, 0.75);
+            
+            /* Glassmorphism & Neumorphism */
+            --glass-bg: rgba(255, 255, 255, 0.12);
+            --glass-border: rgba(255, 255, 255, 0.35);
+            --neu-light: rgba(255, 255, 255, 0.6);
+            --neu-dark: rgba(163, 177, 198, 0.4);
+            
+            --bg-main: linear-gradient(135deg, #e0e5ec 0%, #cbd5e0 100%);
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* Reset y Base Mobile-First */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: var(--cyan) transparent;
+        }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    background-image: linear-gradient(135deg, #e0e5ec 0%, #c2cfd9 100%);
-    color: #333;
-    line-height: 1.6;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-main);
+            color: #2d3436;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column; /* Prioridad vertical para móviles */
+            gap: 2rem;
+            padding: 1rem;
+            min-height: 100vh;
+        }
 
-/* Tipografía */
-h1 { color: var(--carmine); font-size: 2.5rem; text-align: center; }
-h2 { color: var(--jade); border-left: 5px solid var(--jade); padding-left: 0.5rem; margin-bottom: 1rem; }
-h3 { color: var(--carmine); }
-p { font-size: 1rem; margin-bottom: 0.5rem; }
+        /* Glassmorphism Reutilizable */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            box-shadow: 8px 8px 20px var(--neu-dark), -8px -8px 20px var(--neu-light);
+        }
 
-/* Glassmorphism Containers */
-.glass-container, .glass-section {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    padding: 1.5rem;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-}
+        /* Tipografía y Jerarquía */
+        h1, h2, h3, h4 { margin-bottom: 1rem; line-height: 1.2; }
+        h1 { color: var(--carmine); font-size: 2.5rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+        h2 { color: var(--jade); font-size: 1.8rem; border-left: 4px solid var(--jade); padding-left: 0.8rem; }
+        h3 { color: var(--carmine); font-size: 1.4rem; }
+        p { margin-bottom: 1rem; font-size: 1rem; color: #444; }
+        b { color: var(--carmine); }
+        i { color: #555; }
 
-/* Neumorphism Cards & Interactivos */
-.card-neumorphic {
-    background: var(--bg-color);
-    border-radius: 15px;
-    padding: 1.2rem;
-    min-width: 280px; /* Para el scroll horizontal */
-    box-shadow: 9px 9px 16px var(--neu-shadow-dark), 
-                -9px -9px 16px var(--neu-shadow-light);
-    margin: 1rem;
-    transition: transform 0.2s ease;
-}
+        /* Header y Hero */
+        header {
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
 
-.card-neumorphic:active {
-    box-shadow: inset 5px 5px 10px var(--neu-shadow-dark), 
-                inset -5px -5px 10px var(--neu-shadow-light);
-}
+        .tagline {
+            font-weight: 300;
+            font-style: italic;
+            color: #636e72;
+        }
 
-/* Botones con acento Ámbar */
-.btn-link {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background: var(--amber);
-    color: #000;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    box-shadow: 4px 4px 8px var(--neu-shadow-dark);
-}
+        /* Navegación Neumórfica */
+        nav ul {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            overflow-x: auto; /* Scroll horizontal en móviles */
+            padding: 1rem 0.5rem;
+        }
 
-/* Navegación Neumórfica */
-nav ul {
-    display: flex;
-    justify-content: space-around;
-:root {
-    /* Paleta en formato RGBA para controlar la transparencia */
-    --carmine-glass: rgba(150, 0, 24, 0.8);
-    --jade-glass: rgba(0, 168, 107, 0.8);
-    --cyan-glass: rgba(0, 255, 255, 0.6);
-    --amber-glass: rgba(255, 191, 0, 0.7);
-    
-    /* Colores base de la interfaz */
-    --bg-gradient: linear-gradient(45deg, #d1d9e6, #f0f2f5);
-    --glass-white: rgba(255, 255, 255, 0.15);
-    --glass-border: rgba(255, 255, 255, 0.4);
-    
-    /* Sombras Neumórficas Suaves (Transparentes) */
-    --neu-shadow-outer: 8px 8px 16px rgba(163, 177, 198, 0.5), 
-                        -8px -8px 16px rgba(255, 255, 255, 0.8);
-    --neu-shadow-inner: inset 4px 4px 8px rgba(163, 177, 198, 0.4), 
-                        inset -4px -4px 8px rgba(255, 255, 255, 0.7);
-}
+        nav a {
+            text-decoration: none;
+            color: var(--jade);
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 1rem;
+            box-shadow: 4px 4px 8px var(--neu-dark), -4px -4px 8px var(--neu-light);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
 
-body {
-    margin: 0;
-    padding: 1.5rem;
-    min-height: 100vh;
-    background: var(--bg-gradient);
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-}
+        nav a:active {
+            box-shadow: inset 3px 3px 6px var(--neu-dark), inset -3px -3px 6px var(--neu-light);
+        }
 
-/* Aplicación de Glassmorphism General */
-.glass-container, .glass-section, .card-neumorphic {
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid var(--glass-border);
-}
+        /* Main y Secciones */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
 
-/* Estilo de Secciones y Contenedores */
-.glass-section {
-    background: var(--glass-white);
-    border-radius: 2rem;
-    padding: 2rem;
-    box-shadow: var(--neu-shadow-outer);
-}
+        section {
+            padding: 1.5rem;
+        }
 
-/* Cards con Neumorphism Transparente */
-.card-neumorphic {
-    background: rgba(255, 255, 255, 0.05); /* Casi invisible, solo el blur actúa */
-    border-radius: 1.5rem;
-    padding: 1.5rem;
-    min-width: 300px;
-    margin: 1rem 0.5rem;
-    box-shadow: var(--neu-shadow-outer);
-    transition: all 0.3s ease;
-}
+        /* Scroll Horizontal para Cards */
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding: 1rem 0.5rem;
+            scroll-snap-type: x mandatory;
+        }
 
-/* Interacción: El efecto de "hundido" al presionar o hover */
-.card-neumorphic:hover, .btn-link:hover {
-    box-shadow: var(--neu-shadow-inner);
-    transform: translateY(2px);
-}
+        /* Cards Neumórficas */
+        article.card {
+            min-width: 280px;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 1.2rem;
+            box-shadow: 6px 6px 12px var(--neu-dark), -6px -6px 12px var(--neu-light);
+            scroll-snap-align: start;
+        }
 
-/* Botones y Enlaces (Cero colores sólidos) */
-.btn-link {
-    display: inline-block;
-    padding: 0.8em 1.5em;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--amber-glass);
-    color: var(--carmine-glass);
-    text-decoration: none;
-    border-radius: 12px;
-    font-weight: 700;
-    box-shadow: var(--neu-shadow-outer);
-    backdrop-filter: blur(5px);
-}
+        .meta-info {
+            font-size: 0.85rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            color: #666;
+        }
 
-/* Jerarquía de Títulos con gradientes transparentes */
-h1 {
-    color: var(--carmine-glass);
-    font-size: 3rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
+        /* Interactivos: Botones y Links */
+        .btn-access {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+            background: var(--amber);
+            padding: 0.8rem;
+            border-radius: 0.8rem;
+            font-weight: bold;
+            box-shadow: 3px 3px 6px var(--neu-dark);
+            transition: 0.2s;
+        }
 
-h2 {
-    color: var(--jade-glass);
-    margin-bottom: 1.5rem;
-    border-bottom: 2px solid var(--jade-glass);
-    display: inline-block;
-}
+        .btn-access:hover { opacity: 0.9; transform: scale(0.98); }
 
-/* Scroll Horizontal con estilo */
-.horizontal-scroll {
-    display: flex;
-    overflow-x: auto;
-    gap: 1.5rem;
-    padding: 1rem 0.5rem;
-    scrollbar-width: thin;
-}
+        /* Otros Tags HTML Estilizados */
+        details {
+            margin: 1rem 0;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            box-shadow: inset 2px 2px 5px var(--neu-dark);
+        }
 
-/* Personalización del scroll (estilo cyan transparente) */
-.horizontal-scroll::-webkit-scrollbar {
-    height: 6px;
-}
+        summary { cursor: pointer; font-weight: bold; color: var(--jade); }
 
-.horizontal-scroll::-webkit-scrollbar-thumb {
-    background: var(--cyan-glass);
-    border-radius: 10px;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
 
-/* Navegación */
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    padding: 1rem;
-    overflow-x: auto;
-}
+        th { background: var(--cyan); color: #333; padding: 0.8rem; }
+        td { padding: 0.8rem; text-align: left; border-bottom: 1px solid var(--glass-border); }
 
-nav a {
-    text-decoration: none;
-    color: var(--jade-glass);
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    box-shadow: var(--neu-shadow-outer);
-    border: 1px solid var(--glass-border);
-}
+        dl { margin: 1rem 0; }
+        dt { font-weight: bold; color: var(--carmine); }
+        dd { margin-left: 1rem; margin-bottom: 0.5rem; }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        cite { font-size: 0.9rem; color: var(--carmine); display: block; margin-top: 0.5rem; }
 
     </style>
 </head>
 <body>
 
-    <header class="glass-container">
-        <div class="hero">
-            <h1>Codex_ius</h1>
-            <p class="tagline">Aprender, enseñar, servir</p>
-        </div>
-        <nav class="neumorphic-nav">
+    <header class="glass">
+        <h1>Codex_ius</h1>
+        <p class="tagline">Aprender, enseñar, servir</p>
+        <nav>
             <ul>
                 <li><a href="#noticias">Noticias</a></li>
                 <li><a href="#repositorio">Repositorio</a></li>
@@ -235,77 +203,52 @@ nav a {
     </header>
 
     <main>
-        <section id="noticias" class="glass-section">
-            <h2>Noticias</h2>
+        <section id="noticias" class="glass">
+            <h2>Noticias Jurídicas</h2>
             <div class="horizontal-scroll">
-                <article class="card-neumorphic">
-                    <h3>Reforma Procesal 2026</h3>
-                    <p>Análisis integral de los nuevos cambios legislativos.</p>
+                <article class="card">
+                    <h3>Impacto de la IA en el Derecho</h3>
+                    <p>Análisis de la responsabilidad civil en algoritmos autónomos.</p>
                     <div class="meta-info">
-                        <span>📅 15/02/2026</span>
-                        <span>✍️ Dr. Arrieta</span>
-                        <span>⏱️ 5 min lectura</span>
-                        <span>📖 1200 palabras</span>
+                        <span>📅 17/02/2026</span>
+                        <span>✍️ Dr. Valadez</span>
+                        <span>📖 1,500 pal.</span>
+                        <span>⏱️ 8 min</span>
                     </div>
-                    <a href="#" class="btn-link">Leer más</a>
+                    <a href="#" class="btn-access">Leer Artículo</a>
                 </article>
-                </div>
+                <article class="card">
+                    <h3>Nuevas Tasas Judiciales</h3>
+                    <p>Guía rápida sobre los costos de litigación para este trimestre.</p>
+                    <div class="meta-info">
+                        <span>📅 10/02/2026</span>
+                        <span>✍️ Secretaría</span>
+                        <span>📖 600 pal.</span>
+                        <span>⏱️ 3 min</span>
+                    </div>
+                    <a href="#" class="btn-access">Ver Detalles</a>
+                </article>
+            </div>
         </section>
 
-        <section id="repositorio" class="glass-section">
-            <h2>Repositorio</h2>
+        <section id="repositorio" class="glass">
+            <h2>Repositorio Central</h2>
             
-            <div class="sub-repo">
-                <h3>Cursos</h3>
+            <details open>
+                <summary>Cursos Disponibles</summary>
                 <div class="horizontal-scroll">
-                    <article class="card-neumorphic">
-                        <h3>Derecho Civil I</h3>
-                        <p>Curso introductorio a las obligaciones.</p>
-                        <a href="#" class="btn-link">Acceder</a>
+                    <article class="card">
+                        <h3>Derecho Procesal</h3>
+                        <p>Estrategias avanzadas de litigación oral.</p>
+                        <a href="#" class="btn-access">Inscribirse</a>
                     </article>
                 </div>
-            </div>
+            </details>
 
-            <div class="sub-repo">
-                <h3>Digesto</h3>
-                <div class="horizontal-scroll">
-                    <article class="card-neumorphic">
-                        <h3>Leyes Nacionales</h3>
-                        <p>Compendio actualizado de normativa vigente.</p>
-                        <a href="#" class="btn-link">Ver más</a>
-                    </article>
-                </div>
-            </div>
-
-            <div class="sub-repo">
-                <h3>Doctrina</h3>
-                <div class="horizontal-scroll">
-                    <article class="card-neumorphic">
-                        <h3>Teoría del Delito</h3>
-                        <p>Ensayos críticos de autores contemporáneos.</p>
-                        <a href="#" class="btn-link">Explorar</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="apps" class="glass-section">
-            <h2>Apps</h2>
-            <div class="horizontal-scroll">
-                <article class="card-neumorphic">
-                    <h3>Calculadora de Plazos</h3>
-                    <p>Herramienta interactiva para procesalistas.</p>
-                    <a href="#" class="btn-link">Abrir App</a>
-                </article>
-            </div>
-        </section>
-    </main>
-
-    <footer class="glass-container">
-        <p>&copy; 2026 Codex_ius. Todos los derechos reservados.</p>
-        <cite>"Iustitia est constans et perpetua voluntas ius suum cuique tribuendi"</cite>
-    </footer>
-
-</body>
-            </html>
+            <details>
+                <summary>Digesto y Normativa</summary>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ley</th>
     
