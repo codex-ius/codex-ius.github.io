@@ -3,196 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Codex_ius: Editorial e Instituto de Derecho. Aprender, enseñar, servir. Recursos jurídicos avanzados.">
-    <title>Codex_ius | Editorial e Instituto de Derecho</title>
+    <meta name="description" content="Codex_ius: Editorial e Instituto de Derecho. Estética Glassmorphism avanzada.">
+    <title>Codex_ius | Ultra Glass Edition</title>
     <style>
         :root {
-            /* Paleta translúcida */
-            --carmine: rgba(150, 0, 24, 0.85);
-            --jade: rgba(0, 168, 107, 0.85);
-            --cyan: rgba(0, 255, 255, 0.7);
-            --amber: rgba(255, 191, 0, 0.75);
+            /* Colores Codex_ius con transparencia estratégica */
+            --carmine: rgba(150, 0, 24, 0.9);
+            --jade: rgba(0, 168, 107, 0.9);
+            --cyan: rgba(0, 255, 255, 0.8);
+            --amber: rgba(255, 191, 0, 0.8);
             
-            /* Glassmorphism & Neumorphism */
-            --glass-bg: rgba(255, 255, 255, 0.12);
-            --glass-border: rgba(255, 255, 255, 0.35);
-            --neu-light: rgba(255, 255, 255, 0.6);
-            --neu-dark: rgba(163, 177, 198, 0.4);
-            
-            --bg-main: linear-gradient(135deg, #e0e5ec 0%, #cbd5e0 100%);
+            /* Glassmorphism Puro */
+            --glass-bg: rgba(255, 255, 255, 0.05); /* Casi invisible */
+            --glass-border: rgba(255, 255, 255, 0.5); /* Borde brillante */
+            --neu-shadow: 15px 15px 30px rgba(0, 0, 0, 0.1), 
+                          -15px -15px 30px rgba(255, 255, 255, 0.6);
         }
 
-        /* Reset y Base Mobile-First */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scrollbar-width: thin;
-            scrollbar-color: var(--cyan) transparent;
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: var(--bg-main);
-            color: #2d3436;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column; /* Prioridad vertical para móviles */
-            gap: 2rem;
-            padding: 1rem;
+            font-family: 'Segoe UI', sans-serif;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 1.5rem;
+            color: #1a1a1a;
+            /* Fondo con manchas de color para que el vidrio resalte */
+            background: #e0e5ec;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 255, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(150, 0, 24, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(0, 168, 107, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
         }
 
-        /* Glassmorphism Reutilizable */
-        .glass {
+        /* Clase Maestra Glassmorphism */
+        .glass-ultra {
             background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(25px); /* Mucho más desenfoque */
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
-            border-radius: 1.5rem;
-            box-shadow: 8px 8px 20px var(--neu-dark), -8px -8px 20px var(--neu-light);
+            border-radius: 2rem;
+            box-shadow: var(--neu-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Tipografía y Jerarquía */
-        h1, h2, h3, h4 { margin-bottom: 1rem; line-height: 1.2; }
-        h1 { color: var(--carmine); font-size: 2.5rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
-        h2 { color: var(--jade); font-size: 1.8rem; border-left: 4px solid var(--jade); padding-left: 0.8rem; }
-        h3 { color: var(--carmine); font-size: 1.4rem; }
-        p { margin-bottom: 1rem; font-size: 1rem; color: #444; }
-        b { color: var(--carmine); }
-        i { color: #555; }
-
-        /* Header y Hero */
         header {
-            padding: 2rem 1.5rem;
+            padding: 3rem 1rem;
             text-align: center;
         }
 
-        .tagline {
-            font-weight: 300;
-            font-style: italic;
-            color: #636e72;
+        h1 {
+            font-size: 3.5rem;
+            color: var(--carmine);
+            text-shadow: 4px 4px 10px rgba(0,0,0,0.1);
+            letter-spacing: -1px;
         }
 
-        /* Navegación Neumórfica */
         nav ul {
             display: flex;
             gap: 1rem;
             list-style: none;
-            overflow-x: auto; /* Scroll horizontal en móviles */
-            padding: 1rem 0.5rem;
+            overflow-x: auto;
+            padding: 1rem;
+            justify-content: center;
         }
 
         nav a {
             text-decoration: none;
             color: var(--jade);
-            font-weight: 600;
-            padding: 0.6rem 1.2rem;
-            border-radius: 1rem;
-            box-shadow: 4px 4px 8px var(--neu-dark), -4px -4px 8px var(--neu-light);
-            transition: all 0.3s ease;
-            white-space: nowrap;
+            font-weight: bold;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.05);
         }
 
-        nav a:active {
-            box-shadow: inset 3px 3px 6px var(--neu-dark), inset -3px -3px 6px var(--neu-light);
+        /* Neumorphism para elementos interactivos */
+        nav a:hover, .btn-glass:hover {
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.1), 
+                        inset -4px -4px 8px rgba(255,255,255,0.8);
+            transform: scale(0.95);
         }
 
-        /* Main y Secciones */
         main {
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
+            gap: 3rem;
         }
 
         section {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
-        /* Scroll Horizontal para Cards */
+        h2 {
+            color: var(--jade);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        /* Cards Estilo Cristal Líquido */
         .horizontal-scroll {
             display: flex;
             overflow-x: auto;
-            gap: 1.5rem;
-            padding: 1rem 0.5rem;
-            scroll-snap-type: x mandatory;
+            gap: 2rem;
+            padding: 1rem;
         }
 
-        /* Cards Neumórficas */
-        article.card {
-            min-width: 280px;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 1.2rem;
-            box-shadow: 6px 6px 12px var(--neu-dark), -6px -6px 12px var(--neu-light);
-            scroll-snap-align: start;
+        .card-glass {
+            min-width: 300px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .meta-info {
-            font-size: 0.85rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
-            margin: 1rem 0;
-            color: #666;
-        }
-
-        /* Interactivos: Botones y Links */
-        .btn-access {
-            display: block;
+        .btn-glass {
+            margin-top: auto;
+            padding: 1rem;
+            background: var(--amber); /* Color traslúcido */
+            border: none;
+            border-radius: 1rem;
+            color: #000;
+            font-weight: 800;
             text-align: center;
             text-decoration: none;
-            color: #000;
-            background: var(--amber);
-            padding: 0.8rem;
-            border-radius: 0.8rem;
-            font-weight: bold;
-            box-shadow: 3px 3px 6px var(--neu-dark);
-            transition: 0.2s;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
         }
 
-        .btn-access:hover { opacity: 0.9; transform: scale(0.98); }
-
-        /* Otros Tags HTML Estilizados */
-        details {
-            margin: 1rem 0;
+        /* Detalles Técnicos */
+        .meta-data {
+            font-size: 0.8rem;
+            font-family: monospace;
+            color: var(--carmine);
+            background: rgba(255,255,255,0.2);
             padding: 0.5rem;
             border-radius: 0.5rem;
-            box-shadow: inset 2px 2px 5px var(--neu-dark);
         }
-
-        summary { cursor: pointer; font-weight: bold; color: var(--jade); }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-            border-radius: 1rem;
-            overflow: hidden;
-        }
-
-        th { background: var(--cyan); color: #333; padding: 0.8rem; }
-        td { padding: 0.8rem; text-align: left; border-bottom: 1px solid var(--glass-border); }
-
-        dl { margin: 1rem 0; }
-        dt { font-weight: bold; color: var(--carmine); }
-        dd { margin-left: 1rem; margin-bottom: 0.5rem; }
 
         footer {
             text-align: center;
-            padding: 2rem;
-            margin-top: auto;
+            padding: 3rem;
+            font-weight: 300;
         }
 
-        cite { font-size: 0.9rem; color: var(--carmine); display: block; margin-top: 0.5rem; }
+        /* Tablas y Listas Invisibles */
+        table {
+            width: 100%;
+            border-spacing: 0 10px;
+        }
+
+        tr {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        td, th {
+            padding: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        details summary {
+            padding: 1rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 1rem;
+            cursor: pointer;
+            list-style: none;
+            font-weight: bold;
+        }
 
     </style>
 </head>
 <body>
 
-    <header class="glass">
+    <header class="glass-ultra">
         <h1>Codex_ius</h1>
-        <p class="tagline">Aprender, enseñar, servir</p>
+        <p>Aprender, enseñar, servir</p>
         <nav>
             <ul>
                 <li><a href="#noticias">Noticias</a></li>
@@ -203,52 +201,75 @@
     </header>
 
     <main>
-        <section id="noticias" class="glass">
-            <h2>Noticias Jurídicas</h2>
+        <section id="noticias" class="glass-ultra">
+            <h2>Noticias de Vanguardia</h2>
             <div class="horizontal-scroll">
-                <article class="card">
-                    <h3>Impacto de la IA en el Derecho</h3>
-                    <p>Análisis de la responsabilidad civil en algoritmos autónomos.</p>
-                    <div class="meta-info">
-                        <span>📅 17/02/2026</span>
-                        <span>✍️ Dr. Valadez</span>
-                        <span>📖 1,500 pal.</span>
-                        <span>⏱️ 8 min</span>
-                    </div>
-                    <a href="#" class="btn-access">Leer Artículo</a>
+                <article class="card-glass">
+                    <span class="meta-data">ID: 2026-X1 | 1200 PAL.</span>
+                    <h3>Justicia Algorítmica</h3>
+                    <p>¿Puede una IA dictar sentencia? Exploramos los límites éticos del <b>Derecho Digital</b>.</p>
+                    <div class="meta-data">✍️ Dr. Arrieta | ⏱️ 6 min</div>
+                    <a href="#" class="btn-glass">EXPLORAR</a>
                 </article>
-                <article class="card">
-                    <h3>Nuevas Tasas Judiciales</h3>
-                    <p>Guía rápida sobre los costos de litigación para este trimestre.</p>
-                    <div class="meta-info">
-                        <span>📅 10/02/2026</span>
-                        <span>✍️ Secretaría</span>
-                        <span>📖 600 pal.</span>
-                        <span>⏱️ 3 min</span>
-                    </div>
-                    <a href="#" class="btn-access">Ver Detalles</a>
+                <article class="card-glass">
+                    <span class="meta-data">ID: 2026-X2 | 850 PAL.</span>
+                    <h3>Tokenización de Activos</h3>
+                    <p>Nuevas regulaciones sobre <i>Real Estate</i> y Blockchain.</p>
+                    <div class="meta-data">✍️ Dra. Luna | ⏱️ 4 min</div>
+                    <a href="#" class="btn-glass">EXPLORAR</a>
                 </article>
             </div>
         </section>
 
-        <section id="repositorio" class="glass">
-            <h2>Repositorio Central</h2>
-            
-            <details open>
-                <summary>Cursos Disponibles</summary>
+        <section id="repositorio" class="glass-ultra">
+            <h2>Repositorio</h2>
+            <details>
+                <summary>📚 Cursos: Especialización 2026</summary>
                 <div class="horizontal-scroll">
-                    <article class="card">
-                        <h3>Derecho Procesal</h3>
-                        <p>Estrategias avanzadas de litigación oral.</p>
-                        <a href="#" class="btn-access">Inscribirse</a>
-                    </article>
+                    <div class="card-glass">
+                        <h3>Litigación Estratégica</h3>
+                        <p>Técnicas de persuasión en juicios por jurados.</p>
+                        <a href="#" class="btn-glass">VER CURSO</a>
+                    </div>
                 </div>
             </details>
-
-            <details>
-                <summary>Digesto y Normativa</summary>
+            
+            <details style="margin-top: 1rem;">
+                <summary>⚖️ Digesto: Leyes Comentadas</summary>
                 <table>
                     <thead>
                         <tr>
-                            <th>Ley</th>
-    
+                            <th>Referencia</th>
+                            <th>Materia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Código Civil Art. 45</td>
+                            <td>Capacidad Jurídica</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </details>
+        </section>
+
+        <section id="apps" class="glass-ultra">
+            <h2>Apps Interactivas</h2>
+            <div class="horizontal-scroll">
+                <div class="card-glass">
+                    <h3>Liquidador de Daños</h3>
+                    <p>Cálculo en tiempo real con tasas del Banco Central.</p>
+                    <a href="#" class="btn-glass" style="background: var(--cyan);">LANZAR APP</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <cite>"In legibus magis simplicitas quam difficultas placet"</cite>
+        <p>© 2026 Codex_ius - Instituto de Derecho Avanzado</p>
+    </footer>
+
+</body>
+            </html>
+                
