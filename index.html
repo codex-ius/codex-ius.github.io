@@ -3,94 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Codex_ius: Editorial e Instituto de Derecho. Aprender, enseñar, servir. Noticias, cursos y doctrina jurídica.">
+    <title>Codex_ius | Aprender, Enseñar, Servir</title>
+    <style>
+        :root {
+    /* Paleta de colores */
+    --carmine: #960018;
+    --jade: #00A86B;
+    --cyan: #00FFFF;
+    --amber: #FFBF00;
     
-    <title>Codex_ius: aprender, enseñar, servir</title>
-    <meta name="description" content="Codex_ius: Portal Jurídico Digital para el aprendizaje, enseñanza y herramientas legales bajo una arquitectura moderna.">
-    <link rel="canonical" href="https://tu-usuario.github.io/tu-repo/">
+    /* Fondos y Sombras */
+    --bg-color: #e0e5ec; /* Color base para neumorphism */
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --neu-shadow-light: #ffffff;
+    --neu-shadow-dark: #a3b1c6;
+}
 
-    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="css/layouts/home.css">
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    background-image: linear-gradient(135deg, #e0e5ec 0%, #c2cfd9 100%);
+    color: #333;
+    line-height: 1.6;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+/* Tipografía */
+h1 { color: var(--carmine); font-size: 2.5rem; text-align: center; }
+h2 { color: var(--jade); border-left: 5px solid var(--jade); padding-left: 0.5rem; margin-bottom: 1rem; }
+h3 { color: var(--carmine); }
+p { font-size: 1rem; margin-bottom: 0.5rem; }
+
+/* Glassmorphism Containers */
+.glass-container, .glass-section {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+/* Neumorphism Cards & Interactivos */
+.card-neumorphic {
+    background: var(--bg-color);
+    border-radius: 15px;
+    padding: 1.2rem;
+    min-width: 280px; /* Para el scroll horizontal */
+    box-shadow: 9px 9px 16px var(--neu-shadow-dark), 
+                -9px -9px 16px var(--neu-shadow-light);
+    margin: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.card-neumorphic:active {
+    box-shadow: inset 5px 5px 10px var(--neu-shadow-dark), 
+                inset -5px -5px 10px var(--neu-shadow-light);
+}
+
+/* Botones con acento Ámbar */
+.btn-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--amber);
+    color: #000;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 4px 4px 8px var(--neu-shadow-dark);
+}
+
+/* Navegación Neumórfica */
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin-top: 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--carmine);
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    box-shadow: 3px 3px 6px var(--neu-shadow-dark), -3px -3px 6px var(--neu-shadow-light);
+}
+
+/* Scroll Horizontal para las secciones */
+.horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    gap: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--cyan) transparent;
+}
+
+/* Meta info para SEO/Lectura */
+.meta-info {
+    font-size: 0.85rem;
+    color: #555;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem;
+    margin: 0.5rem 0;
+}
+
+/* Footer con Cyan */
+footer cite {
+    display: block;
+    margin-top: 1rem;
+    color: var(--carmine);
+    font-style: italic;
+    text-align: center;
+    }
+            
+    </style>
 </head>
 <body>
 
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <header class="glass-container">
+        <div class="hero">
+            <h1>Codex_ius</h1>
+            <p class="tagline">Aprender, enseñar, servir</p>
+        </div>
+        <nav class="neumorphic-nav">
+            <ul>
+                <li><a href="#noticias">Noticias</a></li>
+                <li><a href="#repositorio">Repositorio</a></li>
+                <li><a href="#apps">Apps</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    
-    <header role="banner" class="glass-header">
-    <div class="header-brand">
-        <h1 class="console-title">
-            Codex_ius: <span id="typewriter" class="cursor" aria-live="polite"></span>
-        </h1>
-        <p class="subtitle">Portal Jurídico Digital</p>
-    </div>
+    <main>
+        <section id="noticias" class="glass-section">
+            <h2>Noticias</h2>
+            <div class="horizontal-scroll">
+                <article class="card-neumorphic">
+                    <h3>Reforma Procesal 2026</h3>
+                    <p>Análisis integral de los nuevos cambios legislativos.</p>
+                    <div class="meta-info">
+                        <span>📅 15/02/2026</span>
+                        <span>✍️ Dr. Arrieta</span>
+                        <span>⏱️ 5 min lectura</span>
+                        <span>📖 1200 palabras</span>
+                    </div>
+                    <a href="#" class="btn-link">Leer más</a>
+                </article>
+                </div>
+        </section>
 
-    <nav aria-label="Navegación principal" class="nav-bar">
-        <ul class="nav-links">
-            <li><a href="#noticias">Noticias</a></li>
-            <li><a href="#repositorio">Repositorio</a></li>
-            <li><a href="#apps">Utilidades</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
-</header>
+        <section id="repositorio" class="glass-section">
+            <h2>Repositorio</h2>
+            
+            <div class="sub-repo">
+                <h3>Cursos</h3>
+                <div class="horizontal-scroll">
+                    <article class="card-neumorphic">
+                        <h3>Derecho Civil I</h3>
+                        <p>Curso introductorio a las obligaciones.</p>
+                        <a href="#" class="btn-link">Acceder</a>
+                    </article>
+                </div>
+            </div>
 
+            <div class="sub-repo">
+                <h3>Digesto</h3>
+                <div class="horizontal-scroll">
+                    <article class="card-neumorphic">
+                        <h3>Leyes Nacionales</h3>
+                        <p>Compendio actualizado de normativa vigente.</p>
+                        <a href="#" class="btn-link">Ver más</a>
+                    </article>
+                </div>
+            </div>
 
-    <main id="main-content" role="main">
-        
-        <section id="noticias" aria-labelledby="title-noticias" class="section-organic">
-            <header class="section-header">
-                <h2 id="title-noticias">Últimas Noticias</h2>
-                <div class="header-line"></div>
-            </header>
-            <div id="news-container" class="grid-layout">
-                <p class="loading-text">Cargando bitácora...</p>
+            <div class="sub-repo">
+                <h3>Doctrina</h3>
+                <div class="horizontal-scroll">
+                    <article class="card-neumorphic">
+                        <h3>Teoría del Delito</h3>
+                        <p>Ensayos críticos de autores contemporáneos.</p>
+                        <a href="#" class="btn-link">Explorar</a>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <section id="repositorio" aria-labelledby="title-repositorio" class="section-organic">
-            <header class="section-header">
-                <h2 id="title-repositorio">Repositorio Jurídico</h2>
-                <div class="header-line"></div>
-            </header>
-
-            <div id="doctrina-container" class="grid-layout">
-                </div>
+        <section id="apps" class="glass-section">
+            <h2>Apps</h2>
+            <div class="horizontal-scroll">
+                <article class="card-neumorphic">
+                    <h3>Calculadora de Plazos</h3>
+                    <p>Herramienta interactiva para procesalistas.</p>
+                    <a href="#" class="btn-link">Abrir App</a>
+                </article>
+            </div>
         </section>
-
-        <section id="apps" aria-labelledby="title-apps" class="section-organic">
-            <header class="section-header">
-                <h2 id="title-apps">Web Apps y Utilidades</h2>
-                <div class="header-line"></div>
-            </header>
-            <div id="apps-container" class="grid-layout">
-                </div>
-        </section>
-
     </main>
 
-    <footer id="contacto" role="contentinfo" class="glass-footer">
-        <div class="footer-content">
-            <section class="contact-box">
-                <h2>Conexión</h2>
-                <address>
-                    <p>Email: <a href="mailto:tu-email@ejemplo.com">tu-email@ejemplo.com</a></p>
-                    <p>Red profesional: <a href="#" target="_blank">LinkedIn</a></p>
-                </address>
-            </section>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Codex_ius | <span>Aprender, Enseñar, Servir</span></p>
-            </div>
-        </div>
+    <footer class="glass-container">
+        <p>&copy; 2026 Codex_ius. Todos los derechos reservados.</p>
+        <cite>"Iustitia est constans et perpetua voluntas ius suum cuique tribuendi"</cite>
     </footer>
 
-    <script type="module" src="js/main.js"></script>
-
 </body>
-</html>
+            </html>
+    
