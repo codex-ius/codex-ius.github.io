@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codex_ius | Ethereal Glass Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Codex_ius | Glass-Organic Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Paleta Orgánica de Alta Fidelidad */
-            --carmine: #ff4d6d;
-            --cyan: #00d2ff;
-            --jade: #38ef7d;
-            --amber: #ff9f1c;
+            /* Colores de Sección (Tinte Glass) */
+            --carmine-glass: rgba(255, 77, 109, 0.15);
+            --amber-glass: rgba(255, 159, 28, 0.15);
+            --jade-glass: rgba(56, 239, 125, 0.15);
             
-            /* Glassmorphism Puro */
-            --glass-bg: rgba(255, 255, 255, 0.15);
-            --glass-border: rgba(255, 255, 255, 0.4);
-            --blur: blur(25px);
+            /* Acento Global */
+            --cyan-accent: #00d2ff;
+            --cyan-glow: rgba(0, 210, 255, 0.3);
             
-            /* Neumorphism de Soporte */
-            --neu-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-            --text-main: #0f172a;
+            /* Glassmorphism Refinado */
+            --glass-white: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --blur-heavy: blur(30px);
+            
+            /* Tipografía */
+            --text-main: #1e293b;
+            --text-soft: #475569;
         }
 
         /* RESET & BASE */
@@ -30,218 +33,203 @@
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-main);
-            background: #e2e8f0;
+            background: #f1f5f9;
             min-height: 100vh;
-            overflow-x: hidden;
             display: flex;
             flex-direction: column;
+            /* Fondo sutil solo con Cyan */
+            background-image: 
+                radial-gradient(circle at 100% 0%, var(--cyan-glow) 0%, transparent 40%),
+                radial-gradient(circle at 0% 100%, var(--cyan-glow) 0%, transparent 40%);
+            background-attachment: fixed;
         }
 
-        /* FONDO ORGÁNICO DINÁMICO */
-        .background-blobs {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            filter: blur(80px);
-            opacity: 0.6;
-        }
-
-        .blob {
-            position: absolute;
-            width: 40dvw;
-            height: 40dvw;
-            border-radius: 50%;
-            animation: move 20s infinite alternate;
-        }
-
-        .blob-1 { background: var(--cyan); top: -10%; left: -10%; }
-        .blob-2 { background: var(--carmine); bottom: -10%; right: -10%; animation-delay: -5s; }
-        .blob-3 { background: var(--jade); top: 40%; left: 30%; animation-delay: -10s; }
-        .blob-4 { background: var(--amber); bottom: 20%; left: 10%; animation-delay: -15s; }
-
-        @keyframes move {
-            from { transform: translate(0, 0) scale(1); }
-            to { transform: translate(15%, 15%) scale(1.2); }
-        }
-
-        /* HEADER INSTITUCIONAL */
+        /* HEADER APILADO */
         header {
             position: sticky;
-            top: 1rem;
-            margin: 1rem auto;
-            width: 95%;
-            max-width: 1200px;
-            background: var(--glass-bg);
-            backdrop-filter: var(--blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 2rem;
-            padding: 1.5rem 2rem;
+            top: 0;
             z-index: 100;
-            box-shadow: var(--neu-shadow);
-            text-align: center;
-        }
-
-        .brand h1 {
-            font-family: 'Fira Code', monospace;
-            font-size: 1.8rem;
-            letter-spacing: -1px;
-        }
-
-        .brand span { color: var(--cyan); }
-
-        nav {
-            margin-top: 1.5rem;
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-heavy);
+            -webkit-backdrop-filter: var(--blur-heavy);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 2rem 1rem 1rem;
             display: flex;
-            justify-content: center;
-            gap: 1rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .brand { text-align: center; }
+        .brand h1 { 
+            font-family: 'Fira Code', monospace; 
+            font-size: 2rem; 
+            letter-spacing: -1px; 
+        }
+        .brand h1 span { color: var(--cyan-accent); }
+        .brand p { 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            opacity: 0.6;
+            margin-top: 0.5rem;
+        }
+
+        /* NAV ESTILO PÍLDORA */
+        nav {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 0.4rem;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            gap: 0.5rem;
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05);
         }
 
         nav a {
             text-decoration: none;
             color: var(--text-main);
-            font-weight: 700;
+            font-weight: 600;
             font-size: 0.85rem;
             padding: 0.6rem 1.2rem;
-            border-radius: 1rem;
-            transition: 0.3s;
-            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            transition: 0.3s ease;
         }
 
         nav a:hover {
-            background: var(--glass-border);
-            transform: translateY(-2px);
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        /* MAIN LAYOUT */
+        /* MAIN CONTENT */
         main {
             flex: 1;
-            padding: 4rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
+            width: 95%;
+            max-width: 1100px;
+            margin: 3rem auto;
         }
 
         .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
-        /* CARDS ESMERILADAS */
+        @media (min-width: 768px) {
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        /* CARDS PERSONALIZADAS POR SECCIÓN */
         .card {
-            background: var(--glass-bg);
-            backdrop-filter: var(--blur);
+            backdrop-filter: var(--blur-heavy);
+            -webkit-backdrop-filter: var(--blur-heavy);
             border: 1px solid var(--glass-border);
             border-radius: 2.5rem;
             padding: 2.5rem;
-            position: relative;
-            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 10px 10px 30px rgba(163, 177, 198, 0.3), 
+                        -10px -10px 30px rgba(255, 255, 255, 0.8);
         }
 
         .card:hover {
-            transform: scale(1.03) translateY(-10px);
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 15px 15px 40px rgba(163, 177, 198, 0.4);
         }
 
-        /* Acentos de color dinámicos en los bordes */
-        .card-cyan { border-top: 8px solid var(--cyan); }
-        .card-carmine { border-top: 8px solid var(--carmine); }
-        .card-jade { border-top: 8px solid var(--jade); }
-        .card-amber { border-top: 8px solid var(--amber); }
+        /* Tintes específicos solicitados */
+        .card-noticias { background: var(--carmine-glass); }
+        .card-repositorio { background: var(--amber-glass); }
+        .card-apps { background: var(--jade-glass); }
 
-        .card h2 { font-size: 1.5rem; font-weight: 800; }
-        .card p { font-size: 0.95rem; color: #475569; line-height: 1.8; }
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
 
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-soft);
+            line-height: 1.7;
+        }
+
+        /* BOTONES INTERNOS */
         .btn {
             align-self: flex-start;
-            background: var(--text-main);
-            color: white;
-            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            padding: 0.8rem 1.6rem;
             border-radius: 1.2rem;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.9rem;
             transition: 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         .btn:hover {
-            opacity: 0.8;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background: var(--text-main);
+            color: white;
         }
 
         footer {
-            padding: 3rem;
+            padding: 4rem 2rem;
             text-align: center;
-            background: var(--glass-bg);
-            backdrop-filter: var(--blur);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-heavy);
             border-top: 1px solid var(--glass-border);
-            margin-top: 4rem;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            header { padding: 1rem; }
-            nav { flex-wrap: wrap; }
-            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="background-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-        <div class="blob blob-4"></div>
-    </div>
-
     <header>
         <div class="brand">
-            <h1>Codex_ius: <span>aprender;</span></h1>
-            <p style="font-size: 0.8rem; font-weight: 700; opacity: 0.6; text-transform: uppercase; margin-top: 0.3rem;">Servicio Jurídico Digital</p>
+            <h1>Codex_ius: <span>servir;</span></h1>
+            <p>Portal Jurídico Digital</p>
         </div>
         <nav>
-            <a href="#">Bitácora</a>
-            <a href="#">Doctrina</a>
-            <a href="#">Jurisprudencia</a>
-            <a href="#">Utilidades</a>
+            <a href="#noticias">Noticias</a>
+            <a href="#repositorio">Repositorio</a>
+            <a href="#apps">Utilidades</a>
         </nav>
     </header>
 
     <main>
         <div class="grid">
-            <article class="card card-cyan">
-                <h2>Jurisprudencia Digital</h2>
-                <p>Accede a las últimas sentencias analizadas bajo la óptica de la transformación tecnológica. Un repositorio vivo y actualizado.</p>
-                <a href="#" class="btn">Explorar</a>
+            <article class="card card-noticias">
+                <h2>Noticias Jurídicas</h2>
+                <p>Análisis de las reformas legales y jurisprudencia reciente que impactan en el ecosistema digital actual.</p>
+                <a href="#" class="btn">Leer Bitácora</a>
             </article>
 
-            <article class="card card-carmine">
-                <h2>Derecho & Código</h2>
-                <p>Nuestra bitácora sobre la intersección entre el software y la norma. Entender el algoritmo para servir a la justicia.</p>
-                <a href="#" class="btn">Leer más</a>
+            <article class="card card-repositorio">
+                <h2>Repositorio Doctrinario</h2>
+                <p>Ensayos, tesis y artículos de investigación sobre el derecho aplicado a las nuevas tecnologías y la ética legal.</p>
+                <a href="#" class="btn">Acceder</a>
             </article>
 
-            <article class="card card-jade">
-                <h2>Herramientas</h2>
-                <p>Calculadoras de plazos, generadores de minutas y utilidades diseñadas para optimizar la labor del abogado moderno.</p>
-                <a href="#" class="btn">Usar App</a>
-            </article>
-
-            <article class="card card-amber">
-                <h2>Alertas Legales</h2>
-                <p>Mantente al día con los cambios legislativos urgentes. El derecho no duerme, y nosotros tampoco.</p>
-                <a href="#" class="btn">Suscribirse</a>
+            <article class="card card-apps">
+                <h2>Web Apps & Software</h2>
+                <p>Herramientas dinámicas para la gestión de casos, cálculo de términos y automatización de procesos jurídicos.</p>
+                <a href="#" class="btn">Lanzar App</a>
             </article>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Codex_ius - <strong>Aprender, Enseñar, Servir</strong></p>
+        <p>&copy; 2026 Codex_ius — Aprender, Enseñar, Servir</p>
     </footer>
 
 </body>
