@@ -3,273 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Codex_ius: Editorial e Instituto de Derecho. Estética Glassmorphism avanzada.">
-    <title>Codex_ius | Ultra Glass Edition</title>
+    <title>Codex_ius | Frutiger Aero Edition</title>
     <style>
         :root {
-            /* Colores Codex_ius con transparencia estratégica */
-            --carmine: rgba(150, 0, 24, 0.9);
-            --jade: rgba(0, 168, 107, 0.9);
-            --cyan: rgba(0, 255, 255, 0.8);
-            --amber: rgba(255, 191, 0, 0.8);
+            --carmine: #960018;
+            --jade: #00A86B;
+            --cyan: #00FFFF;
+            --amber: #FFBF00;
             
-            /* Glassmorphism Puro */
-            --glass-bg: rgba(255, 255, 255, 0.05); /* Casi invisible */
-            --glass-border: rgba(255, 255, 255, 0.5); /* Borde brillante */
-            --neu-shadow: 15px 15px 30px rgba(0, 0, 0, 0.1), 
-                          -15px -15px 30px rgba(255, 255, 255, 0.6);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            /* Gradientes Líquidos */
+            --glass-gradient: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.2) 100%);
+            --button-shine: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 50%);
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
-            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            /* Fondo típico Frutiger Aero: Azul brillante con destellos */
+            background: #0080ff url('https://www.transparenttextures.com/patterns/stardust.png');
+            background-image: radial-gradient(circle at 50% 50%, #74ebd5 0%, #acb6e5 100%);
+            background-attachment: fixed;
             display: flex;
             flex-direction: column;
             gap: 2rem;
-            padding: 1.5rem;
-            color: #1a1a1a;
-            /* Fondo con manchas de color para que el vidrio resalte */
-            background: #e0e5ec;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(0, 255, 255, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(150, 0, 24, 0.1) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(0, 168, 107, 0.05) 0px, transparent 50%);
-            background-attachment: fixed;
+            min-height: 100vh;
         }
 
-        /* Clase Maestra Glassmorphism */
-        .glass-ultra {
-            background: var(--glass-bg);
-            backdrop-filter: blur(25px); /* Mucho más desenfoque */
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border);
-            border-radius: 2rem;
-            box-shadow: var(--neu-shadow);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* Contenedores con Efecto Burbuja / Cristal Curvo */
+        .glass-aero {
+            position: relative;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            border-radius: 2.5rem; /* Más redondeado, más orgánico */
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1), inset 0 0 15px rgba(255,255,255,0.5);
+            padding: 2rem;
+            overflow: hidden;
         }
 
-        header {
-            padding: 3rem 1rem;
-            text-align: center;
+        /* Brillo superior tipo "Espejo" */
+        .glass-aero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 50%;
+            background: var(--button-shine);
+            pointer-events: none;
         }
 
         h1 {
-            font-size: 3.5rem;
             color: var(--carmine);
-            text-shadow: 4px 4px 10px rgba(0,0,0,0.1);
-            letter-spacing: -1px;
+            font-size: 3.5rem;
+            text-align: center;
+            filter: drop-shadow(2px 2px 0px white);
+            margin-bottom: 0.5rem;
         }
 
-        nav ul {
-            display: flex;
-            gap: 1rem;
-            list-style: none;
-            overflow-x: auto;
-            padding: 1rem;
-            justify-content: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--jade);
-            font-weight: bold;
-            padding: 0.7rem 1.5rem;
+        /* Botones Neumorphic-Glossy */
+        .nav-btn {
+            position: relative;
+            background: var(--jade);
+            color: white;
+            padding: 0.8rem 1.5rem;
             border-radius: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--glass-border);
-            box-shadow: 4px 4px 10px rgba(0,0,0,0.05);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            border: 2px solid rgba(255,255,255,0.4);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
+            overflow: hidden;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
-        /* Neumorphism para elementos interactivos */
-        nav a:hover, .btn-glass:hover {
-            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.1), 
-                        inset -4px -4px 8px rgba(255,255,255,0.8);
+        .nav-btn::after {
+            content: "";
+            position: absolute;
+            top: 2px; left: 5%; width: 90%; height: 40%;
+            background: var(--button-shine);
+            border-radius: 50px;
+        }
+
+        .nav-btn:active {
             transform: scale(0.95);
+            box-shadow: inset 0 5px 10px rgba(0,0,0,0.3);
         }
 
-        main {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
+        /* Cards Frutiger Aero */
+        .card-aero {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            min-width: 280px;
+            border: 1px solid white;
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
+            position: relative;
         }
 
-        section {
-            padding: 2rem;
+        .card-aero h3 { color: #004a99; }
+
+        .btn-explorar {
+            background: var(--amber);
+            border: 1px solid rgba(255,255,255,0.5);
+            padding: 1rem;
+            border-radius: 1rem;
+            display: block;
+            text-align: center;
+            color: #000;
+            font-weight: 900;
+            text-decoration: none;
+            box-shadow: 0 4px 0 #b38600; /* Efecto 3D de botón real */
+            margin-top: 1rem;
         }
 
-        h2 {
-            color: var(--jade);
-            margin-bottom: 2rem;
-            font-size: 2rem;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        .btn-explorar:active {
+            margin-top: 1.2rem;
+            box-shadow: 0 0px 0 #b38600;
         }
 
-        /* Cards Estilo Cristal Líquido */
         .horizontal-scroll {
             display: flex;
             overflow-x: auto;
-            gap: 2rem;
-            padding: 1rem;
+            gap: 1.5rem;
+            padding: 1rem 0;
         }
 
-        .card-glass {
-            min-width: 300px;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .btn-glass {
-            margin-top: auto;
-            padding: 1rem;
-            background: var(--amber); /* Color traslúcido */
-            border: none;
-            border-radius: 1rem;
-            color: #000;
-            font-weight: 800;
-            text-align: center;
-            text-decoration: none;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Detalles Técnicos */
-        .meta-data {
-            font-size: 0.8rem;
-            font-family: monospace;
-            color: var(--carmine);
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem;
-            font-weight: 300;
-        }
-
-        /* Tablas y Listas Invisibles */
-        table {
-            width: 100%;
-            border-spacing: 0 10px;
-        }
-
-        tr {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-        }
-
-        td, th {
-            padding: 1rem;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        details summary {
-            padding: 1rem;
-            background: rgba(255,255,255,0.15);
-            border-radius: 1rem;
-            cursor: pointer;
-            list-style: none;
-            font-weight: bold;
+        /* Scrollbar Neumórfica */
+        ::-webkit-scrollbar { height: 10px; }
+        ::-webkit-scrollbar-thumb {
+            background: var(--cyan);
+            border-radius: 10px;
+            border: 2px solid white;
         }
 
     </style>
 </head>
 <body>
 
-    <header class="glass-ultra">
+    <header class="glass-aero">
         <h1>Codex_ius</h1>
-        <p>Aprender, enseñar, servir</p>
-        <nav>
-            <ul>
-                <li><a href="#noticias">Noticias</a></li>
-                <li><a href="#repositorio">Repositorio</a></li>
-                <li><a href="#apps">Apps</a></li>
-            </ul>
-        </nav>
+        <p style="text-align: center; color: #fff; text-shadow: 1px 1px 2px #000;">Aprender, enseñar, servir</p>
+        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 1.5rem;">
+            <a href="#" class="nav-btn">Noticias</a>
+            <a href="#" class="nav-btn" style="background: var(--carmine);">Repositorio</a>
+            <a href="#" class="nav-btn" style="background: var(--cyan); color: #004a99;">Apps</a>
+        </div>
     </header>
 
     <main>
-        <section id="noticias" class="glass-ultra">
-            <h2>Noticias de Vanguardia</h2>
+        <section class="glass-aero">
+            <h2 style="color: var(--jade); font-size: 2rem;">Noticias de Vanguardia</h2>
             <div class="horizontal-scroll">
-                <article class="card-glass">
-                    <span class="meta-data">ID: 2026-X1 | 1200 PAL.</span>
+                <article class="card-aero">
                     <h3>Justicia Algorítmica</h3>
-                    <p>¿Puede una IA dictar sentencia? Exploramos los límites éticos del <b>Derecho Digital</b>.</p>
-                    <div class="meta-data">✍️ Dr. Arrieta | ⏱️ 6 min</div>
-                    <a href="#" class="btn-glass">EXPLORAR</a>
+                    <p>Análisis ético de la IA en sentencias judiciales.</p>
+                    <a href="#" class="btn-explorar">EXPLORAR</a>
                 </article>
-                <article class="card-glass">
-                    <span class="meta-data">ID: 2026-X2 | 850 PAL.</span>
-                    <h3>Tokenización de Activos</h3>
-                    <p>Nuevas regulaciones sobre <i>Real Estate</i> y Blockchain.</p>
-                    <div class="meta-data">✍️ Dra. Luna | ⏱️ 4 min</div>
-                    <a href="#" class="btn-glass">EXPLORAR</a>
+                <article class="card-aero">
+                    <h3>Derecho Digital</h3>
+                    <p>Nuevos retos en la era de los datos masivos.</p>
+                    <a href="#" class="btn-explorar" style="background: var(--cyan);">EXPLORAR</a>
                 </article>
-            </div>
-        </section>
-
-        <section id="repositorio" class="glass-ultra">
-            <h2>Repositorio</h2>
-            <details>
-                <summary>📚 Cursos: Especialización 2026</summary>
-                <div class="horizontal-scroll">
-                    <div class="card-glass">
-                        <h3>Litigación Estratégica</h3>
-                        <p>Técnicas de persuasión en juicios por jurados.</p>
-                        <a href="#" class="btn-glass">VER CURSO</a>
-                    </div>
-                </div>
-            </details>
-            
-            <details style="margin-top: 1rem;">
-                <summary>⚖️ Digesto: Leyes Comentadas</summary>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Referencia</th>
-                            <th>Materia</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Código Civil Art. 45</td>
-                            <td>Capacidad Jurídica</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </details>
-        </section>
-
-        <section id="apps" class="glass-ultra">
-            <h2>Apps Interactivas</h2>
-            <div class="horizontal-scroll">
-                <div class="card-glass">
-                    <h3>Liquidador de Daños</h3>
-                    <p>Cálculo en tiempo real con tasas del Banco Central.</p>
-                    <a href="#" class="btn-glass" style="background: var(--cyan);">LANZAR APP</a>
-                </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <cite>"In legibus magis simplicitas quam difficultas placet"</cite>
-        <p>© 2026 Codex_ius - Instituto de Derecho Avanzado</p>
-    </footer>
-
 </body>
-            </html>
-                
+                </html>
+    
