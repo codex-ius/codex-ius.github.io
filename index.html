@@ -3,194 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codex_ius | Ethereal Glass</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            /* Colores Glass */
-            --carmine-glass: rgba(255, 77, 109, 0.15);
-            --amber-glass: rgba(255, 159, 28, 0.15);
-            --jade-glass: rgba(56, 239, 125, 0.15);
-            --cyan-accent: #00d2ff;
-            --cyan-glow: rgba(0, 210, 255, 0.3);
-            
-            /* UI */
-            --glass-white: rgba(255, 255, 255, 0.4);
-            --glass-border: rgba(255, 255, 255, 0.6);
-            --blur-heavy: blur(30px);
-            --text-main: #1e293b;
-            --text-soft: #475569;
-        }
+    <title>Codex_ius | Instituto de Derecho & Humanidad</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-main);
-            background: #f1f5f9;
-            background-image: 
-                radial-gradient(circle at 100% 0%, var(--cyan-glow) 0%, transparent 40%),
-                radial-gradient(circle at 0% 100%, var(--cyan-glow) 0%, transparent 40%);
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        /* HEADER */
-        header {
-            position: sticky; top: 0; z-index: 100;
-            background: var(--glass-white);
-            backdrop-filter: var(--blur-heavy);
-            -webkit-backdrop-filter: var(--blur-heavy);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 2rem 1rem 1rem;
-            display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
-        }
+    <link rel="stylesheet" href="css/theme.css">
 
-        .brand h1 { font-family: 'Fira Code', monospace; font-size: 2rem; }
-        .brand h1 span { color: var(--cyan-accent); }
-        .brand p { font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; opacity: 0.6; text-align: center;}
-
-        nav {
-            background: rgba(255, 255, 255, 0.3); padding: 0.4rem;
-            border-radius: 50px; border: 1px solid var(--glass-border);
-            display: flex; gap: 0.5rem;
-        }
-
-        nav a {
-            text-decoration: none; color: var(--text-main); font-weight: 600;
-            font-size: 0.85rem; padding: 0.6rem 1.2rem; border-radius: 50px; transition: 0.3s;
-        }
-
-        nav a:hover { background: white; }
-
-        /* MAIN & SECTIONS */
-        main { width: 95%; max-width: 1100px; margin: 3rem auto; flex: 1; }
-        
-        .section-title { margin-bottom: 2rem; font-weight: 700; color: var(--text-main); }
-
-        .grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem; margin-bottom: 4rem;
-        }
-
-        /* CARDS */
-        .card {
-            backdrop-filter: var(--blur-heavy); -webkit-backdrop-filter: var(--blur-heavy);
-            border: 1px solid var(--glass-border); border-radius: 2.5rem;
-            padding: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 10px 10px 30px rgba(163, 177, 198, 0.3), -10px -10px 30px rgba(255, 255, 255, 0.8);
-        }
-
-        .card:hover { transform: translateY(-8px); }
-        
-        /* TINTES */
-        .card.noticias { background: var(--carmine-glass); }
-        .card.repositorio { background: var(--amber-glass); }
-        .card.apps { background: var(--jade-glass); }
-
-        .btn {
-            align-self: flex-start; background: rgba(255, 255, 255, 0.5);
-            border: 1px solid var(--glass-border); color: var(--text-main);
-            padding: 0.8rem 1.6rem; border-radius: 1.2rem; text-decoration: none;
-            font-weight: 700; font-size: 0.9rem; transition: 0.3s;
-        }
-
-        .btn:hover { background: var(--text-main); color: white; }
-
-        footer { padding: 4rem 2rem; text-align: center; opacity: 0.6; font-size: 0.8rem; }
-    </style>
+    <link rel="stylesheet" href="css/layouts/home.css">
 </head>
 <body>
 
-    <header>
-        <div class="brand">
-            <h1>Codex_ius: <span id="typewriter">servir;</span></h1>
-            <p>Portal Jurídico Digital</p>
-        </div>
-        <nav>
-            <a href="#noticias">Noticias</a>
-            <a href="#repositorio">Repositorio</a>
-            <a href="./sources/res_app/sandbox_terminal.html">Software</a>
+    <header role="banner">
+        <div class="logo">CODEX<span>_IUS</span></div>
+        <nav aria-label="Navegación principal">
+            <span style="font-size: 0.7rem; font-weight: 800; cursor: pointer; letter-spacing: 1px;">EXPLORAR //</span>
         </nav>
     </header>
 
-    <main>
-        <h2 class="section-title">Actualidad Jurídica</h2>
-        <div id="container-noticias" class="grid"></div>
+    <section class="hero">
+        <span>INSTITUTO JURÍDICO DIGITAL</span>
+        <h1>Justicia con rostro humano, tecnología con alma.</h1>
+        <p>Un espacio para repensar la norma en la frontera de la inteligencia artificial y la dignidad humana.</p>
+    </section>
 
-        <h2 class="section-title">Repositorio de Doctrina</h2>
-        <div id="container-repositorio" class="grid"></div>
+    <section class="stats-bar">
+        <div class="stat-item"><b>150+</b><span>Publicaciones</span></div>
+        <div class="stat-item"><b>12k</b><span>Comunidad</span></div>
+        <div class="stat-item"><b>04</b><span>Software Legal</span></div>
+        <div class="stat-item"><b>2026</b><span>Visión</span></div>
+    </section>
 
-        <h2 class="section-title">Software Legal</h2>
-        <div id="container-apps" class="grid"></div>
-    </main>
+    <main class="mural" id="main-mural">
+        </main>
+
+    <section class="featured">
+        <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent); letter-spacing: 2px;">DESTACADO</span>
+        <h2>¿Quién juzga al algoritmo?</h2>
+        <p>Una investigación especial sobre los sesgos en la IA judicial y la defensa de la discrecionalidad humana como último baluarte de la justicia moderna.</p>
+        <a href="#" class="btn-light" style="display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0f172a; border-radius: 50px; text-decoration: none; font-weight: 700;">
+            Leer Investigación Especial
+        </a>
+    </section>
+
+    <section class="manifesto">
+        <div class="manifesto-content">
+            <h3>Nuestro Manifiesto</h3>
+            <p>No creemos en la justicia como un proceso aséptico de entrada y salida de datos. Creemos en la tecnología como un amplificador de la empatía, la transparencia y la equidad social.</p>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2026 Codex_ius — Aprender, Enseñar, Servir</p>
+        <p>MENDOZA, ARGENTINA — 2026 CODEX_IUS</p>
+        <p style="margin-top: 1rem; opacity: 0.5; font-size: 0.7rem;">Aprender, Enseñar, Servir</p>
     </footer>
 
     <script>
-        // 1. DATA EMBEBIDA (Simulando JSON)
-        const contentData = {
-            noticias: [
-                { title: "IA en Procesos Judiciales", desc: "Análisis sobre la validez de pruebas generadas por algoritmos.", linkText: "Leer Análisis" },
-                { title: "Reformas Digitales 2026", desc: "Nueva normativa sobre la identidad soberana en trámites públicos.", linkText: "Ver Decreto" }
-            ],
-            repositorio: [
-                { title: "Teoría del Acto Algorítmico", desc: "Ensayo sobre la responsabilidad civil de sistemas autónomos.", linkText: "Descargar PDF" },
-                { title: "Blockchain Legal", desc: "Manual práctico para la implementación de Smart Contracts.", linkText: "Explorar" }
-            ],
-            apps: [
-                { title: "LexCalc", desc: "Calculadora de términos procesales con soporte para feriados locales.", linkText: "Lanzar App" },
-                { title: "MinutaGen", desc: "Generador dinámico de escritos básicos mediante lenguaje natural.", linkText: "Lanzar App" }
-            ]
-        };
+        // DATA INSTITUCIONAL
+        const contentData = [
+            {
+                id: "noticias",
+                tag: "Noticias",
+                title: "Crónicas del Derecho Digital",
+                desc: "Análisis profundo sobre la intersección entre la ley, la ética y la innovación tecnológica global.",
+                link: "Explorar bitácora",
+                type: "panel-large noticias"
+            },
+            {
+                id: "repositorio",
+                tag: "Saber",
+                title: "Repositorio de Doctrina",
+                desc: "Nuestra biblioteca de ensayos, tratados y jurisprudencia para el jurista del siglo XXI.",
+                link: "Ver documentos",
+                type: "panel-medium repositorio"
+            },
+            {
+                id: "apps",
+                tag: "Acción",
+                title: "Software Legal",
+                desc: "Utilidades diseñadas para aliviar la carga técnica y humanizar la labor diaria del abogado.",
+                link: "Usar aplicaciones",
+                type: "panel-small apps"
+            }
+        ];
 
-        // 2. MOTOR DE INYECCIÓN DINÁMICA
-        function renderPortal() {
-            const sections = ['noticias', 'repositorio', 'apps'];
-            
-            sections.forEach(cat => {
-                const container = document.getElementById(`container-${cat}`);
-                if (!container) return;
-
-                // Generamos el HTML usando map y lo unimos en un solo string
-                const htmlContent = contentData[cat].map(item => `
-                    <article class="card ${cat}">
-                        <h2>${item.title}</h2>
-                        <p>${item.desc}</p>
-                        <a href="#" class="btn">${item.linkText}</a>
-                    </article>
-                `).join('');
-
-                container.innerHTML = htmlContent;
-            });
+        function renderMural() {
+            const mural = document.getElementById('main-mural');
+            mural.innerHTML = contentData.map(item => `
+                <a href="#${item.id}" class="panel ${item.type}">
+                    <span class="tag">${item.tag}</span>
+                    <h2>${item.title}</h2>
+                    <p>${item.desc}</p>
+                    <span class="panel-link">${item.link} <span>→</span></span>
+                </a>
+            `).join('');
         }
 
-        // 3. ANIMACIÓN TYPEWRITER (Institucional)
-        function initTypewriter() {
-            const words = ["aprender;", "enseñar;", "servir;"];
-            const el = document.getElementById("typewriter");
-            let i = 0;
-
-            setInterval(() => {
-                el.style.opacity = "0";
-                setTimeout(() => {
-                    i = (i + 1) % words.length;
-                    el.textContent = words[i];
-                    el.style.opacity = "1";
-                }, 500);
-            }, 3000);
-        }
-
-        // Ejecutar al cargar el DOM
-        document.addEventListener('DOMContentLoaded', () => {
-            renderPortal();
-            initTypewriter();
-        });
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', renderMural);
     </script>
 </body>
     </html>
-    
+            
