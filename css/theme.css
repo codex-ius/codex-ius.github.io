@@ -1,177 +1,123 @@
 /* =========================================
-   VARIABLES MAESTRAS (GLASS-ORGANIC)
+   CODEX_IUS THEME - RESET INSTITUCIONAL
    ========================================= */
+
 :root {
-    font-size: 16px;
-
-    /* Colores con Transparencia (Vibrantes) */
-    --carmine-glass: rgba(255, 138, 157, 0.3);
-    --jade-glass: rgba(87, 204, 153, 0.3);
-    --cyan-glass: rgba(76, 201, 240, 0.3);
-    
-    /* Paleta Institucional Esmerilada */
-    --glass-bg: rgba(255, 255, 255, 0.35);
-    --glass-thick: rgba(255, 255, 255, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.5);
-    --text-deep: #1a2a3a;
-    --text-soft: #4a5a6a;
-
-    /* Efectos */
-    --blur-std: blur(15px);
-    --blur-heavy: blur(25px);
-    
-    /* Neumorphism Dinámico */
-    --neu-shadow: -8px -8px 20px rgba(255, 255, 255, 0.8), 
-                  8px 8px 20px rgba(163, 177, 198, 0.4);
-    --neu-inset: inset 4px 4px 8px rgba(163, 177, 198, 0.3), 
-                 inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+    /* Design Tokens */
+    --bg-base: #f4f7f9;
+    --glass-core: rgba(255, 255, 255, 0.3);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --text-h: #0f172a;
+    --text-p: #475569;
+    --accent: #00d2ff;
+    --radius-std: 12px;
+    --blur-std: blur(20px);
 }
 
-/* =========================================
-   RESET & CUERPO ESMERILADO
-   ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* 1. RESET GLOBAL */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Inter', system-ui, sans-serif;
-    color: var(--text-deep);
-    background: #f0f4f8;
-    /* Fondo Orgánico Fluido */
-    background-image: 
-        radial-gradient(circle at 10% 20%, var(--cyan-glass), transparent 40%),
-        radial-gradient(circle at 90% 80%, var(--jade-glass), transparent 40%),
-        radial-gradient(circle at 50% 50%, var(--carmine-glass), transparent 50%);
-    background-attachment: fixed;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-p);
     line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* =========================================
-   HEADER & NAV (ESTRUCTURA APILADA)
-   ========================================= */
-.glass-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: var(--glass-bg);
-    backdrop-filter: var(--blur-heavy);
-    -webkit-backdrop-filter: var(--blur-heavy);
-    border-bottom: 1px solid var(--glass-border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem 1rem 0.8rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-.header-brand { text-align: center; margin-bottom: 1.2rem; }
-.header-brand .subtitle {
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+/* 2. TIPOGRAFÍA (Humanidad + Autoridad) */
+h1, h2, h3, h4 {
+    font-family: 'Lora', serif;
+    color: var(--text-h);
     font-weight: 700;
-    color: var(--text-soft);
-    opacity: 0.8;
+    line-height: 1.2;
+    margin-bottom: 1rem;
 }
 
-.nav-bar {
-    width: 100%;
-    max-width: 500px;
-    padding: 0.4rem;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    box-shadow: var(--neu-inset);
-}
+p { margin-bottom: 1.2rem; }
 
-.nav-links {
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-deep);
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 0.5rem 1.2rem;
-    border-radius: 50px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.nav-links a:hover {
-    background: var(--glass-thick);
-    box-shadow: var(--neu-shadow);
-    transform: translateY(-2px);
-}
-
-/* =========================================
-   TIPOGRAFÍA Y ELEMENTOS (TEXTO)
-   ========================================= */
-p {
-    margin-bottom: 1.2rem;
-    color: var(--text-soft);
-    font-size: 1rem;
-}
-
-/* Listas Orgánicas */
-ul, ol {
-    margin: 1rem 0 1.5rem 1.5rem;
-}
-
-li {
-    margin-bottom: 0.5rem;
-    padding-left: 0.5rem;
-}
-
-/* Anchors (Enlaces en texto) */
 a {
-    color: var(--text-deep);
+    color: var(--text-h);
     text-decoration: none;
-    background: linear-gradient(to right, var(--cyan-glass), var(--cyan-glass));
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    background-size: 100% 0.2rem;
-    transition: background-size 0.3s;
+    font-weight: 600;
+    border-bottom: 2px solid var(--accent);
+    transition: 0.3s;
+}
+a:hover { opacity: 0.7; }
+
+b, strong { color: var(--text-h); font-weight: 700; }
+i, em { font-family: 'Lora', serif; font-style: italic; }
+
+cite {
+    display: block;
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    font-style: italic;
+    color: var(--text-p);
+    margin: 1.5rem 0;
 }
 
-a:hover { background-size: 100% 100%; border-radius: 4px; }
+/* 3. LISTAS & DETALLES */
+ul, ol { margin: 1rem 0 1.5rem 1.5rem; }
+li { margin-bottom: 0.5rem; }
 
-/* =========================================
-   BOTONES & INTERACCIONES
-   ========================================= */
-.btn-action {
-    border: 1px solid var(--glass-border);
-    background: var(--glass-bg);
+details {
+    background: var(--glass-core);
     backdrop-filter: var(--blur-std);
-    color: var(--text-deep);
-    padding: 0.7em 1.5em;
-    border-radius: 1.2em;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-std);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+summary { cursor: pointer; font-weight: 700; color: var(--text-h); }
+
+/* 4. TABLAS (Biseladas) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--glass-core);
+    backdrop-filter: var(--blur-std);
+    border-radius: var(--radius-std);
+    overflow: hidden;
+    margin: 2rem 0;
+}
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--glass-border);
+}
+th { background: rgba(255,255,255,0.4); color: var(--text-h); }
+
+/* 5. FORMULARIOS & BOTONES (Soft-UI) */
+input, textarea, select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-std);
+    font-family: inherit;
+    color: var(--text-h);
+    transition: 0.3s;
+    outline: none;
+}
+input:focus, textarea:focus {
+    background: white;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(0, 210, 255, 0.1);
+}
+
+button, .btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background: var(--text-h);
+    color: white;
+    border: none;
+    border-radius: 50px;
     font-weight: 700;
-    box-shadow: var(--neu-shadow);
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s;
 }
-
-.btn-action:active {
-    box-shadow: var(--neu-inset);
-    transform: scale(0.96);
-}
-
-/* =========================================
-   FOOTER (EL CIERRE ESMERILADO)
-   ========================================= */
-.glass-footer {
-    margin-top: 5rem;
-    padding: 4rem 10% 2rem;
-    background: var(--glass-bg);
-    backdrop-filter: var(--blur-heavy);
-    border-top: 1px solid var(--glass-border);
-    text-align: center;
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
    }
-   
