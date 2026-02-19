@@ -11,6 +11,7 @@ body {
 }
 
 /* 1. HEADER */
+
 header {
     position: sticky; top: 0; z-index: 100;
     background: rgba(255, 255, 255, 0.4);
@@ -20,6 +21,34 @@ header {
     padding: 1.2rem 1.5rem;
     display: flex; justify-content: space-between; align-items: center;
 }
+.btn-menu {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text-h);
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.btn-menu:hover {
+    background: var(--text-h);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.menu-dots {
+    color: var(--accent);
+    letter-spacing: -1px;
+}
+
 
 .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: -0.5px; color: var(--text-h); }
 .logo span { color: var(--accent); }
