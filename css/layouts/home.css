@@ -1,32 +1,152 @@
-/* Especificidades del Index */
-.hero {
-    padding: 5rem 1.5rem;
-    text-align: center;
+/* =========================================
+   CODEX_IUS - HOME LAYOUT (Mural Editorial)
+   ========================================= */
+
+/* 1. HEADER ESPECÍFICO */
+header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: var(--blur-std);
+    -webkit-backdrop-filter: var(--blur-std);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1.2rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
 }
 
+.logo { font-weight: 700; font-size: 1.3rem; letter-spacing: -0.5px; }
+.logo span { color: var(--accent); }
+
+/* 2. HERO: LA VOZ HUMANA */
+.hero {
+    padding: 5rem 1.5rem 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero span { 
+    text-transform: uppercase; 
+    font-size: 0.7rem; 
+    font-weight: 800; 
+    letter-spacing: 3px; 
+    color: var(--accent); 
+}
+
+.hero h1 { 
+    font-size: clamp(2.5rem, 8vw, 4rem); 
+    line-height: 1.1; 
+    margin: 1.5rem 0; 
+    letter-spacing: -1px; 
+}
+
+.hero p { 
+    font-size: 1.2rem; 
+    font-family: 'Lora', serif; 
+    font-style: italic; 
+    opacity: 0.8; 
+}
+
+/* 3. STATS BAR (Scroll Horizontal en Mobile) */
+.stats-bar {
+    display: flex; gap: 3rem; padding: 2.5rem 1.5rem;
+    overflow-x: auto; 
+    scrollbar-width: none; /* Firefox */
+    background: rgba(255, 255, 255, 0.3);
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 2rem;
+}
+.stats-bar::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+.stat-item b { display: block; font-size: 1.8rem; font-family: 'Inter'; }
+.stat-item span { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; opacity: 0.6; }
+
+/* 4. EL MURAL (GRID DINÁMICO) */
 .mural {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Panel como componente de layout */
 .panel {
     background: var(--glass-core);
     backdrop-filter: var(--blur-std);
+    -webkit-backdrop-filter: var(--blur-std);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 2.5rem;
-    transition: 0.4s;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
 }
 
-/* Responsive Grid para Desktop */
+/* Tintes de Sección */
+.noticias { background: rgba(255, 77, 109, 0.08); }
+.repositorio { background: rgba(255, 159, 28, 0.08); }
+.apps { background: rgba(56, 239, 125, 0.08); }
+
+.panel:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    border-color: rgba(255,255,255,0.9);
+}
+
+.panel .tag { 
+    font-size: 0.7rem; font-weight: 800; text-transform: uppercase; 
+    letter-spacing: 2px; opacity: 0.4; margin-bottom: 1rem; display: block; 
+}
+
+.panel-link {
+    margin-top: auto;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.panel-link span { transition: transform 0.3s; }
+.panel:hover .panel-link span { transform: translateX(8px); }
+
+/* 5. DESTACADO (Ancho Completo) */
+.featured {
+    margin: 4rem 1.5rem;
+    padding: 3rem;
+    background: var(--text-h);
+    color: white;
+    border-radius: 20px;
+    max-width: 1200px;
+}
+
 @media (min-width: 1024px) {
+    .featured { margin: 6rem auto; padding: 5rem; }
+}
+
+.featured h2 { color: white; font-size: 2.2rem; margin: 1.5rem 0; }
+.featured p { color: #cbd5e1; margin-bottom: 2rem; font-size: 1.1rem; }
+
+/* 6. MANIFIESTO */
+.manifesto { padding: 6rem 1.5rem; text-align: center; background: white; }
+.manifesto-content { max-width: 700px; margin: 0 auto; position: relative; }
+.manifesto h3 { font-size: 2rem; margin-bottom: 1.5rem; }
+
+/* 7. FOOTER */
+footer { padding: 5rem 1.5rem; text-align: center; border-top: 1px solid var(--glass-border); opacity: 0.5; font-size: 0.8rem; }
+
+/* 8. ADAPTACIÓN DESKTOP */
+@media (min-width: 1024px) {
+    .hero { text-align: center; padding: 10rem 1.5rem 6rem; }
     .mural {
         display: grid;
         grid-template-columns: 1.4fr 1fr;
-        max-width: 1200px;
-        margin: 0 auto;
+        grid-template-rows: auto auto;
+        gap: 2rem;
     }
-        }
+    .noticias { grid-row: span 2; }
+    .stats-bar { justify-content: center; padding: 5rem; }
+    }
