@@ -1,123 +1,192 @@
 /* =========================================
-   CODEX_IUS THEME - RESET INSTITUCIONAL
+   CODEX_IUS: SIBYL SYSTEM LIGHT (VER_05)
+   ESTILO: CYBERPUNK-INSTITUTIONAL / Y2K
    ========================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;600;800&display=swap');
+
 :root {
-    /* Design Tokens */
-    --bg-base: #f4f7f9;
-    --glass-core: rgba(255, 255, 255, 0.3);
-    --glass-border: rgba(255, 255, 255, 0.6);
-    --text-h: #0f172a;
-    --text-p: #475569;
-    --accent: #00d2ff;
-    --radius-std: 12px;
-    --blur-std: blur(20px);
+    --bg: #f2f4f7;
+    --text-h: #1a1a1a;
+    --text-p: #4a4a4a;
+    --accent: #00f2ff; /* Cyan Cyber */
+    --accent-red: #e6003d; /* Carmín Alerta */
+    --glass: rgba(255, 255, 255, 0.8);
+    --border: #d1d5db;
+    --scanline: rgba(0, 242, 255, 0.05);
 }
 
-/* 1. RESET GLOBAL */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* =========================================
+   ESTRUCTURA Y FONDO SIBYL
+   ========================================= */
+
+* { 
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Outfit', sans-serif; 
+}
 
 body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background-color: var(--bg-base);
+    background-color: var(--bg);
+    background-image: 
+        linear-gradient(var(--scanline) 1px, transparent 1px),
+        linear-gradient(90deg, var(--scanline) 1px, transparent 1px);
+    background-size: 20px 20px;
     color: var(--text-p);
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
 }
 
-/* 2. TIPOGRAFÍA (Humanidad + Autoridad) */
-h1, h2, h3, h4 {
-    font-family: 'Lora', serif;
-    color: var(--text-h);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-}
-
-p { margin-bottom: 1.2rem; }
-
-a {
-    color: var(--text-h);
-    text-decoration: none;
-    font-weight: 600;
-    border-bottom: 2px solid var(--accent);
-    transition: 0.3s;
-}
-a:hover { opacity: 0.7; }
-
-b, strong { color: var(--text-h); font-weight: 700; }
-i, em { font-family: 'Lora', serif; font-style: italic; }
-
-cite {
+/* Metadata Labels (Pseudoelementos para simular etiquetas de sistema) */
+article::before, section::before, details::before {
+    content: "ID_UNIT // " attr(data-type) " // STATUS: OPTIMAL";
     display: block;
-    border-left: 3px solid var(--accent);
-    padding-left: 1rem;
-    font-style: italic;
-    color: var(--text-p);
-    margin: 1.5rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--border);
+    margin-bottom: 5px;
+    letter-spacing: 1px;
 }
 
-/* 3. LISTAS & DETALLES */
-ul, ol { margin: 1rem 0 1.5rem 1.5rem; }
-li { margin-bottom: 0.5rem; }
+/* HEADER GLOBAL (Top Bar) */
+body > header {
+    position: sticky; top: 0; z-index: 100;
+    height: 50px; padding: 0 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--text-h);
+}
+
+.brand { 
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800; font-size: 1rem; 
+    text-transform: uppercase;
+}
+.brand span { color: var(--accent-red); border: 1px solid var(--accent-red); padding: 0 5px; }
+
+/* =========================================
+   MÓDULOS Y CARDS (Institutional Design)
+   ========================================= */
+
+main {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 2.5rem;
+    padding: 2rem 1.5rem;
+}
+
+article {
+    background: white;
+    padding: 1.5rem; 
+    border: 1px solid var(--border);
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%); /* Esquina cortada Y2K */
+}
+
+/* Jerarquía Cyber por tipo */
+article[data-type="legislacion"] { 
+    border-top: 3px solid var(--accent); 
+}
+article[data-type="legislacion"]::before { color: var(--accent); }
+
+article[data-type="doctrina"] { 
+    border-top: 3px solid var(--accent-red); 
+}
+article[data-type="doctrina"]::before { color: var(--accent-red); }
+
+/* HERO SECTION */
+main > header {
+    border-left: 5px solid var(--text-h);
+    padding: 1rem 2rem;
+    background: white;
+}
+main > header h1 { 
+    font-size: 3rem; font-weight: 800; text-transform: uppercase; 
+    letter-spacing: -2px; color: var(--text-h);
+}
+
+/* =========================================
+   INTERACCIÓN (DETAILS & INTERFACE)
+   ========================================= */
 
 details {
-    background: var(--glass-core);
-    backdrop-filter: var(--blur-std);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-std);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+summary {
     padding: 1rem;
-    margin-bottom: 1rem;
-}
-summary { cursor: pointer; font-weight: 700; color: var(--text-h); }
-
-/* 4. TABLAS (Biseladas) */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--glass-core);
-    backdrop-filter: var(--blur-std);
-    border-radius: var(--radius-std);
-    overflow: hidden;
-    margin: 2rem 0;
-}
-th, td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid var(--glass-border);
-}
-th { background: rgba(255,255,255,0.4); color: var(--text-h); }
-
-/* 5. FORMULARIOS & BOTONES (Soft-UI) */
-input, textarea, select {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-std);
-    font-family: inherit;
-    color: var(--text-h);
-    transition: 0.3s;
-    outline: none;
-}
-input:focus, textarea:focus {
-    background: white;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 4px rgba(0, 210, 255, 0.1);
-}
-
-button, .btn {
-    display: inline-block;
-    padding: 0.8rem 1.8rem;
-    background: var(--text-h);
-    color: white;
-    border: none;
-    border-radius: 50px;
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
     cursor: pointer;
-    transition: 0.3s;
+    background: white;
+    display: flex; justify-content: space-between;
+    transition: all 0.2s;
 }
+
+summary:hover {
+    background: var(--text-h);
+    color: white;
+}
+
+/* TABLAS ESTILO TERMINAL */
+table {
+    width: 100%; border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    background: white;
+}
+
+th { 
+    background: var(--text-h); color: var(--accent); 
+    padding: 10px; text-transform: uppercase;
+}
+
+td { padding: 10px; border-bottom: 1px solid var(--border); }
+
+/* BOTONES (Formas Orgánico-Institucionales) */
+button, .btn {
+    padding: 0.6rem 2rem;
+    background: transparent;
+    border: 2px solid var(--text-h);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0.5rem;
+}
+
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-   }
+    background: var(--accent-red);
+    color: white;
+    border-color: var(--accent-red);
+    box-shadow: 4px 4px 0px var(--text-h);
+}
+
+/* INPUTS */
+input {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 0; /* Menos redondeado, más técnico */
+    padding: 10px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+}
+
+/* FOOTER ANALÓGICO */
+footer {
+    background: var(--text-h);
+    color: white;
+    padding: 3rem 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.footer-brand .license { color: var(--accent); }
+.footer-links a { color: var(--accent-red); border-bottom: 1px solid var(--accent-red); }

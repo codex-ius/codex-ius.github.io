@@ -3,224 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codex_ius | Instituto de Derecho & Humanidad</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="css/layouts/home.css">
+    <title>Codex_Ius | Sibyl System Interface</title>
+    <link rel="stylesheet" href="/css/theme.css">
+    <style>
+        /* Ajustes específicos para el estilo Sibyl Light en Index */
+        
+        .terminal-window {
+            background: white;
+            border-left: 8px solid var(--text-h);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Etiqueta de metadata flotante para el Hero */
+        .terminal-window::after {
+            content: "CORE_PROCESSOR // SYSTEM_ACTIVE";
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--accent-red);
+        }
+
+        #animation {
+            color: var(--accent-red);
+            font-family: 'JetBrains Mono', monospace;
+            border-right: 3px solid var(--accent-red);
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink { 50% { border-color: transparent; } }
+
+        /* Estilo de los links de Digesto (Tipo Botón de Interfaz) */
+        .digesto-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            margin-bottom: 1.5rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-right: 5px solid var(--accent); /* Borde lateral único */
+            color: var(--text-h);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .digesto-link:hover {
+            background: var(--text-h);
+            color: var(--accent);
+            transform: translateX(10px);
+        }
+
+        /* Carrusel de Noticias con estética técnica */
+        #noticias {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding: 20px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-red) transparent;
+        }
+
+        #noticias article {
+            flex: 0 0 450px;
+            scroll-snap-align: start;
+            background: white;
+            border: 1px solid var(--border);
+            /* Esquina cortada técnica */
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+            transition: border 0.3s;
+        }
+
+        #noticias article:hover {
+            border: 1px solid var(--accent-red);
+        }
+
+        #noticias mark {
+            background: var(--text-h);
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); /* Mark trapezoidal */
+            padding: 5px 20px;
+        }
+
+        /* Grid de Herramientas */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .grid article {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            border-left: 4px solid var(--border);
+        }
+
+        .grid article:hover {
+            border-left: 4px solid var(--accent-red);
+            background: #fff;
+        }
+
+        .grid i {
+            font-style: normal;
+            font-weight: 800;
+            color: var(--accent-red);
+            font-size: 1.5rem;
+        }
+
+    </style>
 </head>
-<body>
+<body data-system="SIBYL_UI">
 
-    <header role="banner">
-        <div class="logo">CODEX<span>_IUS</span></div>
-        <nav>
-            <button class="btn-dots" id="menuToggle" aria-label="Menú de contacto">
-                <i id="menuIcon">•••</i>
-            </button>
-        </nav>
-    </header>
+<header>
+    <div class="brand">CODEX<span>_IUS</span></div> 
+    <div style="font-family: 'JetBrains Mono'; font-size: 0.7rem;">LATENCY: 12ms // VER_05</div>
+</header>
 
-    <aside class="contact-drawer" id="contactDrawer">
-        <div class="drawer-content">
-            <span class="tag">Institucional</span>
-            <h2>Contacto & Vínculos</h2>
-            <p>Codex_ius es un espacio de pensamiento jurídico y tecnológico con base en Mendoza, Argentina.</p>
-            <ul class="contact-list" style="list-style: none; padding: 0; margin: 2rem 0;">
-                <li style="margin-bottom: 1.5rem;">
-                    <small style="display:block; opacity: 0.5; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 1px;">Email</small>
-                    <strong>contacto@codexius.edu.ar</strong>
-                </li>
-                <li style="margin-bottom: 1.5rem;">
-                    <small style="display:block; opacity: 0.5; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 1px;">Ubicación</small>
-                    <strong>Mendoza, Argentina</strong>
-                </li>
-                <li>
-                    <small style="display:block; opacity: 0.5; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 1px;">Propósito</small>
-                    <strong>Investigación & Desarrollo Legal</strong>
-                </li>
-            </ul>
-            <div class="drawer-footer">
-                <a href="mailto:contacto@codexius.edu.ar" class="btn">Enviar un mensaje</a>
-            </div>
+<main>
+    <header>
+        <div class="terminal-window">
+            <h1>Codex_Ius:</h1><span> > const <mark><b>iuris_praecepta</b></mark>:  </span><span id="animation"></span>
         </div>
-    </aside>
+    </header> 
 
-    <aside class="contact-drawer" id="repoDrawer">
-        <div class="drawer-content" style="max-width: 600px; width: 95%;">
-            <button class="close-drawer" onclick="closeRepo()">&times;</button>
-            <span class="tag">Biblioteca Digital</span>
-            <h2>Repositorio de Saber</h2>
-            <div class="search-box">
-                <input type="text" id="repoSearch" placeholder="Buscar por tema, ley o autor...">
+    <section data-type="REPOSITORY">
+        <h2>REPOSITORIO</h2>
+        
+        <details data-type="legislacion">
+            <summary>LEGISLACIÓN NACIONAL</summary>
+            <div class="enlace-motor">
+                <a href="sources/res_lex/leyes.html" class="digesto-link">
+                    <span><i style="color:var(--accent)">[SYS] </i> Digesto Judicial Integral</span> 
+                    <span class="arrow">→</span>
+                </a>
             </div>
-            <div class="repo-filters">
-                <button class="filter-btn active" onclick="filterRepo('todos')">Todos</button>
-                <button class="filter-btn" onclick="filterRepo('cursos')">Cursos</button>
-                <button class="filter-btn" onclick="filterRepo('doctrina')">Doctrina</button>
-                <button class="filter-btn" onclick="filterRepo('legislacion')">Leyes</button>
-            </div>
-            <div id="repoResults" class="repo-list"></div>
+
+            <article data-type="modulo_ley">
+                <h3>Código Civil y Comercial</h3>
+                <p>Acceso parametrizado al corpus iuris civilis.</p>
+                <a href="sources/res_lex/leyes.html?ley=ccyc" class="digesto-link">Consultar</a>
+            </article>
+        </details>
+
+        <details data-type="doctrina">
+            <summary>INVESTIGACIONES RECIENTES</summary>
+            <article data-type="paper">
+                <h3>IA y Ética Judicial</h3>
+                <p>Análisis de algoritmos predictivos en sentencias de cámara. <br> <strong>Por Dr. Ejemplo - 2026.</strong></p>
+            </article>
+        </details>
+    </section>
+
+    <section id="apps" data-type="TOOLS">
+        <h2>HERRAMIENTAS</h2>
+        <div class="grid">
+            <article data-type="calc"><i>∑</i><h4>Cálculo de Plazos</h4></article>
+            <article data-type="edit"><i>✎</i><h4>Editor de Demandas</h4></article>
         </div>
-    </aside>
+    </section>
 
-    <aside class="contact-drawer" id="appsDrawer">
-        <div class="drawer-content" style="max-width: 600px; width: 95%;">
-            <button class="close-drawer" onclick="closeApps()">&times;</button>
-            <span class="tag">Herramientas Digitales</span>
-            <h2>Software & Toolbox</h2>
-            <p style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 2rem;">Utilidades de cálculo y productividad para el ejercicio profesional.</p>
-            <div id="appsResults" class="apps-grid"></div>
-            <div style="margin-top: 3rem; text-align: center;">
-                <p style="font-size: 0.7rem; opacity: 0.4;">MENDOZA / CODEX_IUS — MODO WORKSTATION</p>
-            </div>
+    <section id="noticias" data-type="FEED_MONITOR">
+        <article data-type="stat">
+            <mark>DATA_STAT</mark>
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7399048254211915776?collapsed=1" height="500" frameborder="0"></iframe>
+        </article>
+
+        <article data-type="stat">
+            <mark>DATA_STAT</mark>
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7404205939198926848?collapsed=1" height="500" frameborder="0"></iframe>
+        </article>
+
+        <article data-type="stat">
+            <mark>DATA_STAT</mark>
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7422049589035200513?collapsed=1" height="500" frameborder="0"></iframe>
+        </article>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-minimal">
+        <div class="footer-brand">
+            <strong>CODEX<span>_IUS</span></strong> 
+            <span class="divider">//</span> 
+            <span class="license">LICENCIA_MIT_OPEN_SOURCE</span>
         </div>
-    </aside>
+        <div class="footer-legal">
+            <p>AVISO: LA INFORMACIÓN PROCESADA POR ESTA UNIDAD ES DE CARÁCTER INFORMATIVO.</p>
+        </div>
+        <div class="footer-links">
+            <a href="mailto:contacto@codexius.edu.ar">EMAIL</a>
+            <a href="#">LINKEDIN</a>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        TERMINAL_ID: MENDOZA_AR_2026 // NO_LOGS_SAVED
+    </div>
+</footer>
 
-    <section class="hero">
-        <span>INSTITUTO JURÍDICO DIGITAL</span>
-        <h1>Justicia con rostro humano, tecnología con alma.</h1>
-        <p>Un espacio para repensar la norma en la frontera de la inteligencia artificial.</p>
-    </section>
+<script>
+    const textElement = document.getElementById('animation');
+    const words = ["aprender;", "enseñar;", "servir;"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-    <section class="stats-bar">
-        <div class="stat-item"><b>150+</b><span>Publicaciones</span></div>
-        <div class="stat-item"><b>12k</b><span>Comunidad</span></div>
-        <div class="stat-item"><b>04</b><span>Software</span></div>
-        <div class="stat-item"><b>2026</b><span>Visión</span></div>
-    </section>
-
-    <section class="news-section">
-        <div class="news-reel" id="news-reel"></div>
-    </section>
-
-    <main class="mural" id="main-mural"></main>
-
-    <section class="featured">
-        <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent); letter-spacing: 2px;">DESTACADO</span>
-        <h2>¿Quién juzga al algoritmo?</h2>
-        <p>Investigación especial sobre los sesgos en la IA judicial y la defensa de la discrecionalidad humana.</p>
-        <a href="#" class="btn" style="background: var(--accent); color: var(--text-h);">Leer Investigación</a>
-    </section>
-
-    <footer>
-        <p>MENDOZA, ARGENTINA — 2026 CODEX_IUS</p>
-    </footer>
-
-    <script>
-        /* DATA */
-        const noticiasData = [
-            { categoria: "Investigación", titulo: "IA y Debido Proceso", resumen: "Análisis sobre la aplicación de algoritmos en sentencias judiciales.", url: "noticias/ia-proceso.html" },
-            { categoria: "Local", titulo: "Reforma Digital Mendoza", resumen: "Nuevos protocolos para el expediente electrónico provincial.", url: "noticias/reforma-mza.html" },
-            { categoria: "Tendencias", titulo: "El Abogado Algorítmico", resumen: "Cómo la automatización está cambiando el perfil del jurista.", url: "noticias/abogado-ia.html" }
-        ];
-
-        const repositorioData = [
-            { grupo: "cursos", materia: "Penal", titulo: "Garantías Digitales", meta: "4hs Video", url: "#" },
-            { grupo: "doctrina", materia: "Civil", titulo: "IA y Responsabilidad", meta: "2.5k Palabras", url: "#" },
-            { grupo: "legislacion", materia: "Nacional", titulo: "Código Civil 2026", meta: "Ley Vigente", url: "#" },
-            { grupo: "legislacion", materia: "Provincial", titulo: "Código Procesal Mza", meta: "Ley 9001", url: "#" },
-            { grupo: "doctrina", materia: "Laboral", titulo: "Teletrabajo y Desconexión", meta: "1.8k Palabras", url: "#" }
-        ];
-
-        const appsData = [
-            { tag: "Cálculo", title: "Calculadora Previsional", icon: "∑", url: "apps/calc.html" },
-            { tag: "Texto", title: "Editor de Escritos", icon: "✎", url: "apps/editor.html" },
-            { tag: "Web", title: "Playground HTML", icon: "</>", url: "apps/play.html" },
-            { tag: "Cifrado", title: "Generador de Firmas", icon: "⚿", url: "apps/firmas.html" }
-        ];
-
-        const muralData = [
-            { id: "repositorio", tag: "Saber", title: "Repositorio de Doctrina", desc: "Biblioteca para el jurista del siglo XXI.", linkText: "Abrir Biblioteca", url: "javascript:openRepo()", type: "repositorio" },
-            { id: "apps", tag: "Acción", title: "Software Legal", desc: "Utilidades para humanizar la labor diaria.", linkText: "Usar Toolbox", url: "javascript:openApps()", type: "apps" }
-        ];
-
-        /* RENDERERS */
-        function renderNews() {
-            const reel = document.getElementById('news-reel');
-            if(reel) reel.innerHTML = noticiasData.map(post => `
-                <a href="${post.url}" class="news-card">
-                    <div class="news-meta">${post.categoria}</div>
-                    <h3>${post.titulo}</h3>
-                    <p>${post.resumen}</p>
-                    <span class="panel-link" style="margin-top:20px">Leer más <span>→</span></span>
-                </a>`).join('');
+    function type() {
+        const currentWord = words[wordIndex];
+        if (isDeleting) {
+            textElement.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            textElement.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
         }
 
-        function renderMural() {
-            const mural = document.getElementById('main-mural');
-            if(mural) mural.innerHTML = muralData.map(item => `
-                <a href="${item.url}" class="panel ${item.type}">
-                    <span class="tag">${item.tag}</span>
-                    <h2>${item.title}</h2>
-                    <p>${item.desc}</p>
-                    <span class="panel-link">${item.linkText} <span>→</span></span>
-                </a>`).join('');
+        let typeSpeed = isDeleting ? 50 : 150;
+
+        if (!isDeleting && charIndex === currentWord.length) {
+            typeSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            typeSpeed = 500;
         }
+        setTimeout(type, typeSpeed);
+    }
 
-        function renderRepoItems(data) {
-            const container = document.getElementById('repoResults');
-            if(container) container.innerHTML = data.map(item => `
-                <a href="${item.url}" class="repo-item">
-                    <div class="repo-info"><span>${item.materia} // ${item.grupo}</span><h4>${item.titulo}</h4></div>
-                    <div class="repo-meta">${item.meta}</div>
-                </a>`).join('');
-        }
+    document.addEventListener('DOMContentLoaded', type);
+</script>
 
-        function filterRepo(categoria) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                const text = btn.innerText.toLowerCase();
-                btn.classList.toggle('active', text === categoria || (text === 'todos' && categoria === 'todos'));
-            });
-            const filtrados = categoria === 'todos' ? repositorioData : repositorioData.filter(i => i.grupo.toLowerCase() === categoria.toLowerCase());
-            renderRepoItems(filtrados);
-        }
-
-        function renderApps() {
-            const container = document.getElementById('appsResults');
-            if(container) container.innerHTML = appsData.map(app => `
-                <a href="${app.url}" class="app-tile">
-                    <span class="app-tag">${app.tag}</span>
-                    <div class="app-icon">${app.icon}</div>
-                    <h4>${app.title}</h4>
-                </a>`).join('');
-        }
-
-        /* PANELES */
-        function openRepo() { document.getElementById('repoDrawer').classList.add('active'); document.body.style.overflow = 'hidden'; filterRepo('todos'); }
-        function closeRepo() { document.getElementById('repoDrawer').classList.remove('active'); document.body.style.overflow = 'auto'; }
-        function openApps() { document.getElementById('appsDrawer').classList.add('active'); document.body.style.overflow = 'hidden'; renderApps(); }
-        function closeApps() { document.getElementById('appsDrawer').classList.remove('active'); document.body.style.overflow = 'auto'; }
-
-        /* INICIO */
-        document.addEventListener('DOMContentLoaded', () => {
-            renderNews();
-            renderMural();
-            
-            const menuToggle = document.getElementById('menuToggle');
-            const menuIcon = document.getElementById('menuIcon');
-            const contactDrawer = document.getElementById('contactDrawer');
-
-            menuToggle?.addEventListener('click', () => {
-                const active = contactDrawer.classList.toggle('active');
-                menuIcon.innerHTML = active ? '&times;' : '•••';
-                document.body.style.overflow = active ? 'hidden' : 'auto';
-            });
-
-            document.getElementById('repoSearch')?.addEventListener('input', (e) => {
-                const term = e.target.value.toLowerCase();
-                renderRepoItems(repositorioData.filter(i => i.titulo.toLowerCase().includes(term) || i.materia.toLowerCase().includes(term)));
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    [contactDrawer, document.getElementById('repoDrawer'), document.getElementById('appsDrawer')].forEach(d => d.classList.remove('active'));
-                    menuIcon.innerHTML = '•••';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
