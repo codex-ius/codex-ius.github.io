@@ -5,26 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SISTEMA_ARCHIVO_DOCTRINA</title>
+    <link rel="stylesheet" href="../../css/theme.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
-
-        :root {
-            /* Paleta Doctrina Corregida */
-            --bg-ultra-dark: #0f0202;
-            /* Fondo casi negro rojizo */
-            --bg-module: #450a0a;
-            /* Granate: Rigor académico */
-            --accent-main: #b91c1c;
-            /* Rojo: Resaltado de jerarquía */
-            --accent-soft: #7f1d1d;
-            /* Vino: Elegancia en bordes */
-            --accent-glow: #fce7f3;
-            /* Rosa Pastel: Contraste suave */
-            --text-main: #f8fafc;
+:root {
+            --bg-ultra-dark: #f2f4f7; /* Cambiado a Light para ser coherente con el index */
+            --bg-module: #ffffff;
+            --accent-main: #e6003d; /* Carmín Doctrina */
+            --accent-soft: #d1d5db;
+            --accent-glow: #1a1a1a;
+            --text-main: #4a4a4a;
             --font-mono: 'JetBrains Mono', monospace;
-            --nav-width: 280px;
+            --nav-width: 300px;
         }
 
+        /* Scanline sutil sobre el visualizador para efecto terminal */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.02) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.01), rgba(0, 255, 234, 0.01));
+            background-size: 100% 4px, 4px 100%;
+            pointer-events: none;
+            z-index: 2000;
+        }
+
+        body {
+            margin: 0; padding: 0; height: 100vh;
+            display: flex; flex-direction: column;
+            background: var(--bg-ultra-dark);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            overflow: hidden;
+        }
+        
         /* --- PERSONALIZACIÓN DEL SCROLLBAR (ESTÉTICA CYBER) --- */
         ::-webkit-scrollbar {
             width: 8px;
@@ -48,17 +63,7 @@
             box-shadow: 0 0 10px var(--accent-main);
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background: var(--bg-ultra-dark);
-            color: var(--text-main);
-            font-family: var(--font-mono);
-            overflow: hidden;
-        }
+        
 
         /* --- HEADER --- */
         header {
@@ -203,7 +208,7 @@
         }
 
         /* Ajuste para que en móviles muy pequeños no se amontone todo */
-        @media (max-width: 480px) {
+      /*  @media (max-width: 480px) {
             header {
                 height: auto;
                 padding: 10px;
@@ -215,7 +220,7 @@
                 width: 100%;
                 justify-content: space-between;
             }
-        }
+        }*/
     </style>
 </head>
 
@@ -224,17 +229,14 @@
     <header>
         <div class="header-controls">
             <button class="menu-toggle home-btn" onclick="location.href='../../index.html'">
-                [ RETURN_HOME ]
+                [ VOLVER ]
             </button>
             <button class="menu-toggle" onclick="toggleMenu()">
-                [ ACCESS_FILES ]
+                [ ARCHIVOS ]
             </button>
         </div>
 
-        <div style="font-size: 10px; text-align: right; color: var(--accent-glow);">
-            PROTOCOL: <span style="color: var(--accent-main)">DOCTRINA_REDACTED</span><br>
-            <span id="path-display">/root/vault/</span>
-        </div>
+        
     </header>
 
     <div class="main-container">
@@ -265,9 +267,7 @@
 
             <div id="fallback-container"
                 style="display:none; padding: 20px; text-align: center; background: var(--bg-ultra-dark); width: 100%; border-top: 1px solid var(--accent-soft);">
-                <p style="color: var(--accent-glow); font-size: 11px; margin-bottom: 10px; letter-spacing: 1px;">
-                    [ VIEWING_ISSUE_DETECTED ]
-                </p>
+                
                 <a id="download-link" href="#" target="_blank" class="menu-toggle"
                     style="text-decoration: none; display: inline-block; font-size: 12px;">
                     [ DESCARGA_DIRECTA_DEL_DOCUMENTO ]
@@ -290,8 +290,7 @@
             const viewer = document.getElementById('pdf-viewer');
             const fallback = document.getElementById('fallback-container');
             const downloadLink = document.getElementById('download-link');
-            const pathDisplay = document.getElementById('path-display');
-
+            
             // 1. Resetear estados visuales
             fallback.style.display = 'none';
 
@@ -302,8 +301,6 @@
             // Nota: Esto solo funcionará si el sitio está publicado en internet (GitHub Pages, etc.)
             viewer.src = `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteURL)}&embedded=true`;
 
-            // 4. Actualizar metadatos en la interfaz
-            pathDisplay.innerText = `/vault/${element.innerText.trim()}`;
             downloadLink.href = absoluteURL;
 
             // 5. Gestión de Selección

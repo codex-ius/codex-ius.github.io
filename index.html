@@ -1,30 +1,174 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codex_Ius | Sibyl System Interface</title>
+    <title>Codex_Ius</title>
     <link rel="stylesheet" href="/css/theme.css">
     <style>
         /* Ajustes específicos para el estilo Sibyl Light en Index */
-        
+
+        /* CONTENEDOR DEL HERO */
         .terminal-window {
-            background: white;
-            border-left: 8px solid var(--text-h);
-            padding: 2rem;
             position: relative;
-            overflow: hidden;
+            /* Necesario para posicionar el after */
+            background: white;
+            height: 40vh;
+            padding: 2.5rem 2rem;
+
         }
 
-        /* Etiqueta de metadata flotante para el Hero */
+        /* LA ETIQUETA DE COMANDO (Pseudo-elemento) */
         .terminal-window::after {
-            content: "CORE_PROCESSOR // SYSTEM_ACTIVE";
+            content: "";
+            /* Se llena con la animación */
             position: absolute;
-            top: 5px;
-            right: 10px;
+            top: 8px;
+            right: 12px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6rem;
+            font-size: 10px;
+            font-weight: 700;
             color: var(--accent-red);
+            /* Cyan para el comando */
+            background: rgba(0, 0, 0, 0.03);
+            padding: 4px 10px;
+            border-radius: 2px;
+            letter-spacing: 0.5px;
+
+            /* Efecto de parpadeo de cursor al final del texto animado */
+            border-right: 2px solid var(--accent-red);
+
+            /* Animaciones combinadas */
+            animation:
+                linux-install 8s steps(40) infinite,
+                cursor-blink 0.8s infinite;
+        }
+
+        /* ANIMACIÓN DEL COMANDO LINUX */
+        @keyframes linux-install {
+
+            0%,
+            10% {
+                content: "root@user:~# ";
+            }
+
+            15% {
+                content: "root@user:~# s";
+            }
+
+            17% {
+                content: "root@user:~# su";
+            }
+
+            19% {
+                content: "root@user:~# sud";
+            }
+
+            21% {
+                content: "root@user:~# sudo ";
+            }
+
+            23% {
+                content: "root@user:~# sudo a";
+            }
+
+            25% {
+                content: "root@user:~# sudo ap";
+            }
+
+            27% {
+                content: "root@user:~# sudo apt ";
+            }
+
+            29% {
+                content: "root@user:~# sudo apt i";
+            }
+
+            31% {
+                content: "root@user:~# sudo apt in";
+            }
+
+            33% {
+                content: "root@user:~# sudo apt ins";
+            }
+
+            35% {
+                content: "root@user:~# sudo apt inst";
+            }
+
+            37% {
+                content: "root@user:~# sudo apt insta";
+            }
+
+            39% {
+                content: "root@user:~# sudo apt instal";
+            }
+
+            41% {
+                content: "root@user:~# sudo apt install ";
+            }
+
+            43% {
+                content: "root@user:~# sudo apt install c";
+            }
+
+            45% {
+                content: "root@user:~# sudo apt install co";
+            }
+
+            47% {
+                content: "root@user:~# sudo apt install cod";
+            }
+
+            49% {
+                content: "root@user:~# sudo apt install code";
+            }
+
+            51% {
+                content: "root@user:~# sudo apt install codex";
+            }
+
+            53% {
+                content: "root@user:~# sudo apt install codex-";
+            }
+
+            55% {
+                content: "root@user:~# sudo apt install codex-i";
+            }
+
+            57% {
+                content: "root@user:~# sudo apt install codex-iu";
+            }
+
+            59% {
+                content: "root@user:~# sudo apt install codex-ius";
+            }
+
+            65% {
+                content: "root@user:~# sudo apt install codex-ius-OK";
+            }
+
+            90% {
+                content: "root@user:~# sudo apt install codex-ius-OK";
+            }
+
+            100% {
+                content: "root@user:~# ";
+            }
+        }
+
+        /* ANIMACIÓN DEL CURSOR */
+        @keyframes cursor-blink {
+
+            0%,
+            100% {
+                border-color: var(--accent-red);
+            }
+
+            50% {
+                border-color: transparent;
+            }
         }
 
         #animation {
@@ -32,217 +176,196 @@
             font-family: 'JetBrains Mono', monospace;
             border-right: 3px solid var(--accent-red);
             padding-right: 5px;
+            background: rgba(0, 0, 0, 0.03);
             animation: blink 0.7s infinite;
         }
 
-        @keyframes blink { 50% { border-color: transparent; } }
-
-        /* Estilo de los links de Digesto (Tipo Botón de Interfaz) */
-        .digesto-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            margin-bottom: 1.5rem;
-            background: white;
-            border: 1px solid var(--border);
-            border-right: 5px solid var(--accent); /* Borde lateral único */
-            color: var(--text-h);
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.3s ease;
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
         }
-
-        .digesto-link:hover {
-            background: var(--text-h);
-            color: var(--accent);
-            transform: translateX(10px);
-        }
-
-        /* Carrusel de Noticias con estética técnica */
-        #noticias {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 20px;
-            padding: 20px 0;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent-red) transparent;
-        }
-
-        #noticias article {
-            flex: 0 0 450px;
-            scroll-snap-align: start;
-            background: white;
-            border: 1px solid var(--border);
-            /* Esquina cortada técnica */
-            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
-            transition: border 0.3s;
-        }
-
-        #noticias article:hover {
-            border: 1px solid var(--accent-red);
-        }
-
-        #noticias mark {
-            background: var(--text-h);
-            color: var(--accent);
-            font-family: 'JetBrains Mono', monospace;
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); /* Mark trapezoidal */
-            padding: 5px 20px;
-        }
-
-        /* Grid de Herramientas */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .grid article {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            cursor: pointer;
-            border-left: 4px solid var(--border);
-        }
-
-        .grid article:hover {
-            border-left: 4px solid var(--accent-red);
-            background: #fff;
-        }
-
-        .grid i {
-            font-style: normal;
-            font-weight: 800;
-            color: var(--accent-red);
-            font-size: 1.5rem;
-        }
-
     </style>
 </head>
+
 <body data-system="SIBYL_UI">
 
-<header>
-    <div class="brand">CODEX<span>_IUS</span></div> 
-    <div style="font-family: 'JetBrains Mono'; font-size: 0.7rem;">LATENCY: 12ms // VER_05</div>
-</header>
-
-<main>
     <header>
-        <div class="terminal-window">
-            <h1>Codex_Ius:</h1><span> > const <mark><b>iuris_praecepta</b></mark>:  </span><span id="animation"></span>
-        </div>
-    </header> 
+        <div class="brand">CODEX<span>_IUS</span></div>
+        <div style="font-family: 'JetBrains Mono'; font-size: 0.7rem;">LATENCY: 12ms // VER_05</div>
+    </header>
 
-    <section data-type="REPOSITORY">
-        <h2>REPOSITORIO</h2>
-        
-        <details data-type="legislacion">
-            <summary>LEGISLACIÓN NACIONAL</summary>
-            <div class="enlace-motor">
-                <a href="sources/res_lex/leyes.html" class="digesto-link">
-                    <span><i style="color:var(--accent)">[SYS] </i> Digesto Judicial Integral</span> 
-                    <span class="arrow">→</span>
-                </a>
+    <main>
+        <header>
+            <div class="terminal-window">
+                <h1>Codex_Ius:</h1><span> > const <i style="color: var(--accent-dark);">iuris_praecepta</i> =
+                </span><span id="animation"></span>
             </div>
+        </header>
 
-            <article data-type="modulo_ley">
-                <h3>Código Civil y Comercial</h3>
-                <p>Acceso parametrizado al corpus iuris civilis.</p>
-                <a href="sources/res_lex/leyes.html?ley=ccyc" class="digesto-link">Consultar</a>
+        <section data-type="REPOSITORY">
+            <h2>REPOSITORIO</h2>
+
+            <details data-type="legislacion" open>
+                <summary>LEGISLACIÓN NACIONAL</summary>
+
+                <article data-type="modulo_ley" style="background: var(--accent-soft);">
+                    <h3>Digesto Judicial Integral</h3>
+                    <p>Motor de búsqueda avanzada y base de datos consolidada de la normativa nacional vigente.</p>
+                    <a href="sources/res_lex/leyes.html" class="btn-sys">[ ACCESS_CORE_DATABASE ]</a>
+                </article>
+
+                <article data-type="modulo_ley">
+                    <h3>Código Civil y Comercial</h3>
+                    <p>Acceso parametrizado al corpus iuris civilis. Análisis de vigencia y relaciones normativas.</p>
+                    <a href="sources/res_lex/leyes.html?ley=ccyc" class="btn-sys">[ EXECUTE_CONSULT ]</a>
+                </article>
+            </details>
+
+            <details data-type="doctrina">
+                <summary>INVESTIGACIONES RECIENTES</summary>
+
+                <article data-type="paper">
+                    <header class="paper-meta">
+                        <span class="status-tag">PEER_REVIEWED</span>
+                        <span class="date-tag">2026_EDITION</span>
+                    </header>
+
+                    <h3>IA y Ética Judicial</h3>
+                    <p>Análisis de algoritmos predictivos en sentencias de cámara y el impacto en el debido proceso
+                        legal.</p>
+
+                    <div class="author-block">
+                        <i class="icon-user"></i> <strong>POR DR. EJEMPLO</strong>
+                    </div>
+
+                    <a href="#" class="btn-sys">[ READ_DOCUMENT ]</a>
+                </article>
+            </details>
+
+            <details data-type="academia">
+                <summary>CÁPSULAS DE FORMACIÓN</summary>
+
+                <div class="enlace-motor">
+                    <p
+                        style="font-size: 0.8rem; color: var(--text-p); padding: 10px 0 0 20px; font-family: 'JetBrains Mono'; opacity: 0.7;">
+                        // Módulos de entrenamiento detectados: 02
+                    </p>
+                </div>
+
+                <article data-type="modulo_capsula">
+                    <h3>Introducción al Derecho Digital</h3>
+                    <p>Análisis de soberanía tecnológica, criptografía aplicada y marcos legales de la era Sibyl.</p>
+                    <a href="#" class="btn-sys">[ BOOT_TRAINING ]</a>
+                </article>
+
+                <article data-type="modulo_capsula">
+                    <h3>Procesamiento de Datos Judiciales</h3>
+                    <p>Protocolos de integridad y mantenimiento de cadena de custodia en sistemas distribuidos.</p>
+                    <a href="#" class="btn-sys">[ BOOT_TRAINING ]</a>
+                </article>
+            </details>
+        </section>
+
+        <section id="apps" data-type="TOOLS">
+            <h2>HERRAMIENTAS</h2>
+            <div class="grid">
+                <article data-type="calc"><i>∑</i>
+                    <h4>Cálculo de Plazos</h4>
+                    <a href="#">Ingresar</a>
+                </article>
+                <article data-type="edit"><i>✎</i>
+                    <h4>Editor de Demandas</h4>
+                </article>
+                <article data-type="calc"><i>∑</i>
+                    <h4>Cálculo de Plazos</h4>
+                </article>
+                <article data-type="edit"><i>✎</i>
+                    <h4>Editor de Demandas</h4>
+                </article>
+                <article data-type="calc"><i>∑</i>
+                    <h4>Cálculo de Plazos</h4>
+                </article>
+                <article data-type="edit"><i>✎</i>
+                    <h4>Editor de Demandas</h4>
+                </article>
+            </div>
+        </section>
+
+        <section id="noticias" data-type="FEED_MONITOR">
+            <article data-type="stat">
+                <mark>DATA_STAT</mark>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7399048254211915776?collapsed=1"
+                    height="500" frameborder="0"></iframe>
             </article>
-        </details>
 
-        <details data-type="doctrina">
-            <summary>INVESTIGACIONES RECIENTES</summary>
-            <article data-type="paper">
-                <h3>IA y Ética Judicial</h3>
-                <p>Análisis de algoritmos predictivos en sentencias de cámara. <br> <strong>Por Dr. Ejemplo - 2026.</strong></p>
+            <article data-type="stat">
+                <mark>DATA_STAT</mark>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7404205939198926848?collapsed=1"
+                    height="500" frameborder="0"></iframe>
             </article>
-        </details>
-    </section>
 
-    <section id="apps" data-type="TOOLS">
-        <h2>HERRAMIENTAS</h2>
-        <div class="grid">
-            <article data-type="calc"><i>∑</i><h4>Cálculo de Plazos</h4></article>
-            <article data-type="edit"><i>✎</i><h4>Editor de Demandas</h4></article>
+            <article data-type="stat">
+                <mark>DATA_STAT</mark>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7422049589035200513?collapsed=1"
+                    height="500" frameborder="0"></iframe>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-minimal">
+            <div class="footer-brand">
+                <strong>CODEX<span>_IUS</span></strong>
+                <span class="divider">//</span>
+                <span class="license">LICENCIA_MIT_OPEN_SOURCE</span>
+            </div>
+            <div class="footer-legal">
+                <p>AVISO: LA INFORMACIÓN PROCESADA POR ESTA UNIDAD ES DE CARÁCTER INFORMATIVO.</p>
+            </div>
+            <div class="footer-links">
+                <a href="mailto:contacto@codexius.edu.ar">EMAIL</a>
+                <a href="#">LINKEDIN</a>
+            </div>
         </div>
-    </section>
-
-    <section id="noticias" data-type="FEED_MONITOR">
-        <article data-type="stat">
-            <mark>DATA_STAT</mark>
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7399048254211915776?collapsed=1" height="500" frameborder="0"></iframe>
-        </article>
-
-        <article data-type="stat">
-            <mark>DATA_STAT</mark>
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7404205939198926848?collapsed=1" height="500" frameborder="0"></iframe>
-        </article>
-
-        <article data-type="stat">
-            <mark>DATA_STAT</mark>
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7422049589035200513?collapsed=1" height="500" frameborder="0"></iframe>
-        </article>
-    </section>
-</main>
-
-<footer>
-    <div class="footer-minimal">
-        <div class="footer-brand">
-            <strong>CODEX<span>_IUS</span></strong> 
-            <span class="divider">//</span> 
-            <span class="license">LICENCIA_MIT_OPEN_SOURCE</span>
+        <div class="footer-copyright">
+            TERMINAL_ID: MENDOZA_AR_2026 // NO_LOGS_SAVED
         </div>
-        <div class="footer-legal">
-            <p>AVISO: LA INFORMACIÓN PROCESADA POR ESTA UNIDAD ES DE CARÁCTER INFORMATIVO.</p>
-        </div>
-        <div class="footer-links">
-            <a href="mailto:contacto@codexius.edu.ar">EMAIL</a>
-            <a href="#">LINKEDIN</a>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        TERMINAL_ID: MENDOZA_AR_2026 // NO_LOGS_SAVED
-    </div>
-</footer>
+    </footer>
 
-<script>
-    const textElement = document.getElementById('animation');
-    const words = ["aprender;", "enseñar;", "servir;"];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
+    <script>
+        const textElement = document.getElementById('animation');
+        const words = ["['aprender', 'enseñar', 'servir']", "['honeste_vivere', 'alterum_non_laedere', 'suum_cuique_tribuere']"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
 
-    function type() {
-        const currentWord = words[wordIndex];
-        if (isDeleting) {
-            textElement.textContent = currentWord.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            textElement.textContent = currentWord.substring(0, charIndex + 1);
-            charIndex++;
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                textElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                textElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 150;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
+            }
+            setTimeout(type, typeSpeed);
         }
 
-        let typeSpeed = isDeleting ? 50 : 150;
-
-        if (!isDeleting && charIndex === currentWord.length) {
-            typeSpeed = 2000;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-            typeSpeed = 500;
-        }
-        setTimeout(type, typeSpeed);
-    }
-
-    document.addEventListener('DOMContentLoaded', type);
-</script>
+        document.addEventListener('DOMContentLoaded', type);
+    </script>
 
 </body>
+
 </html>

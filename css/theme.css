@@ -1,33 +1,44 @@
 /* =========================================
-   CODEX_IUS: SIBYL SYSTEM LIGHT (VER_05)
-   ESTILO: CYBERPUNK-INSTITUTIONAL / Y2K
+   CODEX_IUS: SYSTEM LIGHT (VER_05)
+   ESTILO: GLASS-ORGANIC INSTITUTIONAL (Y2K/FRUTIGER)
    ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;600;800&display=swap');
 
 :root {
+    /* Paleta Base */
     --bg: #f2f4f7;
     --text-h: #1a1a1a;
     --text-p: #4a4a4a;
-    --accent: #00f2ff; /* Cyan Cyber */
-    --accent-red: #e6003d; /* Carmín Alerta */
-    --glass: rgba(255, 255, 255, 0.8);
     --border: #d1d5db;
+    --glass: rgba(255, 255, 255, 0.8);
     --scanline: rgba(0, 242, 255, 0.05);
+
+    /* Acentos de Identidad */
+    --accent: #00a3ad;       /* Cyan (Legislación) */
+    --accent-red: #e6003d;   /* Carmín (Doctrina / Alerta) */
+    --accent-green: #008f68; /* Esmeralda (Academia) */
+    
+    /* Variantes Oscuras */
+    --accent-dark: #004c52;
+    --accent-red-dark: #63001a;
+    --accent-green-soft: rgba(0, 143, 104, 0.1);
 }
 
 /* =========================================
-   ESTRUCTURA Y FONDO SIBYL
+   RESETEO Y ESTRUCTURA GLOBAL
    ========================================= */
 
-* { 
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Outfit', sans-serif; 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
+    font-family: 'Outfit', sans-serif;
     background-color: var(--bg);
-    background-image: 
+    background-image:
         linear-gradient(var(--scanline) 1px, transparent 1px),
         linear-gradient(90deg, var(--scanline) 1px, transparent 1px);
     background-size: 20px 20px;
@@ -35,141 +46,88 @@ body {
     line-height: 1.6;
 }
 
-/* Metadata Labels (Pseudoelementos para simular etiquetas de sistema) */
-article::before, section::before, details::before {
-    content: "ID_UNIT // " attr(data-type) " // STATUS: OPTIMAL";
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--border);
-    margin-bottom: 5px;
-    letter-spacing: 1px;
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 2rem 1.5rem;
 }
 
-/* HEADER GLOBAL (Top Bar) */
+/* Header Global */
 body > header {
-    position: sticky; top: 0; z-index: 100;
-    height: 50px; padding: 0 1.5rem;
-    display: flex; align-items: center; justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 50px;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background: var(--glass);
     backdrop-filter: blur(10px);
     border-bottom: 2px solid var(--text-h);
 }
 
-.brand { 
+.brand {
     font-family: 'JetBrains Mono', monospace;
-    font-weight: 800; font-size: 1rem; 
+    font-weight: 800;
+    font-size: 1rem;
     text-transform: uppercase;
 }
-.brand span { color: var(--accent-red); border: 1px solid var(--accent-red); padding: 0 5px; }
 
-/* =========================================
-   MÓDULOS Y CARDS (Institutional Design)
-   ========================================= */
-
-main {
-    max-width: 1200px; margin: 0 auto;
-    display: flex; flex-direction: column; gap: 2.5rem;
-    padding: 2rem 1.5rem;
-}
-
-article {
-    background: white;
-    padding: 1.5rem; 
-    border: 1px solid var(--border);
-    position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%); /* Esquina cortada Y2K */
-}
-
-/* Jerarquía Cyber por tipo */
-article[data-type="legislacion"] { 
-    border-top: 3px solid var(--accent); 
-}
-article[data-type="legislacion"]::before { color: var(--accent); }
-
-article[data-type="doctrina"] { 
-    border-top: 3px solid var(--accent-red); 
-}
-article[data-type="doctrina"]::before { color: var(--accent-red); }
-
-/* HERO SECTION */
-main > header {
-    border-left: 5px solid var(--text-h);
-    padding: 1rem 2rem;
-    background: white;
-}
-main > header h1 { 
-    font-size: 3rem; font-weight: 800; text-transform: uppercase; 
-    letter-spacing: -2px; color: var(--text-h);
+.brand span {
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+    padding: 0 5px;
 }
 
 /* =========================================
-   INTERACCIÓN (DETAILS & INTERFACE)
+   COMPONENTES DE INTERFAZ (UI)
    ========================================= */
 
-details {
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--border);
-}
-
-summary {
-    padding: 1rem;
+/* Botón Universal .btn-sys */
+.btn-sys, button, .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
     cursor: pointer;
-    background: white;
-    display: flex; justify-content: space-between;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-summary:hover {
+.btn-sys {
+    margin-top: 15px;
+    font-size: 11px;
+    letter-spacing: 1px;
     background: var(--text-h);
     color: white;
+    padding: 10px 22px;
+    border: none;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
 }
 
-/* TABLAS ESTILO TERMINAL */
-table {
-    width: 100%; border-collapse: collapse;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    background: white;
+.btn-sys:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding-right: 30px;
 }
 
-th { 
-    background: var(--text-h); color: var(--accent); 
-    padding: 10px; text-transform: uppercase;
+.btn-sys:active {
+    filter: brightness(1.2);
+    transform: translateY(0);
 }
 
-td { padding: 10px; border-bottom: 1px solid var(--border); }
-
-/* BOTONES (Formas Orgánico-Institucionales) */
-button, .btn {
-    padding: 0.6rem 2rem;
-    background: transparent;
-    border: 2px solid var(--text-h);
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    text-transform: uppercase;
-    position: relative;
-    cursor: pointer;
-    transition: 0.3s;
-    margin: 0.5rem;
-}
-
-button:hover {
-    background: var(--accent-red);
-    color: white;
-    border-color: var(--accent-red);
-    box-shadow: 4px 4px 0px var(--text-h);
-}
-
-/* INPUTS */
+/* Inputs y Tablas */
 input {
     background: #fff;
     border: 1px solid var(--border);
-    border-radius: 0; /* Menos redondeado, más técnico */
     padding: 10px;
     font-family: 'JetBrains Mono', monospace;
 }
@@ -180,7 +138,226 @@ input:focus {
     box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
 }
 
-/* FOOTER ANALÓGICO */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    background: white;
+}
+
+th {
+    background: var(--text-h);
+    color: var(--accent);
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* =========================================
+   MÓDULOS, CARDS Y LÓGICA DE BLOQUES
+   ========================================= */
+
+/* Base de Contenedores */
+article, details {
+    background: white;
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+article {
+    padding: 1.5rem;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+}
+
+details { margin-bottom: 1.5rem; }
+
+summary {
+    padding: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    cursor: pointer;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.2s;
+    color: var(--text-h);
+}
+
+summary:hover {
+    background: var(--text-h);
+    color: white;
+}
+
+/* --- Metadata Labels (Ruta de Sistema) --- */
+details[data-type]::before,
+article[data-type]::before,
+section::before {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: lowercase;
+    padding: 0.5rem;
+    letter-spacing: 1px;
+    z-index: 5;
+    content: "mnt/codex_ius/usr/bin/read --type= " attr(data-type);
+}
+
+/* --- BLOQUE: LEGISLACIÓN (CYAN) --- */
+details[data-type="legislacion"], 
+article[data-type="legislacion"] { border-top: 3px solid var(--accent) !important; }
+
+details[data-type="legislacion"]::before, 
+article[data-type="legislacion"]::before { color: var(--accent); }
+
+details[data-type="legislacion"] .btn-sys:hover { background: var(--accent); color: var(--text-h); }
+
+/* Sub-elemento Ley */
+article[data-type="modulo_ley"] {
+    border-top: 1px solid var(--border);
+    padding-left: 15px;
+    border-left: 2px solid var(--accent);
+}
+article[data-type="modulo_ley"]::before { content: "exec /bin/query_law"; color: var(--accent); opacity: 0.5; }
+
+/* --- BLOQUE: DOCTRINA (CARMÍN) --- */
+details[data-type="doctrina"], 
+article[data-type="doctrina"],
+article[data-type="paper"] { border-top: 3px solid var(--accent-red) !important; }
+
+details[data-type="doctrina"]::before, 
+article[data-type="doctrina"]::before,
+article[data-type="paper"]::before { color: var(--accent-red); }
+
+details[data-type="doctrina"] .btn-sys:hover { 
+    background: var(--accent-red); 
+    box-shadow: 0 5px 15px rgba(230, 0, 61, 0.3); 
+    color: white;
+}
+
+article[data-type="paper"] { border-left: 4px solid var(--accent-red); }
+
+/* --- BLOQUE: ACADEMIA (VERDE) --- */
+details[data-type="academia"] { border-top: 3px solid var(--accent-green) !important; }
+
+details[data-type="academia"]::before { color: var(--accent-green) !important; }
+
+article[data-type="modulo_capsula"] { border-left: 4px solid var(--accent-green); }
+
+details[data-type="academia"] .btn-sys:hover { background: var(--accent-green); color: white; }
+
+/* =========================================
+   SECCIONES ESPECÍFICAS (HERO, NOTICIAS, GRID)
+   ========================================= */
+
+/* Hero & Terminal */
+.terminal-window {
+    position: relative;
+    background: white;
+    height: 40vh;
+    padding: 2.5rem 2rem;
+}
+
+.terminal-window::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent-red);
+    background: rgba(0, 0, 0, 0.03);
+    padding: 4px 10px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    border-right: 2px solid var(--accent-red);
+    animation: linux-install 8s steps(40) infinite, cursor-blink 0.8s infinite;
+}
+
+/* Noticias / Carrusel */
+#noticias {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 20px 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-red) transparent;
+}
+
+#noticias article {
+    flex: 0 0 450px;
+    scroll-snap-align: start;
+}
+
+#noticias article:hover { border: 1px solid var(--accent-red); }
+
+#noticias mark {
+    background: var(--text-h);
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+    padding: 5px 20px;
+}
+
+/* Grid de Herramientas */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.grid article { border-left: 4px solid var(--border); cursor: pointer; }
+.grid article:hover { border-left: 4px solid var(--accent-red); background: #fff; }
+
+/* =========================================
+   ANIMACIONES & KEYFRAMES
+   ========================================= */
+
+@keyframes linux-install {
+    0%, 10% { content: "root@user:~# "; }
+    15% { content: "root@user:~# s"; }
+    17% { content: "root@user:~# su"; }
+    19% { content: "root@user:~# sud"; }
+    21% { content: "root@user:~# sudo "; }
+    23% { content: "root@user:~# sudo a"; }
+    25% { content: "root@user:~# sudo ap"; }
+    27% { content: "root@user:~# sudo apt "; }
+    29% { content: "root@user:~# sudo apt i"; }
+    31% { content: "root@user:~# sudo apt in"; }
+    33% { content: "root@user:~# sudo apt ins"; }
+    35% { content: "root@user:~# sudo apt inst"; }
+    37% { content: "root@user:~# sudo apt insta"; }
+    39% { content: "root@user:~# sudo apt instal"; }
+    41% { content: "root@user:~# sudo apt install "; }
+    43% { content: "root@user:~# sudo apt install c"; }
+    45% { content: "root@user:~# sudo apt install co"; }
+    47% { content: "root@user:~# sudo apt install cod"; }
+    49% { content: "root@user:~# sudo apt install code"; }
+    51% { content: "root@user:~# sudo apt install codex"; }
+    53% { content: "root@user:~# sudo apt install codex-"; }
+    55% { content: "root@user:~# sudo apt install codex-i"; }
+    57% { content: "root@user:~# sudo apt install codex-iu"; }
+    59% { content: "root@user:~# sudo apt install codex-ius"; }
+    65%, 90% { content: "root@user:~# sudo apt install codex-ius-OK"; }
+    100% { content: "root@user:~# "; }
+}
+
+@keyframes cursor-blink {
+    0%, 100% { border-color: var(--accent-red); }
+    50% { border-color: transparent; }
+}
+
+/* =========================================
+   FOOTER ANALÓGICO
+   ========================================= */
+
 footer {
     background: var(--text-h);
     color: white;
