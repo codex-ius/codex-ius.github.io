@@ -14,7 +14,7 @@
             position: relative;
             /* Necesario para posicionar el after */
             background: white;
-            height: 40vh;
+            height: 30vh;
             padding: 2.5rem 2rem;
 
         }
@@ -185,6 +185,148 @@
                 border-color: transparent;
             }
         }
+
+        /* =========================================
+   BLOQUE: MINI-TERMINALES (GRID HERRAMIENTAS)
+   ========================================= */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .terminal-card {
+            background: #121212 !important;
+            /* Fondo oscuro terminal */
+            border: 1px solid #333;
+            padding: 0 !important;
+            /* Reset para el header de la terminal */
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        /* Header de la ventana de terminal */
+        .term-header {
+            background: #252525;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #333;
+        }
+
+        .term-dot {
+            width: 8px;
+            height: 8px;
+            background: #ff5f56;
+            /* Rojo ventana */
+            border-radius: 50%;
+            box-shadow: 12px 0 0 #ffbd2e, 24px 0 0 #27c93f;
+            /* Amarillo y Verde */
+        }
+
+        .term-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: #888;
+            margin-left: 30px;
+        }
+
+        /* Cuerpo de la terminal */
+        .term-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .term-body i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-style: normal;
+        }
+
+        .term-body h4 {
+            color: #eee;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 10px;
+        }
+
+        .term-body p {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+
+        /* Lógica de ejecución Linux */
+        .term-exec {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #00ff41;
+            /* Verde Matrix clásico */
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .term-exec .prompt {
+            color: var(--accent);
+        }
+
+        /* Enlaces estilo botón terminal */
+        .term-link {
+            align-self: flex-start;
+            color: #121212;
+            background: var(--accent);
+            padding: 5px 15px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+
+        /* Colores dinámicos por data-type */
+        .terminal-card[data-type="calc"] i {
+            color: var(--accent);
+        }
+
+        .terminal-card[data-type="calc"] .term-link {
+            background: var(--accent);
+        }
+
+        .terminal-card[data-type="edit"] i {
+            color: var(--accent-red);
+        }
+
+        .terminal-card[data-type="edit"] .term-link {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        /* Hover Effects */
+        .terminal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent);
+        }
+
+        .terminal-card[data-type="edit"]:hover {
+            border-color: var(--accent-red);
+        }
+
+        /* Color para Jurisprudencia */
+        .terminal-card[data-type="law"] i {
+            color: var(--accent-green);
+        }
+
+        .terminal-card[data-type="law"] .term-link {
+            background: var(--accent-green);
+            color: white;
+        }
     </style>
 </head>
 
@@ -267,28 +409,73 @@
             </details>
         </section>
 
-        <section id="apps" data-type="TOOLS">
+        <section id="apps" data-type="tools_system">
             <h2>HERRAMIENTAS</h2>
             <div class="grid">
-                <article data-type="calc"><i>∑</i>
-                    <h4>Cálculo de Plazos</h4>
-                    <a href="#">Ingresar</a>
+                <article class="terminal-card" data-type="calc">
+                    <header class="term-header">
+                        <span class="term-dot"></span>
+                        <span class="term-title">db.sh</span>
+                    </header>
+                    <div class="term-body">
+                        <i>&#128450;</i>
+                        <h4>Gestor_Codex_Ius</h4>
+                        <p>Gestor privado con base de datos</p>
+                        <div class="term-exec">
+                            <span class="prompt">user@codex:~$</span> ./run_dbGestor --init
+                        </div>
+                        <a href="/sources/res_app/gestor.html" class="term-link">Acceder</a>
+                    </div>
                 </article>
-                <article data-type="edit"><i>✎</i>
-                    <h4>Editor de Demandas</h4>
+
+                <article class="terminal-card" data-type="edit">
+                    <header class="term-header">
+                        <span class="term-dot"></span>
+                        <span class="term-title">editor.sh</span>
+                    </header>
+                    <div class="term-body">
+                        <i>MD</i>
+                        <h4>Editor_Markdown_Codex_Ius</h4>
+                        <p>Generador de escritos markdown con estilo editorial.</p>
+                        <div class="term-exec">
+                            <span class="prompt">user@codex:~$</span> pub_editorial.pdf
+                        </div>
+                        <a href="/sources/res_app/editorial_codexius.html" class="term-link">Acceder</a>
+                    </div>
                 </article>
-                <article data-type="calc"><i>∑</i>
-                    <h4>Cálculo de Plazos</h4>
+
+                  <article class="terminal-card" data-type="edit">
+                    <header class="term-header">
+                        <span class="term-dot"></span>
+                        <span class="term-title">editor.sh</span>
+                    </header>
+                    <div class="term-body">
+                        <i>MD</i>
+                        <h4>Editor_Markdown_Codex_Ius</h4>
+                        <p>Generador de escritos markdown con estilo editorial.</p>
+                        <div class="term-exec">
+                            <span class="prompt">user@codex:~$</span> pub_editorial.pdf
+                        </div>
+                        <a href="/sources/res_app/generador.html" class="term-link">Acceder</a>
+                    </div>
                 </article>
-                <article data-type="edit"><i>✎</i>
-                    <h4>Editor de Demandas</h4>
+
+                <article class="terminal-card" data-type="law">
+                    <header class="term-header">
+                        <span class="term-dot"></span>
+                        <span class="term-title">sandbox.sh</span>
+                    </header>
+                    <div class="term-body">
+                        <i>&#128230;</i>
+                        <h4>Sandbox_vanillaHtml_Codex_Ius</h4>
+                        <p>Sandbox básico para visualizar código HTML, CSS, JS.</p>
+                        <div class="term-exec">
+                            <span class="prompt">user@codex:~$</span> grep -r "Corte Suprema" /db/fallos
+                        </div>
+                        <a href="/sources/res_app/sandbox_terminal.html" class="term-link">Acceder</a>
+                    </div>
                 </article>
-                <article data-type="calc"><i>∑</i>
-                    <h4>Cálculo de Plazos</h4>
-                </article>
-                <article data-type="edit"><i>✎</i>
-                    <h4>Editor de Demandas</h4>
-                </article>
+
             </div>
         </section>
 

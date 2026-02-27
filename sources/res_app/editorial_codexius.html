@@ -1,268 +1,546 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SIBYL_EDITORIAL_ver_01.2</title>
+    <title>SIBYL_EDITORIAL_ver_02.0_AutoFlow</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
-        :root {
-            --primary: #00e5ff; --bg-ui: #000b14;
-            --paper-bg: #ffffff; --paper-text: #1a1a1a;
-            --accent: #00e5ff;
-            --width-page: 210mm; --height-page: 297mm;
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+
+        * {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            box-sizing: border-box;
         }
 
-        body, html { margin: 0; padding: 0; height: 100vh; background: var(--bg-ui); color: var(--primary); font-family: 'JetBrains Mono', monospace; display: flex; flex-direction: column; overflow: hidden; }
-        
-        #metadata-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; padding: 5px; background: rgba(0, 229, 255, 0.1); border-bottom: 1px solid var(--primary); height: 45px; }
-        #metadata-bar input { background: #000; border: 1px solid var(--primary); color: var(--primary); padding: 5px; font-size: 10px; outline: none;}
+        :root {
+            --width-page: 176mm;
+            --height-page: 250mm;
+            /* ALTO FIJO INSTITUCIONAL */
+            --zoom: 0.65;
+            --bg-ui: #020617;
+            --bg-dark-module: #0f172a;
+            --font-mono: 'JetBrains Mono', monospace;
+            --paper-bg: #ffffff;
+            --paper-text: #1e293b;
+            --accent-cyber: #0f172a;
+            --accent-digital: #334155;
+            --accent-glow: #e2e8f0;
+            --accent-brand: #2563eb;
+        }
 
-        #editor-container { height: 40vh; display: flex; flex-direction: column; border-bottom: 2px solid var(--primary); }
-        textarea { flex-grow: 1; background: #000; color: #fff; border: none; padding: 15px; resize: none; outline: none; font-size: 14px; }
+        body.mode-dark {
+            --paper-bg: #0a0e14;
+            --paper-text: #d1d5db;
+            --accent-glow: rgba(255, 255, 255, 0.05);
+        }
 
-        .toolbar { display: flex; background: var(--bg-ui); border-top: 1px solid var(--primary); }
-        .toolbar select, .toolbar button, .toolbar label { background: transparent; color: var(--primary); border-right: 1px solid var(--primary); padding: 8px; cursor: pointer; flex: 1; font-size: 10px; text-transform: uppercase; }
+        body.mode-light {
+            --paper-bg: #ffffff;
+            --paper-text: #1e293b;
+        }
 
-        #preview-viewport { flex-grow: 1; overflow-y: auto; background: #050505; padding: 30px 10px; display: flex; flex-direction: column; align-items: center; }
-        #btn-exit-foco { position: fixed; top: 10px; right: 10px; z-index: 1000; background: var(--primary); color: #000; border: none; padding: 10px; font-weight: bold; display: none; }
+        .theme-notice {
+            --accent-cyber: #450a0a;
+            --accent-brand: #b91c1c;
+            --accent-glow: #fce7f3;
+        }
 
-        /* --- ESTILOS DE PÁGINA --- */
-        .page { background: var(--paper-bg); color: var(--paper-text); padding: 25mm 20mm; margin-bottom: 30px; width: var(--width-page); min-height: var(--height-page); position: relative; box-sizing: border-box; overflow: hidden; }
-        
-        .page-header { position: absolute; top: 10mm; left: 10mm; right: 10mm; display: flex; justify-content: space-between; font-size: 8pt; color: var(--accent); border-bottom: 1.5pt solid var(--accent); }
-        .page-footer { position: absolute; bottom: 10mm; left: 10mm; right: 10mm; display: flex; justify-content: space-between; font-size: 8pt; color: var(--accent); border-top: 1.5pt solid var(--accent); }
+        .theme-educational {
+            --accent-cyber: #064e3b;
+            --accent-brand: #10b981;
+            --accent-glow: #d1fae5;
+        }
 
-        /* --- DECORACIÓN DE ELEMENTOS (EXCLUYENDO PORTADAS) --- */
-        .content:not(.portada):not(.contraportada) h1, 
-        .content:not(.portada):not(.contraportada) h2,
-        .content:not(.portada):not(.contraportada) h3 { position: relative; margin-top: 1.5em; padding-bottom: 5px; border-bottom: 1px solid var(--accent); }
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: var(--bg-ui);
+            font-family: var(--font-mono);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
 
-        /* Etiquetas técnicas */
-        .content:not(.portada):not(.contraportada) h1::before { content: " [H1_ROOT_ACCESS] "; position: absolute; top: -15px; left: 0; background: var(--accent); color: var(--paper-bg); font-size: 7pt; padding: 1px 4px; }
-        .content:not(.portada):not(.contraportada) h2::before { content: " [H2_SUB_PATH] "; position: absolute; top: -15px; left: 0; background: var(--accent); color: var(--paper-bg); font-size: 7pt; padding: 1px 4px; }
+        #metadata-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 5px;
+            padding: 8px;
+            background: var(--bg-dark-module);
+            border-bottom: 2px solid var(--accent-digital);
+        }
 
-        /* Citas (Cites/Blockquotes) */
-        .content:not(.portada):not(.contraportada) blockquote {
+        #metadata-bar input {
+            background: #020617;
+            border: 1px solid var(--accent-digital);
+            color: white;
+            padding: 5px 10px;
+            font-size: 10px;
+            outline: none;
+        }
+
+        #editor-container {
+            height: 35vh;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 2px solid var(--accent-digital);
+        }
+
+        textarea {
+            flex-grow: 1;
+            background: #020617;
+            color: #fff;
+            border: none;
+            padding: 20px;
+            resize: none;
+            outline: none;
+            font-size: 14px;
+            font-family: var(--font-mono);
+        }
+
+        .toolbar {
+            display: flex;
+            background: var(--bg-dark-module);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .toolbar select,
+        .toolbar button,
+        .toolbar label {
+            background: transparent;
+            color: var(--accent-brand);
+            border-right: 1px solid var(--accent-digital);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        #preview-viewport {
+            flex-grow: 1;
+            overflow-y: auto;
+            background: var(--accent-cyber);
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* LÁMINA CON TAMAÑO FIJO INNEGOCIABLE */
+        .page {
+            background: var(--paper-bg);
+            color: var(--paper-text);
+            padding: 25mm 20mm;
+            margin-bottom: 30px;
+            width: var(--width-page);
+            height: var(--height-page);
+            /* FIJO */
+            min-height: var(--height-page);
+            max-height: var(--height-page);
             position: relative;
-            margin: 30px 0; padding: 20px;
-            background: rgba(0, 229, 255, 0.05);
-            border: 1px solid var(--accent);
+            box-sizing: border-box;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            /* Corta lo que no cabe para el algoritmo */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header {
+            position: absolute;
+            top: 8mm;
+            left: 10mm;
+            right: 10mm;
+            display: flex;
+            justify-content: space-between;
+            font-size: 7pt;
+            color: var(--accent-digital);
+            border-bottom: 1px solid var(--accent-glow);
+        }
+
+        .page-footer {
+            position: absolute;
+            bottom: 8mm;
+            left: 10mm;
+            right: 10mm;
+            display: flex;
+            justify-content: space-between;
+            font-size: 7pt;
+            color: var(--accent-digital);
+            border-top: 1px solid var(--accent-glow);
+            padding-top: 4px;
+        }
+
+        /* Contenedor interno donde se vierte el contenido */
+        .page-body {
+            flex-grow: 1;
+            position: relative;
+            width: 100%;
+            font-size: 11pt;
+        }
+
+        /* Estilos de contenido */
+        h1 {
+            font-size: 24pt;
+            background: var(--accent-cyber);
+            color: white;
+            padding: 5px 10px;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+            margin-bottom: 15px;
+        }
+
+        blockquote {
+            border-left: 5px solid var(--accent-brand);
+            background: var(--bg-dark-module);
+            color: #cbd5e1;
+            padding: 15px;
+            margin: 15px 0;
             font-style: italic;
         }
-        .content:not(.portada):not(.contraportada) blockquote::after {
-            content: " [REF_SOURCE_DATA] ";
-            position: absolute; top: -10px; right: 10px;
-            background: var(--accent); color: var(--paper-bg);
-            font-size: 7pt; font-family: monospace; padding: 1px 4px;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid var(--accent-cyber);
         }
 
-        /* Listas limpias */
-        .content ul { list-style: none; padding-left: 1.5rem; }
-        .content ul li { position: relative; margin-bottom: 8px; }
-        .content ul li::before { content: "»"; position: absolute; left: -1.2rem; color: var(--accent); font-weight: bold; }
-
-/* --- ESTILO TÉCNICO PARA TABLAS (SIBYL DATA GRID) --- */
-.content table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 9pt;
-    border: 1px solid var(--accent);
-}
-
-.content table thead {
-    background: var(--accent);
-    color: var(--paper-bg);
-}
-
-.content table th {
-    padding: 10px;
-    text-align: left;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: 1px solid var(--accent);
-}
-
-.content table td {
-    padding: 8px 10px;
-    border: 1px solid rgba(0, 229, 255, 0.2); /* Borde sutil */
-}
-
-/* Efecto Zebra técnico */
-.content table tr:nth-child(even) {
-    background: rgba(0, 229, 255, 0.03);
-}
-
-/* Etiqueta automática para tablas */
-.content:not(.portada):not(.contraportada) table::before {
-    content: " [DATA_GRID_ARRAY] ";
-    display: block;
-    background: var(--accent);
-    color: var(--paper-bg);
-    width: fit-content;
-    font-size: 7pt;
-    padding: 1px 4px;
-    margin-bottom: 0;
-}
-
-#live-stats { 
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--accent);
-    font-size: 10px;
-    padding-top: 8px;
-    letter-spacing: 1px;
-    border-left: 2px solid var(--accent);
-    padding-left: 10px;
-}
-
-
-        /* --- PORTADA Y CONTRAPORTADA --- */
-        .portada { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 10px double var(--accent) !important; }
-        .portada h1::before { display: none; } /* Quitar etiqueta en portada */
-
-        .contraportada { 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            background: var(--accent) !important; color: var(--paper-bg) !important; 
+        th {
+            background: var(--accent-cyber);
+            color: white;
+            padding: 8px;
         }
-        .contraportada * { color: var(--paper-bg) !important; border-color: var(--paper-bg) !important; }
-        .contraportada h1::before { display: none; }
 
-        /* Temas y Formatos */
-        .format-ig { --width-page: 500px; --height-page: 500px; }
-        .format-li { --width-page: 500px; --height-page: 625px; }
-        .format-a4 { --width-page: 210mm; --height-page: 297mm; }
+        td {
+            border-bottom: 1px solid var(--accent-glow);
+            padding: 6px;
+        }
 
-        .theme-default { --accent: #00e5ff; }
-        .theme-notice { --accent: #ff3e3e; }
-        .theme-educational { --accent: #00ff88; }
-        .theme-academic { --accent: #d4af37; }
-        .mode-light { --paper-bg: #ffffff; --paper-text: #1a1a1a; }
-        .mode-dark { --paper-bg: #0a0e14; --paper-text: #d1d5db; }
+        /* Render temporal invisible para medir */
+        #ghost-render {
+            position: absolute;
+            visibility: hidden;
+            width: calc(var(--width-page) - 40mm);
+            pointer-events: none;
+        }
 
-        .hidden { display: none !important; }
+        .hidden {
+            display: none !important;
+        }
 
         @media print {
-            body * { visibility: hidden; }
-            #preview-viewport, #preview-viewport *, .page, .page * { visibility: visible; }
-            #preview-viewport { position: absolute; top: 0; left: 0; height: auto; overflow: visible; padding: 0; }
-            .page { margin: 0; border: none; page-break-after: always; }
+            body {
+                background: white !important;
+            }
+
+            #editor-container,
+            #metadata-bar,
+            .toolbar {
+                display: none !important;
+            }
+
+            #preview-viewport {
+                background: transparent !important;
+                padding: 0 !important;
+            }
+
+            .page {
+                margin: 0 !important;
+                box-shadow: none !important;
+                page-break-after: always !important;
+                border: none !important;
+            }
+        }
+
+        /* --- ESTILOS PARA PORTADA Y CONTRAPORTADA (V.2026.01) --- */
+
+        /* Contenedor Base de Portada */
+        .page.portada {
+            border: 12px solid var(--accent-cyber) !important;
+            padding: 40px !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--paper-bg);
+        }
+
+        .portada-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--accent-cyber);
+            border-bottom: 2px solid var(--accent-brand);
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .portada-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        /* Tipografía Masiva Institucional */
+        .titulo-principal {
+            font-size: 52pt !important;
+            line-height: 0.85;
+            background: var(--accent-cyber) !important;
+            color: white !important;
+            padding: 20px !important;
+            margin: 0 !important;
+            letter-spacing: -3px;
+            width: fit-content;
+            text-transform: uppercase;
+            /* Efecto de corte Y2K */
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
+        }
+
+        .divider {
+            height: 15px;
+            background: var(--accent-brand);
+            width: 120px;
+            margin: 30px 0;
+        }
+
+        .subtitulo-portada {
+            font-size: 24pt !important;
+            color: var(--accent-cyber) !important;
+            background: none !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            line-height: 1.1;
+        }
+
+        .subtitulo-portada strong {
+            color: var(--accent-brand);
+            font-weight: 800;
+            background: var(--accent-glow);
+            padding: 0 6px;
+            mix-blend-mode: multiply;
+            /* Efecto resaltador profesional */
+        }
+
+        /* Footer de Portada */
+        .portada-footer {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .autor-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .autor-box .label {
+            font-size: 10px;
+            color: var(--accent-digital);
+            letter-spacing: 2px;
+        }
+
+        .autor-box .value {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--accent-cyber);
+        }
+
+        /* --- CONTRAPORTADA (CIERRE DE SISTEMA) --- */
+
+        .page.contraportada {
+            background: linear-gradient(135deg, var(--paper-bg) 0%, var(--accent-glow) 100%) !important;
+            border-color: var(--accent-digital) !important;
+        }
+
+        .status-box {
+            border-left: 8px solid var(--accent-brand);
+            padding-left: 25px;
+            margin-bottom: 40px;
+        }
+
+        .desc-final {
+            font-size: 14px !important;
+            color: var(--paper-text) !important;
+            max-width: 80%;
+            margin-top: 15px;
+        }
+
+        /* Grid Social Institucional */
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-item {
+            background: var(--bg-dark-module);
+            padding: 12px;
+            border-right: 4px solid var(--accent-brand);
+        }
+
+        .social-item .label {
+            display: block;
+            font-size: 8px;
+            color: var(--accent-brand);
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .social-item .value {
+            color: white;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        /* Línea de Escaneo final */
+        .scan-line {
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--accent-brand);
+            box-shadow: 0 0 10px var(--accent-brand);
+            opacity: 0.5;
+        }
+
+        /* Ajuste preventivo para el AutoFlow */
+        .page.portada .page-header,
+        .page.portada .page-footer {
+            display: none !important;
+            /* Ocultamos headers estándar en portadas */
         }
     </style>
 </head>
+
 <body class="theme-default mode-dark">
 
-<button id="btn-exit-foco" onclick="toggleFoco()">[ RESTORE_EDITOR ]</button>
-
-<div id="metadata-bar">
-    <input type="text" id="meta-file" placeholder="DOCUMENT_ID" oninput="render()">
-    <input type="text" id="meta-author" placeholder="AUTHOR_ID" oninput="render()">
-    <input type="text" id="meta-location" placeholder="GEOS_ZONE" oninput="render()">
-    <div style="font-size: 9px; padding-top: 5px;" id="live-stats">STATS: 0x0</div>
-</div>
-
-<section id="editor-container">
-    <textarea id="markdown-input" placeholder="Escribe aquí..." oninput="render()"></textarea>
-    <div class="toolbar">
-        <select id="format-select" onchange="updateLayout()">
-            <option value="format-a4">FORMAT: A4_STATIONERY</option>
-            <option value="format-ig">FORMAT: INSTAGRAM_SQR</option>
-            <option value="format-li">FORMAT: LINKEDIN_PDS</option>
-        </select>
-        <select id="theme-select" onchange="updateLayout()">
-            <option value="theme-default">COLOR: SIBYL_BLUE</option>
-            <option value="theme-notice">COLOR: ALERT_RED</option>
-            <option value="theme-educational">COLOR: GROWTH_GREEN</option>
-            <option value="theme-academic">COLOR: GOLD_ARCHIVE</option>
-        </select>
-        <label><input type="checkbox" id="mode-toggle" onchange="updateLayout()"> LIGHT_MODE</label>
-        <button onclick="toggleFoco()">[ FOCUS ]</button>
-        <button onclick="window.print()">[ EXPORT_PDF ]</button>
+    <div id="metadata-bar">
+        <input type="text" id="meta-file" placeholder="DOCUMENT_ID" oninput="render()">
+        <input type="text" id="meta-author" placeholder="AUTHOR_ID" oninput="render()">
+        <input type="text" id="meta-location" placeholder="GEOS_ZONE" oninput="render()">
+        <div id="live-stats" style="font-size: 10px; color: var(--accent-brand); padding: 5px;">STATS: 0x0</div>
     </div>
-</section>
 
-<section id="preview-viewport">
-    <div id="render-target" class="format-a4"></div>
-</section>
+    <section id="editor-container">
+        <textarea id="markdown-input" placeholder="Escribe aquí... El salto de página es automático."
+            oninput="render()"></textarea>
+        <div class="toolbar">
+            <select id="format-select" onchange="updateLayout()">
+                <option value="format-b5">B5_INST</option>
+                <option value="format-a4">A4_STD</option>
+            </select>
+            <select id="theme-select" onchange="updateLayout()">
+                <option value="theme-default">SIBYL_BLUE</option>
+                <option value="theme-notice">ALERT_RED</option>
+                <option value="theme-educational">GROWTH_GREEN</option>
+            </select>
+            <label><input type="checkbox" id="mode-toggle" onchange="updateLayout()"> LIGHT_MODE</label>
+            <button onclick="window.print()">[ EXPORT_PDF ]</button>
+        </div>
+    </section>
 
-<script>
-    function render() {
-    const input = document.getElementById('markdown-input').value;
-    const target = document.getElementById('render-target');
-    const author = document.getElementById('meta-author').value || "SYS_AUTH";
-    const file = document.getElementById('meta-file').value || "UNNAMED_LOG";
-    const loc = document.getElementById('meta-location').value || "NET_NODE";
-    const now = new Date();
-    const fullDate = now.toLocaleDateString() + " " + now.toLocaleTimeString();
+    <section id="preview-viewport">
+        <div id="render-target"></div>
+    </section>
 
-    // --- CÁLCULO DE ESTADÍSTICAS ---
-    const pagesArray = input.split('<--->');
-    const totalPages = pagesArray.length;
-    // Contar palabras totales
-    const totalWords = input.trim() ? input.trim().split(/\s+/).length : 0;
-    
-    // Actualizar el pequeño div del editor (Visualización en barra)
-    document.getElementById('live-stats').innerText = `METRICS: ${totalPages} • ${totalWords}`;
+    <div id="ghost-render"></div>
 
-    target.innerHTML = '';
+    <script>
+        function render() {
+            const input = document.getElementById('markdown-input').value;
+            const target = document.getElementById('render-target');
+            const ghost = document.getElementById('ghost-render');
+            const file = document.getElementById('meta-file').value || "LOG_IUS";
+            const author = document.getElementById('meta-author').value || "SYS_AUTH";
 
-    pagesArray.forEach((content, i) => {
-        const page = document.createElement('div');
-        page.className = 'page';
-        
-        let isPortada = content.includes('<portada>');
-        let isContra = content.includes('<contraportada>');
+            target.innerHTML = '';
+            let pageCount = 1;
 
-        if(isPortada) page.classList.add('portada');
-        if(isContra) page.classList.add('contraportada');
+            // 1. Dividimos el input por el separador manual <--->
+            const manualSections = input.split('<--->');
 
-        const cleanContent = content.replace(/<portada>|<\/portada>|<contraportada>|<\/contraportada>/g, '');
+            manualSections.forEach((section, sIndex) => {
+                // Renderizamos la sección actual en el ghost para medir sus elementos
+                ghost.innerHTML = marked.parse(section);
 
-        page.innerHTML = `
-            <div class="page-header">
-                <span>FILE: ${file}</span>
-                <span>${fullDate}</span>
-            </div>
-            <div class="content ${isPortada?'portada':''} ${isContra?'contraportada':''}">
-                ${marked.parse(cleanContent)}
-            </div>
-            <div class="page-footer">
-                <span>AUTH: ${author} // ${loc}</span>
-                <span style="font-weight: bold; letter-spacing: 2px;">
-                    ${i + 1} • ${totalWords}
-                </span>
-            </div>
+                // Creamos la página para esta sección manual
+                let currentPage = createPage(target, file, author, pageCount);
+                let currentBody = currentPage.querySelector('.page-body');
+                const maxHeight = currentBody.clientHeight;
+
+                const elements = Array.from(ghost.children);
+
+                elements.forEach((el) => {
+                    const clone = el.cloneNode(true);
+                    currentBody.appendChild(clone);
+
+                    // 2. Si el elemento desborda, creamos página nueva (Salto Automático)
+                    if (currentBody.scrollHeight > maxHeight) {
+                        currentBody.removeChild(clone);
+
+                        pageCount++;
+                        currentPage = createPage(target, file, author, pageCount);
+                        currentBody = currentPage.querySelector('.page-body');
+                        currentBody.appendChild(clone);
+                    }
+                });
+
+                // 3. Si no es la última sección manual, forzamos la siguiente página
+                if (sIndex < manualSections.length - 1) {
+                    pageCount++;
+                }
+            });
+
+            document.getElementById('live-stats').innerText = `PAGES: ${pageCount} • WORDS: ${input.split(/\s+/).filter(w => w.length > 0).length}`;
+            localStorage.setItem('sibyl_ver_02_0', input);
+        }
+
+        function createPage(target, file, author, num) {
+            const page = document.createElement('div');
+            page.className = 'page';
+            page.innerHTML = `
+            <div class="page-header"><span>${file}</span><span>${new Date().toLocaleDateString()}</span></div>
+            <div class="page-body"></div>
+            <div class="page-footer"><span>AUTH: ${author}</span><span>PAGE ${num}</span></div>
         `;
-        target.appendChild(page);
-    });
-    localStorage.setItem('sibyl_ver_01_2', input);
-}
+            target.appendChild(page);
+            return page;
+        }
 
+        function updateLayout() {
+            const format = document.getElementById('format-select').value;
+            const theme = document.getElementById('theme-select').value;
+            const isLight = document.getElementById('mode-toggle').checked;
 
-    function updateLayout() {
-        const format = document.getElementById('format-select').value;
-        const theme = document.getElementById('theme-select').value;
-        const light = document.getElementById('mode-toggle').checked;
-        document.body.className = `${theme} ${light ? 'mode-light' : 'mode-dark'}`;
-        document.getElementById('render-target').className = format;
-        render();
-    }
+            const sizes = {
+                'format-b5': { w: '176mm', h: '250mm' },
+                'format-a4': { w: '210mm', h: '297mm' }
+            };
 
-    function toggleFoco() {
-        const editor = document.getElementById('editor-container');
-        const meta = document.getElementById('metadata-bar');
-        const exitBtn = document.getElementById('btn-exit-foco');
-        const preview = document.getElementById('preview-viewport');
-        const isHidden = editor.classList.toggle('hidden');
-        meta.classList.toggle('hidden');
-        exitBtn.style.display = isHidden ? 'block' : 'none';
-        preview.style.height = isHidden ? '100vh' : 'calc(60vh - 45px)';
-    }
+            document.documentElement.style.setProperty('--width-page', sizes[format].w);
+            document.documentElement.style.setProperty('--height-page', sizes[format].h);
+            document.body.className = `${theme} ${isLight ? 'mode-light' : 'mode-dark'}`;
+            render();
+        }
 
-    window.onload = () => {
-        const saved = localStorage.getItem('sibyl_ver_01_2');
-        if(saved) { document.getElementById('markdown-input').value = saved; render(); }
-    };
-</script>
+        window.onload = () => {
+            const saved = localStorage.getItem('sibyl_ver_02_0');
+            if (saved) { document.getElementById('markdown-input').value = saved; }
+            render();
+        };
+    </script>
 </body>
+
 </html>
