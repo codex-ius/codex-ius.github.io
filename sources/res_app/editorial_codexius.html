@@ -3,543 +3,590 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SIBYL_EDITORIAL_ver_02.0_AutoFlow</title>
+    <title>Codex_Ius: MD_Editor</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
-
-        * {
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-            box-sizing: border-box;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap');
 
         :root {
-            --width-page: 176mm;
-            --height-page: 250mm;
-            /* ALTO FIJO INSTITUCIONAL */
-            --zoom: 0.65;
-            --bg-ui: #020617;
-            --bg-dark-module: #0f172a;
-            --font-mono: 'JetBrains Mono', monospace;
-            --paper-bg: #ffffff;
-            --paper-text: #1e293b;
-            --accent-cyber: #0f172a;
-            --accent-digital: #334155;
-            --accent-glow: #e2e8f0;
-            --accent-brand: #2563eb;
+            --w-a4: 210mm;
+            --h-a4: 297mm;
+            --m-apa: 25.4mm;
+            --h-util: 246.2mm;
+            --f-serif: 'Tinos', serif;
+            --f-sans: 'Inter', sans-serif;
         }
 
-        body.mode-dark {
-            --paper-bg: #0a0e14;
-            --paper-text: #d1d5db;
-            --accent-glow: rgba(255, 255, 255, 0.05);
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
         }
 
-        body.mode-light {
-            --paper-bg: #ffffff;
-            --paper-text: #1e293b;
-        }
-
-        .theme-notice {
-            --accent-cyber: #450a0a;
-            --accent-brand: #b91c1c;
-            --accent-glow: #fce7f3;
-        }
-
-        .theme-educational {
-            --accent-cyber: #064e3b;
-            --accent-brand: #10b981;
-            --accent-glow: #d1fae5;
-        }
-
-        body,
-        html {
+        body {
             margin: 0;
-            padding: 0;
+            display: flex;
             height: 100vh;
-            background: var(--bg-ui);
-            font-family: var(--font-mono);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        #metadata-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 5px;
-            padding: 8px;
-            background: var(--bg-dark-module);
-            border-bottom: 2px solid var(--accent-digital);
-        }
-
-        #metadata-bar input {
-            background: #020617;
-            border: 1px solid var(--accent-digital);
+            background: #0f172a;
+            font-family: var(--f-sans);
             color: white;
-            padding: 5px 10px;
-            font-size: 10px;
-            outline: none;
+            flex-direction: column;
         }
 
-        #editor-container {
-            height: 35vh;
+        /* --- EDITOR --- */
+        #editor {
+            /*width: 420px;*/
+            height: 30vh;
+            padding: 20px;
+            background: #1e293b;
+            border-right: 1px solid #334155;
+            overflow-y: auto;
             display: flex;
             flex-direction: column;
-            border-bottom: 2px solid var(--accent-digital);
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 5px;
+        }
+
+        .counter {
+            font-size: 10px;
+            color: #38bdf8;
+            text-align: right;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        label {
+            font-size: 10px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 13px;
         }
 
         textarea {
-            flex-grow: 1;
-            background: #020617;
-            color: #fff;
-            border: none;
-            padding: 20px;
-            resize: none;
-            outline: none;
-            font-size: 14px;
-            font-family: var(--font-mono);
+            height: 150px;
+
+            font-family: monospace;
         }
 
-        .toolbar {
-            display: flex;
-            background: var(--bg-dark-module);
-            overflow-x: auto;
-            white-space: nowrap;
-        }
+       h3 {
+    /* Color pizarra azulado: profesional y con mejor contraste */
+    color: #1e293b; 
+    
+    /* Tipografía: Usamos la Serif para títulos internos (estilo libro) */
+    font-family: var(--f-serif);
+    font-size: 18px;
+    font-weight: 700;
+    
+    /* Espaciado orgánico */
+    margin: 24pt 0 12pt 0; 
+    padding-bottom: 8px;
+    
+    /* Borde sutil: estilo institucional */
+    border-bottom: 0.5pt solid #e2e8f0; 
+    
+    /* Un toque distintivo: un pequeño acento en el borde */
+    position: relative;
+}
 
-        .toolbar select,
-        .toolbar button,
-        .toolbar label {
-            background: transparent;
-            color: var(--accent-brand);
-            border-right: 1px solid var(--accent-digital);
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 10px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+/* Opcional: Una pequeña marca de color para el toque 'Organic' */
+h3::before {
+    content: "";
+    position: absolute;
+    bottom: -0.5pt;
+    left: 0;
+    width: 40px;
+    height: 1.5pt;
+    background-color: #334155;
+}
 
-        #preview-viewport {
+        /* --- VISOR --- */
+        #preview {
             flex-grow: 1;
             overflow-y: auto;
-            background: var(--accent-cyber);
-            padding: 40px 0;
+            background: #020617;
+            padding: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* LÁMINA CON TAMAÑO FIJO INNEGOCIABLE */
-        .page {
-            background: var(--paper-bg);
-            color: var(--paper-text);
-            padding: 25mm 20mm;
-            margin-bottom: 30px;
-            width: var(--width-page);
-            height: var(--height-page);
-            /* FIJO */
-            min-height: var(--height-page);
-            max-height: var(--height-page);
+        #render-area {
+            transform: scale(0.80);
+            transform-origin: top center;
+        }
+
+        /* --- HOJA A4 --- */
+        .hoja {
+            width: var(--w-a4);
+            height: var(--h-a4);
+            background: white;
+            padding: var(--m-apa);
+            margin-bottom: 20mm;
             position: relative;
-            box-sizing: border-box;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            /* Corta lo que no cabe para el algoritmo */
-            display: flex;
-            flex-direction: column;
+            color: #1a1a1a;
+            font-family: var(--f-serif);
+            font-size: 12pt;
+            line-height: 1.5;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
 
-        .page-header {
-            position: absolute;
-            top: 8mm;
-            left: 10mm;
-            right: 10mm;
-            display: flex;
-            justify-content: space-between;
-            font-size: 7pt;
-            color: var(--accent-digital);
-            border-bottom: 1px solid var(--accent-glow);
-        }
-
-        .page-footer {
-            position: absolute;
-            bottom: 8mm;
-            left: 10mm;
-            right: 10mm;
-            display: flex;
-            justify-content: space-between;
-            font-size: 7pt;
-            color: var(--accent-digital);
-            border-top: 1px solid var(--accent-glow);
-            padding-top: 4px;
-        }
-
-        /* Contenedor interno donde se vierte el contenido */
-        .page-body {
-            flex-grow: 1;
-            position: relative;
+        .caja-util {
             width: 100%;
+            height: var(--h-util);
+            position: relative;
+            overflow: hidden;
+            text-align: justify;
+        }
+
+        /* --- PARCHE: ESTILOS ACADÉMICOS CRÍTICOS --- */
+        .caja-util p {
+            margin: 0 0 12pt 0;
+            text-indent: 12.7mm;
+        }
+
+        /* Título Nivel 1 (Secciones principales) */
+    .caja-util h1 {
+    text-align: center;
+    font-family: var(--f-serif); /* Tinos para máxima elegancia */
+    font-size: 18pt; /* Subimos un poco para diferenciar del h2 */
+    margin: 40pt 0 30pt;
+    letter-spacing: 0.5px;
+    color: #0f172a; /* Azul noche casi negro (más moderno que el negro puro) */
+    line-height: 1.2;
+    text-transform: uppercase; /* Opcional: para un look más solemne */
+}
+
+        /* Título Nivel 2 (Subsecciones) */
+      .caja-util h2 {
+    font-family: var(--f-sans); /* Sans para dar un aire técnico/moderno */
+    font-size: 14pt;
+    font-weight: 700;
+    margin: 25pt 0 12pt;
+    border-bottom: none;
+    border-left: 4pt solid #334155; /* Cambiamos el azul por Pizarra Profundo */
+    padding-left: 12pt;
+    color: #1e293b;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+}
+
+        /* Estilo para Citas Largas (Blockquotes) */
+        .caja-util blockquote {
+            /* margin: 15pt 30mm 15pt 15mm;
+            /* Sangría simétrica 
+            padding: 10pt 15pt;*/
+            padding: 1rem;
             font-size: 11pt;
+            line-height: 1.4;
+            /* Gris azulado muy tenue */
+            /* Fondo mucho más sutil */
+            background: #f1f5f9;
+            border-radius: 2px;
+            color: #334155;
+            border-left: 1pt solid #cbd5e1;
         }
 
-        /* Estilos de contenido */
-        h1 {
-            font-size: 24pt;
-            background: var(--accent-cyber);
-            color: white;
-            padding: 5px 10px;
-            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
-            margin-bottom: 15px;
+        .caja-util blockquote p {
+            text-indent: 0 !important;
+            margin: 0;
         }
 
-        blockquote {
-            border-left: 5px solid var(--accent-brand);
-            background: var(--bg-dark-module);
-            color: #cbd5e1;
-            padding: 15px;
-            margin: 15px 0;
-            font-style: italic;
-        }
-
-        table {
+        /* Reemplaza tu estilo de tabla con este */
+        .caja-util table {
             width: 100%;
             border-collapse: collapse;
-            border: 1px solid var(--accent-cyber);
+            margin-bottom: 15pt;
+            font-size: 10pt;
+            font-family: var(--f-sans);
+            border-top: 1.5pt solid #1a1a1a;
+            /* Línea superior gruesa */
+            border-bottom: 1.5pt solid #1a1a1a;
+            /* Línea inferior gruesa */
         }
 
-        th {
-            background: var(--accent-cyber);
-            color: white;
-            padding: 8px;
+        .caja-util th {
+            padding: 8pt 6pt;
+            border-bottom: 0.75pt solid #1a1a1a;
+            background: transparent;
+            color: #334155;
+            /* Texto del encabezado en tono pizarra */
+            text-transform: uppercase;
+            font-size: 8.5pt;
+            font-weight: 700;
         }
 
-        td {
-            border-bottom: 1px solid var(--accent-glow);
-            padding: 6px;
+        .caja-util td {
+            padding: 6pt;
+            border: none;
+            /* Eliminamos bordes verticales y celdas */
         }
 
-        /* Render temporal invisible para medir */
-        #ghost-render {
+        /* Estilo para Listas */
+        .caja-util ul,
+        .caja-util ol {
+            margin-bottom: 12pt;
+            padding-left: 20mm;
+        }
+
+
+        .footer-info {
             position: absolute;
-            visibility: hidden;
-            width: calc(var(--width-page) - 40mm);
-            pointer-events: none;
-        }
-
-        .hidden {
-            display: none !important;
+            bottom: 12mm;
+            left: var(--m-apa);
+            right: var(--m-apa);
+            font-size: 9pt;
+            color: #888;
+            border-top: 0.1mm solid #eee;
+            padding-top: 2mm;
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--f-sans);
         }
 
         @media print {
-            body {
-                background: white !important;
+
+            body,
+            #preview {
+                background: white;
+                height: auto;
+                overflow: visible;
+                display: block;
             }
 
-            #editor-container,
-            #metadata-bar,
-            .toolbar {
-                display: none !important;
+            #editor,
+            details {
+                display: none;
             }
 
-            #preview-viewport {
-                background: transparent !important;
-                padding: 0 !important;
+            #render-area {
+                transform: scale(1) !important;
+                width: 210mm;
             }
 
-            .page {
-                margin: 0 !important;
-                box-shadow: none !important;
-                page-break-after: always !important;
-                border: none !important;
+            .hoja {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                display: block;
+                /*-------------*/
+                text-rendering: optimizeLegibility;
+                font-variant-numeric: tabular-nums;
+                /* Números alineados en tablas */
+                hyphens: auto;
+                /* Partición de palabras automática */
+                -webkit-hyphens: auto;
+            }
+
+            #preview {
+                padding: 0;
             }
         }
 
-        /* --- ESTILOS PARA PORTADA Y CONTRAPORTADA (V.2026.01) --- */
-
-        /* Contenedor Base de Portada */
-        .page.portada {
-            border: 12px solid var(--accent-cyber) !important;
-            padding: 40px !important;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            background: var(--paper-bg);
+        /* Estilo del Contenedor Desplegable */
+        details {
+            background: #1e293b;
+            border: 1px solid #334155;            
+            padding: 10px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            padding: 1rem;
         }
 
-        .portada-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            font-weight: 800;
-            color: var(--accent-cyber);
-            border-bottom: 2px solid var(--accent-brand);
-            padding-bottom: 10px;
+        summary {
+            padding: 1rem;
+            font-weight: bold;
+            color: #94a3b8;
+            cursor: pointer;
             text-transform: uppercase;
-        }
-
-        .portada-content {
-            flex-grow: 1;
+            list-style: none;
+            /* Quita la flecha nativa si lo deseas */
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: left;
+            /*justify-content: space-between;*/
+            align-items: center;
+            gap: 1rem;
         }
 
-        /* Tipografía Masiva Institucional */
-        .titulo-principal {
-            font-size: 52pt !important;
-            line-height: 0.85;
-            background: var(--accent-cyber) !important;
-            color: white !important;
-            padding: 20px !important;
-            margin: 0 !important;
-            letter-spacing: -3px;
-            width: fit-content;
-            text-transform: uppercase;
-            /* Efecto de corte Y2K */
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
-        }
-
-        .divider {
-            height: 15px;
-            background: var(--accent-brand);
-            width: 120px;
-            margin: 30px 0;
-        }
-
-        .subtitulo-portada {
-            font-size: 24pt !important;
-            color: var(--accent-cyber) !important;
-            background: none !important;
-            border: none !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            line-height: 1.1;
-        }
-
-        .subtitulo-portada strong {
-            color: var(--accent-brand);
-            font-weight: 800;
-            background: var(--accent-glow);
-            padding: 0 6px;
-            mix-blend-mode: multiply;
-            /* Efecto resaltador profesional */
-        }
-
-        /* Footer de Portada */
-        .portada-footer {
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .autor-box {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .autor-box .label {
+        summary::after {
+            content: '▼';
             font-size: 10px;
-            color: var(--accent-digital);
-            letter-spacing: 2px;
+            transition: transform 0.3s;
         }
 
-        .autor-box .value {
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--accent-cyber);
+        details[open] summary::after {
+            transform: rotate(180deg);
         }
 
-        /* --- CONTRAPORTADA (CIERRE DE SISTEMA) --- */
+        /*CONTRAPORTADA*/
 
-        .page.contraportada {
-            background: linear-gradient(135deg, var(--paper-bg) 0%, var(--accent-glow) 100%) !important;
-            border-color: var(--accent-digital) !important;
+        #contraportada-title {
+            font-size: larger;
         }
 
-        .status-box {
-            border-left: 8px solid var(--accent-brand);
-            padding-left: 25px;
-            margin-bottom: 40px;
-        }
+        #contraportada-container {
+            border: solid 1px #1e293b;
+            padding: 1rem;
+            margin: 1rem;
 
-        .desc-final {
-            font-size: 14px !important;
-            color: var(--paper-text) !important;
-            max-width: 80%;
-            margin-top: 15px;
-        }
-
-        /* Grid Social Institucional */
-        .social-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-item {
-            background: var(--bg-dark-module);
-            padding: 12px;
-            border-right: 4px solid var(--accent-brand);
-        }
-
-        .social-item .label {
-            display: block;
-            font-size: 8px;
-            color: var(--accent-brand);
-            font-weight: 800;
-            margin-bottom: 4px;
-        }
-
-        .social-item .value {
-            color: white;
-            font-size: 12px;
-            font-weight: 400;
-        }
-
-        /* Línea de Escaneo final */
-        .scan-line {
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: var(--accent-brand);
-            box-shadow: 0 0 10px var(--accent-brand);
-            opacity: 0.5;
-        }
-
-        /* Ajuste preventivo para el AutoFlow */
-        .page.portada .page-header,
-        .page.portada .page-footer {
-            display: none !important;
-            /* Ocultamos headers estándar en portadas */
         }
     </style>
 </head>
 
-<body class="theme-default mode-dark">
+<body>
+    <details>
+        <summary>Editor</summary>
 
-    <div id="metadata-bar">
-        <input type="text" id="meta-file" placeholder="DOCUMENT_ID" oninput="render()">
-        <input type="text" id="meta-author" placeholder="AUTHOR_ID" oninput="render()">
-        <input type="text" id="meta-location" placeholder="GEOS_ZONE" oninput="render()">
-        <div id="live-stats" style="font-size: 10px; color: var(--accent-brand); padding: 5px;">STATS: 0x0</div>
+        <div id="editor">    
+            <a href="../../index.html" style="
+    display: inline-block;
+    padding: 10px 20px;    
+    text-decoration: none;    
+    font-weight: 500;   
+    color: #cbd5e1;    
+    text-align: center;
+    border: 1px solid #38bdf8;
+    
+
+">
+    Volver al inicio...
+</a>   
+
+            <div class="group"><label>Título Principal</label><input type="text" id="m-title"
+                    value="LOREM IPSUM" oninput="motorPrincipal()"></div>
+            <div class="group"><label>Subtítulo</label><input type="text" id="m-subtitle"
+                    value="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." oninput="motorPrincipal()"></div>
+            <div class="group"><label>Autor</label><input type="text" id="m-author" value="Nombre Completo"
+                    oninput="motorPrincipal()"></div>
+            <div class="group"><label>ORCID</label><input type="text" id="m-orcid"
+                    value="https://orcid.org/0000-0000-0000-0000" oninput="motorPrincipal()"></div>
+                    <div class="group"><label>DOI</label><input type="text" id="m-doi"
+                    value="https://doi.org/10.5281/zenodo.1234567" oninput="motorPrincipal()"></div>
+            <div class="group"><label>Afiliación / Institución</label><input type="text" id="m-inst"
+                    value="Investigador Independiente" oninput="motorPrincipal()"></div>
+
+            <div class="group">
+                <label>Resumen (Markdown)</label>
+                <textarea id="m-abs" oninput="motorPrincipal()"># RESUMEN
+Escribe aquí el resumen. El sistema lo procesará palabra por palabra.</textarea>
+                <div id="count-abs" class="counter">Palabras: 0</div>
+            </div>
+
+            <div class="group">
+                <label>Cuerpo del Trabajo (Markdown)</label>
+                <textarea id="m-md" oninput="motorPrincipal()"># 1. INTRODUCCIÓN
+Inicia tu investigación aquí...</textarea>
+                <div id="count-body" class="counter">Palabras: 0</div>
+            </div>
+
+            <button onclick="window.print()"
+                style="background:#38bdf8; color:#0f172a; padding:12px; border:none; font-weight:bold; cursor:pointer; border-radius:4px;">GENERAR
+                PDF</button>
+        </div>
+    </details>
+
+
+    <div id="preview">
+        <div id="render-area"></div>
     </div>
 
-    <section id="editor-container">
-        <textarea id="markdown-input" placeholder="Escribe aquí... El salto de página es automático."
-            oninput="render()"></textarea>
-        <div class="toolbar">
-            <select id="format-select" onchange="updateLayout()">
-                <option value="format-b5">B5_INST</option>
-                <option value="format-a4">A4_STD</option>
-            </select>
-            <select id="theme-select" onchange="updateLayout()">
-                <option value="theme-default">SIBYL_BLUE</option>
-                <option value="theme-notice">ALERT_RED</option>
-                <option value="theme-educational">GROWTH_GREEN</option>
-            </select>
-            <label><input type="checkbox" id="mode-toggle" onchange="updateLayout()"> LIGHT_MODE</label>
-            <button onclick="window.print()">[ EXPORT_PDF ]</button>
-        </div>
-    </section>
-
-    <section id="preview-viewport">
-        <div id="render-target"></div>
-    </section>
-
-    <div id="ghost-render"></div>
+    <div id="buffer" style="display:none;"></div>
 
     <script>
-        function render() {
-            const input = document.getElementById('markdown-input').value;
-            const target = document.getElementById('render-target');
-            const ghost = document.getElementById('ghost-render');
-            const file = document.getElementById('meta-file').value || "LOG_IUS";
-            const author = document.getElementById('meta-author').value || "SYS_AUTH";
+        const MM_TO_PX = 3.7795275591;
+        const LIMIT_PX = 246.2 * MM_TO_PX;
 
-            target.innerHTML = '';
-            let pageCount = 1;
+        function motorPrincipal() {
+            const area = document.getElementById('render-area');
+            area.innerHTML = '';
 
-            // 1. Dividimos el input por el separador manual <--->
-            const manualSections = input.split('<--->');
+            actualizarContadores();
 
-            manualSections.forEach((section, sIndex) => {
-                // Renderizamos la sección actual en el ghost para medir sus elementos
-                ghost.innerHTML = marked.parse(section);
+            // 1. Portada (Página 1)
+            area.appendChild(crearPortada());
 
-                // Creamos la página para esta sección manual
-                let currentPage = createPage(target, file, author, pageCount);
-                let currentBody = currentPage.querySelector('.page-body');
-                const maxHeight = currentBody.clientHeight;
+            // 2. Contraportada / Créditos (Página 2)
+            area.appendChild(crearContraportada());
 
-                const elements = Array.from(ghost.children);
+            // 3. Procesar Resumen Atómico (Página 3 en adelante)
+            let pNum = 3;
+            pNum = procesarBloqueAtómico(document.getElementById('m-abs').value, pNum);
 
-                elements.forEach((el) => {
-                    const clone = el.cloneNode(true);
-                    currentBody.appendChild(clone);
+            // 4. Procesar Cuerpo Atómico (Continuación)
+            procesarBloqueAtómico(document.getElementById('m-md').value, pNum);
+        }
 
-                    // 2. Si el elemento desborda, creamos página nueva (Salto Automático)
-                    if (currentBody.scrollHeight > maxHeight) {
-                        currentBody.removeChild(clone);
 
-                        pageCount++;
-                        currentPage = createPage(target, file, author, pageCount);
-                        currentBody = currentPage.querySelector('.page-body');
-                        currentBody.appendChild(clone);
-                    }
-                });
+        function procesarBloqueAtómico(rawContent, startPage) {
+            const buffer = document.getElementById('buffer');
 
-                // 3. Si no es la última sección manual, forzamos la siguiente página
-                if (sIndex < manualSections.length - 1) {
-                    pageCount++;
+            // PASO 1: Detectamos el marcador === y lo pre-procesamos
+            const cleanRaw = rawContent.replace(/^===$/gm, '<div class="page-break-signal"></div>');
+            buffer.innerHTML = marked.parse(cleanRaw);
+
+            let currentPageNum = startPage;
+            let hojaActual = crearHojaBase(currentPageNum);
+            let cajaActual = hojaActual.querySelector('.caja-util');
+
+            const elementos = Array.from(buffer.children);
+
+            for (let el of elementos) {
+                // PASO 2: Si el motor encuentra nuestra señal o una línea horizontal (---)
+                // la usamos para saltar de página y NO la dibujamos.
+                if (el.classList.contains('page-break-signal') || el.tagName === 'HR') {
+                    currentPageNum++;
+                    hojaActual = crearHojaBase(currentPageNum);
+                    cajaActual = hojaActual.querySelector('.caja-util');
+                    continue; // Aquí ocurre la magia: salta la página y borra el rastro
                 }
-            });
 
-            document.getElementById('live-stats').innerText = `PAGES: ${pageCount} • WORDS: ${input.split(/\s+/).filter(w => w.length > 0).length}`;
-            localStorage.setItem('sibyl_ver_02_0', input);
+                if (el.tagName === 'P') {
+                    const palabras = el.innerText.split(' ');
+                    let pDOM = document.createElement('p');
+                    cajaActual.appendChild(pDOM);
+
+                    for (let pal of palabras) {
+                        const backup = pDOM.innerText;
+                        pDOM.innerText += (backup === '' ? '' : ' ') + pal;
+
+                        if (pDOM.offsetTop + pDOM.offsetHeight > LIMIT_PX) {
+                            pDOM.innerText = backup;
+                            currentPageNum++;
+                            hojaActual = crearHojaBase(currentPageNum);
+                            cajaActual = hojaActual.querySelector('.caja-util');
+                            pDOM = document.createElement('p');
+                            pDOM.style.textIndent = "0";
+                            pDOM.innerText = pal;
+                            cajaActual.appendChild(pDOM);
+                        }
+                    }
+                } else {
+                    const clon = el.cloneNode(true);
+                    cajaActual.appendChild(clon);
+                    if (clon.offsetTop + clon.offsetHeight > LIMIT_PX) {
+                        cajaActual.removeChild(clon);
+                        currentPageNum++;
+                        hojaActual = crearHojaBase(currentPageNum);
+                        cajaActual = hojaActual.querySelector('.caja-util');
+                        cajaActual.appendChild(clon);
+                    }
+                }
+            }
+            return currentPageNum + 1;
         }
 
-        function createPage(target, file, author, num) {
-            const page = document.createElement('div');
-            page.className = 'page';
-            page.innerHTML = `
-            <div class="page-header"><span>${file}</span><span>${new Date().toLocaleDateString()}</span></div>
-            <div class="page-body"></div>
-            <div class="page-footer"><span>AUTH: ${author}</span><span>PAGE ${num}</span></div>
-        `;
-            target.appendChild(page);
-            return page;
+        function actualizarContadores() {
+            const absTxt = document.getElementById('m-abs').value.trim();
+            const bodyTxt = document.getElementById('m-md').value.trim();
+            const count = (str) => str ? str.split(/\s+/).length : 0;
+            document.getElementById('count-abs').innerText = `Palabras: ${count(absTxt)}`;
+            document.getElementById('count-body').innerText = `Palabras: ${count(bodyTxt)}`;
         }
 
-        function updateLayout() {
-            const format = document.getElementById('format-select').value;
-            const theme = document.getElementById('theme-select').value;
-            const isLight = document.getElementById('mode-toggle').checked;
-
-            const sizes = {
-                'format-b5': { w: '176mm', h: '250mm' },
-                'format-a4': { w: '210mm', h: '297mm' }
-            };
-
-            document.documentElement.style.setProperty('--width-page', sizes[format].w);
-            document.documentElement.style.setProperty('--height-page', sizes[format].h);
-            document.body.className = `${theme} ${isLight ? 'mode-light' : 'mode-dark'}`;
-            render();
+        function crearHojaBase(n) {
+            const h = document.createElement('div');
+            h.className = 'hoja';
+            h.innerHTML = `<div class="caja-util"></div><div class="footer-info"><span>${document.getElementById('m-author').value} | ${document.getElementById('m-title').value.substring(0, 40)}...</span><span>Página ${n}</span></div>`;
+            document.getElementById('render-area').appendChild(h);
+            return h;
         }
 
-        window.onload = () => {
-            const saved = localStorage.getItem('sibyl_ver_02_0');
-            if (saved) { document.getElementById('markdown-input').value = saved; }
-            render();
-        };
+        function crearPortada() {
+            const h = document.createElement('div');
+            h.className = 'hoja';
+            h.innerHTML = `
+            <div style="height:100%; display:flex; flex-direction:column; justify-content:center; text-align:center; border:0.4mm solid #000; padding:10mm;">
+                <h1 style="margin-bottom:5mm;">${document.getElementById('m-title').value}</h1>
+                <div style="font-size:14pt; color:#444; margin-bottom:20pt;">${document.getElementById('m-subtitle').value}</div>
+                <div style="margin-top:2cm;">
+                    <strong>${document.getElementById('m-author').value}</strong><br>
+                    <span style="display: block; font-size:10pt; color:#666;">ORCID: ${document.getElementById('m-orcid').value}</span>
+                    <span style="display: block; font-size:10pt; color:#666;">ZENODO: ${document.getElementById('m-doi').value}</span>
+                    
+                </div>
+                <div style="margin-top:4cm;">
+                    <strong>${document.getElementById('m-inst').value}</strong><br>
+                    <span>${new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}, Mendoza, Argentina</span>
+                </div>
+            </div>`;
+            return h;
+        }
+
+        function crearContraportada() {
+            const h = document.createElement('div');
+            h.className = 'hoja';
+const agradecimiento = "Agradezco especialmente el apoyo de mi familia. Sinceramente, espero que este aporte sea de utilidad en la construcción de un mundo más justo. Muchas gracias por su atención.";
+            h.innerHTML = `
+            <div class="caja-util">
+                <h2 id="contraportada-title">CRÉDITOS Y LICENCIA</h2>
+                <div id="contraportada-container" style="font-family: var(--f-sans); color: #334155; font-size: 10.5pt; line-height: 1.6;">
+    
+    <div style="margin-bottom: 20pt; border-bottom: 0.5pt solid #cbd5e1; padding-bottom: 10pt;">
+        <strong style="color: #1e293b; text-transform: uppercase; font-size: 9pt;">Titular de los Derechos</strong>
+        <p style="text-indent:0; margin: 4pt 0; font-size: 9.5pt; color: #475569;">
+    © Copyright 2026 by <strong>${document.getElementById('m-author').value}</strong> 
+    — <span style="font-size: 9pt;">${document.getElementById('m-orcid').value}</span>.<br> Versión actualizada al: ${new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}, Mendoza, Argentina. 
+    Reservados algunos derechos bajo licencia internacional.
+</p>
+    </div>
+
+    <div style="margin-bottom: 20pt;">
+        <strong style="color: #1e293b; text-transform: uppercase; font-size: 9pt;">Licencia de Publicación</strong>
+        <p style="text-indent:0; margin: 4pt 0;">Este documento se distribuye bajo la licencia <strong>Creative Commons Atribución-NoComercial-SinDerivadas 4.0 Internacional (CC BY-NC-ND 4.0)</strong>.</p>
+    </div>
+
+    <div style="margin-bottom: 20pt; background: #f8fafc; padding: 15pt; border-radius: 4px; border: 0.1mm solid #e2e8f0;">
+        <strong style="color: #1e293b; text-transform: uppercase; font-size: 9pt;">Cita sugerida</strong>
+        <p style="text-indent:0; margin: 4pt 0; font-family: var(--f-serif); font-size: 11pt;">
+            ${document.getElementById('m-author').value} (${new Date().getFullYear()}). <em>${document.getElementById('m-title').value}</em>. ${document.getElementById('m-inst').value}. Preprint depositado en Codex_Ius / Zenodo.
+        </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20pt;">
+        <div>
+            <strong style="color: #1e293b; text-transform: uppercase; font-size: 8pt;">Identificación Digital</strong>
+            <p style="text-indent:0; margin: 4pt 0; font-size: 9pt;">DOI:<br><a style="color: #1e293b; font-size: 8pt;" href="${document.getElementById('m-doi').value}"> ${document.getElementById('m-doi').value}</a><br>Handle: Codex_Ius Archive.</p>
+        </div>
+        <div>
+            <strong style="color: #1e293b; text-transform: uppercase; font-size: 8pt;">Declaraciones</strong>
+            <p style="text-indent:0; margin: 4pt 0; font-size: 9pt;">Conflicto de intereses: Ninguno.<br>Financiamiento: Autofinanciado.</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 30pt; padding-top: 10pt; border-top: 0.5pt solid #cbd5e1; font-size: 8.5pt; color: #64748b;">
+        <p style="text-indent:0;">Este es un <strong>Preprint</strong> y no ha sido sometido a revisión por pares por una revista científica. El autor es responsable de la integridad de los datos y conclusiones presentadas.</p>
+    </div>
+
+    <div style="margin: 30pt 0 20pt 0; padding: 15pt; border: 0.1mm dashed #cbd5e1; border-radius: 4px; background-color: #f8fafc;">
+        <p style="text-indent:0; margin: 0; font-family: var(--f-serif); font-size: 11pt; font-style: italic; color: #475569; line-height: 1.5; text-align: center;">
+            "${agradecimiento}"
+        </p>
+    </div>
+
+    
+</div>
+            `;
+            return h;
+        }
+
+
+
+        motorPrincipal();
     </script>
 </body>
 
